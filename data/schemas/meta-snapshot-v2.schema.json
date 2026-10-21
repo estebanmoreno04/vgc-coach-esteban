@@ -197,13 +197,15 @@
       }
     },
     "by_event": {
-      "description": "Usage and Megas per in-person event, newest first.",
+      "description": "Usage, Megas and top teams per event (in-person and online), newest first.",
       "type": "array",
       "items": {
         "type": "object",
-        "required": ["key", "name", "date", "players", "basis", "teams", "day2_teams", "usage", "megas"],
+        "required": ["key", "name", "date", "segment", "players", "url", "basis", "teams", "day2_teams", "usage", "megas", "top_teams"],
         "properties": {
+          "segment": { "enum": ["in_person", "online"] },
           "basis": { "enum": ["full_field", "day2_only"] },
+          "top_teams": { "type": "array", "items": { "type": "object", "required": ["placement", "player", "team"] } },
           "teams": { "type": "integer", "minimum": 0 },
           "usage": {
             "type": "array",

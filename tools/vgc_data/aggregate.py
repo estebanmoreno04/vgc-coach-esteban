@@ -8,8 +8,9 @@ Segments
 * ``online``: Limitless tournaments inside the online window.
 * ``total``: whole-field in-person teams plus online teams.
 
-``by_event`` repeats usage and Megas for each in-person event (day-2-only
-fallback events are labeled ``basis: day2_only``), and ``trend`` compares the
+``by_event`` repeats usage, Megas and the top teams for each event, in-person
+and online (day-2-only fallback events are labeled ``basis: day2_only``), and
+``trend`` compares the
 most recent whole-field in-person events with the earlier ones.
 
 Win rates are wins / (wins + losses) over the teams' full records (ties are
@@ -171,7 +172,7 @@ def build_snapshot(
         "matchups": _matchups(full_field, usage, pokedex, settings),
         "top_cut_teams": _top_cut_teams(in_person, online, pokedex, settings),
         "events": [_event_summary(event) for event in events],
-        "by_event": _by_event(in_person, pokedex, settings),
+        "by_event": _by_event(in_person + online, pokedex, settings),
         "trend": _trend(full_field, pokedex, settings),
         "sources": sources,
         "warnings": warnings,
@@ -379,28 +380,7 @@ def _top_cut_teams(
                 if team.placement is None or team.placement > size:
                     continue
                 rows.append(
-                    {
-                        "event_key": event.key,
-                        "event": event.name,
-                        "date": event.date,
-                        "segment": event.segment,
-                        "placement": team.placement,
-                        "player": team.name,
-                        "country": team.country,
-                        "record": _record(team),
-                        "team": [
-                            {
-                                "species": mon.species,
-                                "name": dex.display(mon.species),
-                                "mega": dex.display(mon.mega),
-                                "item": mon.item,
-                                "ability": mon.ability,
-                                "nature": mon.nature,
-                                "moves": mon.moves,
-                            }
-                            for mon in team.mons
-                        ],
-                    }
+                    {"event_key": event.key, "event": event.name, "date": event.date, "segment": event.segment, **_team_row(team, dex)}
                 )
     limit = int(settings["max_top_cut_teams"])
     in_person_rows = [row for row in rows if row["segment"] == IN_PERSON]
@@ -408,11 +388,33 @@ def _top_cut_teams(
     return in_person_rows + online_rows[: max(0, limit - len(in_person_rows))]
 
 
-def _by_event(in_person: list[Event], dex: Pokedex, settings: dict[str, Any]) -> list[dict[str, Any]]:
-    top_cut_size = int(settings["in_person_top_cut"])
-    limit = int(settings["event_usage_top"])
+def _team_row(team: Team, dex: Pokedex) -> dict[str, Any]:
+    return {
+        "placement": team.placement,
+        "player": team.name,
+        "country": team.country,
+        "record": _record(team),
+        "team": [
+            {
+                "species": mon.species,
+                "name": dex.display(mon.species),
+                "mega": dex.display(mon.mega),
+                "item": mon.item,
+                "ability": mon.ability,
+                "nature": mon.nature,
+                "moves": mon.moves,
+            }
+            for mon in team.mons
+        ],
+    }
+
+
+def _by_event(events: list[Event], dex: Pokedex, settings: dict[str, Any]) -> list[dict[str, Any]]:
     rows = []
-    for event in sorted(in_person, key=lambda item: (item.date, item.key), reverse=True):
+    for event in sorted(events, key=lambda item: (item.date, item.key), reverse=True):
+        online = event.segment == ONLINE
+        top_cut_size = int(settings["online_top_cut" if online else "in_person_top_cut"])
+        limit = int(settings["event_usage_top_online" if online else "event_usage_top"])
         full_field = bool(event.coverage.get("full_field"))
         species: dict[str, _Tally] = defaultdict(_Tally)
         megas: dict[str, _Tally] = defaultdict(_Tally)
@@ -441,7 +443,9 @@ def _by_event(in_person: list[Event], dex: Pokedex, settings: dict[str, Any]) ->
                 "key": event.key,
                 "name": event.name,
                 "date": event.date,
+                "segment": event.segment,
                 "players": event.players,
+                "url": event.url,
                 "basis": "full_field" if full_field else "day2_only",
                 "teams": teams,
                 "day2_teams": day2_teams,
@@ -457,7 +461,12 @@ def _by_event(in_person: list[Event], dex: Pokedex, settings: dict[str, Any]) ->
                 ],
                 "megas": [
                     {"mega": mega, "name": dex.display(mega), **tally.summary(teams)}
-                    for mega, tally in sorted(megas.items(), key=lambda item: (-item[1].teams, item[0]))
+                    for mega, tally in sorted(megas.items(), key=lambda item: (-item[1].teams, item[0]))[: limit // 2 if online else None]
+                ],
+                "top_teams": [
+                    _team_row(team, dex)
+                    for team in sorted(event.teams, key=lambda item: item.placement or 10**6)
+                    if team.placement is not None and team.placement <= top_cut_size
                 ],
             }
         )

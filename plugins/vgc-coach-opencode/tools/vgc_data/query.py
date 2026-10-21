@@ -186,6 +186,7 @@ def pokemon(data: MetaData, name: str) -> dict[str, Any]:
         "by_event": [
             {"event": event["name"], "date": event["date"], "basis": event["basis"], **found}
             for event in snapshot.get("by_event", [])
+            if event["segment"] == "in_person"
             for found in [next((item for item in event["usage"] if item["species"] == species), None)]
             if found is not None
         ],
@@ -232,20 +233,20 @@ def trend(data: MetaData, *, top: int = 10) -> dict[str, Any]:
 
 
 def event(data: MetaData, name: str, *, top: int = 20) -> dict[str, Any]:
-    """Usage, Megas and top cut of one in-person event, matched by name or city."""
+    """Usage, Megas and top teams of one event, matched by name, city or key (in-person events first)."""
     snapshot = _require_snapshot(data)
-    rows = snapshot.get("by_event", [])
+    rows = sorted(snapshot.get("by_event", []), key=lambda row: row["segment"] != "in_person")
     key = _normalize(name)
-    found = [row for row in rows if key and (key in _normalize(row["name"]) or key == _normalize(row["key"]))]
+    found = [row for row in rows if key and (key in _normalize(row["name"]) or key in _normalize(row["key"]))]
     if not found:
-        names = ", ".join(f"{row['name']} ({row['date']})" for row in rows) or "none"
-        raise QueryError(f"No in-person event matches '{name}'. Events in the snapshot: {names}")
+        names = ", ".join(f"{row['name']} ({row['date']})" for row in rows if row["segment"] == "in_person") or "none"
+        raise QueryError(f"No event matches '{name}'. In-person events in the snapshot: {names}")
     row = found[0]
     return {
-        **{field: row[field] for field in ("key", "name", "date", "players", "basis", "teams", "day2_teams")},
+        **{field: row[field] for field in ("key", "name", "date", "segment", "players", "url", "basis", "teams", "day2_teams")},
         "usage": row["usage"][:top],
         "megas": row["megas"][:top],
-        "top_cut": [team for team in snapshot["top_cut_teams"] if team["event_key"] == row["key"]],
+        "top_cut": [{"event": row["name"], "date": row["date"], **team} for team in row["top_teams"]],
     }
 
 

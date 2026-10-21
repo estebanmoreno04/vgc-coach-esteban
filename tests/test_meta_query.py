@@ -97,8 +97,9 @@ class QueryTests(QueryTestCase):
         self.assertEqual(info["key"], "vgchistory:regional-alpha-2027")
         self.assertEqual(info["basis"], "full_field")
         self.assertTrue(info["usage"])
-        self.assertTrue(all(team["event_key"] == info["key"] for team in info["top_cut"]))
-        with self.assertRaisesRegex(query.QueryError, "Events in the snapshot"):
+        self.assertTrue(all(team["event"] == info["name"] for team in info["top_cut"]))
+        self.assertEqual(query.event(self.data, "onl1")["segment"], "online")
+        with self.assertRaisesRegex(query.QueryError, "In-person events in the snapshot"):
             query.event(self.data, "Atlantis")
         by_event = query.pokemon(self.data, "Incineroar")["by_event"]
         self.assertTrue(by_event)

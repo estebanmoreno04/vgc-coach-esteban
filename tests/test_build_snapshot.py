@@ -193,7 +193,11 @@ class PipelineTests(unittest.TestCase):
         payload = self.build(FixtureClient()).payload
         by_event = payload["by_event"]
         self.assertEqual([event["date"] for event in by_event], sorted((event["date"] for event in by_event), reverse=True))
-        self.assertEqual(len(by_event), payload["segments"]["in_person"]["events"])
+        segments = payload["segments"]
+        self.assertEqual(len(by_event), segments["in_person"]["events"] + segments["online"]["events"])
+        online = next(event for event in by_event if event["segment"] == "online")
+        self.assertLessEqual(len(online["top_teams"]), self.config["pipeline"]["aggregation"]["online_top_cut"])
+        self.assertTrue(all(team["placement"] <= 4 for team in online["top_teams"]))
         bases = {event["key"]: event["basis"] for event in by_event}
         self.assertEqual(bases["limitlessvgc:500"], "day2_only")
         self.assertEqual(bases["vgchistory:regional-alpha-2027"], "full_field")

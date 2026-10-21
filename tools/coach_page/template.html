@@ -98,32 +98,81 @@ tr:last-child td { border-bottom: 0; }
 .up { color: var(--good); }
 .down { color: var(--accent); }
 
-/* meta sheet */
-section.sheet { display: grid; gap: 34px; }
-nav.jump { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 2; background: var(--bg); padding-block: 8px; border-bottom: 1px solid var(--line); display: grid; gap: 6px; }
-nav.jump .group { display: flex; flex-wrap: wrap; align-items: baseline; gap: 4px 14px; font-size: 14px; }
-nav.jump .label { font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.08em; color: var(--muted); width: 78px; }
-nav.jump button { border: 0; background: none; padding: 2px 0; cursor: pointer; color: var(--ink); white-space: nowrap; }
-nav.jump button:hover { color: var(--accent); }
-nav.jump button.online:hover { color: var(--water); }
-#sheet-body { display: grid; gap: 40px; }
-.block { scroll-margin-top: 120px; display: grid; gap: 4px; min-width: 0; }
-.block > * { min-width: 0; }
-.block h2 { font-size: 22px; font-weight: 700; letter-spacing: -0.015em; margin: 0; text-wrap: balance; }
-.block h3 { font-size: 13px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.07em; color: var(--muted); margin: 18px 0 2px; }
-.block .sub { font-size: 13px; color: var(--muted); margin: 0 0 8px; }
+/* chat: empty state centred, history panel */
+/* Fresh chat: the toolbar stays on top, the welcome and the input box sit in the middle. */
+#view-chat.fresh #messages { flex: none; margin-top: auto; }
+#view-chat.fresh .notice { margin-bottom: auto; }
+#view-chat.fresh form.composer { position: static; }
+#view-chat:not(.fresh) #welcome, #view-chat:not(.fresh) .notice { display: none; }
+#welcome { text-align: center; display: grid; gap: 6px; justify-items: center; padding-block: 8px; }
+#welcome h2 { margin: 0; font-size: 26px; font-weight: 700; letter-spacing: -0.02em; text-wrap: balance; }
+#welcome p { margin: 0; color: var(--muted); max-width: 52ch; }
+.notice { text-align: center; }
+.chatbar { display: flex; justify-content: flex-end; gap: 16px; font-size: 13px; }
+.chatbar button, .linkish { border: 0; background: none; padding: 0; cursor: pointer; color: var(--muted); font-size: 13px; }
+.chatbar button:hover, .linkish:hover { color: var(--ink); }
+#history { border: 1px solid var(--line); border-radius: 12px; background: var(--surface); padding: 6px; display: grid; gap: 2px; }
+#history .empty { color: var(--muted); font-size: 13px; padding: 8px 10px; margin: 0; }
+.hrow { display: grid; grid-template-columns: 1fr auto; align-items: center; gap: 8px; border-radius: 8px; }
+.hrow:hover { background: var(--soft); }
+.hrow button.open { border: 0; background: none; text-align: left; padding: 8px 10px; cursor: pointer; min-width: 0; display: grid; }
+.hrow .t { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; font-size: 14px; }
+.hrow .d { font-size: 12px; color: var(--muted); }
+.hrow button.del { border: 0; background: none; color: var(--muted); cursor: pointer; padding: 6px 10px; font-size: 16px; line-height: 1; }
+.hrow button.del:hover { color: var(--accent); }
+.hfoot { display: flex; justify-content: flex-end; padding: 6px 10px 4px; border-top: 1px solid var(--line); margin-top: 4px; }
+
+/* meta: four cards on the home view, each opens its own view */
+section.sheet { display: grid; gap: 22px; }
+.cards { display: grid; gap: 14px; grid-template-columns: repeat(2, minmax(0, 1fr)); }
+.card { display: grid; align-content: start; gap: 10px; min-width: 0; text-align: left; background: var(--surface); border: 1px solid var(--line); border-radius: 14px; padding: 16px 18px; }
+button.card { cursor: pointer; font: inherit; color: inherit; }
+button.card:hover, .card .more:hover { border-color: var(--muted); }
+.card header { display: flex; align-items: baseline; justify-content: space-between; gap: 10px; }
+.card h2 { margin: 0; font-size: 17px; font-weight: 700; letter-spacing: -0.01em; }
+.card .count { font-size: 12px; color: var(--muted); white-space: nowrap; }
+.card .go { font-size: 13px; color: var(--muted); margin-top: auto; }
+button.card:hover .go { color: var(--ink); }
+.mini { display: grid; gap: 7px; font-size: 14px; }
+.mini .line { display: grid; grid-template-columns: 1fr auto; gap: 10px; align-items: center; }
+.mini .line .name { min-width: 0; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.mini .val { font-family: var(--mono); font-size: 12.5px; font-variant-numeric: tabular-nums; }
+.mini .meter { grid-column: 1 / -1; height: 3px; background: var(--soft); border-radius: 2px; overflow: hidden; margin-top: -4px; }
+.mini .meter i { display: block; height: 100%; background: var(--accent); }
+.split { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+.split h3 { margin: 0 0 4px; font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.08em; color: var(--muted); }
+.rows { display: grid; }
+.rows button { display: grid; grid-template-columns: 1fr auto; gap: 10px; align-items: baseline; border: 0; border-top: 1px solid var(--line); background: none; padding: 8px 0; text-align: left; cursor: pointer; min-width: 0; }
+.rows button:first-child { border-top: 0; }
+.rows button:hover .ev { color: var(--accent); }
+.online .rows button:hover .ev { color: var(--water); }
+.rows .ev { min-width: 0; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; font-weight: 500; }
+.rows .meta { font-size: 12px; color: var(--muted); font-family: var(--mono); font-variant-numeric: tabular-nums; white-space: nowrap; }
+.card .more { border: 1px solid var(--line); background: none; border-radius: 8px; padding: 7px 10px; cursor: pointer; font-size: 13px; color: var(--ink); justify-self: start; }
+.back { justify-self: start; border: 0; background: none; padding: 0; color: var(--muted); cursor: pointer; font-size: 14px; }
+.back:hover { color: var(--ink); }
+.detail { display: grid; gap: 4px; min-width: 0; }
+.detail > * { min-width: 0; }
+.detail h2 { font-size: 24px; font-weight: 700; letter-spacing: -0.015em; margin: 0; text-wrap: balance; }
+.detail h3 { font-size: 13px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.07em; color: var(--muted); margin: 20px 0 2px; }
+.detail .sub { font-size: 13px; color: var(--muted); margin: 0 0 8px; }
 .tag { display: inline-block; font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.08em; color: var(--accent); }
 .online .tag { color: var(--water); }
+.seg { display: flex; gap: 2px; background: var(--soft); padding: 3px; border-radius: 8px; justify-self: start; margin: 4px 0 8px; }
+.seg button { border: 0; background: none; padding: 4px 12px; border-radius: 6px; font-size: 13px; font-weight: 600; color: var(--muted); cursor: pointer; }
+.seg button[aria-pressed="true"] { background: var(--surface); color: var(--ink); box-shadow: 0 1px 2px rgb(0 0 0 / 0.08); }
 .teams { display: grid; gap: 10px; grid-template-columns: repeat(auto-fill, minmax(min(240px, 100%), 1fr)); }
 .team { border: 1px solid var(--line); border-radius: 10px; padding: 10px 12px; font-size: 13px; min-width: 0; background: var(--surface); }
 .team strong { display: block; font-size: 14px; font-weight: 600; }
 .team .where { font-size: 12px; color: var(--muted); }
 .team ul { margin: 6px 0 0; padding: 0; list-style: none; display: grid; gap: 1px; }
 .team li span { color: var(--muted); }
-details summary { cursor: pointer; font-size: 13px; color: var(--muted); margin-top: 10px; }
+td button.linkrow { border: 0; background: none; padding: 0; text-align: left; cursor: pointer; color: var(--ink); font: inherit; }
+td button.linkrow:hover { color: var(--water); }
 .small { font-size: 12px; color: var(--muted); }
-@media (prefers-reduced-motion: no-preference) { .msg { animation: in 180ms ease-out; } @keyframes in { from { opacity: 0.5; transform: translateY(2px); } to { opacity: 1; transform: none; } } }
-@media (max-width: 560px) { .msg.user { max-width: 100%; } nav.jump .label { width: 100%; } }
+@media (prefers-reduced-motion: no-preference) { .msg, .detail, .cards { animation: in 180ms ease-out; } @keyframes in { from { opacity: 0.5; transform: translateY(2px); } to { opacity: 1; transform: none; } } }
+@media (max-width: 620px) { .cards { grid-template-columns: 1fr; } .msg.user { max-width: 100%; } }
+@media (max-width: 380px) { .split { grid-template-columns: 1fr; } }
 </style>
 
 <div class="app">
@@ -143,10 +192,15 @@ details summary { cursor: pointer; font-size: 13px; color: var(--muted); margin-
   </header>
   <p class="context" id="chips"></p>
 
-  <main id="view-chat" role="tabpanel" aria-labelledby="tab-chat">
-    <p class="notice" id="notice">Las respuestas usan tu propia cuenta de Claude (gratuita o de pago) y cuentan para tus límites. La primera vez te pedirá permiso.</p>
+  <main id="view-chat" class="fresh" role="tabpanel" aria-labelledby="tab-chat">
+    <div class="chatbar">
+      <button type="button" id="history-toggle" aria-expanded="false" aria-controls="history">Historial</button>
+      <button type="button" id="reset">Nuevo chat</button>
+    </div>
+    <div id="history" hidden></div>
     <div id="messages" aria-live="polite">
-      <div class="msg bot" id="welcome">
+      <div id="welcome">
+        <h2>¿Qué preparamos?</h2>
         <p>Pregúntame por el meta y cómo ha cambiado en los últimos regionales, pega tu equipo en formato Showdown para auditarlo o pídeme un cálculo de daño o de velocidad.</p>
       </div>
     </div>
@@ -162,19 +216,18 @@ details summary { cursor: pointer; font-size: 13px; color: var(--muted); margin-
           <option value="complex">Modo a fondo</option>
         </select>
         <button type="button" id="stop" disabled>Parar</button>
-        <button type="button" id="reset">Nueva conversación</button>
         <span id="status-line"></span>
       </div>
     </form>
+    <p class="notice" id="notice">Las respuestas usan tu propia cuenta de Claude (gratuita o de pago) y cuentan para tus límites. La primera vez te pedirá permiso.</p>
   </main>
 
   <section id="view-meta" class="sheet" role="tabpanel" aria-labelledby="tab-meta" hidden>
-    <nav class="jump" id="jump" aria-label="Ir a una sección"></nav>
-    <div id="sheet-body"></div>
+    <div id="meta-home" class="cards"></div>
+    <div id="meta-detail" class="detail" hidden></div>
     <p class="small" id="credits"></p>
   </section>
 </div>
-
 <script src="https://cdn.jsdelivr.net/npm/@smogon/calc@0.12.0/dist/data/production.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/@smogon/calc@0.12.0/dist/production.min.js"></script>
 <script>
@@ -216,7 +269,7 @@ details summary { cursor: pointer; font-size: 13px; color: var(--muted); margin-
   $("tab-meta").onclick = () => show("meta");
   if (location.hash === "#meta") show("meta");
 
-  // ---- meta sheet: one page, an index on top, one block per segment / regional ----
+  // ---- meta: four cards; each opens its own view, and tournaments open one by one ----
   const day = (iso) => { const [, m, d] = String(iso).split("-"); return `${d}/${m}`; };
   const delta = (v) => (v > 0 ? `<span class="up">+${v.toFixed(1)}</span>` : `<span class="down">${v.toFixed(1)}</span>`);
   function table(head, rows) {
@@ -226,59 +279,113 @@ details summary { cursor: pointer; font-size: 13px; color: var(--muted); margin-
   const N = (label) => [label, true];
   const T = (label) => [label, false];
   const share = (v) => `<span class="share">${pct(v)}<span class="bar"><i style="width:${Math.min(100, Math.round((v || 0) * 100))}%"></i></span></span>`;
-  function teamCards(list, showEvent) {
+  const meter = (v) => `<span class="meter"><i style="width:${Math.min(100, Math.round((v || 0) * 100))}%"></i></span>`;
+  function teamCards(list) {
     if (!list.length) return '<p class="sub">Sin equipos de top cut en los datos.</p>';
-    return '<div class="teams">' + list.map((t) =>
-      `<div class="team"><strong>${t[3]}.º ${esc(t[4])}</strong><span class="where">${[showEvent ? esc(core.shortEvent(t[1])) : "", t[6] ? esc(t[6]) : "", t[5] ? esc(t[5]) : ""].filter(Boolean).join(" · ")}</span>` +
-      `<ul>${t[7].map((m) => `<li>${esc(m[0])} <span>@ ${esc(m[1] || "?")}</span></li>`).join("")}</ul></div>`).join("") + "</div>";
+    return '<div class="teams">' + list.map(([placement, player, country, record, team]) =>
+      `<div class="team"><strong>${placement}.º ${esc(player)}</strong><span class="where">${[record, country].filter(Boolean).map(esc).join(" · ")}</span>` +
+      `<ul>${team.map((m) => `<li>${esc(m[0])} <span>@ ${esc(m[1] || "?")}</span></li>`).join("")}</ul></div>`).join("") + "</div>";
   }
-  const blocks = [];
+  const regionals = core.regionals;
+  const onlineEvents = core.byEvent.filter((e) => e.segment === "online");
+  const eventByKey = new Map(core.byEvent.map((e) => [e.key, e]));
   const inPerson = st.segments.in_person;
-  blocks.push({ id: "m-presencial", nav: "Todos", group: "p", html:
-    `<span class="tag">Presencial</span><h2>Todos los regionales</h2><p class="sub">${inPerson.events} regionales, ${inPerson.teams} equipos (field completo), ${inPerson.day2_teams} en día 2.</p>` +
-    table([N("#"), T("Pokémon"), N("Uso"), N("WR"), N("Conv. día 2"), N("Top cut")],
-      core.usageRows.filter((r) => r.in_person.teams).sort((a, b) => (b.in_person.share || 0) - (a.in_person.share || 0)).slice(0, 40)
-        .map((r, i) => [i + 1, esc(r.name), share(r.in_person.share), pct(r.in_person.win_rate), pct(r.in_person.day2_conversion), r.in_person.top_cut_teams])) +
-    "<h3>Megas</h3>" + table([T("Mega"), N("Uso"), N("WR")],
-      core.megas.filter((m) => m.in_person).slice(0, 15).map((m) => [esc(m.name), pct(m.in_person), pct(m.in_person_wr)])) });
-  const tr = core.trend(12);
-  if (tr.available) {
-    const rows = (list) => list.map((r) => [esc(r.name), r.before_pct.toFixed(1) + "%", r.recent_pct.toFixed(1) + "%", delta(r.change_pts)]);
-    const head = [T("Pokémon"), N("Antes"), N("Ahora"), N("Cambio")];
-    blocks.push({ id: "m-tendencia", nav: "Tendencia", group: "p", html:
-      `<span class="tag">Presencial</span><h2>Tendencia</h2><p class="sub">Ahora = ${tr.recent_events.map(esc).join(", ")} (${tr.recent_teams} equipos). Antes = ${tr.earlier_events.map(esc).join(", ")} (${tr.earlier_teams} equipos). Cambio en puntos de % de uso.</p>` +
-      "<h3>Suben</h3>" + table(head, rows(tr.risers)) + "<h3>Bajan</h3>" + table(head, rows(tr.fallers)) +
-      "<h3>Megas que suben</h3>" + table([T("Mega"), N("Antes"), N("Ahora"), N("Cambio")], rows(tr.mega_risers)) +
-      "<h3>Megas que bajan</h3>" + table([T("Mega"), N("Antes"), N("Ahora"), N("Cambio")], rows(tr.mega_fallers)) });
-  }
-  core.byEvent.forEach((e, index) => {
-    blocks.push({ id: "m-ev-" + index, nav: `${core.shortEvent(e.name)} ${day(e.date)}`, group: "r", html:
-      `<span class="tag">Regional · ${esc(longDay(e.date))}</span><h2>${esc(core.shortEvent(e.name))}</h2><p class="sub"> ${e.players} jugadores · ${e.basis === "full_field" ? "field completo" : "solo equipos de día 2"} · ${e.day2_teams} en día 2${e.url ? ` · <a href="${esc(e.url)}" target="_blank" rel="noopener">resultados</a>` : ""}</p>` +
-      table([N("#"), T("Pokémon"), N("Uso"), N("WR"), N("Conv. día 2"), N("Top cut")],
-        e.usage.slice(0, 40).map((r, i) => [i + 1, esc(core.display(r.species)), share(r.share), pct(r.win_rate), pct(r.day2_conversion), r.top_cut_teams])) +
-      "<h3>Megas</h3>" + table([T("Mega"), N("Uso"), N("WR")], e.megas.slice(0, 12).map((m) => [esc(core.display(m.mega)), pct(m.share), pct(m.win_rate)])) +
-      "<h3>Top cut</h3>" + teamCards(DATA.top_cut.filter((t) => t[0] === "in_person" && t[1] === e.name)) });
-  });
   const onlineSeg = st.segments.online;
-  const onlineEvents = DATA.events.filter((e) => e[2] === "online").reverse();
-  blocks.push({ id: "m-online", nav: "Online", group: "o", online: true, html:
-    `<span class="tag">Online</span><h2>Últimos ${DATA.snapshot.online_window_days} días</h2><p class="sub">${onlineSeg.events} torneos de Limitless con 64+ jugadores, ${onlineSeg.teams} equipos. Complemento del presencial.</p>` +
-    table([N("#"), T("Pokémon"), N("Uso"), N("WR")],
-      core.usageRows.filter((r) => r.online.teams).sort((a, b) => (b.online.share || 0) - (a.online.share || 0)).slice(0, 40)
-        .map((r, i) => [i + 1, esc(r.name), share(r.online.share), pct(r.online.win_rate)])) +
-    "<h3>Megas</h3>" + table([T("Mega"), N("Uso")], core.megas.filter((m) => m.online).sort((a, b) => b.online - a.online).slice(0, 12).map((m) => [esc(m.name), pct(m.online)])) +
-    "<h3>Top cut online</h3>" + teamCards(DATA.top_cut.filter((t) => t[0] === "online").slice(0, 12), true) +
-    `<details><summary>Ver los ${onlineEvents.length} torneos online</summary>` +
-    table([T("Fecha"), T("Torneo"), N("Jugadores")], onlineEvents.map((e) => [esc(e[0]), `<a href="${esc(e[4])}" target="_blank" rel="noopener">${esc(e[1])}</a>`, e[3]])) + "</details>" });
+  const tr = core.trend(12);
 
-  $("sheet-body").innerHTML = blocks.map((b) => `<div class="block${b.online ? " online" : ""}" id="${b.id}">${b.html}</div>`).join("");
-  const navGroup = (label, group) => `<div class="group"><span class="label">${label}</span>` +
-    blocks.filter((b) => b.group === group).map((b) => `<button type="button" data-target="${b.id}"${b.online ? ' class="online"' : ""}>${esc(b.nav)}</button>`).join("") + "</div>";
-  $("jump").innerHTML = navGroup("Presencial", "p") + navGroup("Regionales", "r") + navGroup("Online", "o");
-  $("jump").addEventListener("click", (ev) => {
-    const target = ev.target.closest("button[data-target]");
-    if (target) $(target.dataset.target).scrollIntoView({ behavior: "smooth", block: "start" });
+  function home() {
+    const top = core.usageRows.filter((r) => r.in_person.teams).sort((a, b) => (b.in_person.share || 0) - (a.in_person.share || 0)).slice(0, 5);
+    const usageCard = `<button type="button" class="card" data-open="usage"><header><h2>Uso general</h2><span class="count">${inPerson.teams} equipos presenciales</span></header>
+      <div class="mini">${top.map((r) => `<div class="line"><span class="name">${esc(r.name)}</span><span class="val">${pct(r.in_person.share)}</span>${meter(r.in_person.share)}</div>`).join("")}</div>
+      <span class="go">Ver uso completo, Megas y online →</span></button>`;
+    const moves = (list) => list.slice(0, 3).map((r) => `<div class="line"><span class="name">${esc(r.name)}</span><span class="val">${delta(r.change_pts)}</span></div>`).join("");
+    const trendCard = tr.available
+      ? `<button type="button" class="card" data-open="trend"><header><h2>Tendencia</h2><span class="count">últimos ${tr.recent_events.length} regionales</span></header>
+        <div class="split"><div><h3>Suben</h3><div class="mini">${moves(tr.risers)}</div></div><div><h3>Bajan</h3><div class="mini">${moves(tr.fallers)}</div></div></div>
+        <span class="go">Ver tendencia completa →</span></button>`
+      : `<div class="card"><header><h2>Tendencia</h2></header><p class="sub">Aún no hay suficientes regionales para comparar.</p></div>`;
+    const eventRow = (e, label) => `<button type="button" data-event="${esc(e.key)}"><span class="ev">${esc(label)}</span><span class="meta">${day(e.date)} · ${e.players}</span></button>`;
+    const regionalCard = `<div class="card"><header><h2>Torneos presenciales</h2><span class="count">${regionals.length} regionales</span></header>
+      <div class="rows">${regionals.map((e) => eventRow(e, core.shortEvent(e.name))).join("")}</div></div>`;
+    const onlineCard = `<div class="card online"><header><h2>Torneos online</h2><span class="count">${onlineEvents.length} en ${DATA.snapshot.online_window_days} días</span></header>
+      <div class="rows">${onlineEvents.slice(0, 5).map((e) => eventRow(e, e.name)).join("")}</div>
+      <button type="button" class="more" data-open="online-list">Ver los ${onlineEvents.length} torneos</button></div>`;
+    $("meta-home").innerHTML = usageCard + trendCard + regionalCard + onlineCard;
+  }
+
+  function usageView(seg) {
+    const segs = { in_person: "Presencial", online: "Online", total: "Total" };
+    const rows = core.usageRows.filter((r) => (seg === "total" ? r.total.share : r[seg].teams))
+      .sort((a, b) => (b[seg].share || 0) - (a[seg].share || 0)).slice(0, 40);
+    const head = seg === "in_person" ? [N("#"), T("Pokémon"), N("Uso"), N("WR"), N("Conv. día 2"), N("Top cut")] : [N("#"), T("Pokémon"), N("Uso"), N("WR")];
+    const body = rows.map((r, i) => seg === "in_person"
+      ? [i + 1, esc(r.name), share(r.in_person.share), pct(r.in_person.win_rate), pct(r.in_person.day2_conversion), r.in_person.top_cut_teams]
+      : [i + 1, esc(r.name), share(r[seg].share), pct(r[seg].win_rate)]);
+    const megaKey = { in_person: "in_person", online: "online", total: "total" }[seg];
+    const megaRows = core.megas.filter((m) => m[megaKey]).sort((a, b) => b[megaKey] - a[megaKey]).slice(0, 15)
+      .map((m) => [esc(m.name), pct(m[megaKey])]);
+    const basis = {
+      in_person: `${inPerson.events} regionales, ${inPerson.teams} equipos (field completo), ${inPerson.day2_teams} en día 2.`,
+      online: `${onlineSeg.events} torneos de Limitless con 64+ jugadores en los últimos ${DATA.snapshot.online_window_days} días, ${onlineSeg.teams} equipos.`,
+      total: "Equipos presenciales y online juntos.",
+    }[seg];
+    return `<div class="${seg === "online" ? "online" : ""}"><span class="tag">Uso general</span><h2>${segs[seg]}</h2><p class="sub">${basis}</p>
+      <div class="seg">${Object.entries(segs).map(([k, v]) => `<button type="button" data-seg="${k}" aria-pressed="${k === seg}">${v}</button>`).join("")}</div>
+      ${table(head, body)}<h3>Megas</h3>${table([T("Mega"), N("Uso")], megaRows)}</div>`;
+  }
+
+  function trendView() {
+    const rows = (list) => list.map((r) => [esc(r.name), r.before_pct.toFixed(1) + "%", r.recent_pct.toFixed(1) + "%", delta(r.change_pts)]);
+    const head = (label) => [T(label), N("Antes"), N("Ahora"), N("Cambio")];
+    return `<span class="tag">Presencial</span><h2>Tendencia</h2><p class="sub">Ahora: ${tr.recent_events.map(esc).join(", ")} (${tr.recent_teams} equipos). Antes: ${tr.earlier_events.map(esc).join(", ")} (${tr.earlier_teams} equipos). Cambio en puntos de % de uso.</p>` +
+      "<h3>Suben</h3>" + table(head("Pokémon"), rows(tr.risers)) + "<h3>Bajan</h3>" + table(head("Pokémon"), rows(tr.fallers)) +
+      "<h3>Megas que suben</h3>" + table(head("Mega"), rows(tr.mega_risers)) + "<h3>Megas que bajan</h3>" + table(head("Mega"), rows(tr.mega_fallers));
+  }
+
+  function onlineListView() {
+    return `<div class="online"><span class="tag">Online</span><h2>Torneos online</h2><p class="sub">${onlineEvents.length} torneos de Limitless con 64+ jugadores en los últimos ${DATA.snapshot.online_window_days} días. Pulsa uno para ver su uso y sus mejores equipos.</p>` +
+      table([T("Fecha"), T("Torneo"), N("Jugadores")], onlineEvents.map((e) => [esc(day(e.date)), `<button type="button" class="linkrow" data-event="${esc(e.key)}">${esc(e.name)}</button>`, e.players])) + "</div>";
+  }
+
+  function eventView(e) {
+    const online = e.segment === "online";
+    const head = online ? [N("#"), T("Pokémon"), N("Uso"), N("WR"), N("Top")] : [N("#"), T("Pokémon"), N("Uso"), N("WR"), N("Conv. día 2"), N("Top cut")];
+    const body = e.usage.slice(0, 40).map((r, i) => online
+      ? [i + 1, esc(core.display(r.species)), share(r.share), pct(r.win_rate), r.top_cut_teams]
+      : [i + 1, esc(core.display(r.species)), share(r.share), pct(r.win_rate), pct(r.day2_conversion), r.top_cut_teams]);
+    const facts = [`${e.players} jugadores`, online ? null : (e.basis === "full_field" ? "field completo" : "solo equipos de día 2"), online ? null : `${e.day2_teams} en día 2`,
+      e.url ? `<a href="${esc(e.url)}" target="_blank" rel="noopener">resultados</a>` : null].filter(Boolean);
+    return `<div class="${online ? "online" : ""}"><span class="tag">${online ? "Online" : "Regional"} · ${esc(longDay(e.date))}</span><h2>${esc(online ? e.name : core.shortEvent(e.name))}</h2>
+      <p class="sub">${facts.join(" · ")}</p>${table(head, body)}
+      <h3>Megas</h3>${table([T("Mega"), N("Uso"), N("WR")], e.megas.slice(0, 12).map((m) => [esc(core.display(m.mega)), pct(m.share), pct(m.win_rate)]))}
+      <h3>${online ? "Mejores equipos" : "Top cut"}</h3>${teamCards(e.top)}</div>`;
+  }
+
+  // A small view stack: home -> section -> tournament, with a back button.
+  const stack = [];
+  function render(view) {
+    const detail = $("meta-detail");
+    if (!view) { $("meta-home").hidden = false; detail.hidden = true; return; }
+    let html = "";
+    if (view.type === "usage") html = usageView(view.seg || "in_person");
+    else if (view.type === "trend") html = trendView();
+    else if (view.type === "online-list") html = onlineListView();
+    else if (view.type === "event") html = eventView(eventByKey.get(view.key));
+    const backLabel = stack.length > 1 ? "← Volver" : "← Meta";
+    detail.innerHTML = `<button type="button" class="back" data-back="1">${backLabel}</button>${html}`;
+    $("meta-home").hidden = true; detail.hidden = false;
+    window.scrollTo({ top: 0 });
+  }
+  function open(view) { stack.push(view); render(view); }
+  $("view-meta").addEventListener("click", (ev) => {
+    const el = ev.target.closest("[data-open], [data-event], [data-back], [data-seg]");
+    if (!el) return;
+    if (el.dataset.back) { stack.pop(); render(stack[stack.length - 1]); }
+    else if (el.dataset.seg) { stack[stack.length - 1] = { type: "usage", seg: el.dataset.seg }; render(stack[stack.length - 1]); }
+    else if (el.dataset.event) open({ type: "event", key: el.dataset.event });
+    else open({ type: el.dataset.open });
   });
+  home();
   $("credits").textContent = "Fuentes: " + DATA.credits.join(" · ") + ". Regulación detectada de las noticias oficiales del juego.";
 
   // ---- markdown (escaped first) ----
@@ -313,10 +420,22 @@ details summary { cursor: pointer; font-size: 13px; color: var(--muted); margin-
     }).join("");
   }
 
-  // ---- chat ----
+  // ---- chat: every visit starts clean; past conversations live in the history panel ----
+  const HISTORY = "vgc-coach-history-v1";
+  const MAX_SAVED = 30;
+  let saved = [];
+  try { saved = JSON.parse(localStorage.getItem(HISTORY) || "[]").filter((c) => c && Array.isArray(c.turns) && c.turns.length); } catch (e) { saved = []; }
+  try {
+    // Older versions kept one conversation that reopened on every visit: move it into the history.
+    const legacy = JSON.parse(localStorage.getItem(STORE) || "[]").filter((t) => t && t.content);
+    if (legacy.length) saved.unshift({ id: "legacy-" + Date.now(), title: legacy[0].content.slice(0, 80), updated: Date.now(), turns: legacy });
+    localStorage.removeItem(STORE);
+  } catch (e) { /* storage unavailable */ }
+  const persist = () => { try { localStorage.setItem(HISTORY, JSON.stringify(saved.slice(0, MAX_SAVED))); } catch (e) { /* storage unavailable */ } };
+  persist();
+
   let turns = [];
-  try { turns = JSON.parse(localStorage.getItem(STORE) || "[]").filter((t) => t && t.content); } catch (e) { turns = []; }
-  const save = () => { try { localStorage.setItem(STORE, JSON.stringify(turns.slice(-MAX_TURNS))); } catch (e) { /* storage unavailable */ } };
+  let currentId = null;
   function addMessage(role, content, extra) {
     const div = document.createElement("div");
     div.className = "msg " + (role === "user" ? "user" : "bot") + (extra ? " " + extra : "");
@@ -325,14 +444,58 @@ details summary { cursor: pointer; font-size: 13px; color: var(--muted); margin-
     div.scrollIntoView({ block: "end", behavior: "smooth" });
     return div;
   }
-  turns.forEach((t) => addMessage(t.role, t.content));
+  function setFresh(fresh) { $("view-chat").classList.toggle("fresh", fresh); }
+  function clearView() { document.querySelectorAll("#messages .msg").forEach((n) => n.remove()); }
+  function save() {
+    if (!turns.length) return;
+    if (!currentId) currentId = "c" + Date.now();
+    saved = saved.filter((c) => c.id !== currentId);
+    const firstQuestion = (turns.find((t) => t.role === "user") || turns[0]).content;
+    saved.unshift({ id: currentId, title: firstQuestion.replace(/\s+/g, " ").slice(0, 80), updated: Date.now(), turns: turns.slice(-MAX_TURNS) });
+    persist();
+  }
+  function newChat() {
+    if (busy) return;
+    turns = []; currentId = null; clearView(); setFresh(true); toggleHistory(false); $("prompt").focus();
+  }
+  function loadChat(id) {
+    const found = saved.find((c) => c.id === id);
+    if (!found || busy) return;
+    turns = found.turns.slice(); currentId = found.id; clearView(); setFresh(false);
+    turns.forEach((t) => addMessage(t.role, t.content));
+    toggleHistory(false);
+  }
+  function renderHistory() {
+    const when = (ms) => new Date(ms).toLocaleDateString("es-ES", { day: "numeric", month: "short" }) + " " + new Date(ms).toLocaleTimeString("es-ES", { hour: "2-digit", minute: "2-digit" });
+    $("history").innerHTML = saved.length
+      ? saved.map((c) => `<div class="hrow"><button type="button" class="open" data-load="${esc(c.id)}"><span class="t">${esc(c.title)}</span><span class="d">${esc(when(c.updated))} · ${c.turns.length} mensajes</span></button><button type="button" class="del" data-delete="${esc(c.id)}" aria-label="Borrar esta conversación">×</button></div>`).join("") +
+        '<div class="hfoot"><button type="button" class="linkish" data-clear="1">Borrar todo el historial</button></div>'
+      : '<p class="empty">Aún no hay conversaciones guardadas. Se guardan solo en este navegador.</p>';
+  }
+  function toggleHistory(force) {
+    const show = force === undefined ? $("history").hidden : force;
+    if (show) renderHistory();
+    $("history").hidden = !show;
+    $("history-toggle").setAttribute("aria-expanded", String(show));
+  }
+  $("history-toggle").onclick = () => toggleHistory();
+  $("history").addEventListener("click", (ev) => {
+    const el = ev.target.closest("[data-load], [data-delete], [data-clear]");
+    if (!el) return;
+    if (el.dataset.load) loadChat(el.dataset.load);
+    else if (el.dataset.delete) {
+      saved = saved.filter((c) => c.id !== el.dataset.delete); persist();
+      if (currentId === el.dataset.delete) currentId = null;
+      renderHistory();
+    } else { saved = []; persist(); currentId = null; renderHistory(); }
+  });
 
   const ERRORS = {
     not_granted: "No has dado permiso para usar Claude en esta página. Recarga la página para que vuelva a preguntarte.",
     sampling_disabled: "Claude no está disponible en tu cuenta u organización.",
     rate_limited: "Has llegado al límite de uso de tu cuenta o hay demasiadas peticiones. Prueba un poco más tarde.",
     session_expired: "Tu sesión de Claude ha caducado. Vuelve a iniciar sesión y recarga.",
-    prompt_too_large: "La conversación es demasiado larga. Pulsa «Nueva conversación».",
+    prompt_too_large: "La conversación es demasiado larga. Pulsa «Nuevo chat».",
     refused: "Claude no ha querido responder a esto. Reformula la pregunta.",
     empty_completion: "No ha llegado respuesta. Prueba a preguntar algo más concreto.",
     tools_unavailable: "Esta vista no permite consultar los datos detallados; respondo con el resumen.",
@@ -356,6 +519,8 @@ details summary { cursor: pointer; font-size: 13px; color: var(--muted); margin-
     turns = turns.slice(-MAX_TURNS);
     if (turns[0] && turns[0].role !== "user") turns.shift();
     save();
+    setFresh(false);
+    toggleHistory(false);
     addMessage("user", question.trim());
     const bubble = addMessage("assistant", "Pensando…", "pending");
     $("status-line").textContent = "";
@@ -395,6 +560,6 @@ details summary { cursor: pointer; font-size: 13px; color: var(--muted); margin-
   $("prompt").addEventListener("keydown", (ev) => { if (ev.key === "Enter" && !ev.shiftKey && !ev.isComposing) { ev.preventDefault(); $("composer").requestSubmit(); } });
   $("prompt").addEventListener("input", () => { const t = $("prompt"); t.style.height = "auto"; t.style.height = t.scrollHeight + "px"; });
   $("stop").onclick = () => ctl && ctl.abort();
-  $("reset").onclick = () => { turns = []; save(); document.querySelectorAll("#messages .msg:not(#welcome)").forEach((n) => n.remove()); };
+  $("reset").onclick = newChat;
 })();
 </script>

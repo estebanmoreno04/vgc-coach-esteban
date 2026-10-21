@@ -55,7 +55,7 @@ class CoachPageTests(unittest.TestCase):
         self.assertEqual(data["regulation"]["id"], "M-C")
         self.assertEqual(data["usage"][0][0], "incineroar")
         self.assertIn("charizard-mega-y", data["dex"]["mega_base"])
-        self.assertEqual(len(data["by_event"]), 3)
+        self.assertEqual(sorted(event[10] for event in data["by_event"]), ["in_person"] * 3 + ["online"])
         self.assertTrue(data["trend"]["available"])
         self.assertLess(len(self.html.encode("utf-8")), build_coach_page.MAX_PAGE_BYTES)
 
@@ -67,7 +67,8 @@ class CoachPageTests(unittest.TestCase):
 
     def test_meta_sheet_has_no_fixed_prompts(self) -> None:
         self.assertNotIn("data-q=", self.html)
-        self.assertIn('id="jump"', self.html)
+        self.assertIn('id="meta-home"', self.html)
+        self.assertIn('id="history"', self.html)
 
     def test_template_and_core_name_no_regulation(self) -> None:
         for path in (build_coach_page.TEMPLATE, build_coach_page.CORE):

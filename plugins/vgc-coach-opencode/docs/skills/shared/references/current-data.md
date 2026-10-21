@@ -5,7 +5,7 @@
 The active regulation and the current meta are not written anywhere in the skills. They are detected and downloaded by the data pipeline and stored in `data/current/`:
 
 - `data/current/regulation.json`: the active regulation (id, label, active window, mechanics, held-item rule, timers, official announcement URL, confidence, next announced regulation). Written by `tools/resolve_regulation.py`.
-- `data/current/snapshot.json`: the meta of that regulation (usage by in-person / online / total, win rates, day 2 share and conversion, Megas, pairs and trios, common sets, team-sheet matchups, top cut teams, event list, usage and Megas per in-person event (`by_event`), the trend of the latest regionals against the earlier ones (`trend`), `early_meta`). Written by `tools/build_snapshot.py`.
+- `data/current/snapshot.json`: the meta of that regulation (usage by in-person / online / total, win rates, day 2 share and conversion, Megas, pairs and trios, common sets, team-sheet matchups, top cut teams, event list, usage, Megas and top teams per event, in-person and online (`by_event`), the trend of the latest regionals against the earlier ones (`trend`), `early_meta`). Written by `tools/build_snapshot.py`.
 
 ## Step 1: read the current data first
 
@@ -67,7 +67,7 @@ python3 tools/meta_query.py matchup "Charizard" "Rillaboom"
 python3 tools/meta_query.py top-cut --segment in_person --species "Sneasler"
 python3 tools/meta_query.py events
 python3 tools/meta_query.py trend                                   # latest regionals vs earlier: risers and fallers
-python3 tools/meta_query.py event "Nice"                           # one in-person event: usage, Megas, top cut
+python3 tools/meta_query.py event "Nice"                           # one event (in-person or online): usage, Megas, top teams
 python3 tools/meta_query.py team --file team.txt                   # or pipe the team on stdin
 ```
 

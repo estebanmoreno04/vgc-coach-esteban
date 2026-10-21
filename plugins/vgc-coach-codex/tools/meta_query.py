@@ -8,7 +8,7 @@ Examples:
   python3 tools/meta_query.py matchup Charizard Rillaboom
   python3 tools/meta_query.py top-cut --segment in_person --species Sneasler
   python3 tools/meta_query.py trend                  (latest regionals vs earlier ones)
-  python3 tools/meta_query.py event Nice             (one in-person event: usage, Megas, top cut)
+  python3 tools/meta_query.py event Nice             (one event: usage, Megas, top teams)
   python3 tools/meta_query.py team --file my_team.txt     (or pipe the team on stdin)
 
 Shares and win rates come from the snapshot built by tools/build_snapshot.py.

@@ -103,14 +103,19 @@ def compact(data: query.MetaData) -> dict[str, Any]:
         for team in snapshot["top_cut_teams"]
         if team["segment"] == "online"
     ][:40]
-    urls = {event["key"]: event["url"] for event in snapshot["events"]}
     by_event = [
         [
             event["key"], event["name"], event["date"], event["players"], event["basis"], event["teams"],
-            event["day2_teams"], urls.get(event["key"]),
+            event["day2_teams"], event["url"],
             [[row["species"], row["teams"], _r(row["share"]), _r(row["win_rate"]), _r(row["day2_conversion"]),
               row["top_cut_teams"]] for row in event["usage"]],
             [[row["mega"], row["teams"], _r(row["share"]), _r(row["win_rate"])] for row in event["megas"]],
+            event["segment"],
+            [
+                [team["placement"], team["player"], team.get("country"), team.get("record"),
+                 [[mon["mega"] or mon["name"], mon["item"], mon["ability"], mon["nature"], mon["moves"]] for mon in team["team"]]]
+                for team in event["top_teams"]
+            ],
         ]
         for event in snapshot.get("by_event", [])
     ]
