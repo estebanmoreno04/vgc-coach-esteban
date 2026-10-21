@@ -1,6 +1,6 @@
 {
  "schema_version": "meta-snapshot-v2",
- "generated_at": "2026-10-21T20:11:32Z",
+ "generated_at": "2026-10-21T20:25:52Z",
  "regulation": {
   "regulation_id": "M-C",
   "label": "Regulation Set M-C",
@@ -13,7 +13,7 @@
   },
   "confidence": "high",
   "stale": false,
-  "checked_at": "2026-10-21T20:11:32Z"
+  "checked_at": "2026-10-21T20:25:52Z"
  },
  "early_meta": false,
  "early_meta_reasons": [],

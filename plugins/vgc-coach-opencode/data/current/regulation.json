@@ -25,7 +25,7 @@
   },
   "official_url": "https://champions-news.pokemon-home.com/en/page/816.html",
   "detected_at": "2026-10-21T15:46:26Z",
-  "checked_at": "2026-10-21T20:11:32Z",
+  "checked_at": "2026-10-21T20:25:52Z",
   "confidence": "high",
   "stale": false,
   "agreeing_sources": [
@@ -45,7 +45,7 @@
       "url": "https://champions-news.pokemon-home.com/en/json/list.json",
       "status": "ok",
       "error": null,
-      "fetched_at": "2026-10-21T20:11:32Z",
+      "fetched_at": "2026-10-21T20:25:52Z",
       "current_vote": "M-C",
       "upcoming": [],
       "notes": []
@@ -57,7 +57,7 @@
       "url": "https://vgchistory.com/data.js",
       "status": "ok",
       "error": null,
-      "fetched_at": "2026-10-21T20:11:32Z",
+      "fetched_at": "2026-10-21T20:25:52Z",
       "current_vote": "M-C",
       "upcoming": [],
       "notes": []
@@ -69,7 +69,7 @@
       "url": "https://play.limitlesstcg.com/api/",
       "status": "ok",
       "error": null,
-      "fetched_at": "2026-10-21T20:11:32Z",
+      "fetched_at": "2026-10-21T20:25:52Z",
       "current_vote": "M-C",
       "upcoming": [],
       "notes": [
@@ -83,7 +83,7 @@
       "url": "https://victoryroad.pro/champions-regulations/",
       "status": "ok",
       "error": null,
-      "fetched_at": "2026-10-21T20:11:32Z",
+      "fetched_at": "2026-10-21T20:25:52Z",
       "current_vote": "M-C",
       "upcoming": [],
       "notes": []
@@ -95,7 +95,7 @@
       "url": "https://www.pikalytics.com/ai/pokedex",
       "status": "ok",
       "error": null,
-      "fetched_at": "2026-10-21T20:11:32Z",
+      "fetched_at": "2026-10-21T20:25:52Z",
       "current_vote": "M-C",
       "upcoming": [],
       "notes": [
