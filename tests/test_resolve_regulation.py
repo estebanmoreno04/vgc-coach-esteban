@@ -430,6 +430,8 @@ class NoHardcodedRegulationTests(unittest.TestCase):
         "tools/build_snapshot.py",
         "tools/meta_query.py",
         "tools/vgc_refresh.py",
+        "tools/damage_calc.py",
+        "tools/calc/calc.mjs",
         "tools/check_format_freshness.py",
         "tools/generate_site_trust_data.py",
         "tools/render_source_registry_docs.py",

@@ -42,6 +42,7 @@ This repository is a fork of [NoahJenkins/vgc-coach](https://github.com/NoahJenk
 | `tools/meta_query.py`, `tools/vgc_data/query.py` | Read-only queries over `data/current` (reused by skills, refresh and future front ends). |
 | `tools/vgc_refresh.py`, `skills/vgc-refresh/`, `.claude/skills/vgc-refresh`, `.agents/skills/vgc-refresh`, `.opencode/skills/opencode-vgc-refresh/`, `.opencode/commands/vgc-refresh.md` | Refresh command and skill. |
 | `docs/skills/shared/references/current-data.md` | How skills read the current regulation and meta. |
+| `tools/damage_calc.py`, `tools/calc/` (`calc.mjs`, `package.json`, `package-lock.json`), `tests/test_damage_calc.py` | Exact damage, KO, survival and speed calcs with `@smogon/calc` (Champions mechanics) through Node, falling back to the upstream Pikalytics browser calc. |
 | `data/archive/upstream-snapshots/README.md` | Explains the archived upstream snapshots. |
 | `FORK_CHANGES.md` | This file. |
 
