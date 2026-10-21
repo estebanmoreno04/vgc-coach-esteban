@@ -23,6 +23,7 @@ from test_build_snapshot import CLI as BUILD, CONFIG, FIXTURES, NOW, FixtureClie
 
 TEAM = "Charizard @ Charizardite Y | Blaze | Modest | Heat Wave, Weather Ball, Solar Beam, Protect\nIncineroar @ Sitrus Berry | Intimidate | Careful | Fake Out, Parting Shot, Flare Blitz, Trick Room\n"
 NODE = shutil.which("node")
+DATA_RE = re.compile(r"const DATA = (\{[\s\S]*?\});\s*\n\s*const core =")
 
 
 class CoachPageTests(unittest.TestCase):
@@ -39,7 +40,7 @@ class CoachPageTests(unittest.TestCase):
         current.mkdir(parents=True)
         shutil.copy(FIXTURES / "regulation.json", current / "regulation.json")
         BUILD.run(config=config, client=FixtureClient(), now=NOW, root=root)
-        cls.output = build_coach_page.build(current, root / "coach.html")
+        cls.output = build_coach_page.build(current, root / "coach.html", sprites=False)
         cls.html = cls.output.read_text(encoding="utf-8")
 
     @classmethod
@@ -65,6 +66,20 @@ class CoachPageTests(unittest.TestCase):
         for src in sources:
             self.assertRegex(src, r"^https://cdn\.jsdelivr\.net/npm/@smogon/calc@\d+\.\d+\.\d+/")
 
+    def test_sprite_names_and_embedding(self) -> None:
+        import fetch_sprites
+
+        self.assertEqual(fetch_sprites.candidates("charizard-mega-y")[0], "charizard-megay")
+        self.assertIn("kommoo", fetch_sprites.candidates("kommo-o"))
+        self.assertEqual(fetch_sprites.candidates("incineroar"), ["incineroar"])
+        with tempfile.TemporaryDirectory() as tmp:
+            cache = Path(tmp)
+            (cache / "incineroar.png").write_bytes(b"\x89PNG fake")
+            (cache / "manifest.json").write_text(json.dumps({"incineroar": {"file": "incineroar.png"}, "raichu-mega-y": {"file": None}}))
+            sprites = build_coach_page.load_sprites(cache, {"incineroar", "raichu-mega-y", "kingambit"})
+        self.assertEqual(set(sprites), {"incineroar"})
+        self.assertEqual(json.loads(DATA_RE.search(self.html).group(1))["sprites"], {})
+
     def test_meta_sheet_has_no_fixed_prompts(self) -> None:
         self.assertNotIn("data-q=", self.html)
         self.assertIn('id="meta-home"', self.html)
@@ -89,6 +104,10 @@ class CoachPageTests(unittest.TestCase):
         self.assertTrue(any("Trick Room" in note for note in members["Incineroar"]["notes"]))
         self.assertIn("calc_damage", out["tools"])
         self.assertIn("get_trend", out["tools"])
+        series = out["series"]
+        self.assertEqual([event["date"] for event in series["events"]], sorted(event["date"] for event in series["events"]))
+        self.assertEqual(len(series["series"][0]["values"]), len(series["events"]))
+        self.assertEqual(series["series"][1]["values"], [0] * len(series["events"]))
         self.assertIn("get_event", out["tools"])
         self.assertTrue(out["trend"]["available"])
         self.assertTrue(out["event"]["usage"])

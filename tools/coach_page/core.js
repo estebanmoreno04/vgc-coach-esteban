@@ -150,6 +150,7 @@
           moves: sets.moves.slice(0, 8).map(([n, s]) => `${n} ${pct(s)}%`),
           top_sets: sets.top_sets.map(([i, a, nat, mv, s]) => `${pct(s)}%: ${i} | ${a} | ${nat} | ${mv.join(", ")}`),
         },
+        proven_day2_set: provenSet(species),
         partners_in_person: partners,
         best_matchups: records.slice(0, 5),
         worst_matchups: records.slice(-5).reverse(),
@@ -171,7 +172,7 @@
       if (!trendData.available) return { available: false, reason: "Aún no hay suficientes regionales para comparar recientes y anteriores." };
       const n = Math.min(Math.max(Number(top) || 8, 1), 20);
       const rows = (list) => list.map((r) => ({
-        name: display(r[0]), before_pct: pct(r[1]), recent_pct: pct(r[2]), recent_win_rate_pct: pct(r[3]), change_pts: Math.round(r[4] * 1000) / 10,
+        id: r[0], name: display(r[0]), before_pct: pct(r[1]), recent_pct: pct(r[2]), recent_win_rate_pct: pct(r[3]), change_pts: Math.round(r[4] * 1000) / 10,
       }));
       const species = rows(trendData.species);
       const megaRows = rows(trendData.megas);
@@ -185,6 +186,16 @@
         fallers: species.filter((r) => r.change_pts < 0).reverse().slice(0, n),
         mega_risers: megaRows.filter((r) => r.change_pts > 0).slice(0, n),
         mega_fallers: megaRows.filter((r) => r.change_pts < 0).reverse().slice(0, n),
+      };
+    }
+
+    // Usage of each species at the latest whole-field regionals, oldest first (for the trend chart).
+    const usageAt = new Map(regionals.map((e) => [e.key, new Map(e.usage.map((u) => [u.species, u.share]))]));
+    function regionalSeries(ids, count) {
+      const events = regionals.filter((e) => e.basis === "full_field").slice(0, count || 5).reverse();
+      return {
+        events: events.map((e) => ({ key: e.key, name: shortEvent(e.name), date: e.date, teams: e.teams })),
+        series: ids.map((id) => ({ id, name: display(id), values: events.map((e) => usageAt.get(e.key).get(id) || 0) })),
       };
     }
 
@@ -214,6 +225,27 @@
         megas: found.megas.slice(0, 10).map((r) => ({ name: display(r.mega), share_pct: pct(r.share), win_rate_pct: pct(r.win_rate) })),
         top_cut: formatTop(found),
       };
+    }
+
+    // Proven sets: what in-person teams that made day 2 actually ran.
+    const MIN_DAY2_SAMPLE = 8;
+    function provenSet(species) {
+      const day2 = (DATA.sets[species] || {}).day2;
+      if (!day2 || !day2.sample) return null;
+      return {
+        day2_teams: day2.sample,
+        small_sample: day2.sample < MIN_DAY2_SAMPLE,
+        moves: day2.moves.map(([n, s]) => `${n} ${pct(s)}%`),
+        items: day2.items.slice(0, 4).map(([n, s]) => `${n} ${pct(s)}%`),
+        abilities: day2.abilities.map(([n, s]) => `${n} ${pct(s)}%`),
+        natures: day2.natures.slice(0, 3).map(([n, s]) => `${n} ${pct(s)}%`),
+        common_set: day2.top_sets[0] ? `${day2.top_sets[0][0]} | ${day2.top_sets[0][1]} | ${day2.top_sets[0][2]} | ${day2.top_sets[0][3].join(", ")}` : null,
+      };
+    }
+    function provenMove(species, move) {
+      const day2 = (DATA.sets[species] || {}).day2;
+      if (!day2 || day2.sample < MIN_DAY2_SAMPLE) return null;
+      return day2.moves.some(([n]) => slug(n) === slug(move));
     }
 
     function resolveSafe(name) {
@@ -309,11 +341,15 @@
         const t = tally.get(a) || [0, 0];
         t[0] += wins; t[1] += games; tally.set(a, t);
       }
-      const threats = [...tally.entries()].map(([s, [w, g]]) => ({ name: display(s), win_rate_vs_team_pct: pct(w / g), games: g }))
+      const threats = [...tally.entries()].map(([s, [w, g]]) => ({ name: display(s), species: s, win_rate_vs_team_pct: pct(w / g), games: g }))
         .sort((x, y) => y.win_rate_vs_team_pct - x.win_rate_vs_team_pct);
+      const withSet = (list) => list.map(({ species, ...rest }) => {
+        const proven = provenSet(species);
+        return { ...rest, proven_day2_set: proven ? proven.common_set : null, proven_day2_moves: proven ? proven.moves.slice(0, 6) : [] };
+      });
       members.forEach((m) => delete m.species);
       return {
-        members, cores_in_person: cores, biggest_threats: threats.slice(0, 6), most_favourable: threats.slice(-4).reverse(),
+        members, cores_in_person: cores, biggest_threats: withSet(threats.slice(0, 6)), most_favourable: withSet(threats.slice(-4).reverse()),
         matchup_basis: "team sheets (especies del equipo, no las que salieron a jugar)",
       };
     }
@@ -366,13 +402,19 @@
         weather, terrain, attackerSide: side(input.attacker_side), defenderSide: side(input.defender_side),
       });
       const move = new calcLib.Move(gen, String(input.move || ""), { isCrit: !!input.crit });
+      const attackerSpecies = (() => { try { return resolveSpecies(input.attacker.species).species; } catch (e) { return null; } })();
+      if (attackerSpecies && provenMove(attackerSpecies, move.name) === false) {
+        const proven = provenSet(attackerSpecies);
+        notes.push(`${display(attackerSpecies)} no ha llevado ${move.name} en ningún equipo de día 2 (${proven.day2_teams} equipos). Movimientos contrastados: ${proven.moves.slice(0, 6).join(", ")}.`);
+      }
       const result = calcLib.calculate(gen, attacker, defender, move, field);
       const [min, max] = result.range();
       const hp = defender.maxHP();
       let ko = "";
       try { ko = result.kochance().text; } catch (e) { ko = ""; }
       return {
-        summary: result.desc(), damage: [min, max], percent: [Math.round(1000 * min / hp) / 10, Math.round(1000 * max / hp) / 10],
+        summary: max === 0 ? `${attacker.name} ${move.name} contra ${defender.name}: no hace daño (inmune o sin efecto)` : (() => { try { return result.desc(); } catch (e) { return `${attacker.name} ${move.name} contra ${defender.name}`; } })(),
+        damage: [min, max], percent: [Math.round(1000 * min / hp) / 10, Math.round(1000 * max / hp) / 10],
         ko, notes, engine: "@smogon/calc, mecánica de Pokémon Champions",
       };
     }
@@ -429,6 +471,7 @@
         "- Los emparejamientos son a nivel de team sheet (orientativos). Los stat points de los rivales no se publican: en cálculos, decláralos como supuesto.",
         "- Respeta las mecánicas de la regulación: si Terastal no está en la lista, no hables de Tera.",
         "- Si algo no está en los datos (otra regulación, un torneo posterior a la fecha de los datos), dilo claramente.",
+        "- Usa solo sets contrastados: movimientos, objetos, habilidades y naturalezas que aparecen en equipos presenciales de día 2 (proven_day2_set en get_pokemon y en las amenazas de analyze_team). Para amenazas, enfrentamientos y cálculos contra rivales, usa su set de día 2 más común. No menciones movimientos que nunca han llegado a día 2 salvo que el usuario pregunte por ellos; si calc_damage avisa de que un movimiento no es contrastado, cámbialo por uno que sí lo sea. Si la muestra de día 2 es pequeña (small_sample), dilo.",
         "- Para auditar un equipo: identidad, 2-4 hallazgos ordenados por impacto con su consecuencia en partida, cambios mínimos primero, riesgo residual.",
         "- Si te preguntan algo que no es de Pokémon VGC, responde en una frase que solo ayudas con VGC.",
         withTools
@@ -480,7 +523,7 @@
       ];
     }
 
-    return { status, usage, pokemon, matchup, topCut, trend, listEvents, eventUsage, shortEvent, parseTeam, analyzeTeam, resolveSpecies, megaFor, calcDamage, calcSpeed, digest, instructions, tools, usageRows, megas, byEvent, regionals, display };
+    return { status, usage, pokemon, matchup, topCut, trend, regionalSeries, listEvents, eventUsage, shortEvent, parseTeam, analyzeTeam, resolveSpecies, megaFor, calcDamage, calcSpeed, digest, instructions, tools, usageRows, megas, byEvent, regionals, display };
   }
 
   return { create, slug, pct };

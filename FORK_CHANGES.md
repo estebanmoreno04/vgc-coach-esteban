@@ -50,7 +50,7 @@ This repository is a fork of [NoahJenkins/vgc-coach](https://github.com/NoahJenk
 | `docs/fork/progreso.md`, `docs/fork/auditoria-equipo.md` | Progress summary and the phase 6 team audit (Spanish). |
 | `tests/test_acceptance_regulation_change.py`, `tests/fixtures/acceptance/`, `tests/platform_support.py` | End-to-end acceptance test of a regulation change; platform capability helpers for tests. |
 | `tools/damage_calc.py`, `tools/calc/` (`calc.mjs`, `package.json`, `package-lock.json`), `tests/test_damage_calc.py` | Exact damage, KO, survival and speed calcs with `@smogon/calc` (Champions mechanics) through Node, falling back to the upstream Pikalytics browser calc. |
-| `tools/build_coach_page.py`, `tools/coach_page/` (`template.html`, `core.js`), `tests/test_coach_page.py`, `tests/coach_core_harness.cjs`, `docs/fork/coach-page.md` | Shareable coach page published as a claude.ai artifact: each visitor asks Claude with their own account, over a compact copy of `data/current`. |
+| `tools/build_coach_page.py`, `tools/fetch_sprites.py`, `tools/coach_page/` (`template.html`, `core.js`), `tests/test_coach_page.py`, `tests/coach_core_harness.cjs`, `docs/fork/coach-page.md` | Shareable coach page published as a claude.ai artifact: each visitor asks Claude with their own account, over a compact copy of `data/current`. |
 | `data/archive/upstream-snapshots/README.md` | Explains the archived upstream snapshots. |
 | `FORK_CHANGES.md` | This file. |
 

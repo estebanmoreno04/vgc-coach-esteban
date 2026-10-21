@@ -187,6 +187,50 @@ button.card:hover .go { color: var(--ink); }
 td button.linkrow { border: 0; background: none; padding: 0; text-align: left; cursor: pointer; color: var(--ink-2); font: inherit; transition: color 200ms var(--ease); }
 td button.linkrow:hover { color: var(--ink); }
 .small { font-size: 12px; color: var(--faint); }
+/* sprites */
+.pk { display: inline-flex; align-items: center; gap: 6px; min-width: 0; }
+.spr { width: 40px; height: 40px; margin: -10px -4px -10px -8px; image-rendering: pixelated; object-fit: contain; flex: none; }
+.spr-s { width: 30px; height: 30px; margin: -8px -2px -8px -6px; }
+.spr-empty { display: inline-block; }
+.mini .line .name { display: flex; align-items: center; gap: 6px; }
+.team li { display: flex; align-items: center; gap: 4px; min-width: 0; }
+
+/* trend chart */
+.chart-tools { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 16px; margin: 4px 0 6px; }
+#chart-add { background: var(--lift); border: 0; border-radius: 10px; padding: 8px 12px; min-width: 0; width: 220px; max-width: 100%; color: var(--ink); transition: background-color 200ms var(--ease); }
+#chart-add:hover { background: var(--lift-hover); }
+#chart-add:focus { background: var(--lift-focus); outline: none; box-shadow: 0 0 0 1px var(--line); }
+#chart-add::placeholder { color: var(--faint); }
+.chart-msg { font-size: 12.5px; color: var(--warn); }
+.chips { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 8px; }
+.chip { display: inline-flex; align-items: center; background: var(--lift); border-radius: 999px; font-size: 13px; transition: background-color 200ms var(--ease); }
+.chip:hover { background: var(--lift-hover); }
+.chip button { border: 0; background: none; cursor: pointer; color: var(--ink-2); display: inline-flex; align-items: center; gap: 6px; padding: 4px 4px 4px 10px; }
+.chip.on button { color: var(--ink); }
+.chip button.x { padding: 4px 10px 4px 4px; color: var(--faint); font-size: 15px; line-height: 1; }
+.chip button.x:hover { color: var(--accent-hover); }
+.sw { width: 8px; height: 8px; border-radius: 50%; flex: none; }
+.sw-off { background: none; box-shadow: inset 0 0 0 1px var(--faint); }
+.chart { position: relative; overflow-x: auto; }
+.chart svg { display: block; width: 100%; min-width: 520px; height: auto; --chart-gray: #4c4c54; }
+.chart .grid { stroke: var(--line); stroke-width: 1; }
+.chart .axis { fill: var(--muted); font: 11px var(--sans); font-variant-numeric: tabular-nums; }
+.chart .axis.strong { fill: var(--ink-2); font-size: 12px; }
+.chart .line { fill: none; stroke: var(--c); stroke-width: 1.5; stroke-linejoin: round; stroke-linecap: round; transition: opacity 150ms var(--ease), stroke-width 150ms var(--ease); }
+.chart .pinned .line { stroke-width: 2; }
+.chart .dot { fill: var(--c); stroke: var(--bg); stroke-width: 2; }
+.chart .leader { stroke: var(--c); stroke-width: 1; opacity: 0.5; }
+.chart .end { image-rendering: pixelated; }
+.chart .hit { fill: transparent; stroke: transparent; stroke-width: 14; cursor: pointer; outline: none; }
+.chart rect.hit { stroke: none; }
+.chart svg.focus .series:not(.active) { opacity: 0.18; }
+.chart .series.active .line { stroke-width: 3; }
+.chart .series.active:not(.pinned) .line { stroke: var(--ink); }
+.chart .tip { position: absolute; z-index: 3; pointer-events: none; background: #1c1c20; border-radius: 10px; padding: 8px 10px; min-width: 150px; font-size: 12.5px; box-shadow: 0 8px 24px -8px rgb(0 0 0 / 0.6); }
+.tip-head { display: flex; align-items: center; gap: 4px; margin-bottom: 4px; }
+.tip-head strong { font-family: var(--serif); font-size: 15px; font-weight: 500; }
+.tip-row { display: flex; justify-content: space-between; gap: 14px; color: var(--ink-2); }
+.tip-row span:last-child { font-family: var(--mono); font-variant-numeric: tabular-nums; color: var(--ink); }
 @media (prefers-reduced-motion: no-preference) { .msg, .detail, .cards { animation: in 220ms var(--ease); } @keyframes in { from { opacity: 0.55; transform: translateY(3px); } to { opacity: 1; transform: none; } } }
 @media (prefers-reduced-motion: reduce) { *, *::before, *::after { transition: none !important; } }
 @media (max-width: 620px) { .cards { grid-template-columns: 1fr; } .msg.user { max-width: 100%; } #welcome h2 { font-size: 32px; } .detail h2 { font-size: 27px; } }
@@ -255,6 +299,21 @@ td button.linkrow:hover { color: var(--ink); }
   const STORE = "vgc-coach-chat-v1";
   const MAX_TURNS = 16;
 
+  // ---- sprites (Pokémon Showdown, embedded at build time); Megas without one use their base form ----
+  const SPR = DATA.sprites || {};
+  const MEGA_BASE = (DATA.dex && DATA.dex.mega_base) || {};
+  function sprId(id) {
+    if (!id) return null;
+    if (SPR[id]) return id;
+    const base = MEGA_BASE[id] || String(id).split("-mega")[0];
+    return SPR[base] ? base : null;
+  }
+  function spr(id, cls) {
+    const key = sprId(id);
+    return key ? `<img class="${cls || "spr"}" src="data:image/png;base64,${SPR[key]}" alt="">` : "";
+  }
+  const pk = (id, name) => `<span class="pk">${spr(id)}${esc(name)}</span>`;
+
   // ---- header ----
   const st = core.status();
   const MONTHS = ["ene", "feb", "mar", "abr", "may", "jun", "jul", "ago", "sep", "oct", "nov", "dic"];
@@ -291,7 +350,7 @@ td button.linkrow:hover { color: var(--ink); }
     if (!list.length) return '<p class="sub">Sin equipos de top cut en los datos.</p>';
     return '<div class="teams">' + list.map(([placement, player, country, record, team]) =>
       `<div class="team"><strong>${placement}.º ${esc(player)}</strong><span class="where">${[record, country].filter(Boolean).map(esc).join(" · ")}</span>` +
-      `<ul>${team.map((m) => `<li>${esc(m[0])} <span>@ ${esc(m[1] || "?")}</span></li>`).join("")}</ul></div>`).join("") + "</div>";
+      `<ul>${team.map((m) => `<li>${spr(VGCCoachCore.slug(m[0]), "spr spr-s")}${esc(m[0])} <span>@ ${esc(m[1] || "?")}</span></li>`).join("")}</ul></div>`).join("") + "</div>";
   }
   const regionals = core.regionals;
   const onlineEvents = core.byEvent.filter((e) => e.segment === "online");
@@ -303,9 +362,9 @@ td button.linkrow:hover { color: var(--ink); }
   function home() {
     const top = core.usageRows.filter((r) => r.in_person.teams).sort((a, b) => (b.in_person.share || 0) - (a.in_person.share || 0)).slice(0, 5);
     const usageCard = `<button type="button" class="card" data-open="usage"><header><h2>Uso general</h2><span class="count">${inPerson.teams} equipos presenciales</span></header>
-      <div class="mini">${top.map((r) => `<div class="line"><span class="name">${esc(r.name)}</span><span class="val">${pct(r.in_person.share)}</span>${meter(r.in_person.share)}</div>`).join("")}</div>
+      <div class="mini">${top.map((r) => `<div class="line"><span class="name">${spr(r.species, "spr spr-s")}${esc(r.name)}</span><span class="val">${pct(r.in_person.share)}</span>${meter(r.in_person.share)}</div>`).join("")}</div>
       <span class="go">Ver uso completo, Megas y online →</span></button>`;
-    const moves = (list) => list.slice(0, 3).map((r) => `<div class="line"><span class="name">${esc(r.name)}</span><span class="val">${delta(r.change_pts)}</span></div>`).join("");
+    const moves = (list) => list.slice(0, 3).map((r) => `<div class="line"><span class="name">${spr(r.id, "spr spr-s")}${esc(r.name)}</span><span class="val">${delta(r.change_pts)}</span></div>`).join("");
     const trendCard = tr.available
       ? `<button type="button" class="card" data-open="trend"><header><h2>Tendencia</h2><span class="count">últimos ${tr.recent_events.length} regionales</span></header>
         <div class="split"><div><h3>Suben</h3><div class="mini">${moves(tr.risers)}</div></div><div><h3>Bajan</h3><div class="mini">${moves(tr.fallers)}</div></div></div>
@@ -326,11 +385,11 @@ td button.linkrow:hover { color: var(--ink); }
       .sort((a, b) => (b[seg].share || 0) - (a[seg].share || 0)).slice(0, 40);
     const head = seg === "in_person" ? [N("#"), T("Pokémon"), N("Uso"), N("WR"), N("Conv. día 2"), N("Top cut")] : [N("#"), T("Pokémon"), N("Uso"), N("WR")];
     const body = rows.map((r, i) => seg === "in_person"
-      ? [i + 1, esc(r.name), share(r.in_person.share), pct(r.in_person.win_rate), pct(r.in_person.day2_conversion), r.in_person.top_cut_teams]
-      : [i + 1, esc(r.name), share(r[seg].share), pct(r[seg].win_rate)]);
+      ? [i + 1, pk(r.species, r.name), share(r.in_person.share), pct(r.in_person.win_rate), pct(r.in_person.day2_conversion), r.in_person.top_cut_teams]
+      : [i + 1, pk(r.species, r.name), share(r[seg].share), pct(r[seg].win_rate)]);
     const megaKey = { in_person: "in_person", online: "online", total: "total" }[seg];
     const megaRows = core.megas.filter((m) => m[megaKey]).sort((a, b) => b[megaKey] - a[megaKey]).slice(0, 15)
-      .map((m) => [esc(m.name), pct(m[megaKey])]);
+      .map((m) => [pk(m.mega, m.name), pct(m[megaKey])]);
     const basis = {
       in_person: `${inPerson.events} regionales, ${inPerson.teams} equipos (field completo), ${inPerson.day2_teams} en día 2.`,
       online: `${onlineSeg.events} torneos de Limitless con 64+ jugadores en los últimos ${DATA.snapshot.online_window_days} días, ${onlineSeg.teams} equipos.`,
@@ -341,11 +400,13 @@ td button.linkrow:hover { color: var(--ink); }
       ${table(head, body)}<h3>Megas</h3>${table([T("Mega"), N("Uso")], megaRows)}</div>`;
   }
 
+  // "Nice Regional Championships 2027 (2026-10-17)" -> "Nice (17 oct)"
+  const shortRef = (ref) => { const m = String(ref).match(/^(.*) \((\d{4}-\d{2}-\d{2})\)$/); return esc(m ? `${core.shortEvent(m[1])} (${longDay(m[2])})` : ref); };
   function trendView() {
-    const rows = (list) => list.map((r) => [esc(r.name), r.before_pct.toFixed(1) + "%", r.recent_pct.toFixed(1) + "%", delta(r.change_pts)]);
+    const rows = (list) => list.map((r) => [pk(r.id, r.name), r.before_pct.toFixed(1) + "%", r.recent_pct.toFixed(1) + "%", delta(r.change_pts)]);
     const head = (label) => [T(label), N("Antes"), N("Ahora"), N("Cambio")];
-    return `<span class="tag">Presencial</span><h2>Tendencia</h2><p class="sub">Ahora: ${tr.recent_events.map(esc).join(", ")} (${tr.recent_teams} equipos). Antes: ${tr.earlier_events.map(esc).join(", ")} (${tr.earlier_teams} equipos). Cambio en puntos de % de uso.</p>` +
-      "<h3>Suben</h3>" + table(head("Pokémon"), rows(tr.risers)) + "<h3>Bajan</h3>" + table(head("Pokémon"), rows(tr.fallers)) +
+    return `<span class="tag">Presencial</span><h2>Tendencia</h2><p class="sub">Ahora: ${tr.recent_events.map(shortRef).join(", ")} (${tr.recent_teams} equipos). Antes: ${tr.earlier_events.map(shortRef).join(", ")} (${tr.earlier_teams} equipos). Cambio en puntos de % de uso.</p>` +
+      chartPanel() + "<h3>Suben</h3>" + table(head("Pokémon"), rows(tr.risers)) + "<h3>Bajan</h3>" + table(head("Pokémon"), rows(tr.fallers)) +
       "<h3>Megas que suben</h3>" + table(head("Mega"), rows(tr.mega_risers)) + "<h3>Megas que bajan</h3>" + table(head("Mega"), rows(tr.mega_fallers));
   }
 
@@ -358,15 +419,166 @@ td button.linkrow:hover { color: var(--ink); }
     const online = e.segment === "online";
     const head = online ? [N("#"), T("Pokémon"), N("Uso"), N("WR"), N("Top")] : [N("#"), T("Pokémon"), N("Uso"), N("WR"), N("Conv. día 2"), N("Top cut")];
     const body = e.usage.slice(0, 40).map((r, i) => online
-      ? [i + 1, esc(core.display(r.species)), share(r.share), pct(r.win_rate), r.top_cut_teams]
-      : [i + 1, esc(core.display(r.species)), share(r.share), pct(r.win_rate), pct(r.day2_conversion), r.top_cut_teams]);
+      ? [i + 1, pk(r.species, core.display(r.species)), share(r.share), pct(r.win_rate), r.top_cut_teams]
+      : [i + 1, pk(r.species, core.display(r.species)), share(r.share), pct(r.win_rate), pct(r.day2_conversion), r.top_cut_teams]);
     const facts = [`${e.players} jugadores`, online ? null : (e.basis === "full_field" ? "field completo" : "solo equipos de día 2"), online ? null : `${e.day2_teams} en día 2`,
       e.url ? `<a href="${esc(e.url)}" target="_blank" rel="noopener">resultados</a>` : null].filter(Boolean);
     return `<div class="${online ? "online" : ""}"><span class="tag">${online ? "Online" : "Regional"} · ${esc(longDay(e.date))}</span><h2>${esc(online ? e.name : core.shortEvent(e.name))}</h2>
       <p class="sub">${facts.join(" · ")}</p>${table(head, body)}
-      <h3>Megas</h3>${table([T("Mega"), N("Uso"), N("WR")], e.megas.slice(0, 12).map((m) => [esc(core.display(m.mega)), pct(m.share), pct(m.win_rate)]))}
+      <h3>Megas</h3>${table([T("Mega"), N("Uso"), N("WR")], e.megas.slice(0, 12).map((m) => [pk(m.mega, core.display(m.mega)), pct(m.share), pct(m.win_rate)]))}
       <h3>${online ? "Mejores equipos" : "Top cut"}</h3>${teamCards(e.top)}</div>`;
   }
+
+  // ---- trend chart: usage at the latest regionals, one line per Pokémon ----
+  // Up to 8 Pokémon carry a color (validated palette, assigned when pinned and kept: color follows the
+  // Pokémon, never its rank); the rest are gray. Every line ends in its sprite, and hover names it.
+  const CHART_COLORS = ["#3987e5", "#d95926", "#199e70", "#c98500", "#d55181", "#008300", "#9085e9", "#e66767"];
+  const CHART_STORE = "vgc-coach-chart-v1";
+  const defaultIds = () => core.usageRows.filter((r) => r.in_person.teams)
+    .sort((a, b) => (b.in_person.share || 0) - (a.in_person.share || 0)).slice(0, 20).map((r) => r.species);
+  function defaultChart() {
+    const ids = defaultIds();
+    return { ids, pins: Object.fromEntries(ids.slice(0, 8).map((id, i) => [id, i])) };
+  }
+  let chartState = (() => {
+    try {
+      const saved = JSON.parse(localStorage.getItem(CHART_STORE) || "null");
+      if (saved && Array.isArray(saved.ids) && saved.pins) return saved;
+    } catch (e) { /* storage unavailable */ }
+    return defaultChart();
+  })();
+  const saveChart = () => { try { localStorage.setItem(CHART_STORE, JSON.stringify(chartState)); } catch (e) { /* storage unavailable */ } };
+  const chartNames = core.usageRows.filter((r) => r.in_person.teams).sort((a, b) => (b.in_person.share || 0) - (a.in_person.share || 0));
+
+  function chartPanel() {
+    return `<h3>Uso en los últimos regionales</h3>
+      <p class="sub">Toca un Pokémon de la lista para darle o quitarle color (máximo 8). Pasa el ratón por una línea para ver cuál es.</p>
+      <div class="chart-tools">
+        <input id="chart-add" list="chart-options" placeholder="Añadir un Pokémon…" aria-label="Añadir un Pokémon a la gráfica" autocomplete="off">
+        <datalist id="chart-options">${chartNames.map((r) => `<option value="${esc(r.name)}"></option>`).join("")}</datalist>
+        <button type="button" class="linkish" data-chart-reset="1">Volver a los 20 más usados</button>
+        <span class="chart-msg" id="chart-msg" role="status"></span>
+      </div>
+      <div class="chips" id="chart-chips"></div>
+      <div class="chart" id="trend-chart"></div>`;
+  }
+
+  function drawChart() {
+    const box = $("trend-chart");
+    if (!box) return;
+    const { events, series } = core.regionalSeries(chartState.ids, 5);
+    // chips (the legend)
+    $("chart-chips").innerHTML = series.map((s) => {
+      const slot = chartState.pins[s.id];
+      const swatch = slot === undefined ? '<span class="sw sw-off"></span>' : `<span class="sw" style="background:${CHART_COLORS[slot]}"></span>`;
+      return `<span class="chip${slot === undefined ? "" : " on"}"><button type="button" data-pin="${esc(s.id)}" aria-pressed="${slot !== undefined}">${swatch}${spr(s.id, "spr spr-s")}${esc(s.name)}</button><button type="button" class="x" data-remove="${esc(s.id)}" aria-label="Quitar ${esc(s.name)}">×</button></span>`;
+    }).join("");
+    if (events.length < 2 || !series.length) { box.innerHTML = '<p class="sub">Añade algún Pokémon para ver su evolución.</p>'; return; }
+
+    const W = 720, H = 480, M = { top: 18, right: 96, bottom: 46, left: 46 };
+    const pw = W - M.left - M.right, ph = H - M.top - M.bottom;
+    const top = Math.max(0.1, ...series.flatMap((s) => s.values));
+    const step = top > 0.4 ? 0.1 : 0.05;
+    const yMax = Math.ceil(top / step) * step;
+    const x = (i) => M.left + (events.length === 1 ? pw / 2 : (i * pw) / (events.length - 1));
+    const y = (v) => M.top + ph - (v / yMax) * ph;
+    let svg = `<svg viewBox="0 0 ${W} ${H}" role="img" aria-label="Uso en presencial de los Pokémon elegidos en los últimos ${events.length} regionales">`;
+    for (let v = 0; v <= yMax + 1e-9; v += step) {
+      svg += `<line class="grid" x1="${M.left}" x2="${W - M.right}" y1="${y(v)}" y2="${y(v)}"/><text class="axis" x="${M.left - 8}" y="${y(v) + 4}" text-anchor="end">${Math.round(v * 100)}%</text>`;
+    }
+    events.forEach((e, i) => {
+      svg += `<text class="axis strong" x="${x(i)}" y="${H - M.bottom + 20}" text-anchor="middle">${esc(e.name)}</text><text class="axis" x="${x(i)}" y="${H - M.bottom + 36}" text-anchor="middle">${esc(day(e.date))}</text>`;
+    });
+    const ordered = [...series].sort((a, b) => (chartState.pins[a.id] !== undefined) - (chartState.pins[b.id] !== undefined));
+    // End sprites: nudged apart so they never stack on top of each other.
+    const ends = series.map((s) => ({ id: s.id, y0: y(s.values[s.values.length - 1]), y: y(s.values[s.values.length - 1]) })).sort((a, b) => a.y - b.y);
+    // Two staggered columns of sprites, so neighbours can sit closer without covering each other.
+    const gap = Math.min(22, ph / Math.max(1, ends.length - 1));
+    for (let i = 1; i < ends.length; i++) ends[i].y = Math.max(ends[i].y, ends[i - 1].y + gap);
+    const overflow = ends.length ? ends[ends.length - 1].y - (M.top + ph) : 0;
+    if (overflow > 0) ends.forEach((e) => (e.y -= overflow));
+    for (let i = ends.length - 2; i >= 0; i--) ends[i].y = Math.min(ends[i].y, ends[i + 1].y - gap);
+    ends.forEach((e, i) => (e.dx = i % 2 ? 40 : 12));
+    const endY = new Map(ends.map((e) => [e.id, e]));
+    for (const s of ordered) {
+      const slot = chartState.pins[s.id];
+      const color = slot === undefined ? "var(--chart-gray)" : CHART_COLORS[slot];
+      const pts = s.values.map((v, i) => `${x(i).toFixed(1)},${y(v).toFixed(1)}`).join(" ");
+      const end = endY.get(s.id);
+      const lastX = x(s.values.length - 1);
+      svg += `<g class="series${slot === undefined ? "" : " pinned"}" data-id="${esc(s.id)}" style="--c:${color}">`;
+      svg += `<polyline class="line" points="${pts}"/>`;
+      if (slot !== undefined) svg += s.values.map((v, i) => `<circle class="dot" cx="${x(i).toFixed(1)}" cy="${y(v).toFixed(1)}" r="3.5"/>`).join("");
+      svg += `<line class="leader" x1="${lastX + 4}" y1="${end.y0}" x2="${lastX + end.dx + 4}" y2="${end.y}"/>`;
+      const sprite = sprId(s.id);
+      svg += sprite
+        ? `<image href="data:image/png;base64,${SPR[sprite]}" x="${lastX + end.dx}" y="${end.y - 20}" width="40" height="40" class="end"/>`
+        : `<text class="axis end" x="${lastX + end.dx + 2}" y="${end.y + 4}">${esc(s.name.slice(0, 6))}</text>`;
+      svg += `<polyline class="hit" points="${pts}" tabindex="0" aria-label="${esc(s.name)}"/><rect class="hit" x="${lastX + end.dx + 6}" y="${end.y - 11}" width="28" height="22"/>`;
+      svg += "</g>";
+    }
+    svg += "</svg>";
+    box.innerHTML = svg + '<div class="tip" id="chart-tip" hidden></div>';
+
+    const svgEl = box.querySelector("svg");
+    const tip = $("chart-tip");
+    const byId = new Map(series.map((s) => [s.id, s]));
+    function show(id, ev) {
+      const s = byId.get(id);
+      svgEl.classList.add("focus");
+      svgEl.querySelectorAll(".series").forEach((g) => g.classList.toggle("active", g.dataset.id === id));
+      tip.innerHTML = `<div class="tip-head">${spr(id, "spr")}<strong>${esc(s.name)}</strong></div>` +
+        events.map((e, i) => `<div class="tip-row"><span>${esc(e.name)}</span><span>${(s.values[i] * 100).toFixed(1)}%</span></div>`).join("");
+      tip.hidden = false;
+      const rect = box.getBoundingClientRect();
+      const px = ev && ev.clientX ? ev.clientX - rect.left : rect.width / 2;
+      const py = ev && ev.clientY ? ev.clientY - rect.top : 40;
+      tip.style.left = Math.min(Math.max(8, px + 14), rect.width - tip.offsetWidth - 8) + "px";
+      tip.style.top = Math.max(8, py - tip.offsetHeight - 12) + "px";
+    }
+    function hide() { svgEl.classList.remove("focus"); svgEl.querySelectorAll(".series.active").forEach((g) => g.classList.remove("active")); tip.hidden = true; }
+    svgEl.querySelectorAll(".series").forEach((g) => {
+      g.addEventListener("pointermove", (ev) => show(g.dataset.id, ev));
+      g.addEventListener("pointerleave", hide);
+      g.addEventListener("focusin", () => show(g.dataset.id));
+      g.addEventListener("focusout", hide);
+      g.addEventListener("click", () => togglePin(g.dataset.id));
+    });
+  }
+
+  function chartMessage(text) { const el = $("chart-msg"); if (el) el.textContent = text; }
+  function togglePin(id) {
+    if (chartState.pins[id] !== undefined) delete chartState.pins[id];
+    else {
+      const used = new Set(Object.values(chartState.pins));
+      const free = CHART_COLORS.findIndex((_, i) => !used.has(i));
+      if (free < 0) { chartMessage("Ya hay 8 con color: quita el color a otro primero."); return; }
+      chartState.pins[id] = free;
+    }
+    chartMessage(""); saveChart(); drawChart();
+  }
+  function addToChart(text) {
+    let id;
+    try { id = core.resolveSpecies(text).species; } catch (e) { chartMessage(e.message); return; }
+    if (!chartState.ids.includes(id)) chartState.ids.push(id);
+    const used = new Set(Object.values(chartState.pins));
+    const free = CHART_COLORS.findIndex((_, i) => !used.has(i));
+    if (chartState.pins[id] === undefined && free >= 0) chartState.pins[id] = free;
+    chartMessage(""); saveChart(); drawChart();
+  }
+  $("meta-detail").addEventListener("click", (ev) => {
+    const el = ev.target.closest("[data-pin], [data-remove], [data-chart-reset]");
+    if (!el) return;
+    if (el.dataset.pin) togglePin(el.dataset.pin);
+    else if (el.dataset.remove) { chartState.ids = chartState.ids.filter((id) => id !== el.dataset.remove); delete chartState.pins[el.dataset.remove]; saveChart(); drawChart(); }
+    else { chartState = defaultChart(); saveChart(); chartMessage(""); drawChart(); }
+  });
+  $("meta-detail").addEventListener("change", (ev) => {
+    if (ev.target.id === "chart-add" && ev.target.value.trim()) { addToChart(ev.target.value.trim()); ev.target.value = ""; }
+  });
+  $("meta-detail").addEventListener("keydown", (ev) => {
+    if (ev.target.id === "chart-add" && ev.key === "Enter" && ev.target.value.trim()) { ev.preventDefault(); addToChart(ev.target.value.trim()); ev.target.value = ""; }
+  });
 
   // A small view stack: home -> section -> tournament, with a back button.
   const stack = [];
@@ -380,6 +592,7 @@ td button.linkrow:hover { color: var(--ink); }
     else if (view.type === "event") html = eventView(eventByKey.get(view.key));
     const backLabel = stack.length > 1 ? "← Volver" : "← Meta";
     detail.innerHTML = `<button type="button" class="back" data-back="1">${backLabel}</button>${html}`;
+    if (view.type === "trend") drawChart();
     $("meta-home").hidden = true; detail.hidden = false;
     window.scrollTo({ top: 0 });
   }

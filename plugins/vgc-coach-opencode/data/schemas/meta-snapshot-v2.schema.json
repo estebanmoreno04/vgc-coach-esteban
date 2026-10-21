@@ -117,7 +117,7 @@
       "type": "array",
       "items": {
         "type": "object",
-        "required": ["species", "name", "sample", "items", "abilities", "natures", "moves", "megas", "top_sets"],
+        "required": ["species", "name", "sample", "items", "abilities", "natures", "moves", "megas", "top_sets", "day2"],
         "properties": {
           "species": { "$ref": "#/$defs/slug" },
           "sample": { "type": "integer", "minimum": 1 },

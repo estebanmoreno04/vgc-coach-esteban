@@ -101,6 +101,15 @@ def render_pokemon(info: dict[str, Any]) -> str:
             lines.append(
                 f"- {pct(spread['share'])}: {spread['item']} | {spread['ability']} | {spread['nature']} | {', '.join(spread['moves'])}"
             )
+    day2 = (info.get("sets") or {}).get("day2") or {}
+    if day2.get("sample"):
+        lines.append(f"\n### Proven on day 2 ({day2['sample']} in-person day 2 teams)")
+        lines.append("- Moves: " + ", ".join(f"{item['name']} {pct(item['share'])}" for item in day2["moves"]))
+        lines.append("- Items: " + ", ".join(f"{item['name']} {pct(item['share'])}" for item in day2["items"]))
+        for spread in day2["top_sets"]:
+            lines.append(
+                f"- {pct(spread['share'])}: {spread['item']} | {spread['ability']} | {spread['nature']} | {', '.join(spread['moves'])}"
+            )
     lines.append("\n### Common partners (in-person)")
     for pair in info["pairs"]["in_person"]:
         partner = [name for name in pair["names"] if name != info["name"]]

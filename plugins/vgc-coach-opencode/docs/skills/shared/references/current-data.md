@@ -54,6 +54,7 @@ In that case put the warning near the top of the answer and offer to run the `vg
 - **Recent events weigh more.** The aggregate numbers mix every event of the regulation. For questions about how the meta is moving, or when preparing an upcoming event, use `trend` (latest whole-field regionals against the earlier ones) and `event` (one regional), and say which events each number covers. `pokemon` also lists the species' share at each in-person event.
 - Matchups are team-sheet level: they count which species were on each team in a match, not which ones were brought to the game. Treat them as directional.
 - Sets come from open team sheets: items, abilities, natures and moves are observed, stat points are not published.
+- **Use proven sets.** Each species in `sets` has a `day2` block: the moves, items, abilities and natures seen on in-person teams that made day 2. When naming threats, planning matchups or running calcs against opponents, use those proven options (the most common day 2 set by default) and do not bring up moves that never reached day 2 unless the user asks. Say so when the day 2 sample is small.
 - Mechanics come from `regulation.json` `mechanics`. If `terastallization` is not listed, give no Tera advice. If `rules.held_items.duplicates_allowed` is false, never repeat an item.
 - A species, item or move seen on official in-person team sheets of the current regulation is strong evidence that it is legal. For anything not seen there, check the official announcement (`official_url`) or label it unverified.
 

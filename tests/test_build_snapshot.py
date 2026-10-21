@@ -271,6 +271,17 @@ class PipelineTests(unittest.TestCase):
         self.assertIsNone(result.path)
         self.assertFalse((self.current / "snapshot.json").exists())
 
+    def test_sets_keep_a_day2_block_with_proven_options(self) -> None:
+        payload = self.build(FixtureClient()).payload
+        for row in payload["sets"]:
+            day2 = row["day2"]
+            self.assertLessEqual(day2["sample"], row["in_person_sample"])
+            seen = {move["name"] for move in day2["moves"]}
+            self.assertTrue(all(move["count"] <= day2["sample"] for move in day2["moves"]))
+            if day2["sample"]:
+                self.assertTrue(seen)
+        self.assertTrue(any(row["day2"]["sample"] for row in payload["sets"]))
+
     def test_offline_rebuild_keeps_the_last_source_report(self) -> None:
         downloaded = self.build(FixtureClient()).payload["sources"]
         self.assertTrue(downloaded)

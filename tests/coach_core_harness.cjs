@@ -29,6 +29,8 @@ const out = {
   latest: safe(() => coach.eventUsage("ultimo", 1).name),
   missing_event: safe(() => coach.eventUsage("Atlantis", 1)),
   pokemon_by_event: safe(() => coach.pokemon("Incineroar").by_event),
+  series: safe(() => coach.regionalSeries([coach.usageRows[0].species, "not-a-species"], 5)),
+  unproven: calc ? safe(() => coach.calcDamage({ attacker: { species: "Incineroar" }, defender: { species: "Charizard" }, move: "Thunder Punch" }).notes) : "calc not installed",
   tools: coach.tools().map((t) => t.name),
   instructions_bytes: Buffer.byteLength(coach.instructions(true)),
 };

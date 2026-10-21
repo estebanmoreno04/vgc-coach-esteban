@@ -438,6 +438,7 @@ class NoHardcodedRegulationTests(unittest.TestCase):
         "tools/generate_site_trust_data.py",
         "tools/render_source_registry_docs.py",
         "tools/build_coach_page.py",
+        "tools/fetch_sprites.py",
         "tools/coach_page",
         "tests/coach_core_harness.cjs",
         "tools/vgc_data",

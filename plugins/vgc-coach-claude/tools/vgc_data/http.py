@@ -83,6 +83,12 @@ class PoliteClient:
         self._write_cache(url, body)
         return body
 
+    def get_bytes(self, url: str) -> bytes:
+        """Binary download (images); callers keep their own cache."""
+        if not self._allowed(url):
+            raise SourceBlocked(f"robots.txt disallows {url}")
+        return self._request(url)[0]
+
     # -- robots.txt -------------------------------------------------------
 
     def _allowed(self, url: str) -> bool:
@@ -116,6 +122,10 @@ class PoliteClient:
     # -- transport --------------------------------------------------------
 
     def _fetch(self, url: str, *, retries: int | None = None) -> str:
+        raw, charset = self._request(url, retries=retries)
+        return raw.decode(charset, errors="replace")
+
+    def _request(self, url: str, *, retries: int | None = None) -> tuple[bytes, str]:
         attempts = (self.max_retries if retries is None else retries) + 1
         last_error: Exception | None = None
         for attempt in range(attempts):
@@ -129,8 +139,7 @@ class PoliteClient:
                     raw = response.read(MAX_RESPONSE_BYTES + 1)
                     if len(raw) > MAX_RESPONSE_BYTES:
                         raise SourceError(f"{url}: response exceeded {MAX_RESPONSE_BYTES} bytes")
-                    charset = response.headers.get_content_charset() or "utf-8"
-                    return raw.decode(charset, errors="replace")
+                    return raw, response.headers.get_content_charset() or "utf-8"
             except urllib.error.HTTPError as exc:
                 last_error = HTTPStatusError(url, exc.code)
                 if exc.code == 429 or exc.code >= 500:

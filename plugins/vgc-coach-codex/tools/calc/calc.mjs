@@ -125,8 +125,18 @@ function run(request) {
     defender_hp: { max: hp, current },
     percent: { min: Math.round((1000 * min) / hp) / 10, max: Math.round((1000 * max) / hp) / 10 },
     ko: { chance: ko.chance ?? null, hits: ko.n ?? 0, text: ko.text || "" },
-    description: result.desc(),
+    description: describe(result, attacker, defender, move, max),
   };
+}
+
+// @smogon/calc throws when describing a move that does no damage (an immunity).
+function describe(result, attacker, defender, move, max) {
+  if (max === 0) return `${attacker.name} ${move.name} vs. ${defender.name}: no damage (immune or no effect)`;
+  try {
+    return result.desc();
+  } catch (error) {
+    return `${attacker.name} ${move.name} vs. ${defender.name}`;
+  }
 }
 
 const raw = await read(process.stdin);

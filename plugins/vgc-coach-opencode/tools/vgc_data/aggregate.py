@@ -244,73 +244,76 @@ def _combos(
     ]
 
 
+def _set_bucket() -> dict[str, Any]:
+    return {
+        "sample": 0,
+        "items": Counter(),
+        "abilities": Counter(),
+        "natures": Counter(),
+        "moves": Counter(),
+        "megas": Counter(),
+        "spreads": Counter(),
+    }
+
+
 def _sets(
     events: list[Event], usage: list[dict[str, Any]], dex: Pokedex, settings: dict[str, Any]
 ) -> list[dict[str, Any]]:
+    """Common sets per species; ``day2`` repeats them for in-person teams that made day 2,
+    so coaching can stick to proven moves and items."""
     wanted = [row["species"] for row in usage[: int(settings["sets_top_species"])]]
     collected: dict[str, dict[str, Any]] = {
-        species: {
-            "sample": 0,
-            "in_person_sample": 0,
-            "items": Counter(),
-            "abilities": Counter(),
-            "natures": Counter(),
-            "moves": Counter(),
-            "megas": Counter(),
-            "spreads": Counter(),
-            "display": defaultdict(Counter),
-        }
+        species: {"all": _set_bucket(), "day2": _set_bucket(), "in_person_sample": 0, "display": defaultdict(Counter)}
         for species in wanted
     }
     for event in events:
         for team in event.teams:
+            proven = event.segment == IN_PERSON and bool(team.day2)
             for mon in team.mons:
-                bucket = collected.get(mon.species)
-                if bucket is None or not mon.has_set:
+                entry = collected.get(mon.species)
+                if entry is None or not mon.has_set:
                     continue
-                bucket["sample"] += 1
                 if event.segment == IN_PERSON:
-                    bucket["in_person_sample"] += 1
-                for label, value in (("items", mon.item), ("abilities", mon.ability), ("natures", mon.nature)):
+                    entry["in_person_sample"] += 1
+                for value in (mon.item, mon.ability, mon.nature, *mon.moves):
                     key = name_key(value)
                     if key:
-                        bucket[label][key] += 1
-                        bucket["display"][key][value] += 1
+                        entry["display"][key][value] += 1
                 moves = sorted({name_key(move) for move in mon.moves if name_key(move)})
-                for move_name in mon.moves:
-                    key = name_key(move_name)
-                    if key:
-                        bucket["display"][key][move_name] += 1
-                for key in moves:
-                    bucket["moves"][key] += 1
-                if mon.mega:
-                    bucket["megas"][mon.mega] += 1
-                bucket["spreads"][(name_key(mon.item), name_key(mon.ability), name_key(mon.nature), tuple(moves))] += 1
+                for bucket in (entry["all"], entry["day2"]) if proven else (entry["all"],):
+                    bucket["sample"] += 1
+                    for label, value in (("items", mon.item), ("abilities", mon.ability), ("natures", mon.nature)):
+                        key = name_key(value)
+                        if key:
+                            bucket[label][key] += 1
+                    for key in moves:
+                        bucket["moves"][key] += 1
+                    if mon.mega:
+                        bucket["megas"][mon.mega] += 1
+                    bucket["spreads"][(name_key(mon.item), name_key(mon.ability), name_key(mon.nature), tuple(moves))] += 1
 
     result = []
     for species in wanted:
-        bucket = collected[species]
-        sample = bucket["sample"]
-        if not sample:
+        entry = collected[species]
+        if not entry["all"]["sample"]:
             continue
-        display = {key: counter.most_common(1)[0][0] for key, counter in bucket["display"].items()}
+        display = {key: counter.most_common(1)[0][0] for key, counter in entry["display"].items()}
 
-        def top(counter: Counter[str], limit: int) -> list[dict[str, Any]]:
-            return [
-                {"name": display.get(key, key), "count": count, "share": _ratio(count, sample)}
-                for key, count in counter.most_common(limit)
-            ]
+        def summary(bucket: dict[str, Any], *, moves: int, spreads: int) -> dict[str, Any]:
+            sample = bucket["sample"]
 
-        result.append(
-            {
-                "species": species,
-                "name": dex.display(species),
+            def top(counter: Counter[str], limit: int) -> list[dict[str, Any]]:
+                return [
+                    {"name": display.get(key, key), "count": count, "share": _ratio(count, sample)}
+                    for key, count in counter.most_common(limit)
+                ]
+
+            return {
                 "sample": sample,
-                "in_person_sample": bucket["in_person_sample"],
                 "items": top(bucket["items"], 6),
                 "abilities": top(bucket["abilities"], 3),
                 "natures": top(bucket["natures"], 4),
-                "moves": top(bucket["moves"], 10),
+                "moves": top(bucket["moves"], moves),
                 "megas": [
                     {"mega": mega, "name": dex.display(mega), "count": count, "share": _ratio(count, sample)}
                     for mega, count in bucket["megas"].most_common()
@@ -320,12 +323,22 @@ def _sets(
                         "item": display.get(item, item),
                         "ability": display.get(ability, ability),
                         "nature": display.get(nature, nature),
-                        "moves": [display.get(move, move) for move in moves],
+                        "moves": [display.get(move, move) for move in moves_],
                         "count": count,
                         "share": _ratio(count, sample),
                     }
-                    for (item, ability, nature, moves), count in bucket["spreads"].most_common(5)
+                    for (item, ability, nature, moves_), count in bucket["spreads"].most_common(spreads)
                 ],
+            }
+
+        result.append(
+            {
+                "species": species,
+                "name": dex.display(species),
+                "in_person_sample": entry["in_person_sample"],
+                **summary(entry["all"], moves=10, spreads=5),
+                # Every move seen on day 2 teams (not only the top ones): "never on day 2" is the useful negative.
+                "day2": summary(entry["day2"], moves=40, spreads=3),
             }
         )
     return result

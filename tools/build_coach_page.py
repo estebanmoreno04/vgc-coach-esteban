@@ -17,7 +17,9 @@ the page URL is recorded in docs/fork/coach-page.md).
 from __future__ import annotations
 
 import argparse
+import base64
 import json
+import re
 import sys
 from pathlib import Path
 from typing import Any
@@ -25,6 +27,7 @@ from typing import Any
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 
 from vgc_data import query  # noqa: E402
+from vgc_data.config import load_config  # noqa: E402
 
 
 REPO_ROOT = Path(__file__).resolve().parents[1]
@@ -40,7 +43,21 @@ def _r(value: float | None, digits: int = 4) -> float | None:
     return None if value is None else round(value, digits)
 
 
-def compact(data: query.MetaData) -> dict[str, Any]:
+def load_sprites(cache_dir: Path, wanted: set[str]) -> dict[str, str]:
+    """Base64 PNGs from the tools/fetch_sprites.py cache, for the ids the page shows."""
+    manifest_path = cache_dir / "manifest.json"
+    if not manifest_path.exists():
+        return {}
+    manifest = json.loads(manifest_path.read_text(encoding="utf-8"))
+    sprites = {}
+    for sprite_id in sorted(wanted):
+        name = (manifest.get(sprite_id) or {}).get("file")
+        if name and (cache_dir / name).exists():
+            sprites[sprite_id] = base64.b64encode((cache_dir / name).read_bytes()).decode("ascii")
+    return sprites
+
+
+def compact(data: query.MetaData, sprite_dir: Path | None = None, sprite_credit: str | None = None) -> dict[str, Any]:
     regulation = data.regulation
     snapshot = data.snapshot
     if snapshot is None:
@@ -83,6 +100,17 @@ def compact(data: query.MetaData) -> dict[str, Any]:
                 [spread["item"], spread["ability"], spread["nature"], spread["moves"], _r(spread["share"], 3)]
                 for spread in row["top_sets"][:3]
             ],
+            "day2": {
+                "sample": row["day2"]["sample"],
+                "items": [[item["name"], _r(item["share"], 3)] for item in row["day2"]["items"]],
+                "abilities": [[item["name"], _r(item["share"], 3)] for item in row["day2"]["abilities"]],
+                "natures": [[item["name"], _r(item["share"], 3)] for item in row["day2"]["natures"]],
+                "moves": [[item["name"], _r(item["share"], 3)] for item in row["day2"]["moves"]],
+                "top_sets": [
+                    [spread["item"], spread["ability"], spread["nature"], spread["moves"], _r(spread["share"], 3)]
+                    for spread in row["day2"]["top_sets"]
+                ],
+            },
         }
         for row in snapshot["sets"]
     }
@@ -133,6 +161,10 @@ def compact(data: query.MetaData) -> dict[str, Any]:
         | {row[0] for event in by_event for row in event[8]} | {row[0] for event in by_event for row in event[9]}
     )
     dex = data.pokedex
+    shown = known | {
+        query_slug(mon[0]) for event in by_event for team in event[11] for mon in team[4]
+    } | {query_slug(mon[0]) for team in top_cut for mon in team[7]}
+    sprites = load_sprites(sprite_dir, shown) if sprite_dir else {}
     return {
         "regulation": {
             "id": regulation["regulation_id"],
@@ -176,8 +208,14 @@ def compact(data: query.MetaData) -> dict[str, Any]:
             "mega_base": {key: value for key, value in dex.mega_base.items()},
             "stones": dict(dex.stones),
         },
-        "credits": [source.get("credit") for source in snapshot["sources"] if source.get("credit")],
+        "credits": [source.get("credit") for source in snapshot["sources"] if source.get("credit")]
+        + ([sprite_credit] if sprites and sprite_credit else []),
+        "sprites": sprites,
     }
+
+
+def query_slug(name: str) -> str:
+    return re.sub(r"[^a-z0-9]+", "-", name.lower().replace("'", "").replace(".", "")).strip("-")
 
 
 def render(payload: dict[str, Any], template: str, core: str) -> str:
@@ -190,9 +228,11 @@ def render(payload: dict[str, Any], template: str, core: str) -> str:
     return template.replace(CORE_PLACEHOLDER, core, 1).replace(PLACEHOLDER, raw, 1)
 
 
-def build(data_dir: Path = query.DEFAULT_DATA_DIR, output: Path = DEFAULT_OUTPUT) -> Path:
+def build(data_dir: Path = query.DEFAULT_DATA_DIR, output: Path = DEFAULT_OUTPUT, *, sprites: bool = True) -> Path:
+    settings = load_config().get("coach_page", {}).get("sprites", {}) if sprites else {}
+    sprite_dir = REPO_ROOT / settings["cache_dir"] if settings.get("cache_dir") else None
     html = render(
-        compact(query.load(data_dir)),
+        compact(query.load(data_dir), sprite_dir, settings.get("credit")),
         TEMPLATE.read_text(encoding="utf-8"),
         CORE.read_text(encoding="utf-8"),
     )
