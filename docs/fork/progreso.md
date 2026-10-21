@@ -1,6 +1,6 @@
 # Progreso del fork — VGC Coach (Esteban)
 
-_Actualizado: 21 de octubre de 2026. Fork de [NoahJenkins/vgc-coach](https://github.com/NoahJenkins/vgc-coach) (Apache-2.0) en `E:\VGC\vgc-coach-esteban`._
+_Actualizado: 21 de octubre de 2026 (tras la Fase 5). Fork de [NoahJenkins/vgc-coach](https://github.com/NoahJenkins/vgc-coach) (Apache-2.0) en `E:\VGC\vgc-coach-esteban`._
 
 ## Objetivo
 
@@ -15,11 +15,11 @@ Un coach de Pokémon Champions VGC que **siempre trabaja con la regulación vige
 | 2 | Pipeline de meta (snapshot) | ✅ Hecha | `85379f3` |
 | 3 | Skills adaptadas + `vgc-refresh` + consultas | ✅ Hecha | `2d3bfe1` |
 | 4 | Calculadora de daño (`@smogon/calc`) | ✅ Hecha | `19736aa` (4a), `f430c36` (4b) |
-| 5 | GitHub Action semanal (lunes, hora de Madrid) | ⏸️ Pendiente | — |
+| 5 | GitHub Action semanal (lunes, hora de Madrid) | ✅ Hecha | `23edff3` |
 | 6 | Prueba de aceptación (cambio de regulación simulado + auditoría de tu equipo) | ⏸️ Pendiente | — |
 | 7 (extra) | Coach para amigos sin Claude Code | ⏸️ Pendiente | — |
 
-Todo está en **commits locales; no se ha hecho push** al fork.
+Todo está **subido a GitHub** (fork `estebanmoreno04/vgc-coach-esteban`, rama `main`). Los commits usan tu email privado de GitHub (`145461032+estebanmoreno04@users.noreply.github.com`), no tu Gmail.
 
 ## Cómo funciona ahora
 
@@ -99,6 +99,19 @@ Torneos ──► tools/build_snapshot.py ─────► data/current/snapsh
   4. Raichu: 27,7 %
   5. Garchomp: 26,7 %
 
+## Actualización automática (Fase 5)
+
+- **Cuándo:** cada lunes a las 06:00 UTC (07:00 en Madrid en invierno, 08:00 en verano), con la Action **Weekly Data Refresh**.
+- **A mano:** pestaña **Actions** del repo → "Weekly Data Refresh" → "Run workflow".
+- **Qué hace:**
+  1. detecta la regulación;
+  2. descarga los torneos nuevos;
+  3. reconstruye el snapshot, los plugins y los datos de la web;
+  4. valida;
+  5. si hay cambios, hace commit;
+  6. si ha cambiado la regulación, **abre un issue** para avisarte.
+- **En local, con un comando:** `python tools/run_weekly.py`.
+
 ## Comandos útiles
 
 En Windows, usa `python` o `py -3` en lugar de `python3`, y activa antes el venv (`.venv`).
@@ -115,15 +128,14 @@ python tools/damage_calc.py --request-file calc.json --pretty
 ## Cosas a tener en cuenta
 
 1. **Skills en Windows:** git ha descargado los enlaces de `.claude/skills/` como ficheros de texto. Para usar las skills en Claude Code, hay que usar el plugin generado (`plugins/vgc-coach-claude`). Lo dejaremos montado en la Fase 6.
-2. **Tests:** hay 13 tests de Noah que fallan solo en Windows (symlinks, procesos POSIX y temporales en otra unidad). En la CI de Linux deberían pasar. Todo lo nuevo pasa.
-3. **Identidad de git:** los commits usan `estebanmoreno04` y tu Gmail. Si haces push, ese email será público; se puede cambiar por la dirección noreply de GitHub antes de subir nada.
+2. **Tests:** hay 13 tests de Noah que fallan solo en Windows (symlinks, procesos POSIX y temporales en otra unidad). En la CI de GitHub (Linux) **todo pasa**: Plugin Package CI y Site CI en verde tras el push del 21-oct.
+3. **Identidad de git:** el repo está configurado con tu email privado de GitHub (noreply), así que tu Gmail no aparece en el historial público. Queda una rama local `backup-before-email-rewrite` con los commits antiguos; se puede borrar.
 4. **Emparejamientos:** son a nivel de team sheet (qué especies había en cada equipo, no cuáles se sacaron), así que se presentan como orientativos.
 5. **Stat points del rival:** no salen en las team sheets; en los cálculos contra rivales son una suposición.
 6. **Tamaño del repo:** crece ~2 MB por regulación por los eventos guardados. Al cambiar de regulación se archivan.
 
 ## Próximos pasos
 
-- **Fase 5:** GitHub Action con cron semanal (lunes por la mañana, hora de Madrid) y `workflow_dispatch`. Ejecutará el resolver, el pipeline y `validate.py`, hará commit si hay cambios y abrirá un issue si cambia la regulación. **Requiere hacer push al fork**: lo preguntaré antes.
 - **Fase 6:**
   - simulación del cambio de regulación con fixtures (a una "M-D" ficticia) sin tocar código;
   - prueba real con `vgc-team-audit` y tu equipo (Whimsicott, Kingambit, Charizard-Y, Farigiraf, Kommo-o, Basculegion);
