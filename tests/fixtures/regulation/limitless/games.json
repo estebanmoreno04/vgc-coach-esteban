@@ -1,0 +1,15 @@
+[
+  {"id": "PTCG", "name": "Pokémon TCG", "formats": {"STANDARD": "Standard"}},
+  {
+    "id": "VGC",
+    "name": "Pokémon VGC",
+    "formats": {
+      "M-D": "Regulation Set M-D",
+      "M-C": "Regulation Set M-C",
+      "M-B": "Regulation Set M-B",
+      "SVI": "Scarlet & Violet - Regulation I"
+    },
+    "platforms": {"SWITCH": "Nintendo Switch"},
+    "metagame": true
+  }
+]

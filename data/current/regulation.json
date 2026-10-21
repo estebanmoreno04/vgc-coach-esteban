@@ -1,0 +1,107 @@
+{
+  "schema_version": "regulation-v1",
+  "regulation_id": "M-C",
+  "label": "Regulation Set M-C",
+  "game": "pokemon-champions",
+  "active_window": {
+    "start": "2026-09-09T02:00:00Z",
+    "end": "2026-12-02T01:59:00Z",
+    "precision": "minute",
+    "source_id": "official_news"
+  },
+  "mechanics": [
+    "mega-evolution"
+  ],
+  "rules": {
+    "held_items": {
+      "duplicates_allowed": false
+    },
+    "timers_seconds": {
+      "match": 1200,
+      "player": 420,
+      "turn": 45,
+      "team_preview": 90
+    }
+  },
+  "official_url": "https://champions-news.pokemon-home.com/en/page/816.html",
+  "detected_at": "2026-10-21T15:46:26Z",
+  "checked_at": "2026-10-21T15:46:26Z",
+  "confidence": "high",
+  "stale": false,
+  "agreeing_sources": [
+    "limitless_api",
+    "official_news",
+    "pikalytics",
+    "vgchistory",
+    "victory_road"
+  ],
+  "previous_regulation_id": null,
+  "next_regulation": null,
+  "sources": [
+    {
+      "source_id": "official_news",
+      "display_name": "Pokémon Champions in-game news (official)",
+      "kind": "official",
+      "url": "https://champions-news.pokemon-home.com/en/json/list.json",
+      "status": "ok",
+      "error": null,
+      "fetched_at": "2026-10-21T15:46:26Z",
+      "current_vote": "M-C",
+      "upcoming": [],
+      "notes": []
+    },
+    {
+      "source_id": "vgchistory",
+      "display_name": "VGC History",
+      "kind": "community",
+      "url": "https://vgchistory.com/data.js",
+      "status": "ok",
+      "error": null,
+      "fetched_at": "2026-10-21T15:46:26Z",
+      "current_vote": "M-C",
+      "upcoming": [],
+      "notes": []
+    },
+    {
+      "source_id": "limitless_api",
+      "display_name": "Limitless API",
+      "kind": "community",
+      "url": "https://play.limitlesstcg.com/api/",
+      "status": "ok",
+      "error": null,
+      "fetched_at": "2026-10-21T15:46:26Z",
+      "current_vote": "M-C",
+      "upcoming": [],
+      "notes": [
+        "Large recent tournaments by format: M-C x25"
+      ]
+    },
+    {
+      "source_id": "victory_road",
+      "display_name": "Victory Road",
+      "kind": "editorial",
+      "url": "https://victoryroad.pro/champions-regulations/",
+      "status": "ok",
+      "error": null,
+      "fetched_at": "2026-10-21T15:46:26Z",
+      "current_vote": "M-C",
+      "upcoming": [],
+      "notes": []
+    },
+    {
+      "source_id": "pikalytics",
+      "display_name": "Pikalytics",
+      "kind": "supporting",
+      "url": "https://www.pikalytics.com/ai/pokedex",
+      "status": "ok",
+      "error": null,
+      "fetched_at": "2026-10-21T15:46:26Z",
+      "current_vote": "M-C",
+      "upcoming": [],
+      "notes": [
+        "Default format code: gen9championsvgc2026regmc"
+      ]
+    }
+  ],
+  "warnings": []
+}

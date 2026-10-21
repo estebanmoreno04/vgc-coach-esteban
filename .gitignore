@@ -12,3 +12,5 @@ coverage/
 **/.plugin-eval/
 **/.vercel/
 .artifacts/
+# Modified by estebanmoreno04 (fork of NoahJenkins/vgc-coach): HTTP cache of the data pipeline.
+data/cache/

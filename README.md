@@ -1,5 +1,7 @@
 # VGC Coach
 
+> **Fork notice.** This repository is a fork of [NoahJenkins/vgc-coach](https://github.com/NoahJenkins/vgc-coach), maintained by [estebanmoreno04](https://github.com/estebanmoreno04) under the same [Apache-2.0](./LICENSE) license. The fork adds automatic detection of the active Pokémon Champions regulation and a local meta data pipeline focused on in-person tournaments. Files changed from the original are listed in [FORK_CHANGES.md](./FORK_CHANGES.md) and carry a modification notice. Tournament data credits: [VGC History](https://vgchistory.com), [Limitless](https://limitlesstcg.com).
+
 VGC Coach is an open-source AI coaching assistant for Pokemon VGC (Video Game Championships).
 
 It gives you a set of coaching tools — called *skills* — that run inside AI assistants like Codex, Claude Code, or OpenCode. Ask them in plain English to help with team building, meta research, lead planning, replay review, and other prep work.

@@ -1,0 +1,91 @@
+# Configuration for the regulation resolver and meta pipeline.
+#
+# Rule: no regulation identifier may appear in this file. The active
+# regulation is discovered at runtime by tools/resolve_regulation.py.
+
+game:
+  slug: pokemon-champions
+  names:
+    - Pokémon Champions
+    - Pokemon Champions
+
+http:
+  user_agent: "vgc-coach-esteban/0.1 (+https://github.com/estebanmoreno04/vgc-coach-esteban)"
+  timeout_seconds: 30
+  min_interval_seconds: 2.0
+  max_retries: 2
+  cache_dir: data/cache/http
+
+paths:
+  current_dir: data/current
+  archive_dir: data/archive
+  regulation_schema: data/schemas/regulation-v1.schema.json
+
+resolver:
+  # Window used to read which format recent tournaments are played in.
+  recent_window_days: 14
+  # Smallest tournament that counts as a regulation signal.
+  min_players: 64
+  # Smallest number of qualifying tournaments for a vote.
+  min_tournaments: 3
+
+sources:
+  official_news:
+    enabled: true
+    display_name: Pokémon Champions in-game news (official)
+    base_url: https://champions-news.pokemon-home.com/en/
+    list_path: json/list.json
+    category_label: Regulations
+    # Read at most once a week, as agreed for official Pokémon sites.
+    cache_ttl_hours: 168
+    max_articles: 3
+  vgchistory:
+    enabled: true
+    display_name: VGC History
+    base_url: https://vgchistory.com/
+    data_path: data.js
+    cache_ttl_hours: 24
+    credit: "Data from VGC History (https://vgchistory.com)"
+  limitless_api:
+    enabled: true
+    display_name: Limitless API
+    base_url: https://play.limitlesstcg.com/api/
+    game_id: VGC
+    page_size: 100
+    max_pages: 5
+    cache_ttl_hours: 6
+  victory_road:
+    enabled: true
+    display_name: Victory Road
+    url: https://victoryroad.pro/champions-regulations/
+    cache_ttl_hours: 24
+  pikalytics:
+    enabled: true
+    display_name: Pikalytics
+    url: https://www.pikalytics.com/ai/pokedex
+    cache_ttl_hours: 24
+
+# Sources that may only be consulted by a human in a browser. The pipeline
+# never requests them.
+manual_only:
+  - id: pokemon-com
+    url: https://www.pokemon.com/
+    reason: Blocks automated clients (Incapsula); Pokémon terms of use forbid bots.
+  - id: rk9
+    url: https://rk9.gg/
+    reason: Terms of service forbid automated data extraction; robots.txt disallows team lists.
+  - id: pokedata-ovh
+    url: https://pokedata.ovh/
+    reason: Built by scraping RK9 pairings; no documented API.
+  - id: pokemon-zone
+    url: https://www.pokemon-zone.com/champions/
+    reason: Returns 403 to automated clients; robots.txt disallows /api/.
+  - id: champions-lab
+    url: https://www.championslab.xyz/
+    reason: Terms of service forbid automated scraping at scale.
+  - id: championsmeta
+    url: https://championsmeta.io/
+    reason: Deployment paused; responds 402 to automated clients.
+  - id: pokebase
+    url: https://pokebase.app/pokemon-champions
+    reason: No terms of use published; VGC History covers the same in-person data with explicit reuse permission.

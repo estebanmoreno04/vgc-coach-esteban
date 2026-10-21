@@ -1,0 +1,9 @@
+{
+  "hash": "fixture",
+  "data": [
+    {"id": "848", "reg": 2, "title": "Take On the 2027 Global Challenge II!", "infoKind": 13, "kindTxt": "Online Competition", "stAt": 1791352800, "endAt": "1793757599", "link": "page/848.html", "pubAt": 1791352815},
+    {"id": "816", "reg": 2, "title": "Regulation Set M-C (Updated on September 9)", "infoKind": 12, "kindTxt": "Regulations", "stAt": 1788127200, "endAt": "1796176799", "link": "page/816.html", "pubAt": 1788934215},
+    {"id": "776", "reg": 2, "title": "Regulation Set M-B (Updated on August 5)", "infoKind": 12, "kindTxt": "Regulations", "stAt": 1781676000, "endAt": "1788919199", "link": "page/776.html", "pubAt": 1785909915},
+    {"id": "751", "reg": 2, "title": "Regulation Set M-A", "infoKind": 12, "kindTxt": "Regulations", "stAt": 1775613600, "endAt": "1781661599", "link": "page/751.html", "pubAt": 1775613615}
+  ]
+}

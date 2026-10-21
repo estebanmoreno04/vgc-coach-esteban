@@ -32,8 +32,10 @@ jobs:
         with:
           python-version: "3.12"
 
+      # Modified by estebanmoreno04 (fork of NoahJenkins/vgc-coach): also install
+      # the data pipeline dependencies used by the regulation resolver tests.
       - name: Install validation dependencies
-        run: python3 -m pip install -r tools/requirements-autoresearch.txt
+        run: python3 -m pip install -r tools/requirements-autoresearch.txt -r tools/requirements-data.txt
 
       - name: Run core validation
         run: python3 tools/validate.py --scope core

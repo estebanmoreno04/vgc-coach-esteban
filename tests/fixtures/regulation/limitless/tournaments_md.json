@@ -1,0 +1,7 @@
+[
+  {"game": "VGC", "name": "Fixture New Format Open", "date": "2026-12-09T18:00:00.000Z", "format": "M-D", "id": "g04", "players": 150},
+  {"game": "VGC", "name": "Fixture Weekly #17", "date": "2026-12-08T18:00:00.000Z", "format": "M-D", "id": "g03", "players": 110},
+  {"game": "VGC", "name": "Fixture Arena #9", "date": "2026-12-06T18:00:00.000Z", "format": "M-D", "id": "g02", "players": 90},
+  {"game": "VGC", "name": "Fixture Late Old-Format Cup", "date": "2026-12-01T18:00:00.000Z", "format": "M-C", "id": "g01", "players": 80},
+  {"game": "VGC", "name": "Fixture Old Cup", "date": "2026-11-10T18:00:00.000Z", "format": "M-C", "id": "g00", "players": 200}
+]

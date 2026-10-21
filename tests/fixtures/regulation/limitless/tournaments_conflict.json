@@ -1,0 +1,6 @@
+[
+  {"game": "VGC", "name": "Fixture Preview Open", "date": "2026-11-19T18:00:00.000Z", "format": "M-D", "id": "h03", "players": 140},
+  {"game": "VGC", "name": "Fixture Preview Weekly", "date": "2026-11-17T18:00:00.000Z", "format": "M-D", "id": "h02", "players": 100},
+  {"game": "VGC", "name": "Fixture Preview Arena", "date": "2026-11-14T18:00:00.000Z", "format": "M-D", "id": "h01", "players": 75},
+  {"game": "VGC", "name": "Fixture Regular Weekly", "date": "2026-11-12T18:00:00.000Z", "format": "M-C", "id": "h00", "players": 90}
+]
