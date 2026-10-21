@@ -98,7 +98,7 @@ This repo does not have a root application package to install for contributor/so
 
 - `git` to clone the repository
 - a supported AI tool such as Codex, Claude Code, or OpenCode
-- `python3` if you want to use the optional exact-calc helper at `tools/browser_damage_calc.py`
+- `python3` and Node.js for the data pipeline and the exact calc helper at `tools/damage_calc.py`
 
 ### Install Core Dependencies
 
@@ -129,7 +129,7 @@ For other Linux distributions, install the equivalent packages from your distro'
 
 ### Exact Calc Helper
 
-`vgc-calcs-assistant` can use `python3 tools/browser_damage_calc.py` for exact damage, KO, and survival checks. This requires a local `agent-browser` install (not included in this repo).
+`vgc-calcs-assistant` uses `python3 tools/damage_calc.py` for exact damage, KO, survival and speed checks with `@smogon/calc` (Champions mechanics). Run `npm ci` in `tools/calc` once. The upstream browser helper (`tools/browser_damage_calc.py` with `agent-browser`) remains the fallback.
 
 `vgc-team-builder` can also use this helper indirectly in its opt-in `battle-ready` mode, where the builder locks one six-mon shell, targets live common cores and recent top teams, and hands narrow benchmark questions to `vgc-calcs-assistant`.
 
@@ -179,7 +179,7 @@ Support skills reinforce that core layer:
 
 - `vgc-format-verifier`: verify legality, regulation, and current-format truth before coaching
 - `vgc-source-verifier`: audit whether a meta, matchup, or rules claim is actually sourced cleanly
-- `vgc-calcs-assistant`: damage, survival, speed, and benchmark framing; exact damage/KO/survival calculations are available when complete inputs and the local browser helper are available; speed comparisons are stated as assumptions unless independently verified; also supports narrow team-builder benchmark handoffs
+- `vgc-calcs-assistant`: damage, survival, speed, and benchmark framing; exact damage, KO, survival and speed calculations with `@smogon/calc` when inputs are complete; also supports narrow team-builder benchmark handoffs
 - `vgc-opponent-scout`: turn public info into likely shells, techs, and prep notes
 - `vgc-practice-journal`: compress testing notes into next-session changes and follow-up questions
 
@@ -204,7 +204,7 @@ The repo already includes:
 - One repository validation entrypoint at `python3 tools/validate.py`
 - Local eval and autoresearch tooling under `tools/eval_skill.py` and `tools/autoresearch.py`
 - Eval artifacts include research-trace metadata and explicit verification state so manual and future automated runs can be judged for signal, not just score
-- Exact damage/KO/survival calc support for `vgc-calcs-assistant` via `python3 tools/browser_damage_calc.py`
+- Exact damage, KO, survival and speed calcs for `vgc-calcs-assistant` via `python3 tools/damage_calc.py`
 - A versioned, runtime-neutral `battle-state-v1` JSON contract and bounded local normalizer at `python3 tools/ingest_battle_state.py`
 - Opt-in `battle-ready` team building that can use live common cores, recent top teams, and calc-backed benchmark notes
 

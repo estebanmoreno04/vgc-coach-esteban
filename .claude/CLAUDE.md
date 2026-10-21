@@ -20,5 +20,5 @@ Use [docs/runtime/claude-code.md](../docs/runtime/claude-code.md) for Claude-spe
 
 ## Tooling Boundary
 
-- `vgc-calcs-assistant` exact-browser support depends on local `agent-browser` plus `python3 tools/browser_damage_calc.py`.
+- `vgc-calcs-assistant` exact support uses `python3 tools/damage_calc.py` (`@smogon/calc` through Node; run `npm ci` in `tools/calc` once), with the `agent-browser` + `tools/browser_damage_calc.py` path as fallback. (Modified in the estebanmoreno04 fork.)
 - If that local tool path or permissions are unavailable in Claude, say the exact path is blocked or unverified and fall back to assumption-framed guidance instead of inventing exact results.

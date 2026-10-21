@@ -190,11 +190,11 @@ def collect_trust_facts(
             ),
         },
         "calculation_boundary": {
-            "exact": ["damage", "KO", "survival"],
-            "assumption_framed": ["speed"],
+            "exact": ["damage", "KO", "survival", "speed"],
+            "assumption_framed": ["unrevealed opposing spreads"],
             "scope_note": (
-                "Exact damage-family results require complete inputs and the "
-                "local browser helper."
+                "Exact results require complete inputs and the local @smogon/calc "
+                "helper (Pokemon Champions mechanics)."
             ),
         },
     }

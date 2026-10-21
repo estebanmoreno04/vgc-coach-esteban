@@ -66,11 +66,12 @@ export const trustData = {
     "exact": [
       "damage",
       "KO",
-      "survival"
-    ],
-    "assumption_framed": [
+      "survival",
       "speed"
     ],
-    "scope_note": "Exact damage-family results require complete inputs and the local browser helper."
+    "assumption_framed": [
+      "unrevealed opposing spreads"
+    ],
+    "scope_note": "Exact results require complete inputs and the local @smogon/calc helper (Pokemon Champions mechanics)."
   }
 } as const;

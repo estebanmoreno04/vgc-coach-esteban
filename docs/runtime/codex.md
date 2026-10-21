@@ -23,8 +23,8 @@ Codex is the primary runtime for this repo.
 - `.agents/skills/` should not become a second editable skill tree; keep it as wrappers or symlinks only.
 - Keep Codex-specific behavior in this file, not inside shared skill logic.
 - In `battle-ready` mode, `vgc-team-builder` should use live common cores and recent top teams as benchmark inputs, then hand narrow spread questions to `vgc-calcs-assistant`.
-- `vgc-calcs-assistant` v1 exact support depends on local `agent-browser` plus `python3 tools/browser_damage_calc.py`.
-- The current exact backend is Pikalytics for damage, KO, and survival only; speed checks still stay in assumption-framed guidance.
+- `vgc-calcs-assistant` exact support uses `python3 tools/damage_calc.py` (`@smogon/calc` with Champions mechanics through Node), with `agent-browser` plus `python3 tools/browser_damage_calc.py` as fallback. (Modified in the estebanmoreno04 fork.)
+- The primary backend covers damage, KO, survival and speed; the Pikalytics fallback covers damage, KO and survival only.
 - `export-ready` output is still blocked when named items or moves are not verified by the build legality ledger.
 
 ## Install

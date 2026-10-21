@@ -72,7 +72,7 @@ Bad handoff examples:
 - KO
 - survival
 
-Speed remains assumption-framed in v1.
+Speed is exact through `tools/damage_calc.py` (`calc_type: speed`) when both spreads are stated; unrevealed opposing spreads stay assumptions. <!-- Modified in the estebanmoreno04 fork. -->
 
 If exact browser eligibility fails or exact verification returns `fallback` or `blocked`:
 

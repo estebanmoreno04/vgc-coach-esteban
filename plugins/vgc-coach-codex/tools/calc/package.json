@@ -1,0 +1,11 @@
+{
+  "name": "vgc-coach-calc",
+  "private": true,
+  "version": "0.1.0",
+  "description": "Damage calc bridge for vgc-coach (estebanmoreno04 fork): runs @smogon/calc for Pokemon Champions requests.",
+  "type": "module",
+  "license": "Apache-2.0",
+  "dependencies": {
+    "@smogon/calc": "0.12.0"
+  }
+}

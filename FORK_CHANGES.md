@@ -14,7 +14,9 @@ This repository is a fork of [NoahJenkins/vgc-coach](https://github.com/NoahJenk
 | `docs/skills/shared/references/live-source-registry.yaml`, `live-source-map.md` | No pinned regulation; approved live-check sources. |
 | `docs/skills/shared/references/verification-packet.md`, `battle-state-v1.md` | `data/current` replaces hand-written snapshots. |
 | `docs/skills/*/examples/*.md`, `docs/evals/*.md` | No regulation ids in examples and checklists. |
-| `docs/runtime/claude-code.md` | Current-data and Windows notes. |
+| `docs/runtime/claude-code.md`, `docs/runtime/codex.md`, `docs/runtime/opencode.md` | Current-data and Windows notes; `@smogon/calc` exact calcs including speed. |
+| `AGENTS.md`, `.claude/CLAUDE.md` | Exact calc boundary now includes speed via `tools/damage_calc.py`. |
+| `skills/vgc-calcs-assistant/SKILL.md`, `docs/skills/vgc-calcs-assistant/references/browser-exactness.md`, `docs/skills/shared/references/team-builder-calcs-handoff.md` | `@smogon/calc` as primary exact backend (damage, KO, survival, speed), browser calc as fallback. |
 | `tools/check_format_freshness.py`, `tools/render_source_registry_docs.py`, `tools/generate_site_trust_data.py`, `tools/build_plugins.py`, `tools/plugin_manifest.json` | Validate and package `data/current` instead of hand-written regulation artifacts; package the query tool and the new skill. |
 | `tests/test_format_freshness.py`, `tests/test_source_registry.py`, `tests/test_generate_site_trust_data.py` | Updated for the auto-detected regulation. |
 | `site/src/generated/trustData.ts`, `RELEASE_NOTES.md` | Regenerated. |

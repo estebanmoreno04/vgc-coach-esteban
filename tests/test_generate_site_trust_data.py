@@ -139,8 +139,8 @@ class GenerateSiteTrustDataTests(unittest.TestCase):
         self.assertIn("data/current/regulation.json", facts["generated_from"])
         self.assertEqual(len(facts["source_stack"]["required_sources"]), 3)
         self.assertEqual(facts["source_stack"]["status"], "configured")
-        self.assertEqual(facts["calculation_boundary"]["exact"], ["damage", "KO", "survival"])
-        self.assertEqual(facts["calculation_boundary"]["assumption_framed"], ["speed"])
+        self.assertEqual(facts["calculation_boundary"]["exact"], ["damage", "KO", "survival", "speed"])
+        self.assertEqual(facts["calculation_boundary"]["assumption_framed"], ["unrevealed opposing spreads"])
 
     def test_freshness_state_is_fresh_through_exact_max_age_boundary(self):
         boundary = datetime(2026, 8, 6, 12, 34, 56, tzinfo=timezone.utc) + timedelta(days=7)

@@ -7,6 +7,7 @@
 - Fork of NoahJenkins/vgc-coach: the active regulation is detected automatically from the official in-game news and community sources, and the skills read it from data/current instead of hand-written regulation notes.
 - New meta pipeline with in-person tournament data first (whole-field usage, win rates, day 2 conversion, sets, cores, team-sheet matchups, top cut teams) and online tournaments as a complement, queried through tools/meta_query.py.
 - New vgc-refresh skill that updates the regulation and tournament data and reports new events and usage movers.
+- Exact damage, KO, survival and speed calcs with @smogon/calc (Pokemon Champions mechanics) through tools/damage_calc.py; the Pikalytics browser calc remains the fallback.
 - Earlier upstream work: dated official-source snapshots, fail-closed freshness checks, and an external-content boundary that treats fetched pages as evidence rather than instructions.
 - Integrated the hardened meta-research evidence and evaluation gates plus battle-ready team-builder playbooks from the two retained feature lines.
 - Hardened autoresearch authorization and workflow privilege boundaries, plugin packaging paths and symlinks, and calculator subprocess time and output limits.

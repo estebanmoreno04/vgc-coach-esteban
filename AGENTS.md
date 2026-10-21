@@ -86,7 +86,7 @@ Do not fork shared skill logic into runtime-specific copies unless a real runtim
 - Validate skill changes against the relevant fixed eval cases under `data/fixtures/evals/`.
 - Use the matching rubric under `data/rubrics/` when judging whether the behavior actually improved.
 - If a change affects runtime support, also verify the relevant discovery layer and runtime docs still match reality.
-- If exact-browser calc behavior is involved, preserve the current limitation honestly: v1 exact support is only for damage, KO, and survival; speed guidance remains assumption-framed unless a verified exact backend exists.
+- If exact calc behavior is involved, keep it honest: `tools/damage_calc.py` (`@smogon/calc` with Champions mechanics; fork of NoahJenkins/vgc-coach) is exact for damage, KO, survival and speed when its run returns `status=exact`; otherwise fall back to assumption-framed guidance.
 
 ## Current Priority
 
