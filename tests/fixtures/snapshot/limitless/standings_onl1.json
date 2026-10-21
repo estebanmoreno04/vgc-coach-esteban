@@ -1,0 +1,37 @@
+[
+  {
+    "name": "OnlineOne", "player": "onlineone", "country": "US", "placing": 1,
+    "record": {"wins": 5, "losses": 1, "ties": 0},
+    "decklist": [
+      {"id": "raichu", "name": "Raichu", "item": "Raichunite Y", "ability": "Lightning Rod", "attacks": ["Thunderbolt", "Psychic", "Fake Out", "Protect"], "nature": "Timid", "tera": null},
+      {"id": "incineroar", "name": "Incineroar", "item": "Sitrus Berry", "ability": "Intimidate", "attacks": ["Fake Out", "Parting Shot", "Flare Blitz", "Knock Off"], "nature": "Careful", "tera": null},
+      {"id": "rillaboom", "name": "Rillaboom", "item": "Miracle Seed", "ability": "Grassy Surge", "attacks": ["Fake Out", "Grassy Glide", "Wood Hammer", "U-turn"], "nature": "Adamant", "tera": null}
+    ],
+    "drop": null
+  },
+  {
+    "name": "OnlineTwo", "player": "onlinetwo", "country": "BR", "placing": 2,
+    "record": {"wins": 4, "losses": 2, "ties": 0},
+    "decklist": [
+      {"id": "floette-eternal", "name": "Floette", "item": "Floettite", "ability": "Flower Veil", "attacks": ["Light of Ruin", "Moonblast", "Calm Mind", "Protect"], "nature": "Modest", "tera": null},
+      {"id": "incineroar", "name": "Incineroar", "item": "Safety Goggles", "ability": "Intimidate", "attacks": ["Fake Out", "Parting Shot", "Flare Blitz", "Knock Off"], "nature": "Adamant", "tera": null},
+      {"id": "dusclops", "name": "Dusclops", "item": "Eviolite", "ability": "Frisk", "attacks": ["Trick Room", "Night Shade", "Helping Hand", "Protect"], "nature": "Relaxed", "tera": null}
+    ],
+    "drop": null
+  },
+  {
+    "name": "OnlineThree", "player": "onlinethree", "country": "MX", "placing": 3,
+    "record": {"wins": 2, "losses": 4, "ties": 0},
+    "decklist": [
+      {"id": "charizard", "name": "Charizard", "item": "Charizardite Y", "ability": "Blaze", "attacks": ["Heat Wave", "Weather Ball", "Solar Beam", "Protect"], "nature": "Modest", "tera": null},
+      {"id": "kommo-o", "name": "Kommo-o", "item": "Life Orb", "ability": "Soundproof", "attacks": ["Clanging Scales", "Aura Sphere", "Draco Meteor", "Protect"], "nature": "Modest", "tera": null}
+    ],
+    "drop": null
+  },
+  {
+    "name": "NoList", "player": "nolist", "country": "US", "placing": 4,
+    "record": {"wins": 1, "losses": 5, "ties": 0},
+    "decklist": null,
+    "drop": 6
+  }
+]

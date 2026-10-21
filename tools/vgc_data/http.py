@@ -50,6 +50,7 @@ class PoliteClient:
     timeout_seconds: float = 30.0
     min_interval_seconds: float = 2.0
     max_retries: int = 2
+    host_intervals: dict[str, float] = field(default_factory=dict)
     sleep: Callable[[float], None] = time.sleep
     clock: Callable[[], float] = time.monotonic
     _last_request: dict[str, float] = field(default_factory=dict)
@@ -64,6 +65,10 @@ class PoliteClient:
             timeout_seconds=float(http.get("timeout_seconds", 30)),
             min_interval_seconds=float(http.get("min_interval_seconds", 2)),
             max_retries=int(http.get("max_retries", 2)),
+            host_intervals={
+                str(host): float(seconds)
+                for host, seconds in (http.get("host_min_interval_seconds") or {}).items()
+            },
         )
 
     # -- public -----------------------------------------------------------
@@ -96,7 +101,7 @@ class PoliteClient:
         parser = urllib.robotparser.RobotFileParser(f"{origin}/robots.txt")
         try:
             body = self._fetch(f"{origin}/robots.txt", retries=0)
-        except _HTTPStatus as exc:
+        except HTTPStatusError as exc:
             if 400 <= exc.status < 500:
                 parser.allow_all = True
             else:
@@ -127,7 +132,7 @@ class PoliteClient:
                     charset = response.headers.get_content_charset() or "utf-8"
                     return raw.decode(charset, errors="replace")
             except urllib.error.HTTPError as exc:
-                last_error = _HTTPStatus(url, exc.code)
+                last_error = HTTPStatusError(url, exc.code)
                 if exc.code == 429 or exc.code >= 500:
                     if attempt + 1 < attempts:
                         self.sleep(_retry_after(exc, attempt))
@@ -145,7 +150,8 @@ class PoliteClient:
         host = urlsplit(url).netloc
         previous = self._last_request.get(host)
         if previous is not None:
-            wait = self.min_interval_seconds - (self.clock() - previous)
+            interval = self.host_intervals.get(host, self.min_interval_seconds)
+            wait = interval - (self.clock() - previous)
             if wait > 0:
                 self.sleep(wait)
         self._last_request[host] = self.clock()
@@ -184,7 +190,7 @@ class PoliteClient:
         path.write_text(json.dumps(entry), encoding="utf-8")
 
 
-class _HTTPStatus(SourceError):
+class HTTPStatusError(SourceError):
     def __init__(self, url: str, status: int) -> None:
         super().__init__(f"{url}: HTTP {status}")
         self.status = status

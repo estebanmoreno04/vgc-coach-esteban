@@ -1,0 +1,34 @@
+{
+  "1": [
+    {"s": "charizard-mega-y", "item": "Charizardite Y", "ab": "Blaze", "tera": null, "nature": "Modest", "moves": ["Heat Wave", "Weather Ball", "Solar Beam", "Protect"]},
+    {"s": "incineroar", "item": "Sitrus Berry", "ab": "Intimidate", "tera": null, "nature": "Careful", "moves": ["Fake Out", "Parting Shot", "Flare Blitz", "Throat Chop"]},
+    {"s": "garchomp", "item": "Life Orb", "ab": "Rough Skin", "tera": null, "nature": "Jolly", "moves": ["Earthquake", "Dragon Claw", "Rock Slide", "Protect"]},
+    {"s": "whimsicott", "item": "Focus Sash", "ab": "Prankster", "tera": null, "nature": "Timid", "moves": ["Tailwind", "Moonblast", "Encore", "Protect"]},
+    {"s": "kingambit", "item": "Chople Berry", "ab": "Defiant", "tera": null, "nature": "Adamant", "moves": ["Kowtow Cleave", "Sucker Punch", "Iron Head", "Protect"]},
+    {"s": "basculegion-f", "item": "Focus Sash", "ab": "Swift Swim", "tera": null, "nature": "Modest", "moves": ["Muddy Water", "Shadow Ball", "Ice Beam", "Protect"]}
+  ],
+  "2": [
+    {"s": "raichu-mega-y", "item": "Raichunite Y", "ab": "Lightning Rod", "tera": null, "nature": "Timid", "moves": ["Thunderbolt", "Psychic", "Fake Out", "Protect"]},
+    {"s": "incineroar", "item": "Sitrus Berry", "ab": "Intimidate", "tera": null, "nature": "Careful", "moves": ["Fake Out", "Parting Shot", "Flare Blitz", "Knock Off"]},
+    {"s": "rillaboom", "item": "Miracle Seed", "ab": "Grassy Surge", "tera": null, "nature": "Adamant", "moves": ["Fake Out", "Grassy Glide", "Wood Hammer", "U-turn"]},
+    {"s": "garchomp", "item": "Choice Scarf", "ab": "Rough Skin", "tera": null, "nature": "Jolly", "moves": ["Earthquake", "Dragon Claw", "Rock Slide", "Stomping Tantrum"]},
+    {"s": "sneasler", "item": "White Herb", "ab": "Unburden", "tera": null, "nature": "Jolly", "moves": ["Close Combat", "Dire Claw", "Fake Out", "Protect"]},
+    {"s": "floette-mega", "item": "Floettite", "ab": "Flower Veil", "tera": null, "nature": "Modest", "moves": ["Light of Ruin", "Moonblast", "Calm Mind", "Protect"]}
+  ],
+  "3": [
+    {"s": "rillaboom", "item": "Miracle Seed", "ab": "Grassy Surge", "tera": null, "nature": "Adamant", "moves": ["Fake Out", "Grassy Glide", "Wood Hammer", "High Horsepower"]},
+    {"s": "incineroar", "item": "Safety Goggles", "ab": "Intimidate", "tera": null, "nature": "Adamant", "moves": ["Fake Out", "Parting Shot", "Flare Blitz", "Knock Off"]},
+    {"s": "gholdengo", "item": "Life Orb", "ab": "Good as Gold", "tera": null, "nature": "Modest", "moves": ["Make It Rain", "Shadow Ball", "Nasty Plot", "Protect"]},
+    {"s": "sneasler", "item": "Focus Sash", "ab": "Unburden", "tera": null, "nature": "Jolly", "moves": ["Close Combat", "Dire Claw", "Fake Out", "Protect"]},
+    {"s": "garchomp", "item": "Life Orb", "ab": "Rough Skin", "tera": null, "nature": "Jolly", "moves": ["Earthquake", "Dragon Claw", "Rock Slide", "Protect"]},
+    {"s": "dragonite", "item": "Choice Band", "ab": "Inner Focus", "tera": null, "nature": "Adamant", "moves": ["Extreme Speed", "Outrage", "Fire Punch", "Iron Head"]}
+  ],
+  "4": [
+    {"s": "pelipper", "item": "Damp Rock", "ab": "Drizzle", "tera": null, "nature": "Bold", "moves": ["Weather Ball", "Hurricane", "Wide Guard", "Tailwind"]},
+    {"s": "basculegion-f", "item": "Mystic Water", "ab": "Swift Swim", "tera": null, "nature": "Modest", "moves": ["Muddy Water", "Shadow Ball", "Ice Beam", "Protect"]},
+    {"s": "archaludon", "item": "Leftovers", "ab": "Stamina", "tera": null, "nature": "Calm", "moves": ["Electro Shot", "Dragon Pulse", "Snarl", "Protect"]},
+    {"s": "golisopod-mega", "item": "Golisopite", "ab": "Emergency Exit", "tera": null, "nature": "Adamant", "moves": ["Leech Life", "Iron Head", "Sucker Punch", "Protect"]},
+    {"s": "raichu-mega-x", "item": "Raichunite X", "ab": "Lightning Rod", "tera": null, "nature": "Jolly", "moves": ["Volt Tackle", "Volt Switch", "Feint", "Fake Out"]},
+    {"s": "sneasler", "item": "Electric Seed", "ab": "Unburden", "tera": null, "nature": "Adamant", "moves": ["Poison Jab", "Close Combat", "Swords Dance", "Protect"]}
+  ]
+}

@@ -16,7 +16,7 @@ def load_config(path: Path = DEFAULT_CONFIG_PATH) -> dict[str, Any]:
     payload = yaml.safe_load(path.read_text(encoding="utf-8"))
     if not isinstance(payload, dict):
         raise ValueError(f"{path}: configuration must be a mapping")
-    for section in ("game", "http", "paths", "resolver", "sources"):
+    for section in ("game", "http", "paths", "resolver", "sources", "pipeline"):
         if not isinstance(payload.get(section), dict):
             raise ValueError(f"{path}: missing '{section}' section")
     return payload

@@ -1,0 +1,19 @@
+{
+  "tournament": "regional-alpha-2027",
+  "columns": ["round", "player_a_id", "player_a", "player_b_id", "player_b", "winner"],
+  "matches": [
+    [1, "alice", "Alice Example", "hank", "Hank Example", "a"],
+    [1, "bob", "Bob Example", "gina", "Gina Example", "a"],
+    [1, "carl", "Carl Example", "fred", "Fred Example", "a"],
+    [1, "dave", "Dave Example", "eve", "Eve Example", "b"],
+    [2, "alice", "Alice Example", "carl", "Carl Example", "a"],
+    [2, "bob", "Bob Example", "eve", "Eve Example", "a"],
+    [2, "dave", "Dave Example", "fred", "Fred Example", "a"],
+    [2, "gina", "Gina Example", "hank", "Hank Example", "b"],
+    [3, "alice", "Alice Example", "eve", "Eve Example", "a"],
+    [3, "bob", "Bob Example", "carl", "Carl Example", "a"],
+    [3, "dave", "Dave Example", "hank", "Hank Example", "a"],
+    [3, "fred", "Fred Example", "gina", "Gina Example", "a"],
+    [4, "alice", "Alice Example", "bob", "Bob Example", "b"]
+  ]
+}

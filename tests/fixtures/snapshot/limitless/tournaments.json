@@ -1,0 +1,6 @@
+[
+  {"game": "VGC", "name": "Fixture Online Open", "date": "2026-10-18T18:00:00.000Z", "format": "M-C", "id": "onl1", "players": 70},
+  {"game": "VGC", "name": "Fixture Small Online Cup", "date": "2026-10-17T18:00:00.000Z", "format": "M-C", "id": "onl2", "players": 20},
+  {"game": "VGC", "name": "Fixture Local Store Event", "date": "2026-10-16T18:00:00.000Z", "format": "M-C", "id": "loc1", "players": 80},
+  {"game": "VGC", "name": "Fixture Old Online Open", "date": "2026-09-10T18:00:00.000Z", "format": "M-C", "id": "old1", "players": 200}
+]

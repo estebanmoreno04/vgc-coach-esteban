@@ -1,0 +1,9 @@
+{
+  "rows": [
+    [1, "ivan", "Ivan Example", "ES", "4-1", ["incineroar", "rillaboom", "garchomp", "sneasler", "raichu-mega-y", "gholdengo"], 0, 0, {}],
+    [2, "judy", "Judy Example", "FR", "3-2", ["charizard-mega-y", "whimsicott", "kingambit", "garchomp", "basculegion", "dragonite"], 0, 0, {}],
+    [3, "kim", "Kim Example", "IT", "2-3", ["pelipper", "archaludon", "basculegion-f", "golisopod-mega", "sneasler", "raichu-mega-x"], 0, 0, {}],
+    [4, "leo", "Leo Example", "DE", "1-4", ["incineroar", "farigiraf", "sylveon", "charizard-mega-y", "venusaur", "garchomp"], 0, 0, {}]
+  ],
+  "dropped": []
+}

@@ -1,0 +1,475 @@
+{
+ "regulation_id": "M-C",
+ "events": {
+  "limitless_api:6a6a31d7937230b102d4854f": {
+   "status": "ok",
+   "fetched_at": "2026-10-21T16:14:38Z",
+   "segment": "online",
+   "date": "2026-09-24",
+   "name": "Talon's FIGHT CLUB #103 POKEMON CHAMPIONS REG M-C",
+   "complete": true
+  },
+  "limitless_api:6a7c50af2b308b6067b51ef4": {
+   "status": "ok",
+   "fetched_at": "2026-10-21T16:05:50Z",
+   "segment": "online",
+   "date": "2026-10-17",
+   "name": "Champions League VGC October (Prize: Shiny Gengar)",
+   "complete": true
+  },
+  "limitless_api:6a7f404c78baaa6d1c21f1c7": {
+   "status": "ok",
+   "fetched_at": "2026-10-21T16:14:38Z",
+   "segment": "online",
+   "date": "2026-09-30",
+   "name": "Alpensee Tour (Reg M-C) #77",
+   "complete": true
+  },
+  "limitless_api:6a995629a4272c53be64592c": {
+   "status": "ok",
+   "fetched_at": "2026-10-21T16:14:38Z",
+   "segment": "online",
+   "date": "2026-10-02",
+   "name": "CHAMPIONS REG. M-C |👑CROWN FIGHT Bo3 TOUR #88👑",
+   "complete": true
+  },
+  "limitless_api:6a99564fa4272c53be64592f": {
+   "status": "ok",
+   "fetched_at": "2026-10-21T16:05:50Z",
+   "segment": "online",
+   "date": "2026-10-09",
+   "name": "CHAMPIONS REG. M-C |👑CROWN FIGHT Bo3 TOUR #89👑",
+   "complete": true
+  },
+  "limitless_api:6a9956a8ab080c8c957f8984": {
+   "status": "ok",
+   "fetched_at": "2026-10-21T16:05:50Z",
+   "segment": "online",
+   "date": "2026-10-16",
+   "name": "M-C|LAST SEASON 2 TOUR👑CROWN FIGHT Bo3 TOUR #90👑",
+   "complete": true
+  },
+  "limitless_api:6aa6a33bf1243e65f980006c": {
+   "status": "ok",
+   "fetched_at": "2026-10-21T16:14:38Z",
+   "segment": "online",
+   "date": "2026-09-23",
+   "name": "🍋Sitrus-Series🍋|Champions-MC|#77",
+   "complete": true
+  },
+  "limitless_api:6aa7e679f1243e65f9800f45": {
+   "status": "ok",
+   "fetched_at": "2026-10-21T16:14:38Z",
+   "segment": "online",
+   "date": "2026-10-01",
+   "name": "London Corviknights VGC Weekly Tour 15!",
+   "complete": true
+  },
+  "limitless_api:6aa7e902f1243e65f9800f5e": {
+   "status": "ok",
+   "fetched_at": "2026-10-21T16:05:50Z",
+   "segment": "online",
+   "date": "2026-10-08",
+   "name": "London Corviknights VGC Weekly Tour 16!",
+   "complete": true
+  },
+  "limitless_api:6aa80111f1243e65f9801062": {
+   "status": "ok",
+   "fetched_at": "2026-10-21T16:05:50Z",
+   "segment": "online",
+   "date": "2026-10-04",
+   "name": "VGC Trainer School; champions M/C #4",
+   "complete": true
+  },
+  "limitless_api:6aa95de5f1243e65f98020c6": {
+   "status": "ok",
+   "fetched_at": "2026-10-21T16:05:50Z",
+   "segment": "online",
+   "date": "2026-10-15",
+   "name": "London Corviknights VGC Weekly Tour 17!",
+   "complete": true
+  },
+  "limitless_api:6aab46cc38886b36383c21d2": {
+   "status": "ok",
+   "fetched_at": "2026-10-21T16:14:38Z",
+   "segment": "online",
+   "date": "2026-10-01",
+   "name": "Talon's FIGHT CLUB #104 POKEMON CHAMPIONS REG M-C",
+   "complete": true
+  },
+  "limitless_api:6aab46e038886b36383c21d5": {
+   "status": "ok",
+   "fetched_at": "2026-10-21T16:05:50Z",
+   "segment": "online",
+   "date": "2026-10-08",
+   "name": "Talon's FIGHT CLUB #105 POKEMON CHAMPIONS REG M-C",
+   "complete": true
+  },
+  "limitless_api:6aab46ea38886b36383c21d6": {
+   "status": "ok",
+   "fetched_at": "2026-10-21T16:05:50Z",
+   "segment": "online",
+   "date": "2026-10-15",
+   "name": "Talon's FIGHT CLUB #106 POKEMON CHAMPIONS REG M-C",
+   "complete": true
+  },
+  "limitless_api:6aad0d0ae905c1db68744103": {
+   "status": "ok",
+   "fetched_at": "2026-10-21T16:14:38Z",
+   "segment": "online",
+   "date": "2026-09-24",
+   "name": "Tenki's Cart Weekly #119 - Reg M-C",
+   "complete": true
+  },
+  "limitless_api:6aad1edae905c1db6874418d": {
+   "status": "ok",
+   "fetched_at": "2026-10-21T16:14:38Z",
+   "segment": "online",
+   "date": "2026-09-23",
+   "name": "Copa Oak Stadium #11 - Reg MC - R$ 50",
+   "complete": true
+  },
+  "limitless_api:6aad3db9e905c1db68744284": {
+   "status": "ok",
+   "fetched_at": "2026-10-21T16:14:38Z",
+   "segment": "online",
+   "date": "2026-09-30",
+   "name": "🍋Sitrus-Series🍋|Champions-MC|#78",
+   "complete": true
+  },
+  "limitless_api:6aae82c6e905c1db687452c0": {
+   "status": "ok",
+   "fetched_at": "2026-10-21T16:14:38Z",
+   "segment": "online",
+   "date": "2026-09-26",
+   "name": "Copa Mestre Pokémon #1",
+   "complete": true
+  },
+  "limitless_api:6aaff7a0f127b1b52c27de3f": {
+   "status": "ok",
+   "fetched_at": "2026-10-21T16:14:38Z",
+   "segment": "online",
+   "date": "2026-09-24",
+   "name": "Off Meta Fight Club #4 ($40 USD prize pool)",
+   "complete": true
+  },
+  "limitless_api:6ab01070e905c1db68746423": {
+   "status": "ok",
+   "fetched_at": "2026-10-21T16:14:38Z",
+   "segment": "online",
+   "date": "2026-09-26",
+   "name": "Off Meta MAJOR ($140 USD Prize Pool)",
+   "complete": true
+  },
+  "limitless_api:6ab1e498e905c1db68747897": {
+   "status": "ok",
+   "fetched_at": "2026-10-21T16:14:38Z",
+   "segment": "online",
+   "date": "2026-09-27",
+   "name": "Open Champions League #5 (20 USD to 1st)",
+   "complete": true
+  },
+  "limitless_api:6ab1ffaef127b1b52c27f60c": {
+   "status": "ok",
+   "fetched_at": "2026-10-21T16:14:38Z",
+   "segment": "online",
+   "date": "2026-09-28",
+   "name": "Amyverse VGC Champions Arena #12 ❤️ Cash Prize!",
+   "complete": true
+  },
+  "limitless_api:6ab24fe3e905c1db68747a2b": {
+   "status": "ok",
+   "fetched_at": "2026-10-21T16:14:38Z",
+   "segment": "online",
+   "date": "2026-09-30",
+   "name": "Windwork Valley Tour | Qualifiers 2 🇮🇳",
+   "complete": true
+  },
+  "limitless_api:6ab2d5c0e905c1db68747f7d": {
+   "status": "ok",
+   "fetched_at": "2026-10-21T16:14:38Z",
+   "segment": "online",
+   "date": "2026-09-29",
+   "name": "TARTAN TAKEDOWN #40! - [CHAMPIONS REG M-C!]",
+   "complete": true
+  },
+  "limitless_api:6ab50a9bf127b1b52c281081": {
+   "status": "ok",
+   "fetched_at": "2026-10-21T16:05:50Z",
+   "segment": "online",
+   "date": "2026-10-10",
+   "name": "VGC Indigo League #2 (Prize: Eternal Floette)",
+   "complete": true
+  },
+  "limitless_api:6ab540f5e905c1db6874962b": {
+   "status": "ok",
+   "fetched_at": "2026-10-21T16:05:50Z",
+   "segment": "online",
+   "date": "2026-10-11",
+   "name": "ValkrixVGC Pokemon Champions League #05",
+   "complete": true
+  },
+  "limitless_api:6ab66fd8783097f8dcb703fc": {
+   "status": "ok",
+   "fetched_at": "2026-10-21T16:14:38Z",
+   "segment": "online",
+   "date": "2026-10-01",
+   "name": "Tenki's Cart Weekly #120 - Reg M-C",
+   "complete": true
+  },
+  "limitless_api:6ab7267f783097f8dcb70c93": {
+   "status": "ok",
+   "fetched_at": "2026-10-21T16:05:50Z",
+   "segment": "online",
+   "date": "2026-10-07",
+   "name": "🍋Sitrus-Series🍋|Champions-MC|#79",
+   "complete": true
+  },
+  "limitless_api:6ab81fa4783097f8dcb71862": {
+   "status": "ok",
+   "fetched_at": "2026-10-21T16:14:38Z",
+   "segment": "online",
+   "date": "2026-10-02",
+   "name": "Metal's Meteor Mash-Up #2 - TOP 4 TEAM GRAPHIC",
+   "complete": true
+  },
+  "limitless_api:6ab85f71783097f8dcb71a30": {
+   "status": "ok",
+   "fetched_at": "2026-10-21T16:14:38Z",
+   "segment": "online",
+   "date": "2026-09-28",
+   "name": "The Drywalls Series #21",
+   "complete": true
+  },
+  "limitless_api:6ab88d4b783097f8dcb71c43": {
+   "status": "ok",
+   "fetched_at": "2026-10-21T16:14:38Z",
+   "segment": "online",
+   "date": "2026-10-03",
+   "name": "[100€ prize] The Grim Cup #1 Reg M-C",
+   "complete": true
+  },
+  "limitless_api:6ab97f2d783097f8dcb721d8": {
+   "status": "ok",
+   "fetched_at": "2026-10-21T16:14:38Z",
+   "segment": "online",
+   "date": "2026-09-30",
+   "name": "Copa Oak Stadium #12 - MonoType - R$ 50",
+   "complete": true
+  },
+  "limitless_api:6ab9d1da880ed327106de475": {
+   "status": "ok",
+   "fetched_at": "2026-10-21T16:14:38Z",
+   "segment": "online",
+   "date": "2026-09-28",
+   "name": "Intimidators Champions Challenge #47 REG M-C",
+   "complete": true
+  },
+  "limitless_api:6abaa272880ed327106dea22": {
+   "status": "ok",
+   "fetched_at": "2026-10-21T16:05:50Z",
+   "segment": "online",
+   "date": "2026-10-07",
+   "name": "Alpensee Tour (Reg M-C) #78",
+   "complete": true
+  },
+  "limitless_api:6abaa280783097f8dcb72a7b": {
+   "status": "ok",
+   "fetched_at": "2026-10-21T16:05:50Z",
+   "segment": "online",
+   "date": "2026-10-14",
+   "name": "Alpensee Tour (Reg M-C) #79",
+   "complete": true
+  },
+  "limitless_api:6abc371f880ed327106dfac5": {
+   "status": "ok",
+   "fetched_at": "2026-10-21T16:05:50Z",
+   "segment": "online",
+   "date": "2026-10-06",
+   "name": "TARTAN TAKEDOWN #41! - [CHAMPIONS REG M-C!]",
+   "complete": true
+  },
+  "limitless_api:6abd0663880ed327106e015a": {
+   "status": "ok",
+   "fetched_at": "2026-10-21T16:05:50Z",
+   "segment": "online",
+   "date": "2026-10-04",
+   "name": "Trinity Championship 15 (Double Format)",
+   "complete": true
+  },
+  "limitless_api:6abfddc4245696afb351438b": {
+   "status": "ok",
+   "fetched_at": "2026-10-21T16:05:50Z",
+   "segment": "online",
+   "date": "2026-10-08",
+   "name": "Tenki's Cart Weekly #121 - Reg M-C",
+   "complete": true
+  },
+  "limitless_api:6ac2e15585920e4d25364054": {
+   "status": "ok",
+   "fetched_at": "2026-10-21T16:05:50Z",
+   "segment": "online",
+   "date": "2026-10-05",
+   "name": "Amyverse VGC Champions Arena #13 ❤️ Cash Prize!",
+   "complete": true
+  },
+  "limitless_api:6ac30ee985920e4d253642d5": {
+   "status": "ok",
+   "fetched_at": "2026-10-21T16:05:50Z",
+   "segment": "online",
+   "date": "2026-10-05",
+   "name": "Intimidators Champions Challenge #48 REG M-C",
+   "complete": true
+  },
+  "limitless_api:6ac39898245696afb3516a6b": {
+   "status": "ok",
+   "fetched_at": "2026-10-21T16:05:50Z",
+   "segment": "online",
+   "date": "2026-10-09",
+   "name": "Friday Fight Night 76! $25 Prize & Top 8 Graphic",
+   "complete": true
+  },
+  "limitless_api:6ac4406e85920e4d25364fd1": {
+   "status": "ok",
+   "fetched_at": "2026-10-21T16:05:50Z",
+   "segment": "online",
+   "date": "2026-10-12",
+   "name": "Amyverse VGC Champions Arena #14 ❤️ Cash Prize!",
+   "complete": true
+  },
+  "limitless_api:6ac559b885920e4d25365899": {
+   "status": "ok",
+   "fetched_at": "2026-10-21T16:05:50Z",
+   "segment": "online",
+   "date": "2026-10-13",
+   "name": "TARTAN'S ROAD TO NICE #42! - [CHAMPIONS REG M-C!]",
+   "complete": true
+  },
+  "limitless_api:6ac55ac385920e4d2536589f": {
+   "status": "ok",
+   "fetched_at": "2026-10-21T16:05:50Z",
+   "segment": "online",
+   "date": "2026-10-13",
+   "name": "VGC UmbreNews 13.10.2026 #35 - Champion",
+   "complete": true
+  },
+  "limitless_api:6ac908358a8383117e3e7b56": {
+   "status": "ok",
+   "fetched_at": "2026-10-21T16:05:50Z",
+   "segment": "online",
+   "date": "2026-10-15",
+   "name": "Tenki's Cart Weekly #122 - Reg M-C",
+   "complete": true
+  },
+  "limitless_api:6ac91bfb8a8383117e3e7c3d": {
+   "status": "ok",
+   "fetched_at": "2026-10-21T16:05:50Z",
+   "segment": "online",
+   "date": "2026-10-18",
+   "name": "VGC Trainer School; champions M/C #5",
+   "complete": true
+  },
+  "limitless_api:6ac9235f8a8383117e3e7ca4": {
+   "status": "ok",
+   "fetched_at": "2026-10-21T16:05:50Z",
+   "segment": "online",
+   "date": "2026-10-16",
+   "name": "⛩️$30 VGC Champions Tournament Ep 33!⛩️",
+   "complete": true
+  },
+  "limitless_api:6accb8138a8383117e3ea179": {
+   "status": "ok",
+   "fetched_at": "2026-10-21T16:05:50Z",
+   "segment": "online",
+   "date": "2026-10-14",
+   "name": "Pado's Dojo Reg M-C Pratice #4 🍥",
+   "complete": true
+  },
+  "limitless_api:6acd93fd8a8383117e3eac3f": {
+   "status": "ok",
+   "fetched_at": "2026-10-21T16:05:50Z",
+   "segment": "online",
+   "date": "2026-10-19",
+   "name": "Amyverse VGC Champions Arena #15 ❤️ Cash Prize!",
+   "complete": true
+  },
+  "limitless_api:6acdb7b7115c12b73a5a2cd5": {
+   "status": "ok",
+   "fetched_at": "2026-10-21T16:05:50Z",
+   "segment": "online",
+   "date": "2026-10-16",
+   "name": "Friday Fight Night 77! $50 Prize & Team Report",
+   "complete": true
+  },
+  "limitless_api:6acee85f115c12b73a5a38b3": {
+   "status": "ok",
+   "fetched_at": "2026-10-21T16:05:50Z",
+   "segment": "online",
+   "date": "2026-10-17",
+   "name": "⛩️$20 VGC Champions Tournament Ep 34!⛩️",
+   "complete": true
+  },
+  "limitless_api:6ad0f6c68a8383117e3ec545": {
+   "status": "ok",
+   "fetched_at": "2026-10-21T16:05:50Z",
+   "segment": "online",
+   "date": "2026-10-17",
+   "name": "MetaVGC Arena #1 - Reg MC - Prizes: R$ 50 + Shiny",
+   "complete": true
+  },
+  "vgchistory:regional-baltimore-2027": {
+   "status": "ok",
+   "fetched_at": "2026-10-21T16:05:50Z",
+   "segment": "in_person",
+   "date": "2026-09-18",
+   "name": "Baltimore Regional Championships 2027",
+   "complete": true,
+   "city": "baltimore"
+  },
+  "vgchistory:regional-brisbane-2027": {
+   "status": "ok",
+   "fetched_at": "2026-10-21T16:05:50Z",
+   "segment": "in_person",
+   "date": "2026-09-26",
+   "name": "Brisbane Regional Championships 2027",
+   "complete": true,
+   "city": "brisbane"
+  },
+  "vgchistory:regional-frankfurt-2027": {
+   "status": "ok",
+   "fetched_at": "2026-10-21T16:05:50Z",
+   "segment": "in_person",
+   "date": "2026-09-26",
+   "name": "Frankfurt Regional Championships 2027",
+   "complete": true,
+   "city": "frankfurt"
+  },
+  "vgchistory:regional-louisville-2027": {
+   "status": "ok",
+   "fetched_at": "2026-10-21T16:05:50Z",
+   "segment": "in_person",
+   "date": "2026-10-10",
+   "name": "Louisville Regional Championships 2027",
+   "complete": true,
+   "city": "louisville"
+  },
+  "vgchistory:regional-nice-2027": {
+   "status": "ok",
+   "fetched_at": "2026-10-21T16:05:50Z",
+   "segment": "in_person",
+   "date": "2026-10-17",
+   "name": "Nice Regional Championships 2027",
+   "complete": true,
+   "city": "nice"
+  },
+  "vgchistory:regional-recife-2027": {
+   "status": "ok",
+   "fetched_at": "2026-10-21T16:05:50Z",
+   "segment": "in_person",
+   "date": "2026-10-03",
+   "name": "Recife Regional Championships 2027",
+   "complete": true,
+   "city": "recife"
+  }
+ }
+}

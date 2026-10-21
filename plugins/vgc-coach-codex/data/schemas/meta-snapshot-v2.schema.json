@@ -1,0 +1,252 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/estebanmoreno04/vgc-coach-esteban/data/schemas/meta-snapshot-v2.schema.json",
+  "title": "Meta snapshot (meta-snapshot-v2)",
+  "description": "Written by tools/build_snapshot.py to data/current/snapshot.json. Shares and win rates are fractions between 0 and 1, or null when there is no sample.",
+  "type": "object",
+  "required": [
+    "schema_version",
+    "generated_at",
+    "regulation",
+    "early_meta",
+    "early_meta_reasons",
+    "data_through",
+    "online_window_days",
+    "ranked_by",
+    "segments",
+    "usage",
+    "megas",
+    "pairs",
+    "trios",
+    "sets",
+    "matchups",
+    "top_cut_teams",
+    "events",
+    "sources",
+    "warnings"
+  ],
+  "properties": {
+    "schema_version": { "const": "meta-snapshot-v2" },
+    "generated_at": { "$ref": "#/$defs/timestamp" },
+    "regulation": {
+      "type": "object",
+      "required": ["regulation_id", "game"],
+      "properties": {
+        "regulation_id": { "type": "string", "pattern": "^[A-Z](-[A-Z0-9])?$" },
+        "label": { "type": ["string", "null"] },
+        "game": { "type": "string" },
+        "active_window": { "type": ["object", "null"] },
+        "confidence": { "enum": ["high", "medium", "low", null] },
+        "stale": { "type": ["boolean", "null"] },
+        "checked_at": { "type": ["string", "null"] }
+      }
+    },
+    "early_meta": { "type": "boolean" },
+    "early_meta_reasons": { "type": "array", "items": { "type": "string" } },
+    "data_through": { "type": ["string", "null"], "format": "date" },
+    "online_window_days": { "type": "integer", "minimum": 1 },
+    "ranked_by": { "enum": ["in_person", "total"] },
+    "segments": {
+      "type": "object",
+      "required": ["in_person", "online", "total"],
+      "properties": {
+        "in_person": {
+          "type": "object",
+          "required": ["events", "full_field_events", "teams", "day2_teams"],
+          "additionalProperties": { "type": "integer", "minimum": 0 }
+        },
+        "online": {
+          "type": "object",
+          "required": ["events", "teams"],
+          "additionalProperties": { "type": "integer", "minimum": 0 }
+        },
+        "total": {
+          "type": "object",
+          "required": ["events", "teams"],
+          "additionalProperties": { "type": "integer", "minimum": 0 }
+        }
+      }
+    },
+    "usage": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["species", "name", "total", "in_person", "online"],
+        "properties": {
+          "species": { "$ref": "#/$defs/slug" },
+          "name": { "type": "string" },
+          "total": { "$ref": "#/$defs/tally" },
+          "online": { "$ref": "#/$defs/tally" },
+          "in_person": {
+            "allOf": [
+              { "$ref": "#/$defs/tally" },
+              {
+                "type": "object",
+                "required": ["day2_teams", "day2_share", "day2_conversion", "top_cut_teams"],
+                "properties": {
+                  "day2_teams": { "type": "integer", "minimum": 0 },
+                  "day2_share": { "$ref": "#/$defs/fraction" },
+                  "day2_conversion": { "$ref": "#/$defs/fraction" },
+                  "top_cut_teams": { "type": "integer", "minimum": 0 }
+                }
+              }
+            ]
+          }
+        }
+      }
+    },
+    "megas": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["mega", "name", "total", "in_person", "online"],
+        "properties": {
+          "mega": { "$ref": "#/$defs/slug" },
+          "name": { "type": "string" },
+          "total": { "$ref": "#/$defs/tally" },
+          "in_person": { "$ref": "#/$defs/tally" },
+          "online": { "$ref": "#/$defs/tally" }
+        }
+      }
+    },
+    "pairs": { "$ref": "#/$defs/comboSegments" },
+    "trios": { "$ref": "#/$defs/comboSegments" },
+    "sets": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["species", "name", "sample", "items", "abilities", "natures", "moves", "megas", "top_sets"],
+        "properties": {
+          "species": { "$ref": "#/$defs/slug" },
+          "sample": { "type": "integer", "minimum": 1 },
+          "in_person_sample": { "type": "integer", "minimum": 0 },
+          "items": { "$ref": "#/$defs/countList" },
+          "abilities": { "$ref": "#/$defs/countList" },
+          "natures": { "$ref": "#/$defs/countList" },
+          "moves": { "$ref": "#/$defs/countList" },
+          "megas": { "type": "array" },
+          "top_sets": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "required": ["item", "ability", "nature", "moves", "count", "share"],
+              "properties": {
+                "moves": { "type": "array", "items": { "type": "string" } },
+                "count": { "type": "integer", "minimum": 1 },
+                "share": { "$ref": "#/$defs/fraction" }
+              }
+            }
+          }
+        }
+      }
+    },
+    "matchups": {
+      "type": "object",
+      "required": ["basis", "matches", "species", "pairs"],
+      "properties": {
+        "matches": { "type": "integer", "minimum": 0 },
+        "pairs": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["species", "opponent", "wins", "games", "win_rate"],
+            "properties": {
+              "species": { "$ref": "#/$defs/slug" },
+              "opponent": { "$ref": "#/$defs/slug" },
+              "wins": { "type": "integer", "minimum": 0 },
+              "games": { "type": "integer", "minimum": 1 },
+              "win_rate": { "$ref": "#/$defs/fraction" }
+            }
+          }
+        }
+      }
+    },
+    "top_cut_teams": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["event_key", "event", "date", "segment", "placement", "player", "record", "team"],
+        "properties": {
+          "segment": { "enum": ["in_person", "online"] },
+          "placement": { "type": "integer", "minimum": 1 },
+          "record": { "type": ["string", "null"] },
+          "team": {
+            "type": "array",
+            "minItems": 1,
+            "maxItems": 6,
+            "items": {
+              "type": "object",
+              "required": ["species", "name", "mega", "item", "ability", "nature", "moves"]
+            }
+          }
+        }
+      }
+    },
+    "events": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["key", "source", "name", "date", "segment", "tier", "players", "url", "coverage"],
+        "properties": {
+          "segment": { "enum": ["in_person", "online"] },
+          "players": { "type": "integer", "minimum": 0 },
+          "date": { "type": "string", "format": "date" }
+        }
+      }
+    },
+    "sources": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["source_id", "role", "url", "status", "new_events", "skipped", "errors"],
+        "properties": {
+          "status": { "enum": ["ok", "error"] },
+          "errors": { "type": "array", "items": { "type": "string" } }
+        }
+      }
+    },
+    "warnings": { "type": "array", "items": { "type": "string" } }
+  },
+  "$defs": {
+    "timestamp": {
+      "type": "string",
+      "pattern": "^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}Z$"
+    },
+    "slug": { "type": "string", "pattern": "^[a-z0-9]+(-[a-z0-9]+)*$" },
+    "fraction": { "type": ["number", "null"], "minimum": 0, "maximum": 1 },
+    "tally": {
+      "type": "object",
+      "required": ["teams", "share", "win_rate", "games"],
+      "properties": {
+        "teams": { "type": "integer", "minimum": 0 },
+        "share": { "$ref": "#/$defs/fraction" },
+        "win_rate": { "$ref": "#/$defs/fraction" },
+        "games": { "type": "integer", "minimum": 0 }
+      }
+    },
+    "countList": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["name", "count", "share"],
+        "properties": {
+          "count": { "type": "integer", "minimum": 1 },
+          "share": { "$ref": "#/$defs/fraction" }
+        }
+      }
+    },
+    "combo": {
+      "type": "object",
+      "required": ["species", "names", "teams", "share", "win_rate", "games"],
+      "properties": {
+        "species": { "type": "array", "items": { "$ref": "#/$defs/slug" }, "minItems": 2, "maxItems": 3 },
+        "teams": { "type": "integer", "minimum": 1 }
+      }
+    },
+    "comboSegments": {
+      "type": "object",
+      "required": ["in_person", "online", "total"],
+      "additionalProperties": { "type": "array", "items": { "$ref": "#/$defs/combo" } }
+    }
+  }
+}

@@ -1,0 +1,24 @@
+{
+  "schema_version": "regulation-v1",
+  "regulation_id": "M-C",
+  "label": "Regulation Set M-C",
+  "game": "pokemon-champions",
+  "active_window": {
+    "start": "2026-09-09T02:00:00Z",
+    "end": "2026-12-02T01:59:00Z",
+    "precision": "minute",
+    "source_id": "official_news"
+  },
+  "mechanics": ["mega-evolution"],
+  "rules": {},
+  "official_url": "https://champions-news.pokemon-home.com/en/page/816.html",
+  "detected_at": "2026-09-10T00:00:00Z",
+  "checked_at": "2026-10-21T12:00:00Z",
+  "confidence": "high",
+  "stale": false,
+  "agreeing_sources": ["official_news", "vgchistory"],
+  "previous_regulation_id": null,
+  "next_regulation": null,
+  "sources": [],
+  "warnings": []
+}

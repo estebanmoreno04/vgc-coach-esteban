@@ -1,0 +1,10 @@
+[
+  [1, "bob", "Bob Example", "ES", "4-0", ["charizard-mega-y", "incineroar", "garchomp", "whimsicott", "kingambit", "basculegion-f"], 1, 0, {}],
+  [2, "alice", "Alice Example", "FR", "3-1", ["raichu-mega-y", "incineroar", "rillaboom", "garchomp", "sneasler", "floette-mega"], 1, 0, {}],
+  [3, "dave", "Dave Example", "IT", "2-1", ["rillaboom", "incineroar", "gholdengo", "sneasler", "garchomp", "dragonite"], 1, 0, {}],
+  [4, "carl", "Carl Example", "DE", "1-2", ["pelipper", "basculegion-f", "archaludon", "golisopod-mega", "raichu-mega-x", "sneasler"], 1, 0, {}],
+  [5, "eve", "Eve Example", "GB", "1-2", ["charizard-mega-y", "venusaur", "farigiraf", "incineroar", "garchomp", "sylveon"], 0, 0, {}],
+  [6, "hank", "Hank Example", "PT", "1-2", ["rillaboom", "incineroar", "primarina", "gengar-mega", "vivillon", "garchomp"], 0, 0, {}],
+  [7, "fred", "Fred Example", "NL", "1-2", ["kingambit", "rillaboom", "sneasler", "incineroar", "gholdengo", "dragonite"], 0, 0, {}],
+  [8, "gina", "Gina Example", "BE", "0-3", ["torkoal", "venusaur", "farigiraf", "incineroar", "kingambit", "sylveon"], 0, 0, {}]
+]

@@ -16,11 +16,13 @@ This repository is a fork of [NoahJenkins/vgc-coach](https://github.com/NoahJenk
 |---|---|
 | `config/vgc-data.yaml` | Source and pipeline configuration (no regulation ids). |
 | `tools/resolve_regulation.py` | CLI that detects the active regulation. |
-| `tools/vgc_data/` | Polite HTTP client, source adapters and resolver logic. |
+| `tools/build_snapshot.py` | CLI that downloads the active regulation's tournaments and builds the meta snapshot. |
+| `tools/vgc_data/` | Polite HTTP client, source adapters, resolver, event store, normalization and aggregation. |
 | `tools/requirements-data.txt` | Pinned data pipeline dependencies. |
 | `data/schemas/regulation-v1.schema.json` | Schema of `data/current/regulation.json`. |
-| `data/current/regulation.json` | Active regulation written by the resolver. |
-| `tests/test_resolve_regulation.py`, `tests/fixtures/regulation/` | Resolver tests and fixtures. |
+| `data/schemas/meta-snapshot-v2.schema.json` | Schema of `data/current/snapshot.json`. |
+| `data/current/` | Active regulation, snapshot, processed-event index, normalized events and species registry. |
+| `tests/test_resolve_regulation.py`, `tests/test_build_snapshot.py`, `tests/fixtures/regulation/`, `tests/fixtures/snapshot/` | Pipeline tests and fixtures. |
 | `FORK_CHANGES.md` | This file. |
 
 Generated plugin packages under `plugins/` are rebuilt with `python3 tools/build_plugins.py build` and are not edited by hand.

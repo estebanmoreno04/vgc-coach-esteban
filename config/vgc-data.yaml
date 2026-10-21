@@ -15,11 +15,15 @@ http:
   min_interval_seconds: 2.0
   max_retries: 2
   cache_dir: data/cache/http
+  # Stay under the Limitless API limit of 50 requests per 5 minutes.
+  host_min_interval_seconds:
+    play.limitlesstcg.com: 6.5
 
 paths:
   current_dir: data/current
   archive_dir: data/archive
   regulation_schema: data/schemas/regulation-v1.schema.json
+  snapshot_schema: data/schemas/meta-snapshot-v2.schema.json
 
 resolver:
   # Window used to read which format recent tournaments are played in.
@@ -64,6 +68,50 @@ sources:
     display_name: Pikalytics
     url: https://www.pikalytics.com/ai/pokedex
     cache_ttl_hours: 24
+
+pipeline:
+  # Official in-person tiers (VGC History tier names).
+  in_person_tiers: [regional, international, worlds, special, nationals]
+  online_min_players: 64
+  online_window_days: 28
+  max_new_online_events_per_run: 30
+  # Re-download in-person events whose sheets or records were still missing.
+  refetch_incomplete_days: 14
+  aggregation:
+    in_person_top_cut: 8
+    online_top_cut: 4
+    max_top_cut_teams: 120
+    min_teams_to_rank_in_person: 300
+    top_pairs: 40
+    top_trios: 25
+    min_combo_teams: 5
+    sets_top_species: 60
+    matchup_species: 20
+    matchup_min_games: 30
+    early_meta_min_in_person_events: 3
+    early_meta_min_total_teams: 1000
+  sources:
+    vgchistory:
+      enabled: true
+      base_url: https://vgchistory.com/
+      data_path: data.js
+      cache_ttl_hours: 24
+      event_cache_ttl_hours: 24
+      credit: "Data from VGC History (https://vgchistory.com)"
+    limitlessvgc:
+      enabled: true
+      base_url: https://limitlessvgc.com/
+      cache_ttl_hours: 24
+      event_cache_ttl_hours: 24
+      credit: "Data from Limitless VGC (https://limitlessvgc.com)"
+    limitless_api:
+      enabled: true
+      base_url: https://play.limitlesstcg.com/api/
+      game_id: VGC
+      page_size: 100
+      max_pages: 10
+      cache_ttl_hours: 6
+      credit: "Data from the Limitless tournament platform (https://play.limitlesstcg.com)"
 
 # Sources that may only be consulted by a human in a browser. The pipeline
 # never requests them.

@@ -23,7 +23,7 @@ sys.path.insert(0, str(REPO_ROOT / "tools"))
 
 from vgc_data import jsliteral, text  # noqa: E402
 from vgc_data.config import load_config  # noqa: E402
-from vgc_data.http import PoliteClient, SourceBlocked, SourceError, _HTTPStatus  # noqa: E402
+from vgc_data.http import PoliteClient, SourceBlocked, SourceError, HTTPStatusError  # noqa: E402
 from vgc_data.resolver import ResolutionError  # noqa: E402
 
 
@@ -411,12 +411,12 @@ class RobotsTests(unittest.TestCase):
     def test_missing_robots_allows_and_unreachable_robots_blocks(self) -> None:
         allowed = self.client(
             {
-                "https://a.test/robots.txt": _HTTPStatus("https://a.test/robots.txt", 404),
+                "https://a.test/robots.txt": HTTPStatusError("https://a.test/robots.txt", 404),
                 "https://a.test/data.json": "{}",
             }
         )
         self.assertEqual(allowed.get_text("https://a.test/data.json"), "{}")
-        blocked = self.client({"https://b.test/robots.txt": _HTTPStatus("https://b.test/robots.txt", 503)})
+        blocked = self.client({"https://b.test/robots.txt": HTTPStatusError("https://b.test/robots.txt", 503)})
         with self.assertRaises(SourceBlocked):
             blocked.get_text("https://b.test/data.json")
 
@@ -427,13 +427,15 @@ class NoHardcodedRegulationTests(unittest.TestCase):
     CHECKED = (
         "config/vgc-data.yaml",
         "tools/resolve_regulation.py",
+        "tools/build_snapshot.py",
         "tools/vgc_data",
         "data/schemas/regulation-v1.schema.json",
+        "data/schemas/meta-snapshot-v2.schema.json",
     )
 
     def fixture_ids(self) -> set[str]:
         ids: set[str] = set()
-        for path in FIXTURES.rglob("*"):
+        for path in FIXTURES.parent.rglob("*"):
             if path.is_file():
                 ids.update(text.regulation_ids_in(path.read_text(encoding="utf-8")))
         return {reg for reg in ids if "-" in reg}
