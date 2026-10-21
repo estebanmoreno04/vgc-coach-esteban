@@ -271,6 +271,14 @@ class PipelineTests(unittest.TestCase):
         self.assertIsNone(result.path)
         self.assertFalse((self.current / "snapshot.json").exists())
 
+    def test_offline_rebuild_keeps_the_last_source_report(self) -> None:
+        downloaded = self.build(FixtureClient()).payload["sources"]
+        self.assertTrue(downloaded)
+        client = FixtureClient()
+        offline = CLI.run(config=self.config, client=client, now=NOW, root=self.root, offline=True).payload
+        self.assertEqual(client.requested, [])
+        self.assertEqual(offline["sources"], downloaded)
+
     def test_refuses_events_from_another_regulation(self) -> None:
         (self.current / "processed_events.json").write_text(
             json.dumps({"regulation_id": "M-B", "events": {}}), encoding="utf-8"

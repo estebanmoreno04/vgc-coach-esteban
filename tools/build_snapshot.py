@@ -112,6 +112,12 @@ def run(
             runs.append(_run_limitless(ctx, store))
         _prune_online(ctx, store)
 
+    source_reports = [source_run.to_dict() for source_run in runs]
+    previous = current_dir / SNAPSHOT_FILE
+    if (dry_run or offline) and previous.exists():
+        # Nothing was downloaded: keep the report (and credits) of the last download.
+        source_reports = json.loads(previous.read_text(encoding="utf-8")).get("sources", [])
+
     events = [event for event in store.load_all() if event.regulation_id == regulation_id]
     payload = build_snapshot(
         events,
@@ -119,7 +125,7 @@ def run(
         pokedex=pokedex,
         config=config,
         now=now,
-        sources=[source_run.to_dict() for source_run in runs],
+        sources=source_reports,
         warnings=ctx.warnings,
     )
     _validate(payload, root / config["paths"]["snapshot_schema"])
