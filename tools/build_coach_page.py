@@ -1,0 +1,183 @@
+#!/usr/bin/env python3
+"""Build the shareable coach page (a claude.ai artifact) from data/current.
+
+Added in the estebanmoreno04 fork of NoahJenkins/vgc-coach. The page is a
+chat where each visitor asks Claude with their OWN Claude account (the
+artifact `sample` capability); Claude reads the meta through page functions
+backed by the compact data this script embeds. Nothing here names a
+regulation: everything comes from data/current/regulation.json and
+snapshot.json.
+
+    python3 tools/build_coach_page.py            # writes .artifacts/coach/coach.html
+
+Then publish or republish the file as an artifact (ask Claude Code to do it;
+the page URL is recorded in docs/fork/coach-page.md).
+"""
+
+from __future__ import annotations
+
+import argparse
+import json
+import sys
+from pathlib import Path
+from typing import Any
+
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+
+from vgc_data import query  # noqa: E402
+
+
+REPO_ROOT = Path(__file__).resolve().parents[1]
+TEMPLATE = REPO_ROOT / "tools" / "coach_page" / "template.html"
+CORE = REPO_ROOT / "tools" / "coach_page" / "core.js"
+DEFAULT_OUTPUT = REPO_ROOT / ".artifacts" / "coach" / "coach.html"
+PLACEHOLDER = "/*__COACH_DATA__*/null"
+CORE_PLACEHOLDER = "/*__COACH_CORE__*/"
+MAX_PAGE_BYTES = 15 * 1024 * 1024
+
+
+def _r(value: float | None, digits: int = 4) -> float | None:
+    return None if value is None else round(value, digits)
+
+
+def compact(data: query.MetaData) -> dict[str, Any]:
+    regulation = data.regulation
+    snapshot = data.snapshot
+    if snapshot is None:
+        raise query.QueryError("snapshot.json is missing; run tools/vgc_refresh.py first")
+    usage = [
+        [
+            row["species"],
+            row["name"],
+            row["in_person"]["teams"],
+            _r(row["in_person"]["share"]),
+            _r(row["in_person"]["win_rate"]),
+            _r(row["in_person"]["day2_share"]),
+            _r(row["in_person"]["day2_conversion"]),
+            row["in_person"]["top_cut_teams"],
+            row["online"]["teams"],
+            _r(row["online"]["share"]),
+            _r(row["online"]["win_rate"]),
+            _r(row["total"]["share"]),
+            _r(row["total"]["win_rate"]),
+        ]
+        for row in snapshot["usage"]
+    ]
+    megas = [
+        [row["mega"], row["name"], _r(row["in_person"]["share"]), _r(row["in_person"]["win_rate"]),
+         _r(row["online"]["share"]), _r(row["total"]["share"])]
+        for row in snapshot["megas"]
+    ]
+
+    def combos(rows: list[dict[str, Any]], limit: int) -> list[list[Any]]:
+        return [[row["species"], row["names"], row["teams"], _r(row["share"]), _r(row["win_rate"])] for row in rows[:limit]]
+
+    sets = {
+        row["species"]: {
+            "sample": row["sample"],
+            "items": [[item["name"], _r(item["share"], 3)] for item in row["items"]],
+            "abilities": [[item["name"], _r(item["share"], 3)] for item in row["abilities"]],
+            "natures": [[item["name"], _r(item["share"], 3)] for item in row["natures"]],
+            "moves": [[item["name"], _r(item["share"], 3)] for item in row["moves"]],
+            "top_sets": [
+                [spread["item"], spread["ability"], spread["nature"], spread["moves"], _r(spread["share"], 3)]
+                for spread in row["top_sets"][:3]
+            ],
+        }
+        for row in snapshot["sets"]
+    }
+    top_cut = [
+        [
+            team["segment"], team["event"], team["date"], team["placement"], team["player"], team.get("country"),
+            team.get("record"),
+            [[mon["mega"] or mon["name"], mon["item"], mon["ability"], mon["nature"], mon["moves"]] for mon in team["team"]],
+        ]
+        for team in snapshot["top_cut_teams"]
+        if team["segment"] == "in_person"
+    ] + [
+        [
+            team["segment"], team["event"], team["date"], team["placement"], team["player"], team.get("country"),
+            team.get("record"),
+            [[mon["mega"] or mon["name"], mon["item"], mon["ability"], mon["nature"], mon["moves"]] for mon in team["team"]],
+        ]
+        for team in snapshot["top_cut_teams"]
+        if team["segment"] == "online"
+    ][:40]
+    known = {row[0] for row in usage} | {row[0] for row in megas}
+    dex = data.pokedex
+    return {
+        "regulation": {
+            "id": regulation["regulation_id"],
+            "label": regulation.get("label"),
+            "window": regulation.get("active_window"),
+            "mechanics": regulation.get("mechanics", []),
+            "rules": regulation.get("rules", {}),
+            "official_url": regulation.get("official_url"),
+            "checked_at": regulation.get("checked_at"),
+            "confidence": regulation.get("confidence"),
+            "next": regulation.get("next_regulation"),
+        },
+        "snapshot": {
+            "generated_at": snapshot["generated_at"],
+            "data_through": snapshot["data_through"],
+            "early_meta": snapshot["early_meta"],
+            "early_meta_reasons": snapshot["early_meta_reasons"],
+            "segments": snapshot["segments"],
+            "online_window_days": snapshot["online_window_days"],
+        },
+        "usage": usage,
+        "megas": megas,
+        "pairs": {"in_person": combos(snapshot["pairs"]["in_person"], 200), "online": combos(snapshot["pairs"]["online"], 80)},
+        "trios": {"in_person": combos(snapshot["trios"]["in_person"], 60)},
+        "sets": sets,
+        "matchups": [[row["species"], row["opponent"], row["wins"], row["games"]] for row in snapshot["matchups"]["pairs"]],
+        "top_cut": top_cut,
+        "events": [[event["date"], event["name"], event["segment"], event["players"], event["url"]] for event in snapshot["events"]],
+        "dex": {
+            "names": {key: value for key, value in dex.names.items() if key in known},
+            "mega_base": {key: value for key, value in dex.mega_base.items()},
+            "stones": dict(dex.stones),
+        },
+        "credits": [source.get("credit") for source in snapshot["sources"] if source.get("credit")],
+    }
+
+
+def render(payload: dict[str, Any], template: str, core: str) -> str:
+    if PLACEHOLDER not in template or CORE_PLACEHOLDER not in template:
+        raise ValueError("template is missing a placeholder")
+    if "</script" in core.lower():
+        raise ValueError("core.js must not contain a closing script tag")
+    # Keep the JSON safe inside a <script> element.
+    raw = json.dumps(payload, ensure_ascii=False, separators=(",", ":")).replace("</", "<\\/")
+    return template.replace(CORE_PLACEHOLDER, core, 1).replace(PLACEHOLDER, raw, 1)
+
+
+def build(data_dir: Path = query.DEFAULT_DATA_DIR, output: Path = DEFAULT_OUTPUT) -> Path:
+    html = render(
+        compact(query.load(data_dir)),
+        TEMPLATE.read_text(encoding="utf-8"),
+        CORE.read_text(encoding="utf-8"),
+    )
+    if len(html.encode("utf-8")) > MAX_PAGE_BYTES:
+        raise ValueError("coach page is too large to publish as an artifact")
+    output.parent.mkdir(parents=True, exist_ok=True)
+    output.write_text(html, encoding="utf-8")
+    return output
+
+
+def main(argv: list[str] | None = None) -> int:
+    parser = argparse.ArgumentParser(description=__doc__.splitlines()[0])
+    parser.add_argument("--data-dir", type=Path, default=query.DEFAULT_DATA_DIR)
+    parser.add_argument("--output", type=Path, default=DEFAULT_OUTPUT)
+    args = parser.parse_args(argv)
+    try:
+        path = build(args.data_dir, args.output)
+    except (query.QueryError, ValueError) as exc:
+        print(f"build_coach_page: {exc}", file=sys.stderr)
+        return 2
+    print(f"Wrote {path} ({path.stat().st_size // 1024} KB)")
+    return 0
+
+
+if __name__ == "__main__":
+    raise SystemExit(main())

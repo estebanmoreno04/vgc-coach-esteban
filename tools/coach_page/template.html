@@ -1,0 +1,332 @@
+<title>Coach VGC de Esteban</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: a tournament-desk app. Slim scoreboard header, then either the chat or the meta sheet. */
+:root {
+  --bg: #f3f5f8;
+  --surface: #ffffff;
+  --ink: #17202e;
+  --muted: #5b6575;
+  --line: #d9dee6;
+  --accent: #c8402a;      /* fire-red, from the Mega Charizard Y meta */
+  --accent-ink: #ffffff;
+  --water: #1f6fb2;
+  --good: #1d7a4f;
+  --warn: #a15c00;
+  --bubble: #e8edf4;
+  --display: "Barlow Condensed", "Arial Narrow", system-ui, sans-serif;
+  --body: "IBM Plex Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --mono: "IBM Plex Mono", ui-monospace, "Cascadia Mono", Consolas, monospace;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #10151d; --surface: #171e29; --ink: #e8edf4; --muted: #9aa5b5; --line: #2a3442;
+    --accent: #ef6a4f; --accent-ink: #10151d; --water: #6aaee6; --good: #5cc795; --warn: #f0b35a; --bubble: #212b39;
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #10151d; --surface: #171e29; --ink: #e8edf4; --muted: #9aa5b5; --line: #2a3442;
+  --accent: #ef6a4f; --accent-ink: #10151d; --water: #6aaee6; --good: #5cc795; --warn: #f0b35a; --bubble: #212b39;
+  color-scheme: dark;
+}
+html, body { height: 100%; }
+body {
+  background: var(--bg); color: var(--ink); font-family: var(--body); font-size: 15px; line-height: 1.5;
+  padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px));
+}
+.app { max-width: 920px; margin: 0 auto; display: flex; flex-direction: column; min-height: 100%; gap: 12px; padding-block: 12px; }
+header.board { display: flex; flex-wrap: wrap; align-items: center; gap: 10px 16px; border-bottom: 2px solid var(--ink); padding-bottom: 10px; }
+.brand { font-family: var(--display); font-weight: 700; font-size: 26px; letter-spacing: 0.02em; text-transform: uppercase; line-height: 1; }
+.brand span { color: var(--accent); }
+.chips { display: flex; flex-wrap: wrap; gap: 6px; flex: 1 1 260px; }
+.chip { font-family: var(--mono); font-size: 12px; padding: 3px 8px; border: 1px solid var(--line); border-radius: 4px; background: var(--surface); white-space: nowrap; }
+.chip.reg { border-color: var(--accent); color: var(--accent); font-weight: 500; }
+.chip.alert { border-color: var(--warn); color: var(--warn); }
+nav.tabs { display: flex; gap: 4px; }
+nav.tabs button { font: 600 14px var(--body); padding: 6px 12px; border: 1px solid var(--line); background: var(--surface); color: var(--ink); border-radius: 4px; cursor: pointer; }
+nav.tabs button[aria-selected="true"] { background: var(--ink); color: var(--bg); border-color: var(--ink); }
+button:focus-visible, textarea:focus-visible, select:focus-visible { outline: 2px solid var(--water); outline-offset: 2px; }
+.notice { font-size: 13px; color: var(--muted); }
+#messages { display: flex; flex-direction: column; gap: 12px; flex: 1; }
+.msg { max-width: 100%; min-width: 0; padding: 10px 14px; border-radius: 6px; overflow-wrap: anywhere; }
+.msg.user { align-self: flex-end; background: var(--ink); color: var(--bg); max-width: 85%; white-space: pre-wrap; }
+.msg.bot { align-self: stretch; background: var(--surface); border: 1px solid var(--line); }
+.msg.bot.pending { color: var(--muted); font-style: italic; }
+.msg.error { border-color: var(--warn); color: var(--warn); }
+.msg h3, .msg h4 { font-family: var(--display); font-size: 19px; margin: 10px 0 4px; letter-spacing: 0.01em; }
+.msg p { margin: 6px 0; }
+.msg ul, .msg ol { margin: 6px 0; padding-left: 20px; }
+.msg code { font-family: var(--mono); font-size: 13px; background: var(--bubble); padding: 1px 4px; border-radius: 3px; }
+.msg pre { background: var(--bubble); padding: 8px; border-radius: 4px; overflow-x: auto; }
+.tablewrap { overflow-x: auto; }
+table { border-collapse: collapse; font-size: 13px; width: 100%; }
+th, td { text-align: left; padding: 5px 8px; border-bottom: 1px solid var(--line); }
+td.num, th.num { text-align: right; font-family: var(--mono); font-variant-numeric: tabular-nums; }
+.starter { display: flex; flex-wrap: wrap; gap: 6px; }
+.starter button { font: 500 13px var(--body); padding: 6px 10px; border-radius: 16px; border: 1px solid var(--line); background: var(--surface); color: var(--ink); cursor: pointer; }
+.starter button:hover { border-color: var(--accent); }
+form.composer { position: sticky; bottom: 0; background: var(--bg); padding-block: 8px calc(8px + env(safe-area-inset-bottom, 0px)); display: grid; grid-template-columns: 1fr auto; gap: 8px; border-top: 1px solid var(--line); }
+textarea { font: 15px var(--body); color: var(--ink); background: var(--surface); border: 1px solid var(--line); border-radius: 6px; padding: 8px 10px; resize: vertical; min-height: 64px; width: 100%; min-width: 0; }
+.actions { display: flex; flex-direction: column; gap: 6px; }
+.actions button, .actions select { font: 600 14px var(--body); border-radius: 6px; padding: 8px 12px; border: 1px solid var(--line); background: var(--surface); color: var(--ink); cursor: pointer; }
+.actions button.primary { background: var(--accent); color: var(--accent-ink); border-color: var(--accent); }
+.actions button:disabled { opacity: 0.5; cursor: default; }
+.row { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; font-size: 13px; color: var(--muted); grid-column: 1 / -1; }
+.row button { font: 500 13px var(--body); background: none; border: none; color: var(--water); cursor: pointer; padding: 0; text-decoration: underline; }
+section.sheet { display: grid; gap: 18px; }
+section.sheet h2 { font-family: var(--display); font-size: 22px; text-transform: uppercase; letter-spacing: 0.03em; margin: 0 0 6px; }
+.seg { display: flex; gap: 4px; margin-bottom: 6px; }
+.seg button { font: 500 13px var(--body); padding: 4px 10px; border: 1px solid var(--line); background: var(--surface); color: var(--ink); border-radius: 4px; cursor: pointer; }
+.seg button[aria-pressed="true"] { border-color: var(--accent); color: var(--accent); }
+.teams { display: grid; gap: 10px; grid-template-columns: repeat(auto-fill, minmax(min(260px, 100%), 1fr)); }
+.app > *, .sheet > div { min-width: 0; }
+.team { background: var(--surface); border: 1px solid var(--line); border-radius: 6px; padding: 10px; font-size: 13px; min-width: 0; }
+.team strong { display: block; font-size: 14px; }
+.team ul { margin: 6px 0 0; padding-left: 18px; }
+.small { font-size: 12px; color: var(--muted); }
+@media (prefers-reduced-motion: no-preference) { .msg { animation: in 160ms ease-out; } @keyframes in { from { opacity: 0.4; } to { opacity: 1; } } }
+@media (max-width: 560px) { form.composer { grid-template-columns: 1fr; } .actions { flex-direction: row; flex-wrap: wrap; } .msg.user { max-width: 100%; } }
+</style>
+
+<div class="app">
+  <header class="board">
+    <div class="brand">Coach <span>VGC</span></div>
+    <div class="chips" id="chips"></div>
+    <nav class="tabs" role="tablist">
+      <button id="tab-chat" role="tab" aria-selected="true" aria-controls="view-chat">Chat</button>
+      <button id="tab-meta" role="tab" aria-selected="false" aria-controls="view-meta">Meta</button>
+    </nav>
+  </header>
+
+  <main id="view-chat" role="tabpanel" aria-labelledby="tab-chat" style="display:flex;flex-direction:column;gap:12px;flex:1">
+    <p class="notice" id="notice">Las respuestas usan <strong>tu propia cuenta de Claude</strong> (gratuita o de pago) y cuentan para tus límites. La primera vez te pedirá permiso.</p>
+    <div id="messages" aria-live="polite">
+      <div class="msg bot" id="welcome">
+        <p><strong>Hola.</strong> Soy un coach de Pokémon Champions VGC con los datos de los últimos torneos: regionales presenciales primero y torneos online como complemento. Pregúntame por el meta, pega tu equipo para auditarlo o pídeme un cálculo de daño.</p>
+        <div class="starter" id="starters">
+          <button type="button" data-q="¿Qué está dominando en los torneos presenciales? Dame el top 10 con win rate y conversión a día 2.">Meta presencial</button>
+          <button type="button" data-q="Audita este equipo para el próximo regional:\n">Auditar mi equipo</button>
+          <button type="button" data-q="¿Cuáles son los cores más ganadores en presencial y cómo se les gana?">Cores y anti-meta</button>
+          <button type="button" data-q="¿Charizard-Mega-Y con Heat Wave bajo sol hace OHKO a Kingambit con 32 HP?">Cálculo de daño</button>
+        </div>
+      </div>
+    </div>
+    <form class="composer" id="composer">
+      <label for="prompt" class="small" style="grid-column:1/-1">Tu pregunta o tu equipo</label>
+      <textarea id="prompt" name="prompt" placeholder="Ej.: ¿Qué Megas se usan más en presencial? · o pega tu equipo en formato Showdown"></textarea>
+      <div class="actions">
+        <button type="submit" class="primary" id="send">Enviar</button>
+        <button type="button" id="stop" disabled>Parar</button>
+        <select id="tier" aria-label="Modelo">
+          <option value="default">Equilibrado</option>
+          <option value="quick">Rápido</option>
+          <option value="complex">A fondo</option>
+        </select>
+      </div>
+      <div class="row"><span id="status-line"></span><button type="button" id="reset">Nueva conversación</button></div>
+    </form>
+  </main>
+
+  <section id="view-meta" class="sheet" role="tabpanel" aria-labelledby="tab-meta" hidden>
+    <div>
+      <h2>Uso</h2>
+      <div class="seg" id="seg">
+        <button type="button" data-seg="in_person" aria-pressed="true">Presencial</button>
+        <button type="button" data-seg="online" aria-pressed="false">Online</button>
+        <button type="button" data-seg="total" aria-pressed="false">Total</button>
+      </div>
+      <div class="tablewrap"><table id="usage-table"></table></div>
+    </div>
+    <div>
+      <h2>Megas</h2>
+      <div class="tablewrap"><table id="mega-table"></table></div>
+    </div>
+    <div>
+      <h2>Top cut presencial</h2>
+      <div class="teams" id="topcut"></div>
+    </div>
+    <div>
+      <h2>Torneos incluidos</h2>
+      <div class="tablewrap"><table id="events-table"></table></div>
+      <p class="small" id="credits"></p>
+    </div>
+  </section>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/@smogon/calc@0.12.0/dist/data/production.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@smogon/calc@0.12.0/dist/production.min.js"></script>
+<script>
+/*__COACH_CORE__*/
+</script>
+<script>
+(function () {
+  "use strict";
+  const DATA = /*__COACH_DATA__*/null;
+  const core = VGCCoachCore.create(DATA, window.calc && window.calc.Generations ? window.calc : null);
+  const $ = (id) => document.getElementById(id);
+  const esc = (s) => String(s).replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
+  const pct = (v) => (v === null || v === undefined ? "—" : (v * 100).toFixed(1) + "%");
+  const STORE = "vgc-coach-chat-v1";
+  const MAX_TURNS = 16;
+
+  // ---- header ----
+  const st = core.status();
+  const chips = [
+    `<span class="chip reg">${esc(st.label || st.regulation)}</span>`,
+    `<span class="chip">Datos hasta ${esc(st.data_through)}</span>`,
+    `<span class="chip">${st.segments.in_person.events} regionales · ${st.segments.online.events} online</span>`,
+    ...st.alerts.map((a) => `<span class="chip alert">${esc(a)}</span>`),
+  ];
+  $("chips").innerHTML = chips.join("");
+
+  // ---- tabs ----
+  function show(view) {
+    const chat = view === "chat";
+    $("view-chat").hidden = !chat;
+    $("view-chat").style.display = chat ? "flex" : "none";
+    $("view-meta").hidden = chat;
+    $("tab-chat").setAttribute("aria-selected", String(chat));
+    $("tab-meta").setAttribute("aria-selected", String(!chat));
+  }
+  $("tab-chat").onclick = () => show("chat");
+  $("tab-meta").onclick = () => show("meta");
+  if (location.hash === "#meta") show("meta");
+
+  // ---- meta sheet ----
+  function renderUsage(seg) {
+    const rows = core.usageRows.filter((r) => (seg === "total" ? r.total.share : r[seg].teams))
+      .sort((a, b) => (b[seg].share || 0) - (a[seg].share || 0)).slice(0, 30);
+    $("usage-table").innerHTML = "<thead><tr><th>#</th><th>Pokémon</th><th class='num'>Uso</th><th class='num'>WR</th><th class='num'>Conv. día 2</th></tr></thead><tbody>" +
+      rows.map((r, i) => `<tr><td class="num">${i + 1}</td><td>${esc(r.name)}</td><td class="num">${pct(r[seg].share)}</td><td class="num">${pct(r[seg].win_rate)}</td><td class="num">${pct(r.in_person.day2_conversion)}</td></tr>`).join("") + "</tbody>";
+    document.querySelectorAll("#seg button").forEach((b) => b.setAttribute("aria-pressed", String(b.dataset.seg === seg)));
+  }
+  document.querySelectorAll("#seg button").forEach((b) => (b.onclick = () => renderUsage(b.dataset.seg)));
+  renderUsage("in_person");
+  $("mega-table").innerHTML = "<thead><tr><th>Mega</th><th class='num'>Presencial</th><th class='num'>WR</th><th class='num'>Online</th></tr></thead><tbody>" +
+    core.megas.slice(0, 12).map((m) => `<tr><td>${esc(m.name)}</td><td class="num">${pct(m.in_person)}</td><td class="num">${pct(m.in_person_wr)}</td><td class="num">${pct(m.online)}</td></tr>`).join("") + "</tbody>";
+  $("topcut").innerHTML = DATA.top_cut.filter((t) => t[0] === "in_person").slice(0, 24).map((t) =>
+    `<div class="team"><strong>#${t[3]} ${esc(t[4])}${t[6] ? " · " + esc(t[6]) : ""}</strong><span class="small">${esc(t[1])} · ${esc(t[2])}</span><ul>${t[7].map((m) => `<li>${esc(m[0])} @ ${esc(m[1] || "?")}</li>`).join("")}</ul></div>`).join("");
+  $("events-table").innerHTML = "<thead><tr><th>Fecha</th><th>Torneo</th><th>Tipo</th><th class='num'>Jugadores</th></tr></thead><tbody>" +
+    DATA.events.slice().reverse().map((e) => `<tr><td>${esc(e[0])}</td><td><a href="${esc(e[4])}" target="_blank" rel="noopener">${esc(e[1])}</a></td><td>${e[2] === "in_person" ? "Presencial" : "Online"}</td><td class="num">${e[3]}</td></tr>`).join("") + "</tbody>";
+  $("credits").textContent = "Fuentes: " + DATA.credits.join(" · ") + ". Regulación detectada de las noticias oficiales del juego.";
+
+  // ---- markdown (escaped first) ----
+  function md(text) {
+    const blocks = esc(text).split(/```/);
+    return blocks.map((block, i) => {
+      if (i % 2) return `<pre><code>${block.replace(/^\w*\n/, "")}</code></pre>`;
+      const lines = block.split("\n");
+      let html = "", list = null, table = [];
+      const inline = (s) => s.replace(/`([^`]+)`/g, "<code>$1</code>").replace(/\*\*([^*]+)\*\*/g, "<strong>$1</strong>")
+        .replace(/(^|[^*])\*([^*\n]+)\*/g, "$1<em>$2</em>")
+        .replace(/\[([^\]]+)\]\((https:\/\/[^)\s]+)\)/g, '<a href="$2" target="_blank" rel="noopener">$1</a>');
+      const flushList = () => { if (list) { html += `</${list}>`; list = null; } };
+      const flushTable = () => {
+        if (!table.length) return;
+        const rows = table.filter((r) => !/^\|?\s*:?-{2,}/.test(r));
+        html += '<div class="tablewrap"><table>' + rows.map((r, ri) => "<tr>" + r.replace(/^\||\|$/g, "").split("|").map((c) => (ri === 0 ? `<th>${inline(c.trim())}</th>` : `<td>${inline(c.trim())}</td>`)).join("") + "</tr>").join("") + "</table></div>";
+        table = [];
+      };
+      for (const line of lines) {
+        if (/^\s*\|.*\|\s*$/.test(line)) { flushList(); table.push(line.trim()); continue; }
+        flushTable();
+        let m;
+        if ((m = line.match(/^#{1,4}\s+(.*)/))) { flushList(); html += `<h3>${inline(m[1])}</h3>`; }
+        else if ((m = line.match(/^\s*[-*]\s+(.*)/))) { if (list !== "ul") { flushList(); html += "<ul>"; list = "ul"; } html += `<li>${inline(m[1])}</li>`; }
+        else if ((m = line.match(/^\s*\d+[.)]\s+(.*)/))) { if (list !== "ol") { flushList(); html += "<ol>"; list = "ol"; } html += `<li>${inline(m[1])}</li>`; }
+        else if (line.trim()) { flushList(); html += `<p>${inline(line)}</p>`; }
+        else flushList();
+      }
+      flushTable(); flushList();
+      return html;
+    }).join("");
+  }
+
+  // ---- chat ----
+  let turns = [];
+  try { turns = JSON.parse(localStorage.getItem(STORE) || "[]").filter((t) => t && t.content); } catch (e) { turns = []; }
+  const save = () => { try { localStorage.setItem(STORE, JSON.stringify(turns.slice(-MAX_TURNS))); } catch (e) { /* storage unavailable */ } };
+  function addMessage(role, content, extra) {
+    const div = document.createElement("div");
+    div.className = "msg " + (role === "user" ? "user" : "bot") + (extra ? " " + extra : "");
+    if (role === "user") div.textContent = content; else div.innerHTML = md(content);
+    $("messages").append(div);
+    div.scrollIntoView({ block: "end", behavior: "smooth" });
+    return div;
+  }
+  turns.forEach((t) => addMessage(t.role, t.content));
+
+  const ERRORS = {
+    not_granted: "No has dado permiso para usar Claude en esta página. Recarga la página para que vuelva a preguntarte.",
+    sampling_disabled: "Claude no está disponible en tu cuenta u organización.",
+    rate_limited: "Has llegado al límite de uso de tu cuenta o hay demasiadas peticiones. Prueba un poco más tarde.",
+    session_expired: "Tu sesión de Claude ha caducado. Vuelve a iniciar sesión y recarga.",
+    prompt_too_large: "La conversación es demasiado larga. Pulsa «Nueva conversación».",
+    refused: "Claude no ha querido responder a esto. Reformula la pregunta.",
+    empty_completion: "No ha llegado respuesta. Prueba a preguntar algo más concreto.",
+    tools_unavailable: "Esta vista no permite consultar los datos detallados; respondo con el resumen.",
+  };
+  let sample = null, canTools = false, ctl = null, busy = false;
+  (async () => {
+    try { sample = await claude.use("sample"); } catch (e) { sample = null; }
+    if (!sample) {
+      $("notice").textContent = "El chat solo funciona abriendo esta página dentro de Claude (claude.ai o la app) con tu cuenta. La pestaña Meta funciona igualmente.";
+      $("send").disabled = true;
+      return;
+    }
+    try { const limits = await sample.limits(); canTools = !!(limits && limits.tools); } catch (e) { canTools = false; }
+  })();
+
+  async function ask(question) {
+    if (!sample || busy || !question.trim()) return;
+    busy = true;
+    $("send").disabled = true; $("stop").disabled = false;
+    turns.push({ role: "user", content: question.trim() });
+    turns = turns.slice(-MAX_TURNS);
+    if (turns[0] && turns[0].role !== "user") turns.shift();
+    save();
+    addMessage("user", question.trim());
+    const bubble = addMessage("assistant", "Pensando…", "pending");
+    $("status-line").textContent = "";
+    ctl = new AbortController();
+    const options = {
+      signal: ctl.signal, cache: undefined, modelTier: $("tier").value,
+      onText: ({ text }) => { bubble.classList.remove("pending"); bubble.innerHTML = md(text); },
+    };
+    if (canTools) {
+      options.tools = core.tools().map((t) => ({ ...t, execute: (input) => { $("status-line").textContent = "Consultando datos: " + t.name.replace(/_/g, " ") + "…"; return t.execute(input); } }));
+    } else {
+      options.cache = false;
+    }
+    if (options.cache === undefined) delete options.cache;
+    try {
+      const { text, truncated } = await sample([{ role: "user", content: core.instructions(canTools) }, ...turns], options);
+      bubble.classList.remove("pending");
+      bubble.innerHTML = md(text) + (truncated ? '<p class="small">Respuesta cortada: pide menos cosas a la vez.</p>' : "");
+      turns.push({ role: "assistant", content: text });
+      save();
+    } catch (e) {
+      bubble.classList.remove("pending");
+      if (e && e.code === "cancelled") { bubble.innerHTML = e.text ? md(e.text) + '<p class="small">Parado.</p>' : '<p class="small">Parado.</p>'; }
+      else if (e && e.code === "refused") { bubble.innerHTML = ""; bubble.classList.add("error"); bubble.textContent = ERRORS.refused; }
+      else {
+        bubble.classList.add("error");
+        bubble.innerHTML = (e && e.text ? md(e.text) : "") + `<p>${esc(ERRORS[e && e.code] || "Ha fallado la conexión con Claude. Inténtalo de nuevo.")}</p>`;
+      }
+      if (e && e.text) { turns.push({ role: "assistant", content: e.text }); save(); }
+    } finally {
+      busy = false; $("send").disabled = false; $("stop").disabled = true; $("status-line").textContent = "";
+    }
+  }
+
+  $("composer").addEventListener("submit", (ev) => { ev.preventDefault(); const q = $("prompt").value; $("prompt").value = ""; ask(q); });
+  $("prompt").addEventListener("keydown", (ev) => { if (ev.key === "Enter" && (ev.ctrlKey || ev.metaKey)) { ev.preventDefault(); $("composer").requestSubmit(); } });
+  $("stop").onclick = () => ctl && ctl.abort();
+  $("reset").onclick = () => { turns = []; save(); document.querySelectorAll("#messages .msg:not(#welcome)").forEach((n) => n.remove()); };
+  document.querySelectorAll("#starters button").forEach((b) => (b.onclick = () => { $("prompt").value = b.dataset.q.replace(/\\n/g, "\n"); $("prompt").focus(); }));
+})();
+</script>

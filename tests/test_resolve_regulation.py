@@ -437,6 +437,9 @@ class NoHardcodedRegulationTests(unittest.TestCase):
         "tools/check_format_freshness.py",
         "tools/generate_site_trust_data.py",
         "tools/render_source_registry_docs.py",
+        "tools/build_coach_page.py",
+        "tools/coach_page",
+        "tests/coach_core_harness.cjs",
         "tools/vgc_data",
         "data/schemas/regulation-v1.schema.json",
         "data/schemas/meta-snapshot-v2.schema.json",
@@ -448,7 +451,7 @@ class NoHardcodedRegulationTests(unittest.TestCase):
         "AGENTS.md",
         ".claude/CLAUDE.md",
     )
-    TEXT_SUFFIXES = {".py", ".md", ".yaml", ".yml", ".json"}
+    TEXT_SUFFIXES = {".py", ".md", ".yaml", ".yml", ".json", ".js", ".html"}
 
     def fixture_ids(self) -> set[str]:
         ids: set[str] = set()

@@ -44,3 +44,4 @@ Return these sections in order:
 - If the tool fails or a source errors, say which one and what data is missing; keep the previous snapshot as the basis and label it with its age.
 - When this skill was triggered by another skill's stale-data warning, return to that request afterwards using the refreshed data.
 - The refresh changes files under `data/current/` and `plugins/`; mention that they can be committed if the user keeps the repository under version control.
+- The shareable coach page (see `docs/fork/coach-page.md`) embeds a copy of the data and does not update by itself. After a refresh that brought new data, offer to rebuild it with `python3 tools/build_coach_page.py` and, in Claude Code, to republish `.artifacts/coach/coach.html` to the URL recorded in that document.

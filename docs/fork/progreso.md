@@ -17,7 +17,7 @@ Un coach de Pokémon Champions VGC que **siempre trabaja con la regulación vige
 | 4 | Calculadora de daño (`@smogon/calc`) | ✅ Hecha | `19736aa` (4a), `f430c36` (4b) |
 | 5 | GitHub Action semanal (lunes, hora de Madrid) | ✅ Hecha | `23edff3` |
 | 6 | Prueba de aceptación (cambio de regulación simulado + auditoría de tu equipo) | ✅ Hecha | ver `git log` |
-| 7 (extra) | Coach para amigos sin Claude Code | ⏸️ Pendiente | — |
+| 7 (extra) | Coach para amigos sin Claude Code | ✅ Hecha | ver `git log` |
 
 Todo está **subido a GitHub** (fork `estebanmoreno04/vgc-coach-esteban`, rama `main`). Los commits usan tu email privado de GitHub (`145461032+estebanmoreno04@users.noreply.github.com`), no tu Gmail.
 
@@ -141,7 +141,7 @@ python tools/damage_calc.py --request-file calc.json --pretty
   - `validate.py` en verde también en Windows;
   - auditoría real de tu equipo en [auditoria-equipo.md](auditoria-equipo.md);
   - README final.
-- **Fase 7 (extra, decidida):** coach gratuito para tus amigos. Será una página de chat publicada en claude.ai donde cada persona pregunta con su propia cuenta de Claude, dentro de sus límites (gratuita = menos, de pago = más). A ti no te cuesta nada. Antes hay que verificar que funciona con cuentas gratuitas e invitados.
+- **Fase 7 (hecha):** coach gratuito para tus amigos, publicado en claude.ai. Cada persona pregunta con su propia cuenta de Claude, dentro de sus límites. Detalles, URL y cómo actualizarla: [coach-page.md](coach-page.md). Falta que un amigo con cuenta gratuita confirme que le funciona.
 
 ## Dónde mirar
 

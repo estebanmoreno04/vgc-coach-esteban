@@ -181,9 +181,9 @@ La CI de GitHub ejecuta la validación en cada push. En Windows, algunos tests d
 - Las team sheets no publican los stat points, así que en los cálculos contra rivales son un supuesto declarado.
 - Con pocos torneos de una regulación nueva, el snapshot se marca `early_meta` y las skills lo avisan.
 
-## Próximamente
+## Coach para amigos (sin Claude Code)
 
-- **Coach para amigos sin Claude Code:** una página de chat publicada en claude.ai donde cada persona pregunta con su propia cuenta de Claude (gratuita o de pago), usando los mismos datos.
+Una página de chat publicada en claude.ai donde cada persona pregunta con su propia cuenta de Claude (gratuita o de pago), con los mismos datos de la regulación vigente, cálculos de daño y auditoría de equipos. Cómo compartirla y actualizarla: [docs/fork/coach-page.md](docs/fork/coach-page.md). Se regenera con `python tools/build_coach_page.py`.
 
 ## Licencia y créditos
 
