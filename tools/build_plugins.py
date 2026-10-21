@@ -286,6 +286,12 @@ def ignore_hidden_entries(_directory: str, entries: List[str]) -> List[str]:
     return [entry for entry in entries if entry.startswith(".")]
 
 
+# Modified by estebanmoreno04 (fork of NoahJenkins/vgc-coach): shared tool
+# directories (tools/vgc_data) must not carry local bytecode caches.
+def ignore_build_artifacts(_directory: str, entries: List[str]) -> List[str]:
+    return [entry for entry in entries if entry.startswith(".") or entry == "__pycache__"]
+
+
 def runtime_doc_basename(runtime: str) -> str:
     return {
         "codex": "codex.md",
@@ -531,9 +537,9 @@ def build_plugin(plugin: dict, manifest: dict, skills: Dict[str, SkillInfo], ver
     for relative in manifest["shared_copy"]["files"]:
         copy_path(ROOT / relative, destination / relative, destination)
     for relative in manifest["shared_copy"]["directories"]:
-        copy_path(ROOT / relative, destination / relative, destination)
+        copy_path(ROOT / relative, destination / relative, destination, ignore=ignore_build_artifacts)
     for relative in manifest["shared_copy"]["tools"]:
-        copy_path(ROOT / relative, destination / relative, destination)
+        copy_path(ROOT / relative, destination / relative, destination, ignore=ignore_build_artifacts)
 
     for skill_name in skills:
         copy_path(

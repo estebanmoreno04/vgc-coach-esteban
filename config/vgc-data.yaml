@@ -32,6 +32,9 @@ resolver:
   min_players: 64
   # Smallest number of qualifying tournaments for a vote.
   min_tournaments: 3
+  # Days after the stored window ends before tools/check_format_freshness.py
+  # fails (the weekly refresh should have replaced it by then).
+  window_grace_days: 8
 
 sources:
   official_news:
@@ -82,8 +85,8 @@ pipeline:
     online_top_cut: 4
     max_top_cut_teams: 120
     min_teams_to_rank_in_person: 300
-    top_pairs: 40
-    top_trios: 25
+    top_pairs: 200
+    top_trios: 80
     min_combo_teams: 5
     sets_top_species: 60
     matchup_species: 20

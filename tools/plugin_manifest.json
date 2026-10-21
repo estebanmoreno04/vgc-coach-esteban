@@ -87,13 +87,23 @@
         "docs/skills/vgc-practice-journal",
         "docs/skills/shared"
       ]
+    },
+    {
+      "name": "vgc-refresh",
+      "codex_metadata": "skills/vgc-refresh/agents/openai.yaml",
+      "docs": [
+        "docs/skills/shared"
+      ]
     }
   ],
   "shared_copy": {
     "files": [
       "LICENSE",
       "SECURITY.md",
-      "data/fixtures/battle-state-v1.example.json"
+      "data/fixtures/battle-state-v1.example.json",
+      "data/current/regulation.json",
+      "data/current/snapshot.json",
+      "data/current/pokedex.json"
     ],
     "directories": [
       "data/fixtures/evals",
@@ -102,7 +112,9 @@
     ],
     "tools": [
       "tools/browser_damage_calc.py",
-      "tools/ingest_battle_state.py"
+      "tools/ingest_battle_state.py",
+      "tools/meta_query.py",
+      "tools/vgc_data"
     ]
   },
   "plugins": [
@@ -167,9 +179,12 @@
     }
   ],
   "release_notes": {
-    "date": "2026-08-07",
+    "date": "2026-10-21",
     "summary": [
-      "Updated current-format coaching to Regulation M-B with dated official-source snapshots, fail-closed freshness checks, and an external-content boundary that treats fetched pages as evidence rather than instructions.",
+      "Fork of NoahJenkins/vgc-coach: the active regulation is detected automatically from the official in-game news and community sources, and the skills read it from data/current instead of hand-written regulation notes.",
+      "New meta pipeline with in-person tournament data first (whole-field usage, win rates, day 2 conversion, sets, cores, team-sheet matchups, top cut teams) and online tournaments as a complement, queried through tools/meta_query.py.",
+      "New vgc-refresh skill that updates the regulation and tournament data and reports new events and usage movers.",
+      "Earlier upstream work: dated official-source snapshots, fail-closed freshness checks, and an external-content boundary that treats fetched pages as evidence rather than instructions.",
       "Integrated the hardened meta-research evidence and evaluation gates plus battle-ready team-builder playbooks from the two retained feature lines.",
       "Hardened autoresearch authorization and workflow privilege boundaries, plugin packaging paths and symlinks, and calculator subprocess time and output limits.",
       "Added pinned development dependencies and one repository-native validation command for tests, source rendering, freshness, generated packages, trust data, and the production site build.",

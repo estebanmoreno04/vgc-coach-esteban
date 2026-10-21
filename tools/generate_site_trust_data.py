@@ -23,22 +23,22 @@ from tools.render_source_registry_docs import (  # noqa: E402
 
 DEFAULT_OUTPUT = REPO_ROOT / "site/src/generated/trustData.ts"
 REGISTRY_PATH = Path("docs/skills/shared/references/live-source-registry.yaml")
-SNAPSHOTS_ROOT = Path("data/snapshots")
+# Modified by estebanmoreno04 (fork of NoahJenkins/vgc-coach): regulation facts
+# come from the auto-detected data/current/regulation.json instead of a
+# hand-written current snapshot and registry entry.
+REGULATION_PATH = Path("data/current/regulation.json")
 
 
-def _current_snapshot(repo_root: Path) -> dict[str, Any]:
-    current: list[dict[str, Any]] = []
-    for path in sorted((repo_root / SNAPSHOTS_ROOT).glob("*.json")):
-        loaded = json.loads(path.read_text())
-        if isinstance(loaded, dict) and loaded.get("temporal_status") == "current":
-            loaded["_path"] = path.relative_to(repo_root).as_posix()
-            current.append(loaded)
-    if len(current) != 1:
+def _current_regulation(repo_root: Path) -> dict[str, Any]:
+    path = repo_root / REGULATION_PATH
+    if not path.is_file():
         raise ValueError(
-            "Site trust data requires exactly one current regulation snapshot; "
-            f"found {len(current)}."
+            "Site trust data requires data/current/regulation.json; run tools/resolve_regulation.py."
         )
-    return current[0]
+    loaded = json.loads(path.read_text(encoding="utf-8"))
+    if not isinstance(loaded, dict) or not loaded.get("regulation_id"):
+        raise ValueError("data/current/regulation.json must name a regulation_id.")
+    return loaded
 
 
 def _parse_rfc3339_utc(value: Any, *, label: str) -> datetime:
@@ -78,13 +78,10 @@ def collect_trust_facts(
         raise ValueError("now must be timezone-aware.")
     checked_at = checked_at.astimezone(timezone.utc)
     registry = load_registry(repo_root / REGISTRY_PATH)
-    snapshot = _current_snapshot(repo_root)
-    snapshot_format = snapshot.get("format")
-    if not isinstance(snapshot_format, dict):
-        raise ValueError("Current regulation snapshot is missing its format mapping.")
-    active_window = snapshot_format.get("active_window")
-    if not isinstance(active_window, dict):
-        raise ValueError("Current regulation snapshot is missing its active window.")
+    regulation = _current_regulation(repo_root)
+    active_window = regulation.get("active_window")
+    if not isinstance(active_window, dict) or not active_window.get("start"):
+        raise ValueError("data/current/regulation.json is missing its active window.")
 
     sources = registry["sources"]
     required_sources: list[dict[str, str]] = []
@@ -112,57 +109,14 @@ def collect_trust_facts(
             for source in role_sources
         )
 
-    current_official_sources = [
-        source
-        for source in sources
-        if source["role"] == "official_regulation"
-        and source["temporal_status"] == "current"
-    ]
-    if len(current_official_sources) != 1:
-        raise ValueError(
-            "Site trust data requires exactly one current official registry source; "
-            f"found {len(current_official_sources)}."
-        )
-    registry_official = current_official_sources[0]
+    official_sources = [source for source in sources if source["role"] == "official_regulation"]
+    if not official_sources:
+        raise ValueError("Site trust data requires an official_regulation registry source.")
+    registry_official = official_sources[0]
 
-    snapshot_sources = snapshot.get("sources")
-    if not isinstance(snapshot_sources, list) or len(snapshot_sources) != 1:
-        raise ValueError("Current regulation snapshot must name one official source.")
-    official_source = snapshot_sources[0]
-    if not isinstance(official_source, dict):
-        raise ValueError("Current regulation source must be a mapping.")
-
-    consistency_checks = (
-        (
-            "snapshot source id",
-            official_source.get("source_id"),
-            registry_official["id"],
-        ),
-        (
-            "snapshot regulation id",
-            snapshot_format.get("regulation_id"),
-            registry_official["regulation_id"],
-        ),
-        (
-            "snapshot official URL",
-            official_source.get("url"),
-            registry_official["canonical_url"],
-        ),
-        (
-            "snapshot active window",
-            active_window,
-            registry_official["active_window"],
-        ),
-    )
-    for label, snapshot_value, registry_value in consistency_checks:
-        if snapshot_value != registry_value:
-            raise ValueError(
-                f"{label} does not match the current official registry entry."
-            )
-
-    verified_at = official_source.get("fetched_at") or snapshot.get("generated_at")
+    verified_at = regulation.get("checked_at") or regulation.get("detected_at")
     verified_instant = _parse_rfc3339_utc(
-        verified_at, label="snapshot verification timestamp"
+        verified_at, label="regulation check timestamp"
     )
     freshness = registry_official.get("freshness")
     if not isinstance(freshness, dict):
@@ -187,20 +141,20 @@ def collect_trust_facts(
         "version": (repo_root / "VERSION").read_text().strip(),
         "generated_from": [
             REGISTRY_PATH.as_posix(),
-            snapshot["_path"],
+            REGULATION_PATH.as_posix(),
             "data/fixtures/evals/*/case-*.md",
             "data/rubrics/*-rubric.md",
             "VERSION",
         ],
         "regulation": {
-            "id": snapshot_format["regulation_id"],
-            "name": official_source.get("label", snapshot_format["regulation_id"]),
-            "source_url": official_source["url"],
+            "id": regulation["regulation_id"],
+            "name": regulation.get("label") or regulation["regulation_id"],
+            "source_url": regulation.get("official_url") or registry_official["canonical_url"],
             "starts_at": active_window["start"],
             "starts_label": _utc_label(active_window["start"]),
-            "ends_at": active_window["end"],
-            "ends_label": _utc_label(active_window["end"]),
-            "verified_on": snapshot["verified_on"],
+            "ends_at": active_window.get("end"),
+            "ends_label": _utc_label(active_window["end"]) if active_window.get("end") else "not announced",
+            "verified_on": verified_at[:10],
             "verified_at": verified_at,
             "verified_label": _utc_label(verified_at, include_seconds=True),
             "freshness_state": freshness_state,
@@ -209,8 +163,8 @@ def collect_trust_facts(
             "fresh_label": "Source snapshot fresh",
             "stale_label": "Source snapshot stale",
             "freshness_note": (
-                f"Registry freshness allows {max_age_days} days from the source "
-                "fetch; live recheck required before present-tense coaching."
+                f"The regulation is re-detected automatically; registry freshness allows "
+                f"{max_age_days} days from the last check before a live recheck is required."
             ),
             "stale_note": (
                 "This source snapshot is older than the registry freshness "

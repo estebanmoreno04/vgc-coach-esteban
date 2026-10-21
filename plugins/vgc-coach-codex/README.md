@@ -21,6 +21,7 @@ this plugin package so installs do not depend on repo-local symlinks.
 - `vgc-calcs-assistant`: Turn calc questions into actionable prep with honest exactness
 - `vgc-opponent-scout`: Scout likely shells, techs, and prep risks
 - `vgc-practice-journal`: Capture practice sessions into repeatable next steps
+- `vgc-refresh`: Refresh regulation and meta data
 
 ## Runtime Docs
 

@@ -3,6 +3,8 @@ name: vgc-format-verifier
 description: Use when Pokemon Champions rules or legality must be verified before coaching.
 ---
 
+<!-- Modified in the estebanmoreno04 fork: the active regulation comes from data/current/regulation.json. -->
+
 # VGC Format Verifier
 
 Lock the actual rules context before higher-level coaching starts.
@@ -33,8 +35,9 @@ Return these sections in order:
 6. End with whether downstream coaching can safely proceed.
 
 ## Required behavior
-- Read [format-checklist](../../docs/skills/vgc-format-verifier/references/format-checklist.md) and [output-rubric](../../docs/skills/vgc-format-verifier/references/output-rubric.md) before finalizing.
-- Use `data/snapshots/` only as support or fallback, not as a replacement for live verification on freshness-sensitive requests.
+- Read [Current Data Contract](../../docs/skills/shared/references/current-data.md), [format-checklist](../../docs/skills/vgc-format-verifier/references/format-checklist.md) and [output-rubric](../../docs/skills/vgc-format-verifier/references/output-rubric.md) before finalizing.
+- Start from `data/current/regulation.json` (`python3 tools/meta_query.py status`): it is detected from the official in-game news and cross-checked against community sources. Report its window, mechanics, rules, confidence and `checked_at`; recheck the `official_url` announcement live for species, move or item eligibility questions.
+- If the regulation is `stale`, `low` confidence, or its window has ended, say so and offer `vgc-refresh` before confirming anything as current. Never use `data/archive/` as current truth.
 - Use absolute dates when clarifying "current," "today," or "this regulation."
 - If the issue is source trust rather than format truth, pair the reasoning with `vgc-source-verifier`.
 - Do not treat usage sites as legality authorities or quietly roll forward with an unverified rules assumption.

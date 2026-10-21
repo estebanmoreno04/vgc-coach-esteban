@@ -1,0 +1,4 @@
+interface:
+  display_name: "VGC Refresh"
+  short_description: "Refresh regulation and meta data"
+  default_prompt: "Use $vgc-refresh to update the active regulation and tournament data and summarize what changed."

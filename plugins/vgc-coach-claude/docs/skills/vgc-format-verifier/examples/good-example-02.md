@@ -2,7 +2,9 @@
 
 Request:
 
-`I think Regulation M-B is still active this week. Verify that and tell me whether my legality assumptions are safe.`
+`I think last season's regulation is still active this week. Verify that and tell me whether my legality assumptions are safe.`
+
+<!-- Modified in the estebanmoreno04 fork: no regulation id in examples. -->
 
 Why this is good:
 

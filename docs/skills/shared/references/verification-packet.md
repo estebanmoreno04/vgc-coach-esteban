@@ -57,4 +57,6 @@ Use `officially verified` only for legality claims backed by official current-fo
 - `vgc-team-audit`: consume the packet when findings depend on current field assumptions or exact legality.
 - `vgc-lead-planner`: consume the packet when lead plans depend on current matchup assumptions, item legality, move access, speed, or survival claims.
 
-Snapshots under `data/snapshots/` can support examples and fallback context, but live verification remains required for present-tense current-format claims.
+The active regulation and meta snapshot in `data/current/` (see the [Current Data Contract](current-data.md)) are the default evidence for current-format claims; record their `checked_at` / `generated_at` dates as the fetched dates. Live verification is required only for what happened after the snapshot or what it cannot show. `data/archive/` is history and never counts as current evidence.
+
+<!-- Modified in the estebanmoreno04 fork of NoahJenkins/vgc-coach: data/current replaces hand-written snapshots. -->

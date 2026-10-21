@@ -31,27 +31,28 @@ class SourceRegistryTests(unittest.TestCase):
         self.assertEqual(registry["minimum_stack"]["tournament_meta"], 1)
         self.assertEqual(registry["minimum_stack"]["broader_meta"], 1)
 
+        # Modified by estebanmoreno04 (fork): no pinned regulation; sources match
+        # the approved live-check stack.
         by_id = {entry["id"]: entry for entry in registry["sources"]}
         self.assertEqual(
             tuple(by_id),
             (
-                "regulation-set-m-c",
+                "official-champions-news",
                 "play-pokemon-transition-announcement",
-                "championsmeta",
-                "champions-lab",
+                "vgchistory",
+                "limitless-vgc",
+                "limitless-play",
                 "pikalytics-champions",
                 "victory-road",
             ),
         )
         self.assertFalse(by_id["pikalytics-champions"]["required_for_minimum_stack"])
         self.assertIn("set_tendencies", by_id["pikalytics-champions"]["allowed_claim_types"])
-        regulation = by_id["regulation-set-m-c"]
-        self.assertEqual(regulation["regulation_id"], "regulation-m-c")
-        self.assertEqual(regulation["canonical_url"], "https://www.pokemon.com/uk/news/get-ready-for-regulation-set-m-c-in-pokemon-champions")
-        self.assertEqual(regulation["temporal_status"], "current")
-        self.assertEqual(regulation["active_window"]["start"], "2026-09-09T02:00:00Z")
-        self.assertEqual(regulation["active_window"]["end"], "2026-12-02T01:59:00Z")
-        self.assertIn("legality", regulation["allowed_claim_types"])
+        official = by_id["official-champions-news"]
+        self.assertEqual(official["role"], "official_regulation")
+        self.assertNotIn("regulation_id", official)
+        self.assertNotIn("active_window", official)
+        self.assertIn("legality", official["allowed_claim_types"])
 
     def test_minimum_stack_sources_require_canonical_urls(self):
         registry = self.module.load_registry(REGISTRY_PATH)
@@ -64,10 +65,10 @@ class SourceRegistryTests(unittest.TestCase):
         registry = self.module.load_registry(REGISTRY_PATH)
 
         by_id = {entry["id"]: entry for entry in registry["sources"]}
-        self.assertEqual(by_id["championsmeta"]["freshness"]["max_age_days"], 7)
-        self.assertEqual(by_id["champions-lab"]["freshness"]["max_age_days"], 7)
-        self.assertIn("fetched_at", by_id["championsmeta"]["required_evidence_fields"])
-        self.assertIn("source_url", by_id["champions-lab"]["required_evidence_fields"])
+        self.assertEqual(by_id["vgchistory"]["freshness"]["max_age_days"], 7)
+        self.assertEqual(by_id["limitless-play"]["freshness"]["max_age_days"], 7)
+        self.assertIn("fetched_at", by_id["vgchistory"]["required_evidence_fields"])
+        self.assertIn("source_url", by_id["limitless-play"]["required_evidence_fields"])
 
     def test_registry_rejects_missing_required_evidence_fields(self):
         payload = copy.deepcopy(self.module.load_registry(REGISTRY_PATH))
@@ -76,12 +77,17 @@ class SourceRegistryTests(unittest.TestCase):
         with self.assertRaisesRegex(ValueError, "required_evidence_fields"):
             self.module.validate_registry(payload)
 
-    def test_official_regulation_requires_regulation_id(self):
-        payload = copy.deepcopy(self.module.load_registry(REGISTRY_PATH))
-        del payload["sources"][0]["regulation_id"]
-
-        with self.assertRaisesRegex(ValueError, "regulation_id"):
-            self.module.validate_registry(payload)
+    def test_registry_rejects_pinned_regulation(self):
+        for key, value in (
+            ("regulation_id", "regulation-x-y"),
+            ("active_window", {"start": "2027-01-01T00:00:00Z", "end": "2027-02-01T00:00:00Z"}),
+            ("temporal_status", "current"),
+        ):
+            with self.subTest(key=key):
+                payload = copy.deepcopy(self.module.load_registry(REGISTRY_PATH))
+                payload["sources"][0][key] = value
+                with self.assertRaisesRegex(ValueError, "discovered"):
+                    self.module.validate_registry(payload)
 
     def test_registry_rejects_missing_minimum_stack_url(self):
         payload = copy.deepcopy(self.module.load_registry(REGISTRY_PATH))
@@ -111,8 +117,8 @@ class SourceRegistryTests(unittest.TestCase):
         self.assertIn("Freshness:", committed)
         self.assertIn("Required evidence fields:", committed)
         self.assertIn("- legality or mechanics claims", committed)
-        self.assertIn("Regulation Set M-C", committed)
-        self.assertIn("2026-12-02T01:59:00Z", committed)
+        self.assertIn("data/current/regulation.json", committed)
+        self.assertNotIn("Regulation Set", committed)
 
     def test_legacy_meta_research_map_is_wrapper_to_shared_doc(self):
         content = LEGACY_MAP_PATH.read_text()

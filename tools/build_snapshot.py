@@ -77,6 +77,7 @@ def run(
     now: datetime,
     root: Path = REPO_ROOT,
     dry_run: bool = False,
+    offline: bool = False,
 ) -> PipelineResult:
     current_dir = root / config["paths"]["current_dir"]
     regulation_path = current_dir / "regulation.json"
@@ -102,7 +103,7 @@ def run(
     runs: list[SourceRun] = []
     known_events: list[tuple[date, str]] = _stored_in_person(store)
 
-    if not dry_run:
+    if not (dry_run or offline):
         if sources["vgchistory"].get("enabled"):
             runs.append(_run_vgchistory(ctx, store, known_events))
         if sources["limitlessvgc"].get("enabled"):
@@ -308,6 +309,11 @@ def parse_args(argv: list[str] | None = None) -> argparse.Namespace:
         action="store_true",
         help="Re-aggregate the stored events without downloading or writing anything.",
     )
+    parser.add_argument(
+        "--offline",
+        action="store_true",
+        help="Re-aggregate the stored events and write the snapshot without downloading.",
+    )
     return parser.parse_args(argv)
 
 
@@ -317,7 +323,7 @@ def main(argv: list[str] | None = None) -> int:
     now = parse_iso_z(args.now) if args.now else utc_now()
     client = PoliteClient.from_config(config, root=REPO_ROOT)
     try:
-        result = run(config=config, client=client, now=now, dry_run=args.dry_run)
+        result = run(config=config, client=client, now=now, dry_run=args.dry_run, offline=args.offline)
     except PipelineError as exc:
         print(f"Cannot build the snapshot: {exc}", file=sys.stderr)
         return 2

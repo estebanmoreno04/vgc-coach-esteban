@@ -9,7 +9,7 @@ formats.
 ## Canonical artifacts
 
 - Schema: `data/schemas/battle-state-v1.schema.json`
-- Current M-B example: `data/fixtures/battle-state-v1.example.json`
+- Example document: `data/fixtures/battle-state-v1.example.json` (its regulation provenance is example data; the active regulation is in `data/current/regulation.json`)
 - Local normalizer: `tools/ingest_battle_state.py`
 
 The schema identifier is

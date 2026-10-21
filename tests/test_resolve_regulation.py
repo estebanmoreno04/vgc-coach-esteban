@@ -425,13 +425,26 @@ class NoHardcodedRegulationTests(unittest.TestCase):
     """Regulation ids may only appear in fixtures and tests."""
 
     CHECKED = (
-        "config/vgc-data.yaml",
+        "config",
         "tools/resolve_regulation.py",
         "tools/build_snapshot.py",
+        "tools/meta_query.py",
+        "tools/vgc_refresh.py",
+        "tools/check_format_freshness.py",
+        "tools/generate_site_trust_data.py",
+        "tools/render_source_registry_docs.py",
         "tools/vgc_data",
         "data/schemas/regulation-v1.schema.json",
         "data/schemas/meta-snapshot-v2.schema.json",
+        "skills",
+        ".opencode",
+        "docs/skills",
+        "docs/evals",
+        "docs/runtime",
+        "AGENTS.md",
+        ".claude/CLAUDE.md",
     )
+    TEXT_SUFFIXES = {".py", ".md", ".yaml", ".yml", ".json"}
 
     def fixture_ids(self) -> set[str]:
         ids: set[str] = set()
@@ -448,7 +461,9 @@ class NoHardcodedRegulationTests(unittest.TestCase):
         offenders = []
         for relative in self.CHECKED:
             target = REPO_ROOT / relative
-            files = [target] if target.is_file() else sorted(target.rglob("*.py"))
+            files = [target] if target.is_file() else sorted(
+                path for path in target.rglob("*") if path.is_file() and path.suffix in self.TEXT_SUFFIXES
+            )
             for path in files:
                 content = path.read_text(encoding="utf-8")
                 for pattern in patterns:

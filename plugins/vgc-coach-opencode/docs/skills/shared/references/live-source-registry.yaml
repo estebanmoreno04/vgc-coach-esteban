@@ -1,22 +1,21 @@
-version: "2"
-summary: "Use these shared live-source roles when researching the current Pokemon Champions meta or making current-field team recommendations."
+# Modified by estebanmoreno04 (fork of NoahJenkins/vgc-coach): no regulation is
+# written here. The active regulation, its window and its official announcement
+# URL are discovered at runtime by tools/resolve_regulation.py and stored in
+# data/current/regulation.json. These entries are for live checks only.
+version: "3"
+summary: "Use these shared live-source roles for live checks on top of the local snapshot in data/current/. The active regulation and its official announcement are discovered automatically and stored in data/current/regulation.json; browse live only for what happened after the snapshot or what the snapshot cannot show."
 usage: "Official sources define legality and active mechanics. Community sources describe what players are doing inside that legal format. Supporting sources sharpen set and event context after the core format and usage picture are grounded."
 minimum_stack:
   official: 1
   tournament_meta: 1
   broader_meta: 1
 sources:
-  - id: regulation-set-m-c
-    display_name: Regulation Set M-C
+  - id: official-champions-news
+    display_name: Pokémon Champions in-game news (official)
     role: official_regulation
-    regulation_id: regulation-m-c
     source_kind: official
-    canonical_url: https://www.pokemon.com/uk/news/get-ready-for-regulation-set-m-c-in-pokemon-champions
+    canonical_url: https://champions-news.pokemon-home.com/en/list
     priority: 1
-    temporal_status: current
-    active_window:
-      start: "2026-09-09T02:00:00Z"
-      end: "2026-12-02T01:59:00Z"
     allowed_claim_types:
       - legality
       - mechanics
@@ -25,8 +24,8 @@ sources:
       - timers
     required_for_minimum_stack: true
     freshness:
-      max_age_days: 30
-      policy: Re-check live before present-tense rules, legality, mechanics, or item claims.
+      max_age_days: 7
+      policy: The concrete announcement for the active regulation is `official_url` in data/current/regulation.json; re-open it live for species, move or item eligibility questions.
     required_evidence_fields:
       - source_id
       - source_url
@@ -35,17 +34,16 @@ sources:
       - active_mechanics
       - claim_type
     use_for:
-      - active regulation dates
+      - active regulation dates and announced next regulation
       - active mechanics
-      - held item rules
-      - timers
+      - eligible Pokémon, held item rules and timers
     do_not_use_for:
       - tournament usage claims
       - prevalence claims about specific teams or cores
       - set tendency claims
     fallback_if_unavailable:
-      - Use the next current official Champions rules surface and label the swap explicitly.
-      - If no current official rules source is available, do not make present-tense legality or mechanics claims.
+      - Use data/current/regulation.json and say when it was last checked.
+      - If no current official rules source is available, do not make present-tense legality or mechanics claims beyond what the regulation file states.
   - id: play-pokemon-transition-announcement
     display_name: Play! Pokemon transition announcement
     role: official_transition
@@ -58,7 +56,7 @@ sources:
     required_for_minimum_stack: false
     freshness:
       max_age_days: 30
-      policy: Re-check live before event timing or transition claims.
+      policy: Historical context only; pokemon.com is for manual reading (it blocks automated clients).
     required_evidence_fields:
       - source_id
       - source_url
@@ -66,63 +64,29 @@ sources:
       - published_at
       - claim_type
     use_for:
-      - when official VGC events move to Champions
       - historical context for the transition from Pokemon Scarlet and Violet to Pokemon Champions
-      - dated timing context for official play during April and May 2026
     do_not_use_for:
       - legality or mechanics overrides
       - usage claims
       - set tendency claims
     fallback_if_unavailable:
-      - Use another dated official Play! Pokemon scheduling or transition source.
-      - If no official timing source is available, omit transition claims rather than guessing.
-  - id: championsmeta
-    display_name: ChampionsMeta
+      - Omit transition claims rather than guessing.
+  - id: vgchistory
+    display_name: VGC History
     role: tournament_meta
     source_kind: community
-    canonical_url: https://championsmeta.io/
+    canonical_url: https://vgchistory.com/tournaments
     priority: 3
     allowed_claim_types:
       - tournament_usage
       - top_teams
       - current_snapshot
-    required_for_minimum_stack: true
-    freshness:
-      max_age_days: 7
-      policy: Re-check live before tournament-weighted usage, top-team, or current snapshot claims.
-    required_evidence_fields:
-      - source_id
-      - source_url
-      - fetched_at
-      - claim_type
-      - sample_scope
-      - freshness_note
-    use_for:
-      - tournament-weighted usage leaders
-      - top tournament teams
-      - quick current competitive snapshots
-    do_not_use_for:
-      - legality or mechanics claims
-      - broader ladder usage claims
-      - exact set legality claims
-    fallback_if_unavailable:
-      - Use another dated tournament-focused community tracker and say which source replaced it.
-      - If no tournament-focused source is available, downgrade current-field conclusions to early-read language.
-  - id: champions-lab
-    display_name: Champions Lab
-    role: broader_meta
-    source_kind: community
-    canonical_url: https://www.championslab.xyz/meta
-    priority: 4
-    allowed_claim_types:
-      - ladder_usage
       - win_rate
-      - winning_teams
       - core_pairs
     required_for_minimum_stack: true
     freshness:
       max_age_days: 7
-      policy: Re-check live before ladder, win-rate, winning-team, or core-pair claims.
+      policy: Primary in-person source of the local snapshot; check live only for official events newer than the snapshot's data_through.
     required_evidence_fields:
       - source_id
       - source_url
@@ -131,23 +95,78 @@ sources:
       - sample_scope
       - freshness_note
     use_for:
-      - ladder plus tournament usage trends
-      - usage percentages with win-rate context
-      - winning teams
-      - core pairs
+      - whole-field standings, records and open team sheets of official in-person events
+      - day 2 and top cut teams
     do_not_use_for:
       - legality or mechanics claims
-      - official event timing claims
-      - exact move or item legality claims
+      - online or ladder usage claims
     fallback_if_unavailable:
-      - Use another broader dated usage source and label the replacement.
-      - If broader usage coverage is missing, keep current-field claims directional and label them inference-heavy.
+      - Use limitlessvgc.com tournament pages (day 2 team lists) and say which source replaced it.
+      - If no in-person source is available, keep in-person conclusions to the local snapshot and state its age.
+  - id: limitless-vgc
+    display_name: Limitless VGC
+    role: tournament_meta
+    source_kind: community
+    canonical_url: https://limitlessvgc.com/tournaments
+    priority: 4
+    allowed_claim_types:
+      - tournament_usage
+      - top_teams
+      - current_snapshot
+    required_for_minimum_stack: false
+    freshness:
+      max_age_days: 7
+      policy: Fallback in-person source; shows day 2 team lists with the regulation of each event.
+    required_evidence_fields:
+      - source_id
+      - source_url
+      - fetched_at
+      - claim_type
+      - sample_scope
+      - freshness_note
+    use_for:
+      - official event results and day 2 team lists, labeled by regulation
+    do_not_use_for:
+      - legality or mechanics claims
+      - whole-field usage claims (it lists day 2 teams only)
+    fallback_if_unavailable:
+      - Use VGC History or the local snapshot and label the gap.
+  - id: limitless-play
+    display_name: Limitless tournament platform (online)
+    role: broader_meta
+    source_kind: community
+    canonical_url: https://play.limitlesstcg.com/tournaments?game=VGC
+    priority: 5
+    allowed_claim_types:
+      - tournament_usage
+      - top_teams
+      - win_rate
+      - core_pairs
+    required_for_minimum_stack: true
+    freshness:
+      max_age_days: 7
+      policy: Online complement of the local snapshot (64+ player events); check live only for events newer than the snapshot.
+    required_evidence_fields:
+      - source_id
+      - source_url
+      - fetched_at
+      - claim_type
+      - sample_scope
+      - freshness_note
+    use_for:
+      - online tournament usage, records and team lists
+    do_not_use_for:
+      - legality or mechanics claims
+      - in-person or official event claims
+    fallback_if_unavailable:
+      - Use Pikalytics tournament pages and label the replacement.
+      - If broader usage coverage is missing, keep current-field claims to the in-person snapshot.
   - id: pikalytics-champions
     display_name: Pikalytics Champions
     role: supporting_sets
     source_kind: supporting
-    canonical_url: https://cdn.pikalytics.com/champions
-    priority: 5
+    canonical_url: https://www.pikalytics.com/ai/pokedex
+    priority: 6
     allowed_claim_types:
       - set_tendencies
       - common_partners
@@ -157,7 +176,7 @@ sources:
     required_for_minimum_stack: false
     freshness:
       max_age_days: 7
-      policy: Re-check live before set, partner, move, item, or ability tendency claims.
+      policy: Re-check live before set, partner, move, item, or ability tendency claims that the snapshot does not cover.
     required_evidence_fields:
       - source_id
       - source_url
@@ -174,14 +193,14 @@ sources:
       - source-of-truth usage claims
       - official event timing claims
     fallback_if_unavailable:
-      - Use another supporting set database only after the official and core meta stack is already grounded.
+      - Use the sets section of the local snapshot.
       - If no supporting set source is available, keep set details broader instead of inventing exact tendencies.
   - id: victory-road
     display_name: Victory Road
     role: editorial_context
     source_kind: editorial
     canonical_url: https://victoryroad.pro/
-    priority: 6
+    priority: 7
     allowed_claim_types:
       - event_context
       - tournament_coverage
@@ -198,7 +217,7 @@ sources:
       - claim_type
       - freshness_note
     use_for:
-      - event context
+      - event context and upcoming event calendar
       - tournament coverage
       - human-written competitive interpretation
     do_not_use_for:
@@ -206,5 +225,4 @@ sources:
       - sole proof of current prevalence
       - exact set legality claims
     fallback_if_unavailable:
-      - Use another dated editorial or event-coverage source after the official and community stack is grounded.
-      - If no editorial context exists, answer from the verified official and meta tracker stack without adding extra narrative certainty.
+      - Answer from the verified official and snapshot stack without adding extra narrative certainty.

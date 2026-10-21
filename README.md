@@ -199,7 +199,7 @@ The repo already includes:
 - Skill examples and references under `docs/skills/`
 - Eval test cases under `data/fixtures/evals/`
 - Scoring rubrics under `data/rubrics/`
-- Meta snapshot history under `data/snapshots/`
+- Active regulation and meta snapshot under `data/current/` (auto-generated), past regulations under `data/archive/`
 - Helper tools under `tools/`
 - One repository validation entrypoint at `python3 tools/validate.py`
 - Local eval and autoresearch tooling under `tools/eval_skill.py` and `tools/autoresearch.py`
@@ -238,7 +238,7 @@ These are still in progress, not yet available:
 - [AGENTS.md](./AGENTS.md): repo rules and project constraints
 - [CONTRIBUTING.md](./CONTRIBUTING.md): contribution scope and validation expectations
 - [SECURITY.md](./SECURITY.md): responsible disclosure guidance
-- [data/snapshots/README.md](./data/snapshots/README.md): meta snapshot artifact format
+- [docs/skills/shared/references/current-data.md](./docs/skills/shared/references/current-data.md): how the skills read the active regulation and meta snapshot
 
 ## Repo Layout
 
@@ -270,7 +270,8 @@ vgc-coach/
 │   ├── fixtures/
 │   │   └── evals/
 │   ├── rubrics/
-│   └── snapshots/
+│   ├── current/
+│   └── archive/
 ├── docs/
 │   ├── evals/
 │   ├── runtime/

@@ -15,11 +15,11 @@ Confirm that the skill can answer real current-meta prompts with:
 
 ### Prompt 1
 
-`Use $vgc-meta-research to summarize the current Pokemon Champions Regulation M-B metagame and identify two anti-meta openings.`
+`Use $vgc-meta-research to summarize the current Pokemon Champions metagame and identify two anti-meta openings.`
 
 Pass if:
 
-- the answer confirms Regulation M-B, its June 17 through September 9, 2026 UTC window, and Mega Evolution first
+- the answer confirms the regulation id, window and mechanics from `data/current/regulation.json` first, plus the snapshot date and age
 - the answer names real current threats and cores
 - the anti-meta ideas target specific popular teams or strategies
 
@@ -57,6 +57,9 @@ Fail the run if any output:
 
 - `docs/skills/shared/references/live-source-registry.yaml`
 - `docs/skills/shared/references/live-source-map.md`
-- `data/snapshots/champions-reg-m-b-2026-08-06.json`
+- `data/current/regulation.json` and `data/current/snapshot.json`
+- `docs/skills/shared/references/current-data.md`
 - `docs/skills/vgc-meta-research/references/source-policy.md`
 - `data/rubrics/meta-research-rubric.md`
+
+<!-- Modified in the estebanmoreno04 fork: regulation and snapshot come from data/current. -->

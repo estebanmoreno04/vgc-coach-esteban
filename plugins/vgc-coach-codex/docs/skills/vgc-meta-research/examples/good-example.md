@@ -2,17 +2,19 @@
 
 Request:
 
-`What is the current Pokemon Champions Regulation M-B meta and what are two anti-meta openings?`
+`What is the current Pokemon Champions meta and what are two anti-meta openings?`
+
+<!-- Modified in the estebanmoreno04 fork: the regulation comes from data/current, not from the example. -->
 
 Good output shape:
 
 ## Format Check
 
-Confirms that Regulation M-B runs from June 17, 2026 at 02:00 UTC through September 9, 2026 at 01:59 UTC, and that Mega Evolution is active. It does not assume Terastallization is active.
+States the regulation id, label and active window read from `data/current/regulation.json`, the snapshot date, age and `data_through`, and the active mechanics (for example Mega Evolution active). It does not assume Terastallization is active unless the regulation lists it, and it warns when the snapshot is stale or early.
 
 ## Meta Snapshot
 
-Summarizes the current top layer of the format using live sources, for example:
+Summarizes the current top layer of the format from the snapshot, in-person first and online as a complement, for example:
 
 - `Incineroar`, `Sneasler`, `Garchomp`, `Sinistcha`, `Kingambit`, `Basculegion`, `Whimsicott`
 - weather and tempo shells are prominent
@@ -44,4 +46,4 @@ Gives concrete takeaways such as:
 
 ## Sources
 
-Lists official rules plus live community sources.
+Lists the regulation file and snapshot (with their dates), the official announcement URL, and any live community sources checked for events after the snapshot.

@@ -34,6 +34,14 @@ Claude Code support in this repo is a thin adapter over the same shared skill pa
 - Use absolute dates when clarifying “current” claims.
 - Distinguish sourced facts from inference explicitly.
 
+## Current Data (fork)
+
+<!-- Added in the estebanmoreno04 fork of NoahJenkins/vgc-coach. -->
+
+- The active regulation and meta come from `data/current/` through `python3 tools/meta_query.py`; see `docs/skills/shared/references/current-data.md`.
+- `/vgc-refresh` runs `tools/vgc_refresh.py` (resolver, tournament pipeline, plugin rebuild). It needs the full repository (config and event store), not only the packaged plugin.
+- On Windows, git checks out `.claude/skills/*` as plain text files unless symlinks are enabled (`core.symlinks=true` plus Developer Mode). In that case use the packaged plugin, which contains real copies: `claude --plugin-dir ./plugins/vgc-coach-claude`, or install it from the local marketplace.
+
 ## Tooling Boundary
 
 - `vgc-calcs-assistant` exact-browser support still depends on local `agent-browser` plus `python3 tools/browser_damage_calc.py`.

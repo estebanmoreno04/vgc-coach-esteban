@@ -3,28 +3,28 @@ export const trustData = {
   "version": "0.2.0",
   "generated_from": [
     "docs/skills/shared/references/live-source-registry.yaml",
-    "data/snapshots/champions-reg-m-c-2026-09-13.json",
+    "data/current/regulation.json",
     "data/fixtures/evals/*/case-*.md",
     "data/rubrics/*-rubric.md",
     "VERSION"
   ],
   "regulation": {
-    "id": "regulation-m-c",
+    "id": "M-C",
     "name": "Regulation Set M-C",
-    "source_url": "https://www.pokemon.com/uk/news/get-ready-for-regulation-set-m-c-in-pokemon-champions",
+    "source_url": "https://champions-news.pokemon-home.com/en/page/816.html",
     "starts_at": "2026-09-09T02:00:00Z",
     "starts_label": "September 9, 2026 at 02:00 UTC",
     "ends_at": "2026-12-02T01:59:00Z",
     "ends_label": "December 2, 2026 at 01:59 UTC",
-    "verified_on": "2026-09-13",
-    "verified_at": "2026-09-13T00:00:00Z",
-    "verified_label": "September 13, 2026 at 00:00:00 UTC",
-    "freshness_state": "stale",
-    "freshness_max_age_days": 30,
-    "fresh_until": "2026-10-13T00:00:00Z",
+    "verified_on": "2026-10-21",
+    "verified_at": "2026-10-21T15:46:26Z",
+    "verified_label": "October 21, 2026 at 15:46:26 UTC",
+    "freshness_state": "fresh",
+    "freshness_max_age_days": 7,
+    "fresh_until": "2026-10-28T15:46:26Z",
     "fresh_label": "Source snapshot fresh",
     "stale_label": "Source snapshot stale",
-    "freshness_note": "Registry freshness allows 30 days from the source fetch; live recheck required before present-tense coaching.",
+    "freshness_note": "The regulation is re-detected automatically; registry freshness allows 7 days from the last check before a live recheck is required.",
     "stale_note": "This source snapshot is older than the registry freshness limit; live recheck required before present-tense coaching."
   },
   "evaluation": {
@@ -42,22 +42,22 @@ export const trustData = {
     },
     "required_sources": [
       {
-        "id": "regulation-set-m-c",
-        "name": "Regulation Set M-C",
+        "id": "official-champions-news",
+        "name": "Pokémon Champions in-game news (official)",
         "role": "official_regulation",
-        "url": "https://www.pokemon.com/uk/news/get-ready-for-regulation-set-m-c-in-pokemon-champions"
+        "url": "https://champions-news.pokemon-home.com/en/list"
       },
       {
-        "id": "championsmeta",
-        "name": "ChampionsMeta",
+        "id": "vgchistory",
+        "name": "VGC History",
         "role": "tournament_meta",
-        "url": "https://championsmeta.io/"
+        "url": "https://vgchistory.com/tournaments"
       },
       {
-        "id": "champions-lab",
-        "name": "Champions Lab",
+        "id": "limitless-play",
+        "name": "Limitless tournament platform (online)",
         "role": "broader_meta",
-        "url": "https://www.championslab.xyz/meta"
+        "url": "https://play.limitlesstcg.com/tournaments?game=VGC"
       }
     ],
     "scope_note": "The repository defines the minimum source roles. Live pages are checked again when current advice is requested."
