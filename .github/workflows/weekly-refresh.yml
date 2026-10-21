@@ -1,0 +1,103 @@
+# Added in the estebanmoreno04 fork of NoahJenkins/vgc-coach.
+#
+# Every Monday morning (Madrid time), after the weekend's regionals: re-detect
+# the active regulation, download new tournaments, rebuild the snapshot and
+# the plugins, validate, and commit the data if it changed. When the
+# regulation changed, open an issue for the owner.
+#
+# Local equivalent: python3 tools/run_weekly.py
+name: Weekly Data Refresh
+
+on:
+  schedule:
+    # 06:00 UTC = 07:00 in Madrid in winter (CET), 08:00 in summer (CEST).
+    - cron: "0 6 * * 1"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  issues: write
+
+env:
+  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
+
+concurrency:
+  group: weekly-data-refresh
+  cancel-in-progress: false
+
+jobs:
+  refresh:
+    name: refresh
+    if: github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    steps:
+      - name: Check out main
+        uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
+        with:
+          ref: refs/heads/main
+
+      - name: Set up Python
+        uses: actions/setup-python@a309ff8b426b58ec0e2a45f0f869d46889d02405 # v6.2.0
+        with:
+          python-version: "3.12"
+
+      - name: Install Python dependencies
+        run: python3 -m pip install -r tools/requirements-autoresearch.txt -r tools/requirements-data.txt
+
+      - name: Set up Node
+        uses: actions/setup-node@48b55a011bda9f5d6aeb4c2d9c7362e8dae4041e # v6.4.0
+        with:
+          node-version: "24"
+
+      - name: Install calc dependencies
+        run: npm ci --no-audit --no-fund
+        working-directory: tools/calc
+
+      - name: Refresh, rebuild and validate
+        run: >-
+          python3 tools/run_weekly.py
+          --summary-file .artifacts/weekly/summary.json
+          --report-file .artifacts/weekly/report.md
+
+      - name: Publish the report in the run summary
+        if: always()
+        run: |
+          if [ -f .artifacts/weekly/report.md ]; then cat .artifacts/weekly/report.md >> "$GITHUB_STEP_SUMMARY"; fi
+
+      - name: Commit refreshed data
+        id: commit
+        run: |
+          set -euo pipefail
+          if [ -z "$(git status --porcelain)" ]; then
+            echo "No data changes."
+            echo "pushed=false" >> "$GITHUB_OUTPUT"
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A
+          git commit -m "$(python3 -c 'import json; print(json.load(open(".artifacts/weekly/summary.json"))["commit_message"])')"
+          git push origin HEAD:main
+          echo "pushed=true" >> "$GITHUB_OUTPUT"
+
+      - name: Open an issue when the regulation changed
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
+          title="$(python3 -c 'import json; print(json.load(open(".artifacts/weekly/summary.json"))["issue_title"] or "")')"
+          if [ -z "$title" ]; then
+            echo "Regulation unchanged; no issue."
+            exit 0
+          fi
+          python3 -c 'import json; print(json.load(open(".artifacts/weekly/summary.json"))["issue_body"])' > .artifacts/weekly/issue.md
+          gh issue create --title "$title" --body-file .artifacts/weekly/issue.md
+
+      - name: Upload the refresh report
+        if: always()
+        uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
+        with:
+          name: weekly-refresh-${{ github.run_id }}
+          path: .artifacts/weekly
+          if-no-files-found: ignore

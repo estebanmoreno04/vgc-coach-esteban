@@ -1,6 +1,6 @@
 {
  "schema_version": "meta-snapshot-v2",
- "generated_at": "2026-10-21T16:34:36Z",
+ "generated_at": "2026-10-21T20:11:32Z",
  "regulation": {
   "regulation_id": "M-C",
   "label": "Regulation Set M-C",
@@ -13,7 +13,7 @@
   },
   "confidence": "high",
   "stale": false,
-  "checked_at": "2026-10-21T15:46:26Z"
+  "checked_at": "2026-10-21T20:11:32Z"
  },
  "early_meta": false,
  "early_meta_reasons": [],
@@ -47368,6 +47368,37 @@
    }
   }
  ],
- "sources": [],
+ "sources": [
+  {
+   "source_id": "vgchistory",
+   "role": "in_person",
+   "url": "https://vgchistory.com/",
+   "credit": "Data from VGC History (https://vgchistory.com)",
+   "status": "ok",
+   "new_events": 0,
+   "skipped": 0,
+   "errors": []
+  },
+  {
+   "source_id": "limitlessvgc",
+   "role": "in_person_fallback",
+   "url": "https://limitlessvgc.com/",
+   "credit": "Data from Limitless VGC (https://limitlessvgc.com)",
+   "status": "ok",
+   "new_events": 0,
+   "skipped": 0,
+   "errors": []
+  },
+  {
+   "source_id": "limitless_api",
+   "role": "online",
+   "url": "https://play.limitlesstcg.com/api/",
+   "credit": "Data from the Limitless tournament platform (https://play.limitlesstcg.com)",
+   "status": "ok",
+   "new_events": 0,
+   "skipped": 0,
+   "errors": []
+  }
+ ],
  "warnings": []
 }

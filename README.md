@@ -133,6 +133,18 @@ For other Linux distributions, install the equivalent packages from your distro'
 
 `vgc-team-builder` can also use this helper indirectly in its opt-in `battle-ready` mode, where the builder locks one six-mon shell, targets live common cores and recent top teams, and hands narrow benchmark questions to `vgc-calcs-assistant`.
 
+### Weekly Data Refresh (fork)
+
+The active regulation and the meta snapshot in `data/current/` are refreshed automatically by `.github/workflows/weekly-refresh.yml` every Monday at 06:00 UTC (07:00 in Madrid in winter, 08:00 in summer), after the weekend's regionals. It can also be started by hand from the repository's **Actions** tab ("Weekly Data Refresh" → "Run workflow"). The workflow re-detects the regulation, downloads new tournaments, rebuilds the snapshot and the plugins, validates, commits the data when it changed, and opens an issue when the regulation changed.
+
+To do the same locally with one command (from the repository root, after `pip install -r tools/requirements-data.txt` and `npm ci` in `tools/calc`):
+
+```bash
+python3 tools/run_weekly.py
+```
+
+Use `python` or `py -3` on Windows. `python3 tools/vgc_refresh.py` does the refresh alone, without validation.
+
 ## How The Repo Works
 
 > **For contributors and developers** — this section covers internal architecture. VGC players can skip to [Skill Catalog](#skill-catalog).

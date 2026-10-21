@@ -431,6 +431,8 @@ class NoHardcodedRegulationTests(unittest.TestCase):
         "tools/meta_query.py",
         "tools/vgc_refresh.py",
         "tools/damage_calc.py",
+        "tools/run_weekly.py",
+        ".github/workflows/weekly-refresh.yml",
         "tools/calc/calc.mjs",
         "tools/check_format_freshness.py",
         "tools/generate_site_trust_data.py",
