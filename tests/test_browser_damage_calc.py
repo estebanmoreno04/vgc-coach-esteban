@@ -8,6 +8,10 @@ import sys
 import tempfile
 import time
 import unittest
+# Modified by estebanmoreno04 (fork of NoahJenkins/vgc-coach): skip tests whose
+# platform requirements are missing (see tests/platform_support.py).
+sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent))
+import platform_support  # noqa: E402
 from unittest import mock
 
 
@@ -157,6 +161,7 @@ class BrowserDamageCalcTests(unittest.TestCase):
             return False
         return True
 
+    @unittest.skipUnless(platform_support.POSIX, platform_support.NEEDS_POSIX)
     def test_agent_browser_timeout_terminates_and_returns_clear_fallback(self):
         request = self.module.parse_request(self.sample_request())
 
@@ -178,6 +183,7 @@ class BrowserDamageCalcTests(unittest.TestCase):
         self.assertIn("timed out", result.failure_reason.lower())
         self.assertLess(elapsed, 0.8)
 
+    @unittest.skipUnless(platform_support.POSIX, platform_support.NEEDS_POSIX)
     def test_agent_browser_stdout_limit_returns_clear_fallback(self):
         request = self.module.parse_request(self.sample_request())
 
@@ -196,6 +202,7 @@ class BrowserDamageCalcTests(unittest.TestCase):
         self.assertIn("stdout exceeded", result.failure_reason.lower())
         self.assertNotIn("x" * 128, result.failure_reason)
 
+    @unittest.skipUnless(platform_support.POSIX, platform_support.NEEDS_POSIX)
     def test_agent_browser_stderr_limit_returns_clear_fallback(self):
         request = self.module.parse_request(self.sample_request())
 
@@ -216,6 +223,7 @@ class BrowserDamageCalcTests(unittest.TestCase):
         self.assertIn("stderr exceeded", result.failure_reason.lower())
         self.assertNotIn("e" * 128, result.failure_reason)
 
+    @unittest.skipUnless(platform_support.POSIX, platform_support.NEEDS_POSIX)
     def test_agent_browser_stdin_backpressure_obeys_command_deadline(self):
         request = self.module.parse_request(self.sample_request())
         payload = "x" * (2 * 1024 * 1024)

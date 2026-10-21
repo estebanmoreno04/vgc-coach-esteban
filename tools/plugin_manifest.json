@@ -1,11 +1,11 @@
 {
   "repository": {
-    "homepage": "https://github.com/NoahJenkins/vgc-coach",
-    "repository": "https://github.com/NoahJenkins/vgc-coach",
+    "homepage": "https://github.com/estebanmoreno04/vgc-coach-esteban",
+    "repository": "https://github.com/estebanmoreno04/vgc-coach-esteban",
     "license": "Apache-2.0",
     "author": {
-      "name": "Noah Jenkins",
-      "url": "https://github.com/NoahJenkins"
+      "name": "estebanmoreno04 (fork of Noah Jenkins' vgc-coach)",
+      "url": "https://github.com/estebanmoreno04"
     }
   },
   "skills": [

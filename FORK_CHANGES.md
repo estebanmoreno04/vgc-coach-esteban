@@ -6,7 +6,7 @@ This repository is a fork of [NoahJenkins/vgc-coach](https://github.com/NoahJenk
 
 | File | Change |
 |---|---|
-| `README.md` | Fork notice, data credits, `data/current` and `data/archive` paths. |
+| `README.md` | Rewritten for the fork (Spanish): install, usage, skills, commands, automation, architecture, sources, limits, credits. |
 | `.gitignore` | Ignores the pipeline HTTP cache (`data/cache/`). |
 | `.github/workflows/plugin-package-ci.yml` | Installs `tools/requirements-data.txt` for the resolver tests. |
 | `skills/vgc-meta-research`, `vgc-team-builder`, `vgc-team-audit`, `vgc-lead-planner`, `vgc-opponent-scout`, `vgc-format-verifier` (`SKILL.md`) | Read the active regulation and meta from `data/current/` via `tools/meta_query.py`, state the data basis, warn on stale or early data, browse live only after the snapshot, never use `data/archive/`. |
@@ -19,6 +19,8 @@ This repository is a fork of [NoahJenkins/vgc-coach](https://github.com/NoahJenk
 | `skills/vgc-calcs-assistant/SKILL.md`, `docs/skills/vgc-calcs-assistant/references/browser-exactness.md`, `docs/skills/shared/references/team-builder-calcs-handoff.md` | `@smogon/calc` as primary exact backend (damage, KO, survival, speed), browser calc as fallback. |
 | `tools/check_format_freshness.py`, `tools/render_source_registry_docs.py`, `tools/generate_site_trust_data.py`, `tools/build_plugins.py`, `tools/plugin_manifest.json` | Validate and package `data/current` instead of hand-written regulation artifacts; package the query tool and the new skill. |
 | `tests/test_format_freshness.py`, `tests/test_source_registry.py`, `tests/test_generate_site_trust_data.py` | Updated for the auto-detected regulation. |
+| `tests/test_autoresearch.py`, `tests/test_build_plugins.py`, `tests/test_browser_damage_calc.py` | Platform skips (POSIX process groups, symlink permission, same-drive temp dir) so the suite is green on Windows; all still run in CI. |
+| `tools/plugin_manifest.json` | Fork homepage, repository and author metadata. |
 | `site/src/generated/trustData.ts`, `RELEASE_NOTES.md` | Regenerated. |
 
 ## Removed or moved files
@@ -45,7 +47,8 @@ This repository is a fork of [NoahJenkins/vgc-coach](https://github.com/NoahJenk
 | `tools/vgc_refresh.py`, `skills/vgc-refresh/`, `.claude/skills/vgc-refresh`, `.agents/skills/vgc-refresh`, `.opencode/skills/opencode-vgc-refresh/`, `.opencode/commands/vgc-refresh.md` | Refresh command and skill. |
 | `docs/skills/shared/references/current-data.md` | How skills read the current regulation and meta. |
 | `tools/run_weekly.py`, `.github/workflows/weekly-refresh.yml`, `tests/test_weekly_refresh.py` | Weekly automatic refresh (Monday 06:00 UTC and on demand): refresh, rebuild, validate, commit data, open an issue on regulation changes; same command locally. |
-| `docs/fork/progreso.md` | Progress summary of the fork (Spanish). |
+| `docs/fork/progreso.md`, `docs/fork/auditoria-equipo.md` | Progress summary and the phase 6 team audit (Spanish). |
+| `tests/test_acceptance_regulation_change.py`, `tests/fixtures/acceptance/`, `tests/platform_support.py` | End-to-end acceptance test of a regulation change; platform capability helpers for tests. |
 | `tools/damage_calc.py`, `tools/calc/` (`calc.mjs`, `package.json`, `package-lock.json`), `tests/test_damage_calc.py` | Exact damage, KO, survival and speed calcs with `@smogon/calc` (Champions mechanics) through Node, falling back to the upstream Pikalytics browser calc. |
 | `data/archive/upstream-snapshots/README.md` | Explains the archived upstream snapshots. |
 | `FORK_CHANGES.md` | This file. |

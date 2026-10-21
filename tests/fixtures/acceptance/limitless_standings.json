@@ -1,0 +1,12 @@
+[
+  {"name": "OnlineHeatran", "player": "onlineheatran", "country": "US", "placing": 1, "record": {"wins": 6, "losses": 1, "ties": 0},
+   "decklist": [
+     {"id": "heatran", "name": "Heatran", "item": "Heatranite", "ability": "Flash Fire", "attacks": ["Heat Wave", "Earth Power", "Flash Cannon", "Protect"], "nature": "Modest", "tera": null},
+     {"id": "incineroar", "name": "Incineroar", "item": "Sitrus Berry", "ability": "Intimidate", "attacks": ["Fake Out", "Parting Shot", "Flare Blitz", "Knock Off"], "nature": "Careful", "tera": null}
+   ], "drop": null},
+  {"name": "OnlineRain", "player": "onlinerain", "country": "BR", "placing": 2, "record": {"wins": 5, "losses": 2, "ties": 0},
+   "decklist": [
+     {"id": "pelipper", "name": "Pelipper", "item": "Damp Rock", "ability": "Drizzle", "attacks": ["Weather Ball", "Hurricane", "Wide Guard", "Tailwind"], "nature": "Bold", "tera": null},
+     {"id": "archaludon", "name": "Archaludon", "item": "Leftovers", "ability": "Stamina", "attacks": ["Electro Shot", "Dragon Pulse", "Snarl", "Protect"], "nature": "Calm", "tera": null}
+   ], "drop": null}
+]

@@ -53,6 +53,8 @@ def discover(ctx: PipelineContext, key: str) -> list[dict[str, Any]]:
             if when is None:
                 continue
             oldest = when if oldest is None or when < oldest else oldest
+            if str(tournament.get("format")) != key:
+                continue  # never mix formats, even if the API filter is ignored
             if since <= when <= ctx.now and int(tournament.get("players") or 0) >= min_players:
                 found.append({**tournament, "_when": when})
         if oldest is not None and oldest < since:

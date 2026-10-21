@@ -1,4 +1,8 @@
 window.VH = function() {
+    const MONS = {
+        "heatran-mega": { name: "Mega Heatran", base: "heatran", tfrom: "heatran", ps: "Heatran-Mega" },
+        "charizard-mega-y": { name: "Mega Charizard Y", base: "charizard", tfrom: "charizard", ps: "Charizard-Mega-Y" }
+    };
     const REGS = [ {
         id: "M-D",
         label: "Regulation M-D",
@@ -16,11 +20,12 @@ window.VH = function() {
     const T = [ {
         id: "regional-fixture-town-2027",
         name: "Fixture Town Regionals 2027",
+        city: "Fixture Town",
         dates: "December 5–6, 2026",
         reg: "M-D",
         game: "Pokémon Champions",
         tier: "regional",
-        players: 700,
+        players: 4,
         standings: [ {
             po: 1,
             p: "player-three",

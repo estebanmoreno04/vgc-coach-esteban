@@ -3,11 +3,11 @@
   "version": "0.2.0",
   "description": "Pokemon Champions coaching skills for Codex.",
   "author": {
-    "name": "Noah Jenkins",
-    "url": "https://github.com/NoahJenkins"
+    "name": "estebanmoreno04 (fork of Noah Jenkins' vgc-coach)",
+    "url": "https://github.com/estebanmoreno04"
   },
-  "homepage": "https://github.com/NoahJenkins/vgc-coach",
-  "repository": "https://github.com/NoahJenkins/vgc-coach",
+  "homepage": "https://github.com/estebanmoreno04/vgc-coach-esteban",
+  "repository": "https://github.com/estebanmoreno04/vgc-coach-esteban",
   "license": "Apache-2.0",
   "keywords": [
     "pokemon",
@@ -21,13 +21,13 @@
     "displayName": "VGC Coach",
     "shortDescription": "Pokemon Champions coaching skills for Codex",
     "longDescription": "Installable Pokemon Champions coaching workflows generated from the canonical shared VGC Coach skill packages.",
-    "developerName": "Noah Jenkins",
+    "developerName": "estebanmoreno04 (fork of Noah Jenkins' vgc-coach)",
     "category": "Productivity",
     "capabilities": [
       "Interactive",
       "Knowledge"
     ],
-    "websiteURL": "https://github.com/NoahJenkins/vgc-coach",
+    "websiteURL": "https://github.com/estebanmoreno04/vgc-coach-esteban",
     "defaultPrompt": [
       "Use $vgc-meta-research to summarize the current Pokemon Champions metagame and identify anti-meta openings.",
       "Use $vgc-team-builder to build one practical Pokemon Champions team around my target mon, strategy, or anti-meta goal. If I a...",

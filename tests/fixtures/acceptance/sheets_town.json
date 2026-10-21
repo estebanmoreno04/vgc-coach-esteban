@@ -1,0 +1,10 @@
+{
+  "1": [
+    {"s": "heatran-mega", "item": "Heatranite", "ab": "Flash Fire", "tera": null, "nature": "Modest", "moves": ["Heat Wave", "Earth Power", "Flash Cannon", "Protect"]},
+    {"s": "rillaboom", "item": "Miracle Seed", "ab": "Grassy Surge", "tera": null, "nature": "Adamant", "moves": ["Fake Out", "Grassy Glide", "Wood Hammer", "U-turn"]},
+    {"s": "incineroar", "item": "Sitrus Berry", "ab": "Intimidate", "tera": null, "nature": "Careful", "moves": ["Fake Out", "Parting Shot", "Flare Blitz", "Knock Off"]},
+    {"s": "sneasler", "item": "White Herb", "ab": "Unburden", "tera": null, "nature": "Jolly", "moves": ["Close Combat", "Dire Claw", "Fake Out", "Protect"]},
+    {"s": "garchomp", "item": "Life Orb", "ab": "Rough Skin", "tera": null, "nature": "Jolly", "moves": ["Earthquake", "Dragon Claw", "Rock Slide", "Protect"]},
+    {"s": "gholdengo", "item": "Choice Specs", "ab": "Good as Gold", "tera": null, "nature": "Modest", "moves": ["Make It Rain", "Shadow Ball", "Power Gem", "Trick"]}
+  ]
+}

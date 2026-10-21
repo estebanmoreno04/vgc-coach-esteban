@@ -1,0 +1,6 @@
+[
+  [1, "player-three", "Player Three", "ES", "8-1", ["heatran-mega", "rillaboom", "incineroar", "sneasler", "garchomp", "gholdengo"], 1, 0, {}],
+  [2, "player-four", "Player Four", "FR", "7-2", ["charizard-mega-y", "venusaur", "incineroar", "garchomp", "farigiraf", "whimsicott"], 1, 0, {}],
+  [3, "player-five", "Player Five", "IT", "5-4", ["heatran-mega", "pelipper", "archaludon", "basculegion-f", "sneasler", "kingambit"], 0, 0, {}],
+  [4, "player-six", "Player Six", "DE", "2-7", ["rillaboom", "incineroar", "kingambit", "gholdengo", "dragonite", "sneasler"], 0, 0, {}]
+]

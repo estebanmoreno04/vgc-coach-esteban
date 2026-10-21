@@ -5,6 +5,10 @@ import pathlib
 import sys
 import tempfile
 import unittest
+# Modified by estebanmoreno04 (fork of NoahJenkins/vgc-coach): skip tests whose
+# platform requirements are missing (see tests/platform_support.py).
+sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent))
+import platform_support  # noqa: E402
 from unittest import mock
 
 
@@ -205,6 +209,7 @@ class BuildPluginsTests(unittest.TestCase):
                         self.module.build_all(pathlib.Path(tmp) / "build")
                     load_version.assert_not_called()
 
+    @unittest.skipUnless(platform_support.SYMLINKS, platform_support.NEEDS_SYMLINKS)
     def test_destination_symlink_escape_is_rejected_before_recursive_delete(self):
         manifest = copy.deepcopy(self.module.load_manifest())
         manifest["plugins"] = [manifest["plugins"][2]]
@@ -227,6 +232,7 @@ class BuildPluginsTests(unittest.TestCase):
 
             self.assertEqual(sentinel.read_bytes(), b"must survive")
 
+    @unittest.skipUnless(platform_support.SYMLINKS, platform_support.NEEDS_SYMLINKS)
     def test_in_root_plugin_ancestor_symlink_is_rejected_before_recursive_delete(self):
         manifest = copy.deepcopy(self.module.load_manifest())
         manifest["plugins"] = [manifest["plugins"][2]]
@@ -250,6 +256,7 @@ class BuildPluginsTests(unittest.TestCase):
 
             self.assertEqual(sentinel.read_bytes(), b"unrelated data")
 
+    @unittest.skipUnless(platform_support.SYMLINKS, platform_support.NEEDS_SYMLINKS)
     def test_canonical_file_symlink_is_rejected_without_reading_target(self):
         manifest = self.minimal_manifest(
             {"files": ["linked.txt"], "directories": [], "tools": []}
@@ -276,6 +283,7 @@ class BuildPluginsTests(unittest.TestCase):
             self.assertEqual(outside.read_bytes(), outside_bytes)
             self.assertFalse((disposable_root / "build").exists())
 
+    @unittest.skipUnless(platform_support.SYMLINKS, platform_support.NEEDS_SYMLINKS)
     def test_canonical_directory_symlink_is_rejected_without_walking_target(self):
         manifest = self.minimal_manifest(
             {"files": [], "directories": ["linked-dir"], "tools": []}

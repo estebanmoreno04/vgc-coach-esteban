@@ -9,6 +9,10 @@ import os
 import sys
 import tempfile
 import unittest
+# Modified by estebanmoreno04 (fork of NoahJenkins/vgc-coach): skip tests whose
+# platform requirements are missing (see tests/platform_support.py).
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+import platform_support  # noqa: E402
 from unittest import mock
 from pathlib import Path
 from types import SimpleNamespace
@@ -1169,6 +1173,7 @@ class AutoresearchTests(unittest.TestCase):
                     self.assertEqual(result.kind, "reject")
                     self.assertEqual(recorder.read_paths, [])
 
+    @unittest.skipUnless(platform_support.SYMLINKS and platform_support.SAME_DRIVE_TEMP, platform_support.NEEDS_SYMLINKS)
     def test_permission_handler_rejects_repo_symlink_that_escapes_read_scope(self):
         with (
             tempfile.TemporaryDirectory(dir=REPO_ROOT) as repo_dir,
@@ -1251,6 +1256,7 @@ class AutoresearchTests(unittest.TestCase):
         )
         self.assertEqual(redirected.kind, "reject")
 
+    @unittest.skipUnless(platform_support.SAME_DRIVE_TEMP, platform_support.NEEDS_SAME_DRIVE)
     def test_permission_handler_rejects_absolute_relative_and_mixed_outside_git_paths(self):
         with tempfile.TemporaryDirectory() as outside_dir:
             first = Path(outside_dir) / "first.txt"
@@ -1294,6 +1300,7 @@ class AutoresearchTests(unittest.TestCase):
                     )
                     self.assertEqual(result.kind, "reject")
 
+    @unittest.skipUnless(platform_support.SAME_DRIVE_TEMP, platform_support.NEEDS_SAME_DRIVE)
     def test_permission_handler_rejects_outside_shell_possible_paths(self):
         with tempfile.TemporaryDirectory() as outside_dir:
             outside_file = Path(outside_dir) / "secret.txt"
@@ -1312,6 +1319,7 @@ class AutoresearchTests(unittest.TestCase):
                     self.assertEqual(result.kind, "reject")
                     self.assertEqual(recorder.shell_commands, [])
 
+    @unittest.skipUnless(platform_support.SAME_DRIVE_TEMP, platform_support.NEEDS_SAME_DRIVE)
     def test_permission_handler_preserves_repo_and_attachment_git_path_inspection(self):
         repo_file = REPO_ROOT / "README.md"
         with tempfile.TemporaryDirectory() as outside_dir:

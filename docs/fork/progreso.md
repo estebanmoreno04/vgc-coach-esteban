@@ -1,6 +1,6 @@
 # Progreso del fork — VGC Coach (Esteban)
 
-_Actualizado: 21 de octubre de 2026 (tras la Fase 5). Fork de [NoahJenkins/vgc-coach](https://github.com/NoahJenkins/vgc-coach) (Apache-2.0) en `E:\VGC\vgc-coach-esteban`._
+_Actualizado: 21 de octubre de 2026 (tras la Fase 6). Fork de [NoahJenkins/vgc-coach](https://github.com/NoahJenkins/vgc-coach) (Apache-2.0) en `E:\VGC\vgc-coach-esteban`._
 
 ## Objetivo
 
@@ -16,7 +16,7 @@ Un coach de Pokémon Champions VGC que **siempre trabaja con la regulación vige
 | 3 | Skills adaptadas + `vgc-refresh` + consultas | ✅ Hecha | `2d3bfe1` |
 | 4 | Calculadora de daño (`@smogon/calc`) | ✅ Hecha | `19736aa` (4a), `f430c36` (4b) |
 | 5 | GitHub Action semanal (lunes, hora de Madrid) | ✅ Hecha | `23edff3` |
-| 6 | Prueba de aceptación (cambio de regulación simulado + auditoría de tu equipo) | ⏸️ Pendiente | — |
+| 6 | Prueba de aceptación (cambio de regulación simulado + auditoría de tu equipo) | ✅ Hecha | ver `git log` |
 | 7 (extra) | Coach para amigos sin Claude Code | ⏸️ Pendiente | — |
 
 Todo está **subido a GitHub** (fork `estebanmoreno04/vgc-coach-esteban`, rama `main`). Los commits usan tu email privado de GitHub (`145461032+estebanmoreno04@users.noreply.github.com`), no tu Gmail.
@@ -127,8 +127,8 @@ python tools/damage_calc.py --request-file calc.json --pretty
 
 ## Cosas a tener en cuenta
 
-1. **Skills en Windows:** git ha descargado los enlaces de `.claude/skills/` como ficheros de texto. Para usar las skills en Claude Code, hay que usar el plugin generado (`plugins/vgc-coach-claude`). Lo dejaremos montado en la Fase 6.
-2. **Tests:** hay 13 tests de Noah que fallan solo en Windows (symlinks, procesos POSIX y temporales en otra unidad). En la CI de GitHub (Linux) **todo pasa**: Plugin Package CI y Site CI en verde tras el push del 21-oct.
+1. **Skills en Windows:** git descarga los enlaces de `.claude/skills/` como ficheros de texto. Usa el plugin: `claude --plugin-dir ./plugins/vgc-coach-claude`, o instálalo desde el marketplace del fork (ver README).
+2. **Tests:** `validate.py --scope core` en verde también en Windows: 13 tests de Noah se saltan allí con el motivo indicado (symlinks, procesos POSIX y temporales en otra unidad). En la CI de GitHub (Linux) se ejecutan todos y pasan.
 3. **Identidad de git:** el repo está configurado con tu email privado de GitHub (noreply), así que tu Gmail no aparece en el historial público. Queda una rama local `backup-before-email-rewrite` con los commits antiguos; se puede borrar.
 4. **Emparejamientos:** son a nivel de team sheet (qué especies había en cada equipo, no cuáles se sacaron), así que se presentan como orientativos.
 5. **Stat points del rival:** no salen en las team sheets; en los cálculos contra rivales son una suposición.
@@ -136,9 +136,10 @@ python tools/damage_calc.py --request-file calc.json --pretty
 
 ## Próximos pasos
 
-- **Fase 6:**
-  - simulación del cambio de regulación con fixtures (a una "M-D" ficticia) sin tocar código;
-  - prueba real con `vgc-team-audit` y tu equipo (Whimsicott, Kingambit, Charizard-Y, Farigiraf, Kommo-o, Basculegion);
+- **Fase 6 (hecha):**
+  - test de aceptación que simula el cambio a una regulación "M-D" de punta a punta sin tocar código ni config;
+  - `validate.py` en verde también en Windows;
+  - auditoría real de tu equipo en [auditoria-equipo.md](auditoria-equipo.md);
   - README final.
 - **Fase 7 (extra, decidida):** coach gratuito para tus amigos. Será una página de chat publicada en claude.ai donde cada persona pregunta con su propia cuenta de Claude, dentro de sus límites (gratuita = menos, de pago = más). A ti no te cuesta nada. Antes hay que verificar que funciona con cuentas gratuitas e invitados.
 
