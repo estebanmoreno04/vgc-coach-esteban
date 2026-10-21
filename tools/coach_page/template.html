@@ -2,158 +2,176 @@
 <meta name="claude:viewport-fit-sides" content="cover">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap">
 <style>
-/* Layout: a tournament-desk app. Slim scoreboard header, then either the chat or the meta sheet. */
+/* Layout: one quiet column. A thin header line, then the chat or the meta sheet; Poké Ball red is the only accent. */
 :root {
-  --bg: #f3f5f8;
+  --bg: #f6f7f9;
   --surface: #ffffff;
-  --ink: #17202e;
-  --muted: #5b6575;
-  --line: #d9dee6;
-  --accent: #c8402a;      /* fire-red, from the Mega Charizard Y meta */
+  --ink: #1b1e24;
+  --muted: #6a7180;
+  --line: #e3e6eb;
+  --soft: #eef0f3;
+  --accent: #dc3a22;
   --accent-ink: #ffffff;
-  --water: #1f6fb2;
-  --good: #1d7a4f;
-  --warn: #a15c00;
-  --bubble: #e8edf4;
-  --display: "Barlow Condensed", "Arial Narrow", system-ui, sans-serif;
-  --body: "IBM Plex Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
-  --mono: "IBM Plex Mono", ui-monospace, "Cascadia Mono", Consolas, monospace;
+  --water: #2e68c9;
+  --good: #1f8a55;
+  --warn: #b26a00;
+  --sans: "Figtree", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --mono: "JetBrains Mono", ui-monospace, "Cascadia Mono", Consolas, monospace;
 }
 @media (prefers-color-scheme: dark) {
   :root:not([data-theme="light"]) {
-    --bg: #10151d; --surface: #171e29; --ink: #e8edf4; --muted: #9aa5b5; --line: #2a3442;
-    --accent: #ef6a4f; --accent-ink: #10151d; --water: #6aaee6; --good: #5cc795; --warn: #f0b35a; --bubble: #212b39;
+    --bg: #111317; --surface: #181b21; --ink: #eceef2; --muted: #9399a6; --line: #272b33; --soft: #1f232a;
+    --accent: #f05a3e; --accent-ink: #111317; --water: #7aa7f0; --good: #5cc795; --warn: #f0b35a;
     color-scheme: dark;
   }
 }
 :root[data-theme="dark"] {
-  --bg: #10151d; --surface: #171e29; --ink: #e8edf4; --muted: #9aa5b5; --line: #2a3442;
-  --accent: #ef6a4f; --accent-ink: #10151d; --water: #6aaee6; --good: #5cc795; --warn: #f0b35a; --bubble: #212b39;
+  --bg: #111317; --surface: #181b21; --ink: #eceef2; --muted: #9399a6; --line: #272b33; --soft: #1f232a;
+  --accent: #f05a3e; --accent-ink: #111317; --water: #7aa7f0; --good: #5cc795; --warn: #f0b35a;
   color-scheme: dark;
 }
 html, body { height: 100%; }
 body {
-  background: var(--bg); color: var(--ink); font-family: var(--body); font-size: 15px; line-height: 1.5;
+  background: var(--bg); color: var(--ink); font: 15px/1.55 var(--sans);
   padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px));
 }
-.app { max-width: 920px; margin: 0 auto; display: flex; flex-direction: column; min-height: 100%; gap: 12px; padding-block: 12px; }
-header.board { display: flex; flex-wrap: wrap; align-items: center; gap: 10px 16px; border-bottom: 2px solid var(--ink); padding-bottom: 10px; }
-.brand { font-family: var(--display); font-weight: 700; font-size: 26px; letter-spacing: 0.02em; text-transform: uppercase; line-height: 1; }
-.brand span { color: var(--accent); }
-.chips { display: flex; flex-wrap: wrap; gap: 6px; flex: 1 1 260px; }
-.chip { font-family: var(--mono); font-size: 12px; padding: 3px 8px; border: 1px solid var(--line); border-radius: 4px; background: var(--surface); white-space: nowrap; }
-.chip.reg { border-color: var(--accent); color: var(--accent); font-weight: 500; }
-.chip.alert { border-color: var(--warn); color: var(--warn); }
-nav.tabs { display: flex; gap: 4px; }
-nav.tabs button { font: 600 14px var(--body); padding: 6px 12px; border: 1px solid var(--line); background: var(--surface); color: var(--ink); border-radius: 4px; cursor: pointer; }
-nav.tabs button[aria-selected="true"] { background: var(--ink); color: var(--bg); border-color: var(--ink); }
-button:focus-visible, textarea:focus-visible, select:focus-visible { outline: 2px solid var(--water); outline-offset: 2px; }
-.notice { font-size: 13px; color: var(--muted); }
-#messages { display: flex; flex-direction: column; gap: 12px; flex: 1; }
-.msg { max-width: 100%; min-width: 0; padding: 10px 14px; border-radius: 6px; overflow-wrap: anywhere; }
-.msg.user { align-self: flex-end; background: var(--ink); color: var(--bg); max-width: 85%; white-space: pre-wrap; }
-.msg.bot { align-self: stretch; background: var(--surface); border: 1px solid var(--line); }
-.msg.bot.pending { color: var(--muted); font-style: italic; }
-.msg.error { border-color: var(--warn); color: var(--warn); }
-.msg h3, .msg h4 { font-family: var(--display); font-size: 19px; margin: 10px 0 4px; letter-spacing: 0.01em; }
-.msg p { margin: 6px 0; }
+body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-area-inset-top, 0px); z-index: 10; background: var(--bg); }
+.app { max-width: 820px; margin: 0 auto; display: flex; flex-direction: column; min-height: 100%; gap: 16px; padding-block: 18px 8px; }
+.app > * { min-width: 0; }
+a { color: var(--water); }
+button, select, textarea { font: inherit; color: inherit; }
+button:focus-visible, textarea:focus-visible, select:focus-visible, a:focus-visible { outline: 2px solid var(--water); outline-offset: 2px; }
+
+/* header */
+header.top { display: flex; align-items: center; justify-content: space-between; gap: 12px; flex-wrap: wrap; }
+.brand { display: flex; align-items: center; gap: 9px; font-weight: 700; font-size: 18px; letter-spacing: -0.01em; }
+.brand svg { flex: none; }
+nav.tabs { display: flex; gap: 2px; background: var(--soft); padding: 3px; border-radius: 8px; }
+nav.tabs button { border: 0; background: none; padding: 5px 14px; border-radius: 6px; font-weight: 600; font-size: 14px; color: var(--muted); cursor: pointer; }
+nav.tabs button[aria-selected="true"] { background: var(--surface); color: var(--ink); box-shadow: 0 1px 2px rgb(0 0 0 / 0.08); }
+.context { display: flex; flex-wrap: wrap; gap: 4px 0; font-size: 13px; color: var(--muted); margin: -8px 0 0; }
+.context span + span::before { content: "·"; margin: 0 8px; color: var(--line); }
+.context .reg { color: var(--ink); font-weight: 600; }
+.context .alert { color: var(--warn); }
+
+/* chat */
+#view-chat { display: flex; flex-direction: column; gap: 14px; flex: 1; }
+.notice { font-size: 13px; color: var(--muted); margin: 0; }
+#messages { display: flex; flex-direction: column; gap: 18px; flex: 1; }
+.msg { min-width: 0; overflow-wrap: anywhere; }
+.msg.user { align-self: flex-end; max-width: 85%; background: var(--soft); padding: 8px 13px; border-radius: 14px 14px 4px 14px; white-space: pre-wrap; }
+.msg.bot { align-self: stretch; }
+.msg.bot.pending { color: var(--muted); }
+.msg.error { color: var(--warn); }
+#welcome p { margin: 0; color: var(--muted); max-width: 62ch; }
+.msg h3, .msg h4 { font-size: 16px; font-weight: 700; margin: 16px 0 4px; text-wrap: balance; }
+.msg p { margin: 6px 0; max-width: 70ch; }
 .msg ul, .msg ol { margin: 6px 0; padding-left: 20px; }
-.msg code { font-family: var(--mono); font-size: 13px; background: var(--bubble); padding: 1px 4px; border-radius: 3px; }
-.msg pre { background: var(--bubble); padding: 8px; border-radius: 4px; overflow-x: auto; }
+.msg li { margin: 2px 0; }
+.msg code { font-family: var(--mono); font-size: 13px; background: var(--soft); padding: 1px 4px; border-radius: 4px; }
+.msg pre { background: var(--soft); padding: 10px; border-radius: 8px; overflow-x: auto; }
+form.composer { position: sticky; bottom: 0; background: var(--bg); padding-block: 10px calc(10px + env(safe-area-inset-bottom, 0px)); display: grid; gap: 8px; }
+.inputbox { display: grid; grid-template-columns: 1fr auto; align-items: end; gap: 8px; background: var(--surface); border: 1px solid var(--line); border-radius: 12px; padding: 6px 6px 6px 12px; }
+.inputbox:focus-within { border-color: var(--muted); }
+textarea { border: 0; background: none; resize: none; min-height: 48px; max-height: 40vh; width: 100%; min-width: 0; padding: 6px 0; outline: none; }
+#send { border: 0; background: var(--accent); color: var(--accent-ink); font-weight: 600; border-radius: 8px; padding: 8px 14px; cursor: pointer; }
+#send:disabled { opacity: 0.45; cursor: default; }
+.row { display: flex; flex-wrap: wrap; gap: 6px 14px; align-items: center; font-size: 13px; color: var(--muted); }
+.row select { background: none; border: 0; color: var(--muted); padding: 2px 0; cursor: pointer; }
+.row button { background: none; border: 0; padding: 0; color: var(--muted); cursor: pointer; text-decoration: underline; text-underline-offset: 3px; }
+.row button:disabled { opacity: 0.4; cursor: default; text-decoration: none; }
+#status-line { margin-left: auto; }
+
+/* tables (chat answers and meta sheet) */
 .tablewrap { overflow-x: auto; }
-table { border-collapse: collapse; font-size: 13px; width: 100%; }
-th, td { text-align: left; padding: 5px 8px; border-bottom: 1px solid var(--line); }
-td.num, th.num { text-align: right; font-family: var(--mono); font-variant-numeric: tabular-nums; }
-.starter { display: flex; flex-wrap: wrap; gap: 6px; }
-.starter button { font: 500 13px var(--body); padding: 6px 10px; border-radius: 16px; border: 1px solid var(--line); background: var(--surface); color: var(--ink); cursor: pointer; }
-.starter button:hover { border-color: var(--accent); }
-form.composer { position: sticky; bottom: 0; background: var(--bg); padding-block: 8px calc(8px + env(safe-area-inset-bottom, 0px)); display: grid; grid-template-columns: 1fr auto; gap: 8px; border-top: 1px solid var(--line); }
-textarea { font: 15px var(--body); color: var(--ink); background: var(--surface); border: 1px solid var(--line); border-radius: 6px; padding: 8px 10px; resize: vertical; min-height: 64px; width: 100%; min-width: 0; }
-.actions { display: flex; flex-direction: column; gap: 6px; }
-.actions button, .actions select { font: 600 14px var(--body); border-radius: 6px; padding: 8px 12px; border: 1px solid var(--line); background: var(--surface); color: var(--ink); cursor: pointer; }
-.actions button.primary { background: var(--accent); color: var(--accent-ink); border-color: var(--accent); }
-.actions button:disabled { opacity: 0.5; cursor: default; }
-.row { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; font-size: 13px; color: var(--muted); grid-column: 1 / -1; }
-.row button { font: 500 13px var(--body); background: none; border: none; color: var(--water); cursor: pointer; padding: 0; text-decoration: underline; }
-section.sheet { display: grid; gap: 18px; }
-section.sheet h2 { font-family: var(--display); font-size: 22px; text-transform: uppercase; letter-spacing: 0.03em; margin: 0 0 6px; }
-.seg { display: flex; gap: 4px; margin-bottom: 6px; }
-.seg button { font: 500 13px var(--body); padding: 4px 10px; border: 1px solid var(--line); background: var(--surface); color: var(--ink); border-radius: 4px; cursor: pointer; }
-.seg button[aria-pressed="true"] { border-color: var(--accent); color: var(--accent); }
-.teams { display: grid; gap: 10px; grid-template-columns: repeat(auto-fill, minmax(min(260px, 100%), 1fr)); }
-.app > *, .sheet > div { min-width: 0; }
-.team { background: var(--surface); border: 1px solid var(--line); border-radius: 6px; padding: 10px; font-size: 13px; min-width: 0; }
-.team strong { display: block; font-size: 14px; }
-.team ul { margin: 6px 0 0; padding-left: 18px; }
+table { border-collapse: collapse; font-size: 13.5px; width: 100%; }
+th { text-align: left; font-weight: 500; font-size: 12px; color: var(--muted); padding: 6px 10px 6px 0; border-bottom: 1px solid var(--line); white-space: nowrap; }
+td { padding: 6px 10px 6px 0; border-bottom: 1px solid var(--line); }
+td.num, th.num { text-align: right; font-family: var(--mono); font-size: 12.5px; font-variant-numeric: tabular-nums; }
+tr:last-child td { border-bottom: 0; }
+.share { display: inline-flex; flex-direction: column; align-items: flex-end; gap: 3px; }
+.bar { display: block; width: 56px; height: 3px; background: var(--soft); border-radius: 2px; overflow: hidden; }
+.bar i { display: block; height: 100%; background: var(--accent); }
+.online .bar i { background: var(--water); }
+.up { color: var(--good); }
+.down { color: var(--accent); }
+
+/* meta sheet */
+section.sheet { display: grid; gap: 34px; }
+nav.jump { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 2; background: var(--bg); padding-block: 8px; border-bottom: 1px solid var(--line); display: grid; gap: 6px; }
+nav.jump .group { display: flex; flex-wrap: wrap; align-items: baseline; gap: 4px 14px; font-size: 14px; }
+nav.jump .label { font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.08em; color: var(--muted); width: 78px; }
+nav.jump button { border: 0; background: none; padding: 2px 0; cursor: pointer; color: var(--ink); white-space: nowrap; }
+nav.jump button:hover { color: var(--accent); }
+nav.jump button.online:hover { color: var(--water); }
+#sheet-body { display: grid; gap: 40px; }
+.block { scroll-margin-top: 120px; display: grid; gap: 4px; min-width: 0; }
+.block > * { min-width: 0; }
+.block h2 { font-size: 22px; font-weight: 700; letter-spacing: -0.015em; margin: 0; text-wrap: balance; }
+.block h3 { font-size: 13px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.07em; color: var(--muted); margin: 18px 0 2px; }
+.block .sub { font-size: 13px; color: var(--muted); margin: 0 0 8px; }
+.tag { display: inline-block; font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.08em; color: var(--accent); }
+.online .tag { color: var(--water); }
+.teams { display: grid; gap: 10px; grid-template-columns: repeat(auto-fill, minmax(min(240px, 100%), 1fr)); }
+.team { border: 1px solid var(--line); border-radius: 10px; padding: 10px 12px; font-size: 13px; min-width: 0; background: var(--surface); }
+.team strong { display: block; font-size: 14px; font-weight: 600; }
+.team .where { font-size: 12px; color: var(--muted); }
+.team ul { margin: 6px 0 0; padding: 0; list-style: none; display: grid; gap: 1px; }
+.team li span { color: var(--muted); }
+details summary { cursor: pointer; font-size: 13px; color: var(--muted); margin-top: 10px; }
 .small { font-size: 12px; color: var(--muted); }
-@media (prefers-reduced-motion: no-preference) { .msg { animation: in 160ms ease-out; } @keyframes in { from { opacity: 0.4; } to { opacity: 1; } } }
-@media (max-width: 560px) { form.composer { grid-template-columns: 1fr; } .actions { flex-direction: row; flex-wrap: wrap; } .msg.user { max-width: 100%; } }
+@media (prefers-reduced-motion: no-preference) { .msg { animation: in 180ms ease-out; } @keyframes in { from { opacity: 0.5; transform: translateY(2px); } to { opacity: 1; transform: none; } } }
+@media (max-width: 560px) { .msg.user { max-width: 100%; } nav.jump .label { width: 100%; } }
 </style>
 
 <div class="app">
-  <header class="board">
-    <div class="brand">Coach <span>VGC</span></div>
-    <div class="chips" id="chips"></div>
+  <header class="top">
+    <div class="brand">
+      <svg width="22" height="22" viewBox="0 0 24 24" aria-hidden="true">
+        <circle cx="12" cy="12" r="10.4" fill="var(--surface)" stroke="var(--ink)" stroke-width="1.7"/>
+        <path d="M1.6 12a10.4 10.4 0 0 1 20.8 0z" fill="var(--accent)" stroke="var(--ink)" stroke-width="1.7" stroke-linejoin="round"/>
+        <circle cx="12" cy="12" r="3.1" fill="var(--surface)" stroke="var(--ink)" stroke-width="1.7"/>
+      </svg>
+      <span>Coach VGC</span>
+    </div>
     <nav class="tabs" role="tablist">
       <button id="tab-chat" role="tab" aria-selected="true" aria-controls="view-chat">Chat</button>
       <button id="tab-meta" role="tab" aria-selected="false" aria-controls="view-meta">Meta</button>
     </nav>
   </header>
+  <p class="context" id="chips"></p>
 
-  <main id="view-chat" role="tabpanel" aria-labelledby="tab-chat" style="display:flex;flex-direction:column;gap:12px;flex:1">
-    <p class="notice" id="notice">Las respuestas usan <strong>tu propia cuenta de Claude</strong> (gratuita o de pago) y cuentan para tus límites. La primera vez te pedirá permiso.</p>
+  <main id="view-chat" role="tabpanel" aria-labelledby="tab-chat">
+    <p class="notice" id="notice">Las respuestas usan tu propia cuenta de Claude (gratuita o de pago) y cuentan para tus límites. La primera vez te pedirá permiso.</p>
     <div id="messages" aria-live="polite">
       <div class="msg bot" id="welcome">
-        <p><strong>Hola.</strong> Soy un coach de Pokémon Champions VGC con los datos de los últimos torneos: regionales presenciales primero y torneos online como complemento. Pregúntame por el meta, pega tu equipo para auditarlo o pídeme un cálculo de daño.</p>
-        <div class="starter" id="starters">
-          <button type="button" data-q="¿Qué está dominando en los torneos presenciales? Dame el top 10 con win rate y conversión a día 2.">Meta presencial</button>
-          <button type="button" data-q="Audita este equipo para el próximo regional:\n">Auditar mi equipo</button>
-          <button type="button" data-q="¿Cuáles son los cores más ganadores en presencial y cómo se les gana?">Cores y anti-meta</button>
-          <button type="button" data-q="¿Charizard-Mega-Y con Heat Wave bajo sol hace OHKO a Kingambit con 32 HP?">Cálculo de daño</button>
-        </div>
+        <p>Pregúntame por el meta y cómo ha cambiado en los últimos regionales, pega tu equipo en formato Showdown para auditarlo o pídeme un cálculo de daño o de velocidad.</p>
       </div>
     </div>
     <form class="composer" id="composer">
-      <label for="prompt" class="small" style="grid-column:1/-1">Tu pregunta o tu equipo</label>
-      <textarea id="prompt" name="prompt" placeholder="Ej.: ¿Qué Megas se usan más en presencial? · o pega tu equipo en formato Showdown"></textarea>
-      <div class="actions">
-        <button type="submit" class="primary" id="send">Enviar</button>
-        <button type="button" id="stop" disabled>Parar</button>
-        <select id="tier" aria-label="Modelo">
-          <option value="default">Equilibrado</option>
-          <option value="quick">Rápido</option>
-          <option value="complex">A fondo</option>
-        </select>
+      <div class="inputbox">
+        <textarea id="prompt" name="prompt" rows="2" aria-label="Tu pregunta o tu equipo" placeholder="Escribe una pregunta o pega tu equipo"></textarea>
+        <button type="submit" id="send">Enviar</button>
       </div>
-      <div class="row"><span id="status-line"></span><button type="button" id="reset">Nueva conversación</button></div>
+      <div class="row">
+        <select id="tier" aria-label="Modo de respuesta">
+          <option value="default">Modo equilibrado</option>
+          <option value="quick">Modo rápido</option>
+          <option value="complex">Modo a fondo</option>
+        </select>
+        <button type="button" id="stop" disabled>Parar</button>
+        <button type="button" id="reset">Nueva conversación</button>
+        <span id="status-line"></span>
+      </div>
     </form>
   </main>
 
   <section id="view-meta" class="sheet" role="tabpanel" aria-labelledby="tab-meta" hidden>
-    <div>
-      <h2>Uso</h2>
-      <div class="seg" id="seg">
-        <button type="button" data-seg="in_person" aria-pressed="true">Presencial</button>
-        <button type="button" data-seg="online" aria-pressed="false">Online</button>
-        <button type="button" data-seg="total" aria-pressed="false">Total</button>
-      </div>
-      <div class="tablewrap"><table id="usage-table"></table></div>
-    </div>
-    <div>
-      <h2>Megas</h2>
-      <div class="tablewrap"><table id="mega-table"></table></div>
-    </div>
-    <div>
-      <h2>Top cut presencial</h2>
-      <div class="teams" id="topcut"></div>
-    </div>
-    <div>
-      <h2>Torneos incluidos</h2>
-      <div class="tablewrap"><table id="events-table"></table></div>
-      <p class="small" id="credits"></p>
-    </div>
+    <nav class="jump" id="jump" aria-label="Ir a una sección"></nav>
+    <div id="sheet-body"></div>
+    <p class="small" id="credits"></p>
   </section>
 </div>
 
@@ -175,11 +193,14 @@ section.sheet h2 { font-family: var(--display); font-size: 22px; text-transform:
 
   // ---- header ----
   const st = core.status();
+  const MONTHS = ["ene", "feb", "mar", "abr", "may", "jun", "jul", "ago", "sep", "oct", "nov", "dic"];
+  const longDay = (iso) => { const [, m, d] = String(iso).split("-"); return `${Number(d)} ${MONTHS[Number(m) - 1]}`; };
   const chips = [
-    `<span class="chip reg">${esc(st.label || st.regulation)}</span>`,
-    `<span class="chip">Datos hasta ${esc(st.data_through)}</span>`,
-    `<span class="chip">${st.segments.in_person.events} regionales · ${st.segments.online.events} online</span>`,
-    ...st.alerts.map((a) => `<span class="chip alert">${esc(a)}</span>`),
+    `<span class="reg">${esc(st.label || st.regulation)}</span>`,
+    `<span>Datos hasta el ${esc(longDay(st.data_through))}</span>`,
+    `<span>${st.segments.in_person.events} regionales</span>`,
+    `<span>${st.segments.online.events} torneos online</span>`,
+    ...st.alerts.map((a) => `<span class="alert">${esc(a)}</span>`),
   ];
   $("chips").innerHTML = chips.join("");
 
@@ -187,7 +208,6 @@ section.sheet h2 { font-family: var(--display); font-size: 22px; text-transform:
   function show(view) {
     const chat = view === "chat";
     $("view-chat").hidden = !chat;
-    $("view-chat").style.display = chat ? "flex" : "none";
     $("view-meta").hidden = chat;
     $("tab-chat").setAttribute("aria-selected", String(chat));
     $("tab-meta").setAttribute("aria-selected", String(!chat));
@@ -196,22 +216,69 @@ section.sheet h2 { font-family: var(--display); font-size: 22px; text-transform:
   $("tab-meta").onclick = () => show("meta");
   if (location.hash === "#meta") show("meta");
 
-  // ---- meta sheet ----
-  function renderUsage(seg) {
-    const rows = core.usageRows.filter((r) => (seg === "total" ? r.total.share : r[seg].teams))
-      .sort((a, b) => (b[seg].share || 0) - (a[seg].share || 0)).slice(0, 30);
-    $("usage-table").innerHTML = "<thead><tr><th>#</th><th>Pokémon</th><th class='num'>Uso</th><th class='num'>WR</th><th class='num'>Conv. día 2</th></tr></thead><tbody>" +
-      rows.map((r, i) => `<tr><td class="num">${i + 1}</td><td>${esc(r.name)}</td><td class="num">${pct(r[seg].share)}</td><td class="num">${pct(r[seg].win_rate)}</td><td class="num">${pct(r.in_person.day2_conversion)}</td></tr>`).join("") + "</tbody>";
-    document.querySelectorAll("#seg button").forEach((b) => b.setAttribute("aria-pressed", String(b.dataset.seg === seg)));
+  // ---- meta sheet: one page, an index on top, one block per segment / regional ----
+  const day = (iso) => { const [, m, d] = String(iso).split("-"); return `${d}/${m}`; };
+  const delta = (v) => (v > 0 ? `<span class="up">+${v.toFixed(1)}</span>` : `<span class="down">${v.toFixed(1)}</span>`);
+  function table(head, rows) {
+    return '<div class="tablewrap"><table><thead><tr>' + head.map((h) => (h[1] ? `<th class="num">${h[0]}</th>` : `<th>${h[0]}</th>`)).join("") +
+      "</tr></thead><tbody>" + rows.map((r) => "<tr>" + r.map((c, i) => (head[i][1] ? `<td class="num">${c}</td>` : `<td>${c}</td>`)).join("") + "</tr>").join("") + "</tbody></table></div>";
   }
-  document.querySelectorAll("#seg button").forEach((b) => (b.onclick = () => renderUsage(b.dataset.seg)));
-  renderUsage("in_person");
-  $("mega-table").innerHTML = "<thead><tr><th>Mega</th><th class='num'>Presencial</th><th class='num'>WR</th><th class='num'>Online</th></tr></thead><tbody>" +
-    core.megas.slice(0, 12).map((m) => `<tr><td>${esc(m.name)}</td><td class="num">${pct(m.in_person)}</td><td class="num">${pct(m.in_person_wr)}</td><td class="num">${pct(m.online)}</td></tr>`).join("") + "</tbody>";
-  $("topcut").innerHTML = DATA.top_cut.filter((t) => t[0] === "in_person").slice(0, 24).map((t) =>
-    `<div class="team"><strong>#${t[3]} ${esc(t[4])}${t[6] ? " · " + esc(t[6]) : ""}</strong><span class="small">${esc(t[1])} · ${esc(t[2])}</span><ul>${t[7].map((m) => `<li>${esc(m[0])} @ ${esc(m[1] || "?")}</li>`).join("")}</ul></div>`).join("");
-  $("events-table").innerHTML = "<thead><tr><th>Fecha</th><th>Torneo</th><th>Tipo</th><th class='num'>Jugadores</th></tr></thead><tbody>" +
-    DATA.events.slice().reverse().map((e) => `<tr><td>${esc(e[0])}</td><td><a href="${esc(e[4])}" target="_blank" rel="noopener">${esc(e[1])}</a></td><td>${e[2] === "in_person" ? "Presencial" : "Online"}</td><td class="num">${e[3]}</td></tr>`).join("") + "</tbody>";
+  const N = (label) => [label, true];
+  const T = (label) => [label, false];
+  const share = (v) => `<span class="share">${pct(v)}<span class="bar"><i style="width:${Math.min(100, Math.round((v || 0) * 100))}%"></i></span></span>`;
+  function teamCards(list, showEvent) {
+    if (!list.length) return '<p class="sub">Sin equipos de top cut en los datos.</p>';
+    return '<div class="teams">' + list.map((t) =>
+      `<div class="team"><strong>${t[3]}.º ${esc(t[4])}</strong><span class="where">${[showEvent ? esc(core.shortEvent(t[1])) : "", t[6] ? esc(t[6]) : "", t[5] ? esc(t[5]) : ""].filter(Boolean).join(" · ")}</span>` +
+      `<ul>${t[7].map((m) => `<li>${esc(m[0])} <span>@ ${esc(m[1] || "?")}</span></li>`).join("")}</ul></div>`).join("") + "</div>";
+  }
+  const blocks = [];
+  const inPerson = st.segments.in_person;
+  blocks.push({ id: "m-presencial", nav: "Todos", group: "p", html:
+    `<span class="tag">Presencial</span><h2>Todos los regionales</h2><p class="sub">${inPerson.events} regionales, ${inPerson.teams} equipos (field completo), ${inPerson.day2_teams} en día 2.</p>` +
+    table([N("#"), T("Pokémon"), N("Uso"), N("WR"), N("Conv. día 2"), N("Top cut")],
+      core.usageRows.filter((r) => r.in_person.teams).sort((a, b) => (b.in_person.share || 0) - (a.in_person.share || 0)).slice(0, 40)
+        .map((r, i) => [i + 1, esc(r.name), share(r.in_person.share), pct(r.in_person.win_rate), pct(r.in_person.day2_conversion), r.in_person.top_cut_teams])) +
+    "<h3>Megas</h3>" + table([T("Mega"), N("Uso"), N("WR")],
+      core.megas.filter((m) => m.in_person).slice(0, 15).map((m) => [esc(m.name), pct(m.in_person), pct(m.in_person_wr)])) });
+  const tr = core.trend(12);
+  if (tr.available) {
+    const rows = (list) => list.map((r) => [esc(r.name), r.before_pct.toFixed(1) + "%", r.recent_pct.toFixed(1) + "%", delta(r.change_pts)]);
+    const head = [T("Pokémon"), N("Antes"), N("Ahora"), N("Cambio")];
+    blocks.push({ id: "m-tendencia", nav: "Tendencia", group: "p", html:
+      `<span class="tag">Presencial</span><h2>Tendencia</h2><p class="sub">Ahora = ${tr.recent_events.map(esc).join(", ")} (${tr.recent_teams} equipos). Antes = ${tr.earlier_events.map(esc).join(", ")} (${tr.earlier_teams} equipos). Cambio en puntos de % de uso.</p>` +
+      "<h3>Suben</h3>" + table(head, rows(tr.risers)) + "<h3>Bajan</h3>" + table(head, rows(tr.fallers)) +
+      "<h3>Megas que suben</h3>" + table([T("Mega"), N("Antes"), N("Ahora"), N("Cambio")], rows(tr.mega_risers)) +
+      "<h3>Megas que bajan</h3>" + table([T("Mega"), N("Antes"), N("Ahora"), N("Cambio")], rows(tr.mega_fallers)) });
+  }
+  core.byEvent.forEach((e, index) => {
+    blocks.push({ id: "m-ev-" + index, nav: `${core.shortEvent(e.name)} ${day(e.date)}`, group: "r", html:
+      `<span class="tag">Regional · ${esc(longDay(e.date))}</span><h2>${esc(core.shortEvent(e.name))}</h2><p class="sub"> ${e.players} jugadores · ${e.basis === "full_field" ? "field completo" : "solo equipos de día 2"} · ${e.day2_teams} en día 2${e.url ? ` · <a href="${esc(e.url)}" target="_blank" rel="noopener">resultados</a>` : ""}</p>` +
+      table([N("#"), T("Pokémon"), N("Uso"), N("WR"), N("Conv. día 2"), N("Top cut")],
+        e.usage.slice(0, 40).map((r, i) => [i + 1, esc(core.display(r.species)), share(r.share), pct(r.win_rate), pct(r.day2_conversion), r.top_cut_teams])) +
+      "<h3>Megas</h3>" + table([T("Mega"), N("Uso"), N("WR")], e.megas.slice(0, 12).map((m) => [esc(core.display(m.mega)), pct(m.share), pct(m.win_rate)])) +
+      "<h3>Top cut</h3>" + teamCards(DATA.top_cut.filter((t) => t[0] === "in_person" && t[1] === e.name)) });
+  });
+  const onlineSeg = st.segments.online;
+  const onlineEvents = DATA.events.filter((e) => e[2] === "online").reverse();
+  blocks.push({ id: "m-online", nav: "Online", group: "o", online: true, html:
+    `<span class="tag">Online</span><h2>Últimos ${DATA.snapshot.online_window_days} días</h2><p class="sub">${onlineSeg.events} torneos de Limitless con 64+ jugadores, ${onlineSeg.teams} equipos. Complemento del presencial.</p>` +
+    table([N("#"), T("Pokémon"), N("Uso"), N("WR")],
+      core.usageRows.filter((r) => r.online.teams).sort((a, b) => (b.online.share || 0) - (a.online.share || 0)).slice(0, 40)
+        .map((r, i) => [i + 1, esc(r.name), share(r.online.share), pct(r.online.win_rate)])) +
+    "<h3>Megas</h3>" + table([T("Mega"), N("Uso")], core.megas.filter((m) => m.online).sort((a, b) => b.online - a.online).slice(0, 12).map((m) => [esc(m.name), pct(m.online)])) +
+    "<h3>Top cut online</h3>" + teamCards(DATA.top_cut.filter((t) => t[0] === "online").slice(0, 12), true) +
+    `<details><summary>Ver los ${onlineEvents.length} torneos online</summary>` +
+    table([T("Fecha"), T("Torneo"), N("Jugadores")], onlineEvents.map((e) => [esc(e[0]), `<a href="${esc(e[4])}" target="_blank" rel="noopener">${esc(e[1])}</a>`, e[3]])) + "</details>" });
+
+  $("sheet-body").innerHTML = blocks.map((b) => `<div class="block${b.online ? " online" : ""}" id="${b.id}">${b.html}</div>`).join("");
+  const navGroup = (label, group) => `<div class="group"><span class="label">${label}</span>` +
+    blocks.filter((b) => b.group === group).map((b) => `<button type="button" data-target="${b.id}"${b.online ? ' class="online"' : ""}>${esc(b.nav)}</button>`).join("") + "</div>";
+  $("jump").innerHTML = navGroup("Presencial", "p") + navGroup("Regionales", "r") + navGroup("Online", "o");
+  $("jump").addEventListener("click", (ev) => {
+    const target = ev.target.closest("button[data-target]");
+    if (target) $(target.dataset.target).scrollIntoView({ behavior: "smooth", block: "start" });
+  });
   $("credits").textContent = "Fuentes: " + DATA.credits.join(" · ") + ". Regulación detectada de las noticias oficiales del juego.";
 
   // ---- markdown (escaped first) ----
@@ -323,10 +390,11 @@ section.sheet h2 { font-family: var(--display); font-size: 22px; text-transform:
     }
   }
 
-  $("composer").addEventListener("submit", (ev) => { ev.preventDefault(); const q = $("prompt").value; $("prompt").value = ""; ask(q); });
-  $("prompt").addEventListener("keydown", (ev) => { if (ev.key === "Enter" && (ev.ctrlKey || ev.metaKey)) { ev.preventDefault(); $("composer").requestSubmit(); } });
+  $("composer").addEventListener("submit", (ev) => { ev.preventDefault(); const q = $("prompt").value; $("prompt").value = ""; $("prompt").style.height = ""; ask(q); });
+  // Enter sends, Shift+Enter adds a line; pasted teams keep their line breaks.
+  $("prompt").addEventListener("keydown", (ev) => { if (ev.key === "Enter" && !ev.shiftKey && !ev.isComposing) { ev.preventDefault(); $("composer").requestSubmit(); } });
+  $("prompt").addEventListener("input", () => { const t = $("prompt"); t.style.height = "auto"; t.style.height = t.scrollHeight + "px"; });
   $("stop").onclick = () => ctl && ctl.abort();
   $("reset").onclick = () => { turns = []; save(); document.querySelectorAll("#messages .msg:not(#welcome)").forEach((n) => n.remove()); };
-  document.querySelectorAll("#starters button").forEach((b) => (b.onclick = () => { $("prompt").value = b.dataset.q.replace(/\\n/g, "\n"); $("prompt").focus(); }));
 })();
 </script>

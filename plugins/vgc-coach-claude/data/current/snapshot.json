@@ -1,6 +1,6 @@
 {
  "schema_version": "meta-snapshot-v2",
- "generated_at": "2026-10-21T20:25:52Z",
+ "generated_at": "2026-10-21T21:15:04Z",
  "regulation": {
   "regulation_id": "M-C",
   "label": "Regulation Set M-C",
@@ -47368,37 +47368,7231 @@
    }
   }
  ],
- "sources": [
+ "by_event": [
   {
-   "source_id": "vgchistory",
-   "role": "in_person",
-   "url": "https://vgchistory.com/",
-   "credit": "Data from VGC History (https://vgchistory.com)",
-   "status": "ok",
-   "new_events": 0,
-   "skipped": 0,
-   "errors": []
+   "key": "vgchistory:regional-nice-2027",
+   "name": "Nice Regional Championships 2027",
+   "date": "2026-10-17",
+   "players": 862,
+   "basis": "full_field",
+   "teams": 862,
+   "day2_teams": 125,
+   "usage": [
+    {
+     "species": "rillaboom",
+     "name": "Rillaboom",
+     "teams": 402,
+     "share": 0.4664,
+     "win_rate": 0.4939,
+     "games": 3300,
+     "day2_conversion": 0.1468,
+     "top_cut_teams": 3
+    },
+    {
+     "species": "incineroar",
+     "name": "Incineroar",
+     "teams": 373,
+     "share": 0.4327,
+     "win_rate": 0.5204,
+     "games": 3134,
+     "day2_conversion": 0.185,
+     "top_cut_teams": 3
+    },
+    {
+     "species": "garchomp",
+     "name": "Garchomp",
+     "teams": 359,
+     "share": 0.4165,
+     "win_rate": 0.5061,
+     "games": 2952,
+     "day2_conversion": 0.1504,
+     "top_cut_teams": 3
+    },
+    {
+     "species": "sneasler",
+     "name": "Sneasler",
+     "teams": 287,
+     "share": 0.3329,
+     "win_rate": 0.4921,
+     "games": 2402,
+     "day2_conversion": 0.1603,
+     "top_cut_teams": 5
+    },
+    {
+     "species": "raichu",
+     "name": "Raichu",
+     "teams": 274,
+     "share": 0.3179,
+     "win_rate": 0.4857,
+     "games": 2197,
+     "day2_conversion": 0.1131,
+     "top_cut_teams": 3
+    },
+    {
+     "species": "charizard",
+     "name": "Charizard",
+     "teams": 215,
+     "share": 0.2494,
+     "win_rate": 0.521,
+     "games": 1783,
+     "day2_conversion": 0.1488,
+     "top_cut_teams": 2
+    },
+    {
+     "species": "kingambit",
+     "name": "Kingambit",
+     "teams": 214,
+     "share": 0.2483,
+     "win_rate": 0.5251,
+     "games": 1790,
+     "day2_conversion": 0.1869,
+     "top_cut_teams": 2
+    },
+    {
+     "species": "gholdengo",
+     "name": "Gholdengo",
+     "teams": 161,
+     "share": 0.1868,
+     "win_rate": 0.4645,
+     "games": 1296,
+     "day2_conversion": 0.1118,
+     "top_cut_teams": 2
+    },
+    {
+     "species": "archaludon",
+     "name": "Archaludon",
+     "teams": 159,
+     "share": 0.1845,
+     "win_rate": 0.4965,
+     "games": 1287,
+     "day2_conversion": 0.0943,
+     "top_cut_teams": 2
+    },
+    {
+     "species": "basculegion",
+     "name": "Basculegion",
+     "teams": 154,
+     "share": 0.1787,
+     "win_rate": 0.5118,
+     "games": 1276,
+     "day2_conversion": 0.1494,
+     "top_cut_teams": 2
+    },
+    {
+     "species": "volcarona",
+     "name": "Volcarona",
+     "teams": 154,
+     "share": 0.1787,
+     "win_rate": 0.4996,
+     "games": 1265,
+     "day2_conversion": 0.1364,
+     "top_cut_teams": 0
+    },
+    {
+     "species": "floette-eternal",
+     "name": "Floette-Eternal",
+     "teams": 146,
+     "share": 0.1694,
+     "win_rate": 0.5201,
+     "games": 1244,
+     "day2_conversion": 0.1918,
+     "top_cut_teams": 1
+    },
+    {
+     "species": "pelipper",
+     "name": "Pelipper",
+     "teams": 133,
+     "share": 0.1543,
+     "win_rate": 0.4917,
+     "games": 1078,
+     "day2_conversion": 0.0902,
+     "top_cut_teams": 2
+    },
+    {
+     "species": "farigiraf",
+     "name": "Farigiraf",
+     "teams": 129,
+     "share": 0.1497,
+     "win_rate": 0.5156,
+     "games": 1055,
+     "day2_conversion": 0.1163,
+     "top_cut_teams": 1
+    },
+    {
+     "species": "venusaur",
+     "name": "Venusaur",
+     "teams": 123,
+     "share": 0.1427,
+     "win_rate": 0.5237,
+     "games": 1014,
+     "day2_conversion": 0.1382,
+     "top_cut_teams": 0
+    },
+    {
+     "species": "sylveon",
+     "name": "Sylveon",
+     "teams": 109,
+     "share": 0.1265,
+     "win_rate": 0.5251,
+     "games": 897,
+     "day2_conversion": 0.1468,
+     "top_cut_teams": 1
+    },
+    {
+     "species": "grimmsnarl",
+     "name": "Grimmsnarl",
+     "teams": 95,
+     "share": 0.1102,
+     "win_rate": 0.4954,
+     "games": 755,
+     "day2_conversion": 0.0737,
+     "top_cut_teams": 0
+    },
+    {
+     "species": "arcanine-hisui",
+     "name": "Arcanine-Hisui",
+     "teams": 88,
+     "share": 0.1021,
+     "win_rate": 0.4665,
+     "games": 701,
+     "day2_conversion": 0.1023,
+     "top_cut_teams": 0
+    },
+    {
+     "species": "staraptor",
+     "name": "Staraptor",
+     "teams": 87,
+     "share": 0.1009,
+     "win_rate": 0.4993,
+     "games": 721,
+     "day2_conversion": 0.1494,
+     "top_cut_teams": 1
+    },
+    {
+     "species": "delphox",
+     "name": "Delphox",
+     "teams": 85,
+     "share": 0.0986,
+     "win_rate": 0.538,
+     "games": 736,
+     "day2_conversion": 0.2471,
+     "top_cut_teams": 0
+    },
+    {
+     "species": "indeedee-f",
+     "name": "Indeedee-F",
+     "teams": 82,
+     "share": 0.0951,
+     "win_rate": 0.4717,
+     "games": 672,
+     "day2_conversion": 0.1463,
+     "top_cut_teams": 0
+    },
+    {
+     "species": "sinistcha",
+     "name": "Sinistcha",
+     "teams": 82,
+     "share": 0.0951,
+     "win_rate": 0.5029,
+     "games": 698,
+     "day2_conversion": 0.2195,
+     "top_cut_teams": 1
+    },
+    {
+     "species": "primarina",
+     "name": "Primarina",
+     "teams": 71,
+     "share": 0.0824,
+     "win_rate": 0.5247,
+     "games": 587,
+     "day2_conversion": 0.169,
+     "top_cut_teams": 1
+    },
+    {
+     "species": "salamence",
+     "name": "Salamence",
+     "teams": 71,
+     "share": 0.0824,
+     "win_rate": 0.4651,
+     "games": 587,
+     "day2_conversion": 0.1127,
+     "top_cut_teams": 0
+    },
+    {
+     "species": "kommo-o",
+     "name": "Kommo-o",
+     "teams": 69,
+     "share": 0.08,
+     "win_rate": 0.542,
+     "games": 572,
+     "day2_conversion": 0.2029,
+     "top_cut_teams": 0
+    },
+    {
+     "species": "whimsicott",
+     "name": "Whimsicott",
+     "teams": 65,
+     "share": 0.0754,
+     "win_rate": 0.5361,
+     "games": 554,
+     "day2_conversion": 0.1692,
+     "top_cut_teams": 2
+    },
+    {
+     "species": "golisopod",
+     "name": "Golisopod",
+     "teams": 64,
+     "share": 0.0742,
+     "win_rate": 0.5,
+     "games": 524,
+     "day2_conversion": 0.0938,
+     "top_cut_teams": 2
+    },
+    {
+     "species": "milotic",
+     "name": "Milotic",
+     "teams": 58,
+     "share": 0.0673,
+     "win_rate": 0.4835,
+     "games": 486,
+     "day2_conversion": 0.1207,
+     "top_cut_teams": 1
+    },
+    {
+     "species": "gengar",
+     "name": "Gengar",
+     "teams": 54,
+     "share": 0.0626,
+     "win_rate": 0.591,
+     "games": 489,
+     "day2_conversion": 0.3333,
+     "top_cut_teams": 1
+    },
+    {
+     "species": "tyranitar",
+     "name": "Tyranitar",
+     "teams": 49,
+     "share": 0.0568,
+     "win_rate": 0.4602,
+     "games": 402,
+     "day2_conversion": 0.1224,
+     "top_cut_teams": 1
+    },
+    {
+     "species": "dragonite",
+     "name": "Dragonite",
+     "teams": 47,
+     "share": 0.0545,
+     "win_rate": 0.5062,
+     "games": 403,
+     "day2_conversion": 0.1702,
+     "top_cut_teams": 1
+    },
+    {
+     "species": "excadrill",
+     "name": "Excadrill",
+     "teams": 44,
+     "share": 0.051,
+     "win_rate": 0.4683,
+     "games": 363,
+     "day2_conversion": 0.1136,
+     "top_cut_teams": 1
+    },
+    {
+     "species": "politoed",
+     "name": "Politoed",
+     "teams": 44,
+     "share": 0.051,
+     "win_rate": 0.4792,
+     "games": 336,
+     "day2_conversion": 0.0682,
+     "top_cut_teams": 0
+    },
+    {
+     "species": "gardevoir",
+     "name": "Gardevoir",
+     "teams": 38,
+     "share": 0.0441,
+     "win_rate": 0.5175,
+     "games": 315,
+     "day2_conversion": 0.1316,
+     "top_cut_teams": 0
+    },
+    {
+     "species": "froslass",
+     "name": "Froslass",
+     "teams": 37,
+     "share": 0.0429,
+     "win_rate": 0.4815,
+     "games": 297,
+     "day2_conversion": 0.1081,
+     "top_cut_teams": 0
+    },
+    {
+     "species": "indeedee",
+     "name": "Indeedee",
+     "teams": 32,
+     "share": 0.0371,
+     "win_rate": 0.444,
+     "games": 259,
+     "day2_conversion": 0.0938,
+     "top_cut_teams": 0
+    },
+    {
+     "species": "basculegion-f",
+     "name": "Basculegion-F",
+     "teams": 28,
+     "share": 0.0325,
+     "win_rate": 0.5429,
+     "games": 245,
+     "day2_conversion": 0.1429,
+     "top_cut_teams": 2
+    },
+    {
+     "species": "glimmora",
+     "name": "Glimmora",
+     "teams": 28,
+     "share": 0.0325,
+     "win_rate": 0.5331,
+     "games": 242,
+     "day2_conversion": 0.1786,
+     "top_cut_teams": 0
+    },
+    {
+     "species": "swampert",
+     "name": "Swampert",
+     "teams": 27,
+     "share": 0.0313,
+     "win_rate": 0.4658,
+     "games": 219,
+     "day2_conversion": 0.0741,
+     "top_cut_teams": 0
+    },
+    {
+     "species": "camerupt",
+     "name": "Camerupt",
+     "teams": 23,
+     "share": 0.0267,
+     "win_rate": 0.5612,
+     "games": 196,
+     "day2_conversion": 0.1739,
+     "top_cut_teams": 1
+    },
+    {
+     "species": "aerodactyl",
+     "name": "Aerodactyl",
+     "teams": 22,
+     "share": 0.0255,
+     "win_rate": 0.5615,
+     "games": 187,
+     "day2_conversion": 0.2273,
+     "top_cut_teams": 0
+    },
+    {
+     "species": "torkoal",
+     "name": "Torkoal",
+     "teams": 22,
+     "share": 0.0255,
+     "win_rate": 0.4424,
+     "games": 165,
+     "day2_conversion": 0.0909,
+     "top_cut_teams": 0
+    },
+    {
+     "species": "armarouge",
+     "name": "Armarouge",
+     "teams": 20,
+     "share": 0.0232,
+     "win_rate": 0.404,
+     "games": 151,
+     "day2_conversion": 0.05,
+     "top_cut_teams": 0
+    },
+    {
+     "species": "dragapult",
+     "name": "Dragapult",
+     "teams": 20,
+     "share": 0.0232,
+     "win_rate": 0.5394,
+     "games": 165,
+     "day2_conversion": 0.15,
+     "top_cut_teams": 0
+    },
+    {
+     "species": "vivillon",
+     "name": "Vivillon",
+     "teams": 20,
+     "share": 0.0232,
+     "win_rate": 0.6069,
+     "games": 173,
+     "day2_conversion": 0.25,
+     "top_cut_teams": 1
+    },
+    {
+     "species": "metagross",
+     "name": "Metagross",
+     "teams": 18,
+     "share": 0.0209,
+     "win_rate": 0.4069,
+     "games": 145,
+     "day2_conversion": 0.0556,
+     "top_cut_teams": 0
+    },
+    {
+     "species": "annihilape",
+     "name": "Annihilape",
+     "teams": 17,
+     "share": 0.0197,
+     "win_rate": 0.45,
+     "games": 140,
+     "day2_conversion": 0.0588,
+     "top_cut_teams": 0
+    },
+    {
+     "species": "toxapex",
+     "name": "Toxapex",
+     "teams": 16,
+     "share": 0.0186,
+     "win_rate": 0.5616,
+     "games": 146,
+     "day2_conversion": 0.3125,
+     "top_cut_teams": 0
+    },
+    {
+     "species": "corviknight",
+     "name": "Corviknight",
+     "teams": 15,
+     "share": 0.0174,
+     "win_rate": 0.437,
+     "games": 119,
+     "day2_conversion": 0.0667,
+     "top_cut_teams": 0
+    },
+    {
+     "species": "blaziken",
+     "name": "Blaziken",
+     "teams": 14,
+     "share": 0.0162,
+     "win_rate": 0.4717,
+     "games": 106,
+     "day2_conversion": 0.0714,
+     "top_cut_teams": 0
+    },
+    {
+     "species": "ceruledge",
+     "name": "Ceruledge",
+     "teams": 12,
+     "share": 0.0139,
+     "win_rate": 0.4388,
+     "games": 98,
+     "day2_conversion": 0.0833,
+     "top_cut_teams": 0
+    },
+    {
+     "species": "hatterene",
+     "name": "Hatterene",
+     "teams": 12,
+     "share": 0.0139,
+     "win_rate": 0.4253,
+     "games": 87,
+     "day2_conversion": 0.0,
+     "top_cut_teams": 0
+    },
+    {
+     "species": "ninetales-alola",
+     "name": "Ninetales-Alola",
+     "teams": 12,
+     "share": 0.0139,
+     "win_rate": 0.463,
+     "games": 108,
+     "day2_conversion": 0.25,
+     "top_cut_teams": 0
+    },
+    {
+     "species": "pyroar",
+     "name": "Pyroar",
+     "teams": 11,
+     "share": 0.0128,
+     "win_rate": 0.5652,
+     "games": 92,
+     "day2_conversion": 0.1818,
+     "top_cut_teams": 0
+    },
+    {
+     "species": "hydreigon",
+     "name": "Hydreigon",
+     "teams": 10,
+     "share": 0.0116,
+     "win_rate": 0.4,
+     "games": 80,
+     "day2_conversion": 0.0,
+     "top_cut_teams": 0
+    },
+    {
+     "species": "blastoise",
+     "name": "Blastoise",
+     "teams": 9,
+     "share": 0.0104,
+     "win_rate": 0.5205,
+     "games": 73,
+     "day2_conversion": 0.1111,
+     "top_cut_teams": 0
+    },
+    {
+     "species": "lucario",
+     "name": "Lucario",
+     "teams": 9,
+     "share": 0.0104,
+     "win_rate": 0.3913,
+     "games": 69,
+     "day2_conversion": 0.1111,
+     "top_cut_teams": 0
+    },
+    {
+     "species": "maushold",
+     "name": "Maushold",
+     "teams": 9,
+     "share": 0.0104,
+     "win_rate": 0.4878,
+     "games": 82,
+     "day2_conversion": 0.3333,
+     "top_cut_teams": 0
+    },
+    {
+     "species": "mawile",
+     "name": "Mawile",
+     "teams": 7,
+     "share": 0.0081,
+     "win_rate": 0.3585,
+     "games": 53,
+     "day2_conversion": 0.0,
+     "top_cut_teams": 0
+    },
+    {
+     "species": "talonflame",
+     "name": "Talonflame",
+     "teams": 7,
+     "share": 0.0081,
+     "win_rate": 0.45,
+     "games": 60,
+     "day2_conversion": 0.1429,
+     "top_cut_teams": 0
+    }
+   ],
+   "megas": [
+    {
+     "mega": "raichu-mega-y",
+     "name": "Raichu-Mega-Y",
+     "teams": 236,
+     "share": 0.2738,
+     "win_rate": 0.4753,
+     "games": 1881
+    },
+    {
+     "mega": "charizard-mega-y",
+     "name": "Charizard-Mega-Y",
+     "teams": 213,
+     "share": 0.2471,
+     "win_rate": 0.5229,
+     "games": 1767
+    },
+    {
+     "mega": "garchomp-mega-z",
+     "name": "Garchomp-Mega-Z",
+     "teams": 192,
+     "share": 0.2227,
+     "win_rate": 0.4722,
+     "games": 1510
+    },
+    {
+     "mega": "floette-mega",
+     "name": "Floette-Mega",
+     "teams": 146,
+     "share": 0.1694,
+     "win_rate": 0.5201,
+     "games": 1244
+    },
+    {
+     "mega": "staraptor-mega",
+     "name": "Staraptor-Mega",
+     "teams": 86,
+     "share": 0.0998,
+     "win_rate": 0.5007,
+     "games": 713
+    },
+    {
+     "mega": "delphox-mega",
+     "name": "Delphox-Mega",
+     "teams": 85,
+     "share": 0.0986,
+     "win_rate": 0.538,
+     "games": 736
+    },
+    {
+     "mega": "salamence-mega",
+     "name": "Salamence-Mega",
+     "teams": 71,
+     "share": 0.0824,
+     "win_rate": 0.4651,
+     "games": 587
+    },
+    {
+     "mega": "golisopod-mega",
+     "name": "Golisopod-Mega",
+     "teams": 64,
+     "share": 0.0742,
+     "win_rate": 0.5,
+     "games": 524
+    },
+    {
+     "mega": "gengar-mega",
+     "name": "Gengar-Mega",
+     "teams": 54,
+     "share": 0.0626,
+     "win_rate": 0.591,
+     "games": 489
+    },
+    {
+     "mega": "tyranitar-mega",
+     "name": "Tyranitar-Mega",
+     "teams": 47,
+     "share": 0.0545,
+     "win_rate": 0.4627,
+     "games": 389
+    },
+    {
+     "mega": "dragonite-mega",
+     "name": "Dragonite-Mega",
+     "teams": 46,
+     "share": 0.0534,
+     "win_rate": 0.5038,
+     "games": 395
+    },
+    {
+     "mega": "gardevoir-mega",
+     "name": "Gardevoir-Mega",
+     "teams": 38,
+     "share": 0.0441,
+     "win_rate": 0.5175,
+     "games": 315
+    },
+    {
+     "mega": "raichu-mega-x",
+     "name": "Raichu-Mega-X",
+     "teams": 38,
+     "share": 0.0441,
+     "win_rate": 0.5475,
+     "games": 316
+    },
+    {
+     "mega": "froslass-mega",
+     "name": "Froslass-Mega",
+     "teams": 37,
+     "share": 0.0429,
+     "win_rate": 0.4815,
+     "games": 297
+    },
+    {
+     "mega": "swampert-mega",
+     "name": "Swampert-Mega",
+     "teams": 26,
+     "share": 0.0302,
+     "win_rate": 0.4692,
+     "games": 211
+    },
+    {
+     "mega": "camerupt-mega",
+     "name": "Camerupt-Mega",
+     "teams": 23,
+     "share": 0.0267,
+     "win_rate": 0.5612,
+     "games": 196
+    },
+    {
+     "mega": "aerodactyl-mega",
+     "name": "Aerodactyl-Mega",
+     "teams": 21,
+     "share": 0.0244,
+     "win_rate": 0.5587,
+     "games": 179
+    },
+    {
+     "mega": "glimmora-mega",
+     "name": "Glimmora-Mega",
+     "teams": 21,
+     "share": 0.0244,
+     "win_rate": 0.5222,
+     "games": 180
+    },
+    {
+     "mega": "metagross-mega",
+     "name": "Metagross-Mega",
+     "teams": 18,
+     "share": 0.0209,
+     "win_rate": 0.4069,
+     "games": 145
+    },
+    {
+     "mega": "blaziken-mega",
+     "name": "Blaziken-Mega",
+     "teams": 12,
+     "share": 0.0139,
+     "win_rate": 0.4778,
+     "games": 90
+    },
+    {
+     "mega": "pyroar-mega",
+     "name": "Pyroar-Mega",
+     "teams": 11,
+     "share": 0.0128,
+     "win_rate": 0.5652,
+     "games": 92
+    },
+    {
+     "mega": "blastoise-mega",
+     "name": "Blastoise-Mega",
+     "teams": 9,
+     "share": 0.0104,
+     "win_rate": 0.5205,
+     "games": 73
+    },
+    {
+     "mega": "lucario-mega-z",
+     "name": "Lucario-Mega-Z",
+     "teams": 9,
+     "share": 0.0104,
+     "win_rate": 0.3913,
+     "games": 69
+    },
+    {
+     "mega": "mawile-mega",
+     "name": "Mawile-Mega",
+     "teams": 7,
+     "share": 0.0081,
+     "win_rate": 0.3585,
+     "games": 53
+    },
+    {
+     "mega": "meowstic-mega",
+     "name": "Meowstic-Mega",
+     "teams": 5,
+     "share": 0.0058,
+     "win_rate": 0.4,
+     "games": 35
+    },
+    {
+     "mega": "absol-mega-z",
+     "name": "Absol-Mega-Z",
+     "teams": 4,
+     "share": 0.0046,
+     "win_rate": 0.5517,
+     "games": 29
+    },
+    {
+     "mega": "altaria-mega",
+     "name": "Altaria-Mega",
+     "teams": 4,
+     "share": 0.0046,
+     "win_rate": 0.48,
+     "games": 25
+    },
+    {
+     "mega": "baxcalibur-mega",
+     "name": "Baxcalibur-Mega",
+     "teams": 3,
+     "share": 0.0035,
+     "win_rate": 0.2083,
+     "games": 24
+    },
+    {
+     "mega": "garchomp-mega",
+     "name": "Garchomp-Mega",
+     "teams": 3,
+     "share": 0.0035,
+     "win_rate": 0.6176,
+     "games": 34
+    },
+    {
+     "mega": "kangaskhan-mega",
+     "name": "Kangaskhan-Mega",
+     "teams": 3,
+     "share": 0.0035,
+     "win_rate": 0.4286,
+     "games": 21
+    },
+    {
+     "mega": "manectric-mega",
+     "name": "Manectric-Mega",
+     "teams": 3,
+     "share": 0.0035,
+     "win_rate": 0.4706,
+     "games": 17
+    },
+    {
+     "mega": "sceptile-mega",
+     "name": "Sceptile-Mega",
+     "teams": 3,
+     "share": 0.0035,
+     "win_rate": 0.3043,
+     "games": 23
+    },
+    {
+     "mega": "lopunny-mega",
+     "name": "Lopunny-Mega",
+     "teams": 2,
+     "share": 0.0023,
+     "win_rate": 0.3571,
+     "games": 14
+    },
+    {
+     "mega": "scizor-mega",
+     "name": "Scizor-Mega",
+     "teams": 2,
+     "share": 0.0023,
+     "win_rate": 0.3077,
+     "games": 13
+    },
+    {
+     "mega": "scovillain-mega",
+     "name": "Scovillain-Mega",
+     "teams": 2,
+     "share": 0.0023,
+     "win_rate": 0.375,
+     "games": 16
+    },
+    {
+     "mega": "ampharos-mega",
+     "name": "Ampharos-Mega",
+     "teams": 1,
+     "share": 0.0012,
+     "win_rate": 0.25,
+     "games": 8
+    },
+    {
+     "mega": "barbaracle-mega",
+     "name": "Barbaracle-Mega",
+     "teams": 1,
+     "share": 0.0012,
+     "win_rate": 0.625,
+     "games": 8
+    },
+    {
+     "mega": "chandelure-mega",
+     "name": "Chandelure-Mega",
+     "teams": 1,
+     "share": 0.0012,
+     "win_rate": 0.5,
+     "games": 8
+    },
+    {
+     "mega": "charizard-mega-x",
+     "name": "Charizard-Mega-X",
+     "teams": 1,
+     "share": 0.0012,
+     "win_rate": 0.5,
+     "games": 8
+    },
+    {
+     "mega": "eelektross-mega",
+     "name": "Eelektross-Mega",
+     "teams": 1,
+     "share": 0.0012,
+     "win_rate": 0.125,
+     "games": 8
+    },
+    {
+     "mega": "gallade-mega",
+     "name": "Gallade-Mega",
+     "teams": 1,
+     "share": 0.0012,
+     "win_rate": 0.375,
+     "games": 8
+    },
+    {
+     "mega": "greninja-mega",
+     "name": "Greninja-Mega",
+     "teams": 1,
+     "share": 0.0012,
+     "win_rate": 0.25,
+     "games": 8
+    },
+    {
+     "mega": "gyarados-mega",
+     "name": "Gyarados-Mega",
+     "teams": 1,
+     "share": 0.0012,
+     "win_rate": 0.5,
+     "games": 8
+    },
+    {
+     "mega": "heracross-mega",
+     "name": "Heracross-Mega",
+     "teams": 1,
+     "share": 0.0012,
+     "win_rate": 0.125,
+     "games": 8
+    },
+    {
+     "mega": "meganium-mega",
+     "name": "Meganium-Mega",
+     "teams": 1,
+     "share": 0.0012,
+     "win_rate": 0.375,
+     "games": 8
+    },
+    {
+     "mega": "slowbro-mega",
+     "name": "Slowbro-Mega",
+     "teams": 1,
+     "share": 0.0012,
+     "win_rate": 0.375,
+     "games": 8
+    },
+    {
+     "mega": "starmie-mega",
+     "name": "Starmie-Mega",
+     "teams": 1,
+     "share": 0.0012,
+     "win_rate": 0.5833,
+     "games": 12
+    }
+   ]
   },
   {
-   "source_id": "limitlessvgc",
-   "role": "in_person_fallback",
-   "url": "https://limitlessvgc.com/",
-   "credit": "Data from Limitless VGC (https://limitlessvgc.com)",
-   "status": "ok",
-   "new_events": 0,
-   "skipped": 0,
-   "errors": []
+   "key": "vgchistory:regional-louisville-2027",
+   "name": "Louisville Regional Championships 2027",
+   "date": "2026-10-10",
+   "players": 1013,
+   "basis": "full_field",
+   "teams": 1013,
+   "day2_teams": 143,
+   "usage": [
+    {
+     "species": "rillaboom",
+     "name": "Rillaboom",
+     "teams": 463,
+     "share": 0.4571,
+     "win_rate": 0.485,
+     "games": 3577,
+     "day2_conversion": 0.1296,
+     "top_cut_teams": 3
+    },
+    {
+     "species": "garchomp",
+     "name": "Garchomp",
+     "teams": 409,
+     "share": 0.4038,
+     "win_rate": 0.5078,
+     "games": 3214,
+     "day2_conversion": 0.154,
+     "top_cut_teams": 4
+    },
+    {
+     "species": "incineroar",
+     "name": "Incineroar",
+     "teams": 385,
+     "share": 0.3801,
+     "win_rate": 0.5065,
+     "games": 3003,
+     "day2_conversion": 0.1429,
+     "top_cut_teams": 2
+    },
+    {
+     "species": "sneasler",
+     "name": "Sneasler",
+     "teams": 364,
+     "share": 0.3593,
+     "win_rate": 0.5082,
+     "games": 2863,
+     "day2_conversion": 0.1429,
+     "top_cut_teams": 4
+    },
+    {
+     "species": "raichu",
+     "name": "Raichu",
+     "teams": 271,
+     "share": 0.2675,
+     "win_rate": 0.496,
+     "games": 2121,
+     "day2_conversion": 0.1476,
+     "top_cut_teams": 1
+    },
+    {
+     "species": "kingambit",
+     "name": "Kingambit",
+     "teams": 230,
+     "share": 0.227,
+     "win_rate": 0.533,
+     "games": 1893,
+     "day2_conversion": 0.187,
+     "top_cut_teams": 2
+    },
+    {
+     "species": "gholdengo",
+     "name": "Gholdengo",
+     "teams": 214,
+     "share": 0.2113,
+     "win_rate": 0.4753,
+     "games": 1618,
+     "day2_conversion": 0.1028,
+     "top_cut_teams": 2
+    },
+    {
+     "species": "archaludon",
+     "name": "Archaludon",
+     "teams": 206,
+     "share": 0.2034,
+     "win_rate": 0.5261,
+     "games": 1667,
+     "day2_conversion": 0.165,
+     "top_cut_teams": 4
+    },
+    {
+     "species": "pelipper",
+     "name": "Pelipper",
+     "teams": 186,
+     "share": 0.1836,
+     "win_rate": 0.5071,
+     "games": 1481,
+     "day2_conversion": 0.1452,
+     "top_cut_teams": 3
+    },
+    {
+     "species": "charizard",
+     "name": "Charizard",
+     "teams": 180,
+     "share": 0.1777,
+     "win_rate": 0.536,
+     "games": 1472,
+     "day2_conversion": 0.1944,
+     "top_cut_teams": 3
+    },
+    {
+     "species": "volcarona",
+     "name": "Volcarona",
+     "teams": 175,
+     "share": 0.1728,
+     "win_rate": 0.4831,
+     "games": 1333,
+     "day2_conversion": 0.1314,
+     "top_cut_teams": 0
+    },
+    {
+     "species": "basculegion",
+     "name": "Basculegion",
+     "teams": 149,
+     "share": 0.1471,
+     "win_rate": 0.5383,
+     "games": 1228,
+     "day2_conversion": 0.2282,
+     "top_cut_teams": 2
+    },
+    {
+     "species": "farigiraf",
+     "name": "Farigiraf",
+     "teams": 146,
+     "share": 0.1441,
+     "win_rate": 0.5039,
+     "games": 1163,
+     "day2_conversion": 0.137,
+     "top_cut_teams": 2
+    },
+    {
+     "species": "floette-eternal",
+     "name": "Floette-Eternal",
+     "teams": 146,
+     "share": 0.1441,
+     "win_rate": 0.511,
+     "games": 1137,
+     "day2_conversion": 0.1575,
+     "top_cut_teams": 2
+    },
+    {
+     "species": "indeedee-f",
+     "name": "Indeedee-F",
+     "teams": 136,
+     "share": 0.1343,
+     "win_rate": 0.4861,
+     "games": 1041,
+     "day2_conversion": 0.125,
+     "top_cut_teams": 0
+    },
+    {
+     "species": "salamence",
+     "name": "Salamence",
+     "teams": 134,
+     "share": 0.1323,
+     "win_rate": 0.4944,
+     "games": 1062,
+     "day2_conversion": 0.1269,
+     "top_cut_teams": 2
+    },
+    {
+     "species": "golisopod",
+     "name": "Golisopod",
+     "teams": 113,
+     "share": 0.1115,
+     "win_rate": 0.5067,
+     "games": 890,
+     "day2_conversion": 0.1239,
+     "top_cut_teams": 1
+    },
+    {
+     "species": "venusaur",
+     "name": "Venusaur",
+     "teams": 109,
+     "share": 0.1076,
+     "win_rate": 0.5424,
+     "games": 896,
+     "day2_conversion": 0.2018,
+     "top_cut_teams": 3
+    },
+    {
+     "species": "arcanine-hisui",
+     "name": "Arcanine-Hisui",
+     "teams": 102,
+     "share": 0.1007,
+     "win_rate": 0.4828,
+     "games": 785,
+     "day2_conversion": 0.098,
+     "top_cut_teams": 0
+    },
+    {
+     "species": "sylveon",
+     "name": "Sylveon",
+     "teams": 102,
+     "share": 0.1007,
+     "win_rate": 0.5304,
+     "games": 807,
+     "day2_conversion": 0.1471,
+     "top_cut_teams": 1
+    },
+    {
+     "species": "grimmsnarl",
+     "name": "Grimmsnarl",
+     "teams": 91,
+     "share": 0.0898,
+     "win_rate": 0.5105,
+     "games": 711,
+     "day2_conversion": 0.0989,
+     "top_cut_teams": 2
+    },
+    {
+     "species": "staraptor",
+     "name": "Staraptor",
+     "teams": 91,
+     "share": 0.0898,
+     "win_rate": 0.4858,
+     "games": 704,
+     "day2_conversion": 0.0879,
+     "top_cut_teams": 1
+    },
+    {
+     "species": "delphox",
+     "name": "Delphox",
+     "teams": 86,
+     "share": 0.0849,
+     "win_rate": 0.5324,
+     "games": 710,
+     "day2_conversion": 0.1628,
+     "top_cut_teams": 0
+    },
+    {
+     "species": "milotic",
+     "name": "Milotic",
+     "teams": 83,
+     "share": 0.0819,
+     "win_rate": 0.4697,
+     "games": 611,
+     "day2_conversion": 0.0843,
+     "top_cut_teams": 0
+    },
+    {
+     "species": "sinistcha",
+     "name": "Sinistcha",
+     "teams": 81,
+     "share": 0.08,
+     "win_rate": 0.5239,
+     "games": 649,
+     "day2_conversion": 0.1358,
+     "top_cut_teams": 1
+    },
+    {
+     "species": "tyranitar",
+     "name": "Tyranitar",
+     "teams": 74,
+     "share": 0.0731,
+     "win_rate": 0.4388,
+     "games": 547,
+     "day2_conversion": 0.0541,
+     "top_cut_teams": 0
+    },
+    {
+     "species": "kommo-o",
+     "name": "Kommo-o",
+     "teams": 65,
+     "share": 0.0642,
+     "win_rate": 0.5508,
+     "games": 541,
+     "day2_conversion": 0.2154,
+     "top_cut_teams": 0
+    },
+    {
+     "species": "whimsicott",
+     "name": "Whimsicott",
+     "teams": 64,
+     "share": 0.0632,
+     "win_rate": 0.5039,
+     "games": 512,
+     "day2_conversion": 0.1406,
+     "top_cut_teams": 0
+    },
+    {
+     "species": "primarina",
+     "name": "Primarina",
+     "teams": 63,
+     "share": 0.0622,
+     "win_rate": 0.5272,
+     "games": 514,
+     "day2_conversion": 0.1587,
+     "top_cut_teams": 0
+    },
+    {
+     "species": "gardevoir",
+     "name": "Gardevoir",
+     "teams": 59,
+     "share": 0.0582,
+     "win_rate": 0.4967,
+     "games": 461,
+     "day2_conversion": 0.1525,
+     "top_cut_teams": 0
+    },
+    {
+     "species": "indeedee",
+     "name": "Indeedee",
+     "teams": 58,
+     "share": 0.0573,
+     "win_rate": 0.4729,
+     "games": 442,
+     "day2_conversion": 0.0862,
+     "top_cut_teams": 0
+    },
+    {
+     "species": "excadrill",
+     "name": "Excadrill",
+     "teams": 57,
+     "share": 0.0563,
+     "win_rate": 0.4499,
+     "games": 429,
+     "day2_conversion": 0.0526,
+     "top_cut_teams": 0
+    },
+    {
+     "species": "metagross",
+     "name": "Metagross",
+     "teams": 56,
+     "share": 0.0553,
+     "win_rate": 0.486,
+     "games": 430,
+     "day2_conversion": 0.0893,
+     "top_cut_teams": 0
+    },
+    {
+     "species": "dragonite",
+     "name": "Dragonite",
+     "teams": 54,
+     "share": 0.0533,
+     "win_rate": 0.4952,
+     "games": 416,
+     "day2_conversion": 0.1111,
+     "top_cut_teams": 1
+    },
+    {
+     "species": "politoed",
+     "name": "Politoed",
+     "teams": 51,
+     "share": 0.0503,
+     "win_rate": 0.5322,
+     "games": 419,
+     "day2_conversion": 0.1765,
+     "top_cut_teams": 1
+    },
+    {
+     "species": "froslass",
+     "name": "Froslass",
+     "teams": 48,
+     "share": 0.0474,
+     "win_rate": 0.5165,
+     "games": 393,
+     "day2_conversion": 0.2083,
+     "top_cut_teams": 0
+    },
+    {
+     "species": "swampert",
+     "name": "Swampert",
+     "teams": 45,
+     "share": 0.0444,
+     "win_rate": 0.4958,
+     "games": 357,
+     "day2_conversion": 0.1778,
+     "top_cut_teams": 1
+    },
+    {
+     "species": "gengar",
+     "name": "Gengar",
+     "teams": 42,
+     "share": 0.0415,
+     "win_rate": 0.5093,
+     "games": 324,
+     "day2_conversion": 0.119,
+     "top_cut_teams": 0
+    },
+    {
+     "species": "glimmora",
+     "name": "Glimmora",
+     "teams": 41,
+     "share": 0.0405,
+     "win_rate": 0.5119,
+     "games": 336,
+     "day2_conversion": 0.2195,
+     "top_cut_teams": 0
+    },
+    {
+     "species": "basculegion-f",
+     "name": "Basculegion-F",
+     "teams": 34,
+     "share": 0.0336,
+     "win_rate": 0.5709,
+     "games": 289,
+     "day2_conversion": 0.2353,
+     "top_cut_teams": 0
+    },
+    {
+     "species": "torkoal",
+     "name": "Torkoal",
+     "teams": 34,
+     "share": 0.0336,
+     "win_rate": 0.4964,
+     "games": 278,
+     "day2_conversion": 0.2059,
+     "top_cut_teams": 0
+    },
+    {
+     "species": "aerodactyl",
+     "name": "Aerodactyl",
+     "teams": 33,
+     "share": 0.0326,
+     "win_rate": 0.4941,
+     "games": 255,
+     "day2_conversion": 0.1515,
+     "top_cut_teams": 0
+    },
+    {
+     "species": "armarouge",
+     "name": "Armarouge",
+     "teams": 32,
+     "share": 0.0316,
+     "win_rate": 0.5214,
+     "games": 257,
+     "day2_conversion": 0.1562,
+     "top_cut_teams": 0
+    },
+    {
+     "species": "corviknight",
+     "name": "Corviknight",
+     "teams": 29,
+     "share": 0.0286,
+     "win_rate": 0.4465,
+     "games": 215,
+     "day2_conversion": 0.069,
+     "top_cut_teams": 0
+    },
+    {
+     "species": "annihilape",
+     "name": "Annihilape",
+     "teams": 23,
+     "share": 0.0227,
+     "win_rate": 0.5179,
+     "games": 195,
+     "day2_conversion": 0.2174,
+     "top_cut_teams": 0
+    },
+    {
+     "species": "ninetales-alola",
+     "name": "Ninetales-Alola",
+     "teams": 23,
+     "share": 0.0227,
+     "win_rate": 0.3926,
+     "games": 163,
+     "day2_conversion": 0.0,
+     "top_cut_teams": 0
+    },
+    {
+     "species": "dragapult",
+     "name": "Dragapult",
+     "teams": 22,
+     "share": 0.0217,
+     "win_rate": 0.4785,
+     "games": 163,
+     "day2_conversion": 0.0909,
+     "top_cut_teams": 0
+    },
+    {
+     "species": "toxapex",
+     "name": "Toxapex",
+     "teams": 21,
+     "share": 0.0207,
+     "win_rate": 0.5682,
+     "games": 176,
+     "day2_conversion": 0.2857,
+     "top_cut_teams": 0
+    },
+    {
+     "species": "ceruledge",
+     "name": "Ceruledge",
+     "teams": 18,
+     "share": 0.0178,
+     "win_rate": 0.3719,
+     "games": 121,
+     "day2_conversion": 0.0,
+     "top_cut_teams": 0
+    },
+    {
+     "species": "pyroar",
+     "name": "Pyroar",
+     "teams": 18,
+     "share": 0.0178,
+     "win_rate": 0.5259,
+     "games": 135,
+     "day2_conversion": 0.1111,
+     "top_cut_teams": 0
+    },
+    {
+     "species": "lucario",
+     "name": "Lucario",
+     "teams": 14,
+     "share": 0.0138,
+     "win_rate": 0.4175,
+     "games": 103,
+     "day2_conversion": 0.0,
+     "top_cut_teams": 0
+    },
+    {
+     "species": "talonflame",
+     "name": "Talonflame",
+     "teams": 14,
+     "share": 0.0138,
+     "win_rate": 0.5143,
+     "games": 105,
+     "day2_conversion": 0.2143,
+     "top_cut_teams": 0
+    },
+    {
+     "species": "blastoise",
+     "name": "Blastoise",
+     "teams": 13,
+     "share": 0.0128,
+     "win_rate": 0.514,
+     "games": 107,
+     "day2_conversion": 0.2308,
+     "top_cut_teams": 0
+    },
+    {
+     "species": "camerupt",
+     "name": "Camerupt",
+     "teams": 13,
+     "share": 0.0128,
+     "win_rate": 0.5098,
+     "games": 102,
+     "day2_conversion": 0.0769,
+     "top_cut_teams": 0
+    },
+    {
+     "species": "baxcalibur",
+     "name": "Baxcalibur",
+     "teams": 12,
+     "share": 0.0118,
+     "win_rate": 0.4767,
+     "games": 86,
+     "day2_conversion": 0.0833,
+     "top_cut_teams": 0
+    },
+    {
+     "species": "pawmot",
+     "name": "Pawmot",
+     "teams": 12,
+     "share": 0.0118,
+     "win_rate": 0.4889,
+     "games": 90,
+     "day2_conversion": 0.0833,
+     "top_cut_teams": 0
+    },
+    {
+     "species": "lopunny",
+     "name": "Lopunny",
+     "teams": 11,
+     "share": 0.0109,
+     "win_rate": 0.3896,
+     "games": 77,
+     "day2_conversion": 0.0909,
+     "top_cut_teams": 0
+    },
+    {
+     "species": "blaziken",
+     "name": "Blaziken",
+     "teams": 10,
+     "share": 0.0099,
+     "win_rate": 0.4444,
+     "games": 81,
+     "day2_conversion": 0.1,
+     "top_cut_teams": 0
+    },
+    {
+     "species": "vivillon",
+     "name": "Vivillon",
+     "teams": 9,
+     "share": 0.0089,
+     "win_rate": 0.5132,
+     "games": 76,
+     "day2_conversion": 0.2222,
+     "top_cut_teams": 0
+    },
+    {
+     "species": "altaria",
+     "name": "Altaria",
+     "teams": 8,
+     "share": 0.0079,
+     "win_rate": 0.25,
+     "games": 52,
+     "day2_conversion": 0.0,
+     "top_cut_teams": 0
+    }
+   ],
+   "megas": [
+    {
+     "mega": "garchomp-mega-z",
+     "name": "Garchomp-Mega-Z",
+     "teams": 267,
+     "share": 0.2636,
+     "win_rate": 0.4807,
+     "games": 2022
+    },
+    {
+     "mega": "raichu-mega-y",
+     "name": "Raichu-Mega-Y",
+     "teams": 256,
+     "share": 0.2527,
+     "win_rate": 0.493,
+     "games": 1988
+    },
+    {
+     "mega": "charizard-mega-y",
+     "name": "Charizard-Mega-Y",
+     "teams": 178,
+     "share": 0.1757,
+     "win_rate": 0.5371,
+     "games": 1456
+    },
+    {
+     "mega": "floette-mega",
+     "name": "Floette-Mega",
+     "teams": 145,
+     "share": 0.1431,
+     "win_rate": 0.5124,
+     "games": 1132
+    },
+    {
+     "mega": "salamence-mega",
+     "name": "Salamence-Mega",
+     "teams": 131,
+     "share": 0.1293,
+     "win_rate": 0.4962,
+     "games": 1042
+    },
+    {
+     "mega": "golisopod-mega",
+     "name": "Golisopod-Mega",
+     "teams": 112,
+     "share": 0.1106,
+     "win_rate": 0.5068,
+     "games": 882
+    },
+    {
+     "mega": "staraptor-mega",
+     "name": "Staraptor-Mega",
+     "teams": 90,
+     "share": 0.0888,
+     "win_rate": 0.4871,
+     "games": 696
+    },
+    {
+     "mega": "delphox-mega",
+     "name": "Delphox-Mega",
+     "teams": 86,
+     "share": 0.0849,
+     "win_rate": 0.5324,
+     "games": 710
+    },
+    {
+     "mega": "tyranitar-mega",
+     "name": "Tyranitar-Mega",
+     "teams": 61,
+     "share": 0.0602,
+     "win_rate": 0.4315,
+     "games": 445
+    },
+    {
+     "mega": "gardevoir-mega",
+     "name": "Gardevoir-Mega",
+     "teams": 58,
+     "share": 0.0573,
+     "win_rate": 0.4978,
+     "games": 460
+    },
+    {
+     "mega": "metagross-mega",
+     "name": "Metagross-Mega",
+     "teams": 55,
+     "share": 0.0543,
+     "win_rate": 0.4929,
+     "games": 422
+    },
+    {
+     "mega": "froslass-mega",
+     "name": "Froslass-Mega",
+     "teams": 48,
+     "share": 0.0474,
+     "win_rate": 0.5165,
+     "games": 393
+    },
+    {
+     "mega": "dragonite-mega",
+     "name": "Dragonite-Mega",
+     "teams": 47,
+     "share": 0.0464,
+     "win_rate": 0.5066,
+     "games": 377
+    },
+    {
+     "mega": "gengar-mega",
+     "name": "Gengar-Mega",
+     "teams": 41,
+     "share": 0.0405,
+     "win_rate": 0.5127,
+     "games": 316
+    },
+    {
+     "mega": "swampert-mega",
+     "name": "Swampert-Mega",
+     "teams": 39,
+     "share": 0.0385,
+     "win_rate": 0.4984,
+     "games": 307
+    },
+    {
+     "mega": "glimmora-mega",
+     "name": "Glimmora-Mega",
+     "teams": 27,
+     "share": 0.0267,
+     "win_rate": 0.5374,
+     "games": 227
+    },
+    {
+     "mega": "aerodactyl-mega",
+     "name": "Aerodactyl-Mega",
+     "teams": 22,
+     "share": 0.0217,
+     "win_rate": 0.4971,
+     "games": 171
+    },
+    {
+     "mega": "pyroar-mega",
+     "name": "Pyroar-Mega",
+     "teams": 18,
+     "share": 0.0178,
+     "win_rate": 0.5259,
+     "games": 135
+    },
+    {
+     "mega": "lucario-mega-z",
+     "name": "Lucario-Mega-Z",
+     "teams": 14,
+     "share": 0.0138,
+     "win_rate": 0.4175,
+     "games": 103
+    },
+    {
+     "mega": "blastoise-mega",
+     "name": "Blastoise-Mega",
+     "teams": 13,
+     "share": 0.0128,
+     "win_rate": 0.514,
+     "games": 107
+    },
+    {
+     "mega": "camerupt-mega",
+     "name": "Camerupt-Mega",
+     "teams": 13,
+     "share": 0.0128,
+     "win_rate": 0.5098,
+     "games": 102
+    },
+    {
+     "mega": "lopunny-mega",
+     "name": "Lopunny-Mega",
+     "teams": 11,
+     "share": 0.0109,
+     "win_rate": 0.3896,
+     "games": 77
+    },
+    {
+     "mega": "raichu-mega-x",
+     "name": "Raichu-Mega-X",
+     "teams": 11,
+     "share": 0.0109,
+     "win_rate": 0.6139,
+     "games": 101
+    },
+    {
+     "mega": "blaziken-mega",
+     "name": "Blaziken-Mega",
+     "teams": 10,
+     "share": 0.0099,
+     "win_rate": 0.4444,
+     "games": 81
+    },
+    {
+     "mega": "meganium-mega",
+     "name": "Meganium-Mega",
+     "teams": 8,
+     "share": 0.0079,
+     "win_rate": 0.4655,
+     "games": 58
+    },
+    {
+     "mega": "absol-mega-z",
+     "name": "Absol-Mega-Z",
+     "teams": 7,
+     "share": 0.0069,
+     "win_rate": 0.3704,
+     "games": 54
+    },
+    {
+     "mega": "baxcalibur-mega",
+     "name": "Baxcalibur-Mega",
+     "teams": 7,
+     "share": 0.0069,
+     "win_rate": 0.4717,
+     "games": 53
+    },
+    {
+     "mega": "meowstic-mega",
+     "name": "Meowstic-Mega",
+     "teams": 7,
+     "share": 0.0069,
+     "win_rate": 0.4483,
+     "games": 58
+    },
+    {
+     "mega": "venusaur-mega",
+     "name": "Venusaur-Mega",
+     "teams": 6,
+     "share": 0.0059,
+     "win_rate": 0.3529,
+     "games": 34
+    },
+    {
+     "mega": "mawile-mega",
+     "name": "Mawile-Mega",
+     "teams": 5,
+     "share": 0.0049,
+     "win_rate": 0.5,
+     "games": 38
+    },
+    {
+     "mega": "altaria-mega",
+     "name": "Altaria-Mega",
+     "teams": 4,
+     "share": 0.0039,
+     "win_rate": 0.3043,
+     "games": 23
+    },
+    {
+     "mega": "garchomp-mega",
+     "name": "Garchomp-Mega",
+     "teams": 4,
+     "share": 0.0039,
+     "win_rate": 0.55,
+     "games": 40
+    },
+    {
+     "mega": "scovillain-mega",
+     "name": "Scovillain-Mega",
+     "teams": 4,
+     "share": 0.0039,
+     "win_rate": 0.5,
+     "games": 32
+    },
+    {
+     "mega": "chesnaught-mega",
+     "name": "Chesnaught-Mega",
+     "teams": 3,
+     "share": 0.003,
+     "win_rate": 0.5,
+     "games": 20
+    },
+    {
+     "mega": "steelix-mega",
+     "name": "Steelix-Mega",
+     "teams": 3,
+     "share": 0.003,
+     "win_rate": 0.3182,
+     "games": 22
+    },
+    {
+     "mega": "abomasnow-mega",
+     "name": "Abomasnow-Mega",
+     "teams": 2,
+     "share": 0.002,
+     "win_rate": 0.3846,
+     "games": 13
+    },
+    {
+     "mega": "alakazam-mega",
+     "name": "Alakazam-Mega",
+     "teams": 2,
+     "share": 0.002,
+     "win_rate": 0.5,
+     "games": 16
+    },
+    {
+     "mega": "charizard-mega-x",
+     "name": "Charizard-Mega-X",
+     "teams": 2,
+     "share": 0.002,
+     "win_rate": 0.4375,
+     "games": 16
+    },
+    {
+     "mega": "greninja-mega",
+     "name": "Greninja-Mega",
+     "teams": 2,
+     "share": 0.002,
+     "win_rate": 0.6,
+     "games": 20
+    },
+    {
+     "mega": "kangaskhan-mega",
+     "name": "Kangaskhan-Mega",
+     "teams": 2,
+     "share": 0.002,
+     "win_rate": 0.5556,
+     "games": 18
+    },
+    {
+     "mega": "sableye-mega",
+     "name": "Sableye-Mega",
+     "teams": 2,
+     "share": 0.002,
+     "win_rate": 0.4667,
+     "games": 15
+    },
+    {
+     "mega": "sceptile-mega",
+     "name": "Sceptile-Mega",
+     "teams": 2,
+     "share": 0.002,
+     "win_rate": 0.5,
+     "games": 20
+    },
+    {
+     "mega": "slowbro-mega",
+     "name": "Slowbro-Mega",
+     "teams": 2,
+     "share": 0.002,
+     "win_rate": 0.5333,
+     "games": 15
+    },
+    {
+     "mega": "starmie-mega",
+     "name": "Starmie-Mega",
+     "teams": 2,
+     "share": 0.002,
+     "win_rate": 0.375,
+     "games": 16
+    },
+    {
+     "mega": "banette-mega",
+     "name": "Banette-Mega",
+     "teams": 1,
+     "share": 0.001,
+     "win_rate": 0.2,
+     "games": 5
+    },
+    {
+     "mega": "beedrill-mega",
+     "name": "Beedrill-Mega",
+     "teams": 1,
+     "share": 0.001,
+     "win_rate": 0.3333,
+     "games": 3
+    },
+    {
+     "mega": "chandelure-mega",
+     "name": "Chandelure-Mega",
+     "teams": 1,
+     "share": 0.001,
+     "win_rate": 0.5,
+     "games": 8
+    },
+    {
+     "mega": "chimecho-mega",
+     "name": "Chimecho-Mega",
+     "teams": 1,
+     "share": 0.001,
+     "win_rate": 0.625,
+     "games": 8
+    },
+    {
+     "mega": "clefable-mega",
+     "name": "Clefable-Mega",
+     "teams": 1,
+     "share": 0.001,
+     "win_rate": 0.6667,
+     "games": 12
+    },
+    {
+     "mega": "eelektross-mega",
+     "name": "Eelektross-Mega",
+     "teams": 1,
+     "share": 0.001,
+     "win_rate": 0.25,
+     "games": 8
+    },
+    {
+     "mega": "excadrill-mega",
+     "name": "Excadrill-Mega",
+     "teams": 1,
+     "share": 0.001,
+     "win_rate": 0.375,
+     "games": 8
+    },
+    {
+     "mega": "feraligatr-mega",
+     "name": "Feraligatr-Mega",
+     "teams": 1,
+     "share": 0.001,
+     "win_rate": 0.375,
+     "games": 8
+    },
+    {
+     "mega": "houndoom-mega",
+     "name": "Houndoom-Mega",
+     "teams": 1,
+     "share": 0.001,
+     "win_rate": 0.625,
+     "games": 8
+    },
+    {
+     "mega": "malamar-mega",
+     "name": "Malamar-Mega",
+     "teams": 1,
+     "share": 0.001,
+     "win_rate": 0.125,
+     "games": 8
+    },
+    {
+     "mega": "scolipede-mega",
+     "name": "Scolipede-Mega",
+     "teams": 1,
+     "share": 0.001,
+     "win_rate": 0.0,
+     "games": 2
+    },
+    {
+     "mega": "scrafty-mega",
+     "name": "Scrafty-Mega",
+     "teams": 1,
+     "share": 0.001,
+     "win_rate": 0.625,
+     "games": 8
+    }
+   ]
   },
   {
-   "source_id": "limitless_api",
-   "role": "online",
-   "url": "https://play.limitlesstcg.com/api/",
-   "credit": "Data from the Limitless tournament platform (https://play.limitlesstcg.com)",
-   "status": "ok",
-   "new_events": 0,
-   "skipped": 0,
-   "errors": []
+   "key": "vgchistory:regional-recife-2027",
+   "name": "Recife Regional Championships 2027",
+   "date": "2026-10-03",
+   "players": 222,
+   "basis": "full_field",
+   "teams": 222,
+   "day2_teams": 31,
+   "usage": [
+    {
+     "species": "rillaboom",
+     "name": "Rillaboom",
+     "teams": 108,
+     "share": 0.4865,
+     "win_rate": 0.4892,
+     "games": 832,
+     "day2_conversion": 0.1111,
+     "top_cut_teams": 4
+    },
+    {
+     "species": "incineroar",
+     "name": "Incineroar",
+     "teams": 82,
+     "share": 0.3694,
+     "win_rate": 0.5032,
+     "games": 616,
+     "day2_conversion": 0.122,
+     "top_cut_teams": 4
+    },
+    {
+     "species": "sneasler",
+     "name": "Sneasler",
+     "teams": 80,
+     "share": 0.3604,
+     "win_rate": 0.5129,
+     "games": 659,
+     "day2_conversion": 0.2125,
+     "top_cut_teams": 4
+    },
+    {
+     "species": "garchomp",
+     "name": "Garchomp",
+     "teams": 73,
+     "share": 0.3288,
+     "win_rate": 0.5475,
+     "games": 590,
+     "day2_conversion": 0.2192,
+     "top_cut_teams": 4
+    },
+    {
+     "species": "raichu",
+     "name": "Raichu",
+     "teams": 70,
+     "share": 0.3153,
+     "win_rate": 0.4916,
+     "games": 535,
+     "day2_conversion": 0.1,
+     "top_cut_teams": 1
+    },
+    {
+     "species": "gholdengo",
+     "name": "Gholdengo",
+     "teams": 61,
+     "share": 0.2748,
+     "win_rate": 0.4848,
+     "games": 460,
+     "day2_conversion": 0.0656,
+     "top_cut_teams": 1
+    },
+    {
+     "species": "kingambit",
+     "name": "Kingambit",
+     "teams": 44,
+     "share": 0.1982,
+     "win_rate": 0.5429,
+     "games": 361,
+     "day2_conversion": 0.1818,
+     "top_cut_teams": 2
+    },
+    {
+     "species": "archaludon",
+     "name": "Archaludon",
+     "teams": 42,
+     "share": 0.1892,
+     "win_rate": 0.5118,
+     "games": 340,
+     "day2_conversion": 0.1667,
+     "top_cut_teams": 2
+    },
+    {
+     "species": "charizard",
+     "name": "Charizard",
+     "teams": 41,
+     "share": 0.1847,
+     "win_rate": 0.5545,
+     "games": 321,
+     "day2_conversion": 0.1951,
+     "top_cut_teams": 2
+    },
+    {
+     "species": "arcanine-hisui",
+     "name": "Arcanine-Hisui",
+     "teams": 38,
+     "share": 0.1712,
+     "win_rate": 0.5067,
+     "games": 300,
+     "day2_conversion": 0.1053,
+     "top_cut_teams": 1
+    },
+    {
+     "species": "salamence",
+     "name": "Salamence",
+     "teams": 36,
+     "share": 0.1622,
+     "win_rate": 0.5153,
+     "games": 295,
+     "day2_conversion": 0.1667,
+     "top_cut_teams": 2
+    },
+    {
+     "species": "indeedee-f",
+     "name": "Indeedee-F",
+     "teams": 35,
+     "share": 0.1577,
+     "win_rate": 0.4409,
+     "games": 279,
+     "day2_conversion": 0.1143,
+     "top_cut_teams": 0
+    },
+    {
+     "species": "staraptor",
+     "name": "Staraptor",
+     "teams": 33,
+     "share": 0.1486,
+     "win_rate": 0.5,
+     "games": 248,
+     "day2_conversion": 0.0606,
+     "top_cut_teams": 0
+    },
+    {
+     "species": "pelipper",
+     "name": "Pelipper",
+     "teams": 32,
+     "share": 0.1441,
+     "win_rate": 0.502,
+     "games": 255,
+     "day2_conversion": 0.1562,
+     "top_cut_teams": 1
+    },
+    {
+     "species": "farigiraf",
+     "name": "Farigiraf",
+     "teams": 30,
+     "share": 0.1351,
+     "win_rate": 0.509,
+     "games": 222,
+     "day2_conversion": 0.1,
+     "top_cut_teams": 2
+    },
+    {
+     "species": "sylveon",
+     "name": "Sylveon",
+     "teams": 30,
+     "share": 0.1351,
+     "win_rate": 0.5265,
+     "games": 226,
+     "day2_conversion": 0.1333,
+     "top_cut_teams": 2
+    },
+    {
+     "species": "volcarona",
+     "name": "Volcarona",
+     "teams": 26,
+     "share": 0.1171,
+     "win_rate": 0.5187,
+     "games": 214,
+     "day2_conversion": 0.1923,
+     "top_cut_teams": 2
+    },
+    {
+     "species": "basculegion",
+     "name": "Basculegion",
+     "teams": 24,
+     "share": 0.1081,
+     "win_rate": 0.5128,
+     "games": 195,
+     "day2_conversion": 0.25,
+     "top_cut_teams": 2
+    },
+    {
+     "species": "grimmsnarl",
+     "name": "Grimmsnarl",
+     "teams": 23,
+     "share": 0.1036,
+     "win_rate": 0.5497,
+     "games": 191,
+     "day2_conversion": 0.2174,
+     "top_cut_teams": 1
+    },
+    {
+     "species": "milotic",
+     "name": "Milotic",
+     "teams": 22,
+     "share": 0.0991,
+     "win_rate": 0.4679,
+     "games": 156,
+     "day2_conversion": 0.0,
+     "top_cut_teams": 0
+    },
+    {
+     "species": "venusaur",
+     "name": "Venusaur",
+     "teams": 22,
+     "share": 0.0991,
+     "win_rate": 0.5912,
+     "games": 181,
+     "day2_conversion": 0.2727,
+     "top_cut_teams": 2
+    },
+    {
+     "species": "floette-eternal",
+     "name": "Floette-Eternal",
+     "teams": 20,
+     "share": 0.0901,
+     "win_rate": 0.5621,
+     "games": 169,
+     "day2_conversion": 0.35,
+     "top_cut_teams": 2
+    },
+    {
+     "species": "tyranitar",
+     "name": "Tyranitar",
+     "teams": 20,
+     "share": 0.0901,
+     "win_rate": 0.5181,
+     "games": 166,
+     "day2_conversion": 0.15,
+     "top_cut_teams": 0
+    },
+    {
+     "species": "golisopod",
+     "name": "Golisopod",
+     "teams": 19,
+     "share": 0.0856,
+     "win_rate": 0.4605,
+     "games": 152,
+     "day2_conversion": 0.0526,
+     "top_cut_teams": 1
+    },
+    {
+     "species": "excadrill",
+     "name": "Excadrill",
+     "teams": 18,
+     "share": 0.0811,
+     "win_rate": 0.5333,
+     "games": 150,
+     "day2_conversion": 0.1667,
+     "top_cut_teams": 0
+    },
+    {
+     "species": "gardevoir",
+     "name": "Gardevoir",
+     "teams": 16,
+     "share": 0.0721,
+     "win_rate": 0.4331,
+     "games": 127,
+     "day2_conversion": 0.125,
+     "top_cut_teams": 0
+    },
+    {
+     "species": "primarina",
+     "name": "Primarina",
+     "teams": 16,
+     "share": 0.0721,
+     "win_rate": 0.5167,
+     "games": 120,
+     "day2_conversion": 0.0625,
+     "top_cut_teams": 0
+    },
+    {
+     "species": "sinistcha",
+     "name": "Sinistcha",
+     "teams": 16,
+     "share": 0.0721,
+     "win_rate": 0.5077,
+     "games": 130,
+     "day2_conversion": 0.125,
+     "top_cut_teams": 0
+    },
+    {
+     "species": "delphox",
+     "name": "Delphox",
+     "teams": 15,
+     "share": 0.0676,
+     "win_rate": 0.5703,
+     "games": 128,
+     "day2_conversion": 0.2667,
+     "top_cut_teams": 1
+    },
+    {
+     "species": "indeedee",
+     "name": "Indeedee",
+     "teams": 15,
+     "share": 0.0676,
+     "win_rate": 0.4833,
+     "games": 120,
+     "day2_conversion": 0.0667,
+     "top_cut_teams": 0
+    },
+    {
+     "species": "torkoal",
+     "name": "Torkoal",
+     "teams": 15,
+     "share": 0.0676,
+     "win_rate": 0.4234,
+     "games": 111,
+     "day2_conversion": 0.0667,
+     "top_cut_teams": 1
+    },
+    {
+     "species": "armarouge",
+     "name": "Armarouge",
+     "teams": 14,
+     "share": 0.0631,
+     "win_rate": 0.422,
+     "games": 109,
+     "day2_conversion": 0.1429,
+     "top_cut_teams": 0
+    },
+    {
+     "species": "kommo-o",
+     "name": "Kommo-o",
+     "teams": 14,
+     "share": 0.0631,
+     "win_rate": 0.5702,
+     "games": 114,
+     "day2_conversion": 0.2143,
+     "top_cut_teams": 0
+    },
+    {
+     "species": "dragapult",
+     "name": "Dragapult",
+     "teams": 10,
+     "share": 0.045,
+     "win_rate": 0.5352,
+     "games": 71,
+     "day2_conversion": 0.1,
+     "top_cut_teams": 0
+    },
+    {
+     "species": "gengar",
+     "name": "Gengar",
+     "teams": 10,
+     "share": 0.045,
+     "win_rate": 0.4805,
+     "games": 77,
+     "day2_conversion": 0.0,
+     "top_cut_teams": 0
+    },
+    {
+     "species": "politoed",
+     "name": "Politoed",
+     "teams": 10,
+     "share": 0.045,
+     "win_rate": 0.5181,
+     "games": 83,
+     "day2_conversion": 0.1,
+     "top_cut_teams": 1
+    },
+    {
+     "species": "aerodactyl",
+     "name": "Aerodactyl",
+     "teams": 8,
+     "share": 0.036,
+     "win_rate": 0.4921,
+     "games": 63,
+     "day2_conversion": 0.125,
+     "top_cut_teams": 0
+    },
+    {
+     "species": "froslass",
+     "name": "Froslass",
+     "teams": 8,
+     "share": 0.036,
+     "win_rate": 0.35,
+     "games": 60,
+     "day2_conversion": 0.0,
+     "top_cut_teams": 0
+    },
+    {
+     "species": "corviknight",
+     "name": "Corviknight",
+     "teams": 7,
+     "share": 0.0315,
+     "win_rate": 0.4655,
+     "games": 58,
+     "day2_conversion": 0.1429,
+     "top_cut_teams": 0
+    },
+    {
+     "species": "swampert",
+     "name": "Swampert",
+     "teams": 7,
+     "share": 0.0315,
+     "win_rate": 0.5738,
+     "games": 61,
+     "day2_conversion": 0.1429,
+     "top_cut_teams": 1
+    },
+    {
+     "species": "whimsicott",
+     "name": "Whimsicott",
+     "teams": 7,
+     "share": 0.0315,
+     "win_rate": 0.4528,
+     "games": 53,
+     "day2_conversion": 0.1429,
+     "top_cut_teams": 0
+    },
+    {
+     "species": "ceruledge",
+     "name": "Ceruledge",
+     "teams": 6,
+     "share": 0.027,
+     "win_rate": 0.4118,
+     "games": 34,
+     "day2_conversion": 0.0,
+     "top_cut_teams": 0
+    },
+    {
+     "species": "dragonite",
+     "name": "Dragonite",
+     "teams": 6,
+     "share": 0.027,
+     "win_rate": 0.5472,
+     "games": 53,
+     "day2_conversion": 0.3333,
+     "top_cut_teams": 1
+    },
+    {
+     "species": "glimmora",
+     "name": "Glimmora",
+     "teams": 6,
+     "share": 0.027,
+     "win_rate": 0.551,
+     "games": 49,
+     "day2_conversion": 0.3333,
+     "top_cut_teams": 0
+    },
+    {
+     "species": "metagross",
+     "name": "Metagross",
+     "teams": 6,
+     "share": 0.027,
+     "win_rate": 0.4651,
+     "games": 43,
+     "day2_conversion": 0.0,
+     "top_cut_teams": 0
+    },
+    {
+     "species": "annihilape",
+     "name": "Annihilape",
+     "teams": 5,
+     "share": 0.0225,
+     "win_rate": 0.3889,
+     "games": 36,
+     "day2_conversion": 0.0,
+     "top_cut_teams": 0
+    },
+    {
+     "species": "lucario",
+     "name": "Lucario",
+     "teams": 5,
+     "share": 0.0225,
+     "win_rate": 0.3529,
+     "games": 34,
+     "day2_conversion": 0.0,
+     "top_cut_teams": 0
+    },
+    {
+     "species": "talonflame",
+     "name": "Talonflame",
+     "teams": 5,
+     "share": 0.0225,
+     "win_rate": 0.5778,
+     "games": 45,
+     "day2_conversion": 0.6,
+     "top_cut_teams": 0
+    },
+    {
+     "species": "vivillon",
+     "name": "Vivillon",
+     "teams": 4,
+     "share": 0.018,
+     "win_rate": 0.4516,
+     "games": 31,
+     "day2_conversion": 0.25,
+     "top_cut_teams": 0
+    },
+    {
+     "species": "blaziken",
+     "name": "Blaziken",
+     "teams": 3,
+     "share": 0.0135,
+     "win_rate": 0.35,
+     "games": 20,
+     "day2_conversion": 0.0,
+     "top_cut_teams": 0
+    },
+    {
+     "species": "camerupt",
+     "name": "Camerupt",
+     "teams": 3,
+     "share": 0.0135,
+     "win_rate": 0.4583,
+     "games": 24,
+     "day2_conversion": 0.0,
+     "top_cut_teams": 0
+    },
+    {
+     "species": "espathra",
+     "name": "Espathra",
+     "teams": 3,
+     "share": 0.0135,
+     "win_rate": 0.5,
+     "games": 24,
+     "day2_conversion": 0.0,
+     "top_cut_teams": 0
+    },
+    {
+     "species": "hatterene",
+     "name": "Hatterene",
+     "teams": 3,
+     "share": 0.0135,
+     "win_rate": 0.3182,
+     "games": 22,
+     "day2_conversion": 0.0,
+     "top_cut_teams": 0
+    },
+    {
+     "species": "meowstic",
+     "name": "Meowstic",
+     "teams": 3,
+     "share": 0.0135,
+     "win_rate": 0.5833,
+     "games": 24,
+     "day2_conversion": 0.0,
+     "top_cut_teams": 0
+    },
+    {
+     "species": "ninetales-alola",
+     "name": "Ninetales-Alola",
+     "teams": 3,
+     "share": 0.0135,
+     "win_rate": 0.4737,
+     "games": 19,
+     "day2_conversion": 0.3333,
+     "top_cut_teams": 0
+    },
+    {
+     "species": "typhlosion-hisui",
+     "name": "Typhlosion-Hisui",
+     "teams": 3,
+     "share": 0.0135,
+     "win_rate": 0.4583,
+     "games": 24,
+     "day2_conversion": 0.0,
+     "top_cut_teams": 0
+    },
+    {
+     "species": "altaria",
+     "name": "Altaria",
+     "teams": 2,
+     "share": 0.009,
+     "win_rate": 0.5625,
+     "games": 16,
+     "day2_conversion": 0.0,
+     "top_cut_teams": 0
+    },
+    {
+     "species": "blastoise",
+     "name": "Blastoise",
+     "teams": 2,
+     "share": 0.009,
+     "win_rate": 0.5625,
+     "games": 16,
+     "day2_conversion": 0.0,
+     "top_cut_teams": 0
+    },
+    {
+     "species": "gallade",
+     "name": "Gallade",
+     "teams": 2,
+     "share": 0.009,
+     "win_rate": 0.375,
+     "games": 16,
+     "day2_conversion": 0.0,
+     "top_cut_teams": 0
+    },
+    {
+     "species": "hawlucha",
+     "name": "Hawlucha",
+     "teams": 2,
+     "share": 0.009,
+     "win_rate": 0.0833,
+     "games": 12,
+     "day2_conversion": 0.0,
+     "top_cut_teams": 0
+    }
+   ],
+   "megas": [
+    {
+     "mega": "raichu-mega-y",
+     "name": "Raichu-Mega-Y",
+     "teams": 68,
+     "share": 0.3063,
+     "win_rate": 0.4894,
+     "games": 519
+    },
+    {
+     "mega": "garchomp-mega-z",
+     "name": "Garchomp-Mega-Z",
+     "teams": 54,
+     "share": 0.2432,
+     "win_rate": 0.5372,
+     "games": 430
+    },
+    {
+     "mega": "charizard-mega-y",
+     "name": "Charizard-Mega-Y",
+     "teams": 40,
+     "share": 0.1802,
+     "win_rate": 0.5615,
+     "games": 317
+    },
+    {
+     "mega": "salamence-mega",
+     "name": "Salamence-Mega",
+     "teams": 36,
+     "share": 0.1622,
+     "win_rate": 0.5153,
+     "games": 295
+    },
+    {
+     "mega": "staraptor-mega",
+     "name": "Staraptor-Mega",
+     "teams": 33,
+     "share": 0.1486,
+     "win_rate": 0.5,
+     "games": 248
+    },
+    {
+     "mega": "floette-mega",
+     "name": "Floette-Mega",
+     "teams": 20,
+     "share": 0.0901,
+     "win_rate": 0.5621,
+     "games": 169
+    },
+    {
+     "mega": "golisopod-mega",
+     "name": "Golisopod-Mega",
+     "teams": 19,
+     "share": 0.0856,
+     "win_rate": 0.4605,
+     "games": 152
+    },
+    {
+     "mega": "tyranitar-mega",
+     "name": "Tyranitar-Mega",
+     "teams": 19,
+     "share": 0.0856,
+     "win_rate": 0.5127,
+     "games": 158
+    },
+    {
+     "mega": "gardevoir-mega",
+     "name": "Gardevoir-Mega",
+     "teams": 16,
+     "share": 0.0721,
+     "win_rate": 0.4331,
+     "games": 127
+    },
+    {
+     "mega": "delphox-mega",
+     "name": "Delphox-Mega",
+     "teams": 15,
+     "share": 0.0676,
+     "win_rate": 0.5703,
+     "games": 128
+    },
+    {
+     "mega": "gengar-mega",
+     "name": "Gengar-Mega",
+     "teams": 10,
+     "share": 0.045,
+     "win_rate": 0.4805,
+     "games": 77
+    },
+    {
+     "mega": "froslass-mega",
+     "name": "Froslass-Mega",
+     "teams": 8,
+     "share": 0.036,
+     "win_rate": 0.35,
+     "games": 60
+    },
+    {
+     "mega": "swampert-mega",
+     "name": "Swampert-Mega",
+     "teams": 7,
+     "share": 0.0315,
+     "win_rate": 0.5738,
+     "games": 61
+    },
+    {
+     "mega": "dragonite-mega",
+     "name": "Dragonite-Mega",
+     "teams": 6,
+     "share": 0.027,
+     "win_rate": 0.5472,
+     "games": 53
+    },
+    {
+     "mega": "metagross-mega",
+     "name": "Metagross-Mega",
+     "teams": 6,
+     "share": 0.027,
+     "win_rate": 0.4651,
+     "games": 43
+    },
+    {
+     "mega": "lucario-mega-z",
+     "name": "Lucario-Mega-Z",
+     "teams": 5,
+     "share": 0.0225,
+     "win_rate": 0.3529,
+     "games": 34
+    },
+    {
+     "mega": "aerodactyl-mega",
+     "name": "Aerodactyl-Mega",
+     "teams": 4,
+     "share": 0.018,
+     "win_rate": 0.6571,
+     "games": 35
+    },
+    {
+     "mega": "blaziken-mega",
+     "name": "Blaziken-Mega",
+     "teams": 3,
+     "share": 0.0135,
+     "win_rate": 0.35,
+     "games": 20
+    },
+    {
+     "mega": "camerupt-mega",
+     "name": "Camerupt-Mega",
+     "teams": 3,
+     "share": 0.0135,
+     "win_rate": 0.4583,
+     "games": 24
+    },
+    {
+     "mega": "glimmora-mega",
+     "name": "Glimmora-Mega",
+     "teams": 3,
+     "share": 0.0135,
+     "win_rate": 0.5385,
+     "games": 26
+    },
+    {
+     "mega": "meowstic-mega",
+     "name": "Meowstic-Mega",
+     "teams": 3,
+     "share": 0.0135,
+     "win_rate": 0.5833,
+     "games": 24
+    },
+    {
+     "mega": "blastoise-mega",
+     "name": "Blastoise-Mega",
+     "teams": 2,
+     "share": 0.009,
+     "win_rate": 0.5625,
+     "games": 16
+    },
+    {
+     "mega": "heracross-mega",
+     "name": "Heracross-Mega",
+     "teams": 2,
+     "share": 0.009,
+     "win_rate": 0.1,
+     "games": 10
+    },
+    {
+     "mega": "manectric-mega",
+     "name": "Manectric-Mega",
+     "teams": 2,
+     "share": 0.009,
+     "win_rate": 0.4375,
+     "games": 16
+    },
+    {
+     "mega": "raichu-mega-x",
+     "name": "Raichu-Mega-X",
+     "teams": 2,
+     "share": 0.009,
+     "win_rate": 0.5625,
+     "games": 16
+    },
+    {
+     "mega": "abomasnow-mega",
+     "name": "Abomasnow-Mega",
+     "teams": 1,
+     "share": 0.0045,
+     "win_rate": 0.0,
+     "games": 4
+    },
+    {
+     "mega": "absol-mega-z",
+     "name": "Absol-Mega-Z",
+     "teams": 1,
+     "share": 0.0045,
+     "win_rate": 0.375,
+     "games": 8
+    },
+    {
+     "mega": "aggron-mega",
+     "name": "Aggron-Mega",
+     "teams": 1,
+     "share": 0.0045,
+     "win_rate": 0.5,
+     "games": 8
+    },
+    {
+     "mega": "alakazam-mega",
+     "name": "Alakazam-Mega",
+     "teams": 1,
+     "share": 0.0045,
+     "win_rate": 0.125,
+     "games": 8
+    },
+    {
+     "mega": "ampharos-mega",
+     "name": "Ampharos-Mega",
+     "teams": 1,
+     "share": 0.0045,
+     "win_rate": 0.0,
+     "games": 2
+    },
+    {
+     "mega": "drampa-mega",
+     "name": "Drampa-Mega",
+     "teams": 1,
+     "share": 0.0045,
+     "win_rate": 0.375,
+     "games": 8
+    },
+    {
+     "mega": "garchomp-mega",
+     "name": "Garchomp-Mega",
+     "teams": 1,
+     "share": 0.0045,
+     "win_rate": 0.0,
+     "games": 4
+    },
+    {
+     "mega": "kangaskhan-mega",
+     "name": "Kangaskhan-Mega",
+     "teams": 1,
+     "share": 0.0045,
+     "win_rate": 0.375,
+     "games": 8
+    },
+    {
+     "mega": "mawile-mega",
+     "name": "Mawile-Mega",
+     "teams": 1,
+     "share": 0.0045,
+     "win_rate": 0.0,
+     "games": 4
+    },
+    {
+     "mega": "pinsir-mega",
+     "name": "Pinsir-Mega",
+     "teams": 1,
+     "share": 0.0045,
+     "win_rate": 0.25,
+     "games": 4
+    },
+    {
+     "mega": "scovillain-mega",
+     "name": "Scovillain-Mega",
+     "teams": 1,
+     "share": 0.0045,
+     "win_rate": 0.375,
+     "games": 8
+    },
+    {
+     "mega": "scrafty-mega",
+     "name": "Scrafty-Mega",
+     "teams": 1,
+     "share": 0.0045,
+     "win_rate": 0.375,
+     "games": 8
+    }
+   ]
+  },
+  {
+   "key": "vgchistory:regional-frankfurt-2027",
+   "name": "Frankfurt Regional Championships 2027",
+   "date": "2026-09-26",
+   "players": 1129,
+   "basis": "full_field",
+   "teams": 1129,
+   "day2_teams": 163,
+   "usage": [
+    {
+     "species": "rillaboom",
+     "name": "Rillaboom",
+     "teams": 626,
+     "share": 0.5545,
+     "win_rate": 0.5139,
+     "games": 5269,
+     "day2_conversion": 0.147,
+     "top_cut_teams": 5
+    },
+    {
+     "species": "sneasler",
+     "name": "Sneasler",
+     "teams": 419,
+     "share": 0.3711,
+     "win_rate": 0.4989,
+     "games": 3508,
+     "day2_conversion": 0.136,
+     "top_cut_teams": 4
+    },
+    {
+     "species": "raichu",
+     "name": "Raichu",
+     "teams": 341,
+     "share": 0.302,
+     "win_rate": 0.524,
+     "games": 2874,
+     "day2_conversion": 0.1554,
+     "top_cut_teams": 1
+    },
+    {
+     "species": "gholdengo",
+     "name": "Gholdengo",
+     "teams": 327,
+     "share": 0.2896,
+     "win_rate": 0.5115,
+     "games": 2774,
+     "day2_conversion": 0.1529,
+     "top_cut_teams": 3
+    },
+    {
+     "species": "incineroar",
+     "name": "Incineroar",
+     "teams": 318,
+     "share": 0.2817,
+     "win_rate": 0.5185,
+     "games": 2731,
+     "day2_conversion": 0.1792,
+     "top_cut_teams": 7
+    },
+    {
+     "species": "salamence",
+     "name": "Salamence",
+     "teams": 288,
+     "share": 0.2551,
+     "win_rate": 0.4895,
+     "games": 2386,
+     "day2_conversion": 0.1181,
+     "top_cut_teams": 0
+    },
+    {
+     "species": "kingambit",
+     "name": "Kingambit",
+     "teams": 259,
+     "share": 0.2294,
+     "win_rate": 0.5066,
+     "games": 2195,
+     "day2_conversion": 0.1583,
+     "top_cut_teams": 1
+    },
+    {
+     "species": "arcanine-hisui",
+     "name": "Arcanine-Hisui",
+     "teams": 233,
+     "share": 0.2064,
+     "win_rate": 0.5193,
+     "games": 1920,
+     "day2_conversion": 0.1116,
+     "top_cut_teams": 0
+    },
+    {
+     "species": "garchomp",
+     "name": "Garchomp",
+     "teams": 199,
+     "share": 0.1763,
+     "win_rate": 0.5218,
+     "games": 1717,
+     "day2_conversion": 0.206,
+     "top_cut_teams": 3
+    },
+    {
+     "species": "indeedee-f",
+     "name": "Indeedee-F",
+     "teams": 196,
+     "share": 0.1736,
+     "win_rate": 0.4476,
+     "games": 1613,
+     "day2_conversion": 0.102,
+     "top_cut_teams": 0
+    },
+    {
+     "species": "farigiraf",
+     "name": "Farigiraf",
+     "teams": 187,
+     "share": 0.1656,
+     "win_rate": 0.4919,
+     "games": 1537,
+     "day2_conversion": 0.107,
+     "top_cut_teams": 1
+    },
+    {
+     "species": "staraptor",
+     "name": "Staraptor",
+     "teams": 187,
+     "share": 0.1656,
+     "win_rate": 0.4955,
+     "games": 1562,
+     "day2_conversion": 0.1337,
+     "top_cut_teams": 0
+    },
+    {
+     "species": "milotic",
+     "name": "Milotic",
+     "teams": 180,
+     "share": 0.1594,
+     "win_rate": 0.4787,
+     "games": 1477,
+     "day2_conversion": 0.1,
+     "top_cut_teams": 0
+    },
+    {
+     "species": "archaludon",
+     "name": "Archaludon",
+     "teams": 178,
+     "share": 0.1577,
+     "win_rate": 0.5026,
+     "games": 1510,
+     "day2_conversion": 0.1629,
+     "top_cut_teams": 0
+    },
+    {
+     "species": "basculegion",
+     "name": "Basculegion",
+     "teams": 165,
+     "share": 0.1461,
+     "win_rate": 0.4872,
+     "games": 1365,
+     "day2_conversion": 0.1455,
+     "top_cut_teams": 1
+    },
+    {
+     "species": "golisopod",
+     "name": "Golisopod",
+     "teams": 146,
+     "share": 0.1293,
+     "win_rate": 0.484,
+     "games": 1221,
+     "day2_conversion": 0.1301,
+     "top_cut_teams": 0
+    },
+    {
+     "species": "sylveon",
+     "name": "Sylveon",
+     "teams": 142,
+     "share": 0.1258,
+     "win_rate": 0.5004,
+     "games": 1169,
+     "day2_conversion": 0.1127,
+     "top_cut_teams": 2
+    },
+    {
+     "species": "charizard",
+     "name": "Charizard",
+     "teams": 141,
+     "share": 0.1249,
+     "win_rate": 0.5033,
+     "games": 1200,
+     "day2_conversion": 0.1844,
+     "top_cut_teams": 2
+    },
+    {
+     "species": "floette-eternal",
+     "name": "Floette-Eternal",
+     "teams": 132,
+     "share": 0.1169,
+     "win_rate": 0.5243,
+     "games": 1133,
+     "day2_conversion": 0.1818,
+     "top_cut_teams": 2
+    },
+    {
+     "species": "pelipper",
+     "name": "Pelipper",
+     "teams": 106,
+     "share": 0.0939,
+     "win_rate": 0.4944,
+     "games": 890,
+     "day2_conversion": 0.1604,
+     "top_cut_teams": 0
+    },
+    {
+     "species": "volcarona",
+     "name": "Volcarona",
+     "teams": 101,
+     "share": 0.0895,
+     "win_rate": 0.5427,
+     "games": 914,
+     "day2_conversion": 0.2673,
+     "top_cut_teams": 2
+    },
+    {
+     "species": "tyranitar",
+     "name": "Tyranitar",
+     "teams": 97,
+     "share": 0.0859,
+     "win_rate": 0.4849,
+     "games": 794,
+     "day2_conversion": 0.1134,
+     "top_cut_teams": 0
+    },
+    {
+     "species": "politoed",
+     "name": "Politoed",
+     "teams": 96,
+     "share": 0.085,
+     "win_rate": 0.4932,
+     "games": 807,
+     "day2_conversion": 0.1354,
+     "top_cut_teams": 1
+    },
+    {
+     "species": "excadrill",
+     "name": "Excadrill",
+     "teams": 87,
+     "share": 0.0771,
+     "win_rate": 0.5014,
+     "games": 718,
+     "day2_conversion": 0.1264,
+     "top_cut_teams": 0
+    },
+    {
+     "species": "indeedee",
+     "name": "Indeedee",
+     "teams": 75,
+     "share": 0.0664,
+     "win_rate": 0.5016,
+     "games": 638,
+     "day2_conversion": 0.1467,
+     "top_cut_teams": 1
+    },
+    {
+     "species": "armarouge",
+     "name": "Armarouge",
+     "teams": 70,
+     "share": 0.062,
+     "win_rate": 0.4613,
+     "games": 594,
+     "day2_conversion": 0.1429,
+     "top_cut_teams": 0
+    },
+    {
+     "species": "gengar",
+     "name": "Gengar",
+     "teams": 68,
+     "share": 0.0602,
+     "win_rate": 0.519,
+     "games": 578,
+     "day2_conversion": 0.1912,
+     "top_cut_teams": 1
+    },
+    {
+     "species": "froslass",
+     "name": "Froslass",
+     "teams": 67,
+     "share": 0.0593,
+     "win_rate": 0.5298,
+     "games": 570,
+     "day2_conversion": 0.1791,
+     "top_cut_teams": 1
+    },
+    {
+     "species": "gardevoir",
+     "name": "Gardevoir",
+     "teams": 66,
+     "share": 0.0585,
+     "win_rate": 0.4222,
+     "games": 540,
+     "day2_conversion": 0.0758,
+     "top_cut_teams": 0
+    },
+    {
+     "species": "grimmsnarl",
+     "name": "Grimmsnarl",
+     "teams": 66,
+     "share": 0.0585,
+     "win_rate": 0.5096,
+     "games": 571,
+     "day2_conversion": 0.1818,
+     "top_cut_teams": 0
+    },
+    {
+     "species": "whimsicott",
+     "name": "Whimsicott",
+     "teams": 58,
+     "share": 0.0514,
+     "win_rate": 0.4614,
+     "games": 453,
+     "day2_conversion": 0.069,
+     "top_cut_teams": 0
+    },
+    {
+     "species": "glimmora",
+     "name": "Glimmora",
+     "teams": 57,
+     "share": 0.0505,
+     "win_rate": 0.5266,
+     "games": 507,
+     "day2_conversion": 0.2456,
+     "top_cut_teams": 1
+    },
+    {
+     "species": "delphox",
+     "name": "Delphox",
+     "teams": 54,
+     "share": 0.0478,
+     "win_rate": 0.516,
+     "games": 469,
+     "day2_conversion": 0.1667,
+     "top_cut_teams": 0
+    },
+    {
+     "species": "sinistcha",
+     "name": "Sinistcha",
+     "teams": 54,
+     "share": 0.0478,
+     "win_rate": 0.5338,
+     "games": 474,
+     "day2_conversion": 0.1852,
+     "top_cut_teams": 0
+    },
+    {
+     "species": "kommo-o",
+     "name": "Kommo-o",
+     "teams": 52,
+     "share": 0.0461,
+     "win_rate": 0.5234,
+     "games": 449,
+     "day2_conversion": 0.1731,
+     "top_cut_teams": 2
+    },
+    {
+     "species": "metagross",
+     "name": "Metagross",
+     "teams": 49,
+     "share": 0.0434,
+     "win_rate": 0.469,
+     "games": 403,
+     "day2_conversion": 0.0612,
+     "top_cut_teams": 0
+    },
+    {
+     "species": "swampert",
+     "name": "Swampert",
+     "teams": 49,
+     "share": 0.0434,
+     "win_rate": 0.5,
+     "games": 404,
+     "day2_conversion": 0.1224,
+     "top_cut_teams": 0
+    },
+    {
+     "species": "ceruledge",
+     "name": "Ceruledge",
+     "teams": 48,
+     "share": 0.0425,
+     "win_rate": 0.4713,
+     "games": 401,
+     "day2_conversion": 0.125,
+     "top_cut_teams": 0
+    },
+    {
+     "species": "dragapult",
+     "name": "Dragapult",
+     "teams": 42,
+     "share": 0.0372,
+     "win_rate": 0.5137,
+     "games": 366,
+     "day2_conversion": 0.2143,
+     "top_cut_teams": 0
+    },
+    {
+     "species": "dragonite",
+     "name": "Dragonite",
+     "teams": 42,
+     "share": 0.0372,
+     "win_rate": 0.5669,
+     "games": 381,
+     "day2_conversion": 0.2143,
+     "top_cut_teams": 2
+    },
+    {
+     "species": "corviknight",
+     "name": "Corviknight",
+     "teams": 41,
+     "share": 0.0363,
+     "win_rate": 0.488,
+     "games": 332,
+     "day2_conversion": 0.0976,
+     "top_cut_teams": 0
+    },
+    {
+     "species": "primarina",
+     "name": "Primarina",
+     "teams": 36,
+     "share": 0.0319,
+     "win_rate": 0.5235,
+     "games": 298,
+     "day2_conversion": 0.1111,
+     "top_cut_teams": 0
+    },
+    {
+     "species": "venusaur",
+     "name": "Venusaur",
+     "teams": 36,
+     "share": 0.0319,
+     "win_rate": 0.5515,
+     "games": 330,
+     "day2_conversion": 0.2778,
+     "top_cut_teams": 1
+    },
+    {
+     "species": "camerupt",
+     "name": "Camerupt",
+     "teams": 34,
+     "share": 0.0301,
+     "win_rate": 0.4562,
+     "games": 274,
+     "day2_conversion": 0.0588,
+     "top_cut_teams": 0
+    },
+    {
+     "species": "aerodactyl",
+     "name": "Aerodactyl",
+     "teams": 33,
+     "share": 0.0292,
+     "win_rate": 0.4496,
+     "games": 278,
+     "day2_conversion": 0.1212,
+     "top_cut_teams": 0
+    },
+    {
+     "species": "annihilape",
+     "name": "Annihilape",
+     "teams": 32,
+     "share": 0.0283,
+     "win_rate": 0.4929,
+     "games": 280,
+     "day2_conversion": 0.2188,
+     "top_cut_teams": 0
+    },
+    {
+     "species": "torkoal",
+     "name": "Torkoal",
+     "teams": 31,
+     "share": 0.0275,
+     "win_rate": 0.4297,
+     "games": 249,
+     "day2_conversion": 0.0645,
+     "top_cut_teams": 1
+    },
+    {
+     "species": "lucario",
+     "name": "Lucario",
+     "teams": 22,
+     "share": 0.0195,
+     "win_rate": 0.4651,
+     "games": 172,
+     "day2_conversion": 0.0909,
+     "top_cut_teams": 0
+    },
+    {
+     "species": "blastoise",
+     "name": "Blastoise",
+     "teams": 21,
+     "share": 0.0186,
+     "win_rate": 0.4944,
+     "games": 178,
+     "day2_conversion": 0.1429,
+     "top_cut_teams": 0
+    },
+    {
+     "species": "hatterene",
+     "name": "Hatterene",
+     "teams": 21,
+     "share": 0.0186,
+     "win_rate": 0.4207,
+     "games": 164,
+     "day2_conversion": 0.0952,
+     "top_cut_teams": 0
+    },
+    {
+     "species": "maushold",
+     "name": "Maushold",
+     "teams": 19,
+     "share": 0.0168,
+     "win_rate": 0.5089,
+     "games": 169,
+     "day2_conversion": 0.2105,
+     "top_cut_teams": 0
+    },
+    {
+     "species": "vivillon",
+     "name": "Vivillon",
+     "teams": 19,
+     "share": 0.0168,
+     "win_rate": 0.5494,
+     "games": 162,
+     "day2_conversion": 0.1579,
+     "top_cut_teams": 1
+    },
+    {
+     "species": "ninetales-alola",
+     "name": "Ninetales-Alola",
+     "teams": 18,
+     "share": 0.0159,
+     "win_rate": 0.4351,
+     "games": 154,
+     "day2_conversion": 0.1111,
+     "top_cut_teams": 0
+    },
+    {
+     "species": "blaziken",
+     "name": "Blaziken",
+     "teams": 17,
+     "share": 0.0151,
+     "win_rate": 0.4925,
+     "games": 134,
+     "day2_conversion": 0.1176,
+     "top_cut_teams": 0
+    },
+    {
+     "species": "baxcalibur",
+     "name": "Baxcalibur",
+     "teams": 16,
+     "share": 0.0142,
+     "win_rate": 0.4065,
+     "games": 123,
+     "day2_conversion": 0.0625,
+     "top_cut_teams": 0
+    },
+    {
+     "species": "absol",
+     "name": "Absol",
+     "teams": 15,
+     "share": 0.0133,
+     "win_rate": 0.4553,
+     "games": 123,
+     "day2_conversion": 0.0667,
+     "top_cut_teams": 0
+    },
+    {
+     "species": "espathra",
+     "name": "Espathra",
+     "teams": 13,
+     "share": 0.0115,
+     "win_rate": 0.4857,
+     "games": 105,
+     "day2_conversion": 0.0769,
+     "top_cut_teams": 0
+    },
+    {
+     "species": "pawmot",
+     "name": "Pawmot",
+     "teams": 13,
+     "share": 0.0115,
+     "win_rate": 0.4571,
+     "games": 105,
+     "day2_conversion": 0.0769,
+     "top_cut_teams": 0
+    },
+    {
+     "species": "pyroar",
+     "name": "Pyroar",
+     "teams": 13,
+     "share": 0.0115,
+     "win_rate": 0.5089,
+     "games": 112,
+     "day2_conversion": 0.1538,
+     "top_cut_teams": 0
+    },
+    {
+     "species": "sableye",
+     "name": "Sableye",
+     "teams": 13,
+     "share": 0.0115,
+     "win_rate": 0.3978,
+     "games": 93,
+     "day2_conversion": 0.0769,
+     "top_cut_teams": 0
+    }
+   ],
+   "megas": [
+    {
+     "mega": "raichu-mega-y",
+     "name": "Raichu-Mega-Y",
+     "teams": 335,
+     "share": 0.2967,
+     "win_rate": 0.5253,
+     "games": 2823
+    },
+    {
+     "mega": "salamence-mega",
+     "name": "Salamence-Mega",
+     "teams": 288,
+     "share": 0.2551,
+     "win_rate": 0.4895,
+     "games": 2386
+    },
+    {
+     "mega": "staraptor-mega",
+     "name": "Staraptor-Mega",
+     "teams": 184,
+     "share": 0.163,
+     "win_rate": 0.4967,
+     "games": 1538
+    },
+    {
+     "mega": "golisopod-mega",
+     "name": "Golisopod-Mega",
+     "teams": 146,
+     "share": 0.1293,
+     "win_rate": 0.484,
+     "games": 1221
+    },
+    {
+     "mega": "charizard-mega-y",
+     "name": "Charizard-Mega-Y",
+     "teams": 140,
+     "share": 0.124,
+     "win_rate": 0.5042,
+     "games": 1192
+    },
+    {
+     "mega": "floette-mega",
+     "name": "Floette-Mega",
+     "teams": 132,
+     "share": 0.1169,
+     "win_rate": 0.5243,
+     "games": 1133
+    },
+    {
+     "mega": "garchomp-mega-z",
+     "name": "Garchomp-Mega-Z",
+     "teams": 102,
+     "share": 0.0903,
+     "win_rate": 0.5345,
+     "games": 883
+    },
+    {
+     "mega": "tyranitar-mega",
+     "name": "Tyranitar-Mega",
+     "teams": 90,
+     "share": 0.0797,
+     "win_rate": 0.4919,
+     "games": 738
+    },
+    {
+     "mega": "froslass-mega",
+     "name": "Froslass-Mega",
+     "teams": 67,
+     "share": 0.0593,
+     "win_rate": 0.5298,
+     "games": 570
+    },
+    {
+     "mega": "gengar-mega",
+     "name": "Gengar-Mega",
+     "teams": 67,
+     "share": 0.0593,
+     "win_rate": 0.5208,
+     "games": 576
+    },
+    {
+     "mega": "gardevoir-mega",
+     "name": "Gardevoir-Mega",
+     "teams": 66,
+     "share": 0.0585,
+     "win_rate": 0.4222,
+     "games": 540
+    },
+    {
+     "mega": "delphox-mega",
+     "name": "Delphox-Mega",
+     "teams": 52,
+     "share": 0.0461,
+     "win_rate": 0.5166,
+     "games": 453
+    },
+    {
+     "mega": "metagross-mega",
+     "name": "Metagross-Mega",
+     "teams": 48,
+     "share": 0.0425,
+     "win_rate": 0.4709,
+     "games": 395
+    },
+    {
+     "mega": "swampert-mega",
+     "name": "Swampert-Mega",
+     "teams": 45,
+     "share": 0.0399,
+     "win_rate": 0.5,
+     "games": 368
+    },
+    {
+     "mega": "glimmora-mega",
+     "name": "Glimmora-Mega",
+     "teams": 42,
+     "share": 0.0372,
+     "win_rate": 0.5348,
+     "games": 374
+    },
+    {
+     "mega": "dragonite-mega",
+     "name": "Dragonite-Mega",
+     "teams": 40,
+     "share": 0.0354,
+     "win_rate": 0.5644,
+     "games": 365
+    },
+    {
+     "mega": "camerupt-mega",
+     "name": "Camerupt-Mega",
+     "teams": 34,
+     "share": 0.0301,
+     "win_rate": 0.4562,
+     "games": 274
+    },
+    {
+     "mega": "aerodactyl-mega",
+     "name": "Aerodactyl-Mega",
+     "teams": 27,
+     "share": 0.0239,
+     "win_rate": 0.4565,
+     "games": 230
+    },
+    {
+     "mega": "lucario-mega-z",
+     "name": "Lucario-Mega-Z",
+     "teams": 22,
+     "share": 0.0195,
+     "win_rate": 0.4651,
+     "games": 172
+    },
+    {
+     "mega": "blastoise-mega",
+     "name": "Blastoise-Mega",
+     "teams": 21,
+     "share": 0.0186,
+     "win_rate": 0.4944,
+     "games": 178
+    },
+    {
+     "mega": "absol-mega-z",
+     "name": "Absol-Mega-Z",
+     "teams": 15,
+     "share": 0.0133,
+     "win_rate": 0.4553,
+     "games": 123
+    },
+    {
+     "mega": "baxcalibur-mega",
+     "name": "Baxcalibur-Mega",
+     "teams": 14,
+     "share": 0.0124,
+     "win_rate": 0.4112,
+     "games": 107
+    },
+    {
+     "mega": "blaziken-mega",
+     "name": "Blaziken-Mega",
+     "teams": 13,
+     "share": 0.0115,
+     "win_rate": 0.4845,
+     "games": 97
+    },
+    {
+     "mega": "pyroar-mega",
+     "name": "Pyroar-Mega",
+     "teams": 13,
+     "share": 0.0115,
+     "win_rate": 0.5089,
+     "games": 112
+    },
+    {
+     "mega": "mawile-mega",
+     "name": "Mawile-Mega",
+     "teams": 9,
+     "share": 0.008,
+     "win_rate": 0.5195,
+     "games": 77
+    },
+    {
+     "mega": "scovillain-mega",
+     "name": "Scovillain-Mega",
+     "teams": 8,
+     "share": 0.0071,
+     "win_rate": 0.371,
+     "games": 62
+    },
+    {
+     "mega": "raichu-mega-x",
+     "name": "Raichu-Mega-X",
+     "teams": 6,
+     "share": 0.0053,
+     "win_rate": 0.451,
+     "games": 51
+    },
+    {
+     "mega": "garchomp-mega",
+     "name": "Garchomp-Mega",
+     "teams": 5,
+     "share": 0.0044,
+     "win_rate": 0.5,
+     "games": 40
+    },
+    {
+     "mega": "meganium-mega",
+     "name": "Meganium-Mega",
+     "teams": 5,
+     "share": 0.0044,
+     "win_rate": 0.3939,
+     "games": 33
+    },
+    {
+     "mega": "venusaur-mega",
+     "name": "Venusaur-Mega",
+     "teams": 5,
+     "share": 0.0044,
+     "win_rate": 0.4545,
+     "games": 33
+    },
+    {
+     "mega": "abomasnow-mega",
+     "name": "Abomasnow-Mega",
+     "teams": 3,
+     "share": 0.0027,
+     "win_rate": 0.4091,
+     "games": 22
+    },
+    {
+     "mega": "altaria-mega",
+     "name": "Altaria-Mega",
+     "teams": 3,
+     "share": 0.0027,
+     "win_rate": 0.6897,
+     "games": 29
+    },
+    {
+     "mega": "lopunny-mega",
+     "name": "Lopunny-Mega",
+     "teams": 3,
+     "share": 0.0027,
+     "win_rate": 0.35,
+     "games": 20
+    },
+    {
+     "mega": "meowstic-mega",
+     "name": "Meowstic-Mega",
+     "teams": 3,
+     "share": 0.0027,
+     "win_rate": 0.7143,
+     "games": 42
+    },
+    {
+     "mega": "aggron-mega",
+     "name": "Aggron-Mega",
+     "teams": 2,
+     "share": 0.0018,
+     "win_rate": 0.5625,
+     "games": 16
+    },
+    {
+     "mega": "alakazam-mega",
+     "name": "Alakazam-Mega",
+     "teams": 2,
+     "share": 0.0018,
+     "win_rate": 0.5625,
+     "games": 16
+    },
+    {
+     "mega": "ampharos-mega",
+     "name": "Ampharos-Mega",
+     "teams": 2,
+     "share": 0.0018,
+     "win_rate": 0.3571,
+     "games": 14
+    },
+    {
+     "mega": "excadrill-mega",
+     "name": "Excadrill-Mega",
+     "teams": 2,
+     "share": 0.0018,
+     "win_rate": 0.4167,
+     "games": 12
+    },
+    {
+     "mega": "greninja-mega",
+     "name": "Greninja-Mega",
+     "teams": 2,
+     "share": 0.0018,
+     "win_rate": 0.4,
+     "games": 10
+    },
+    {
+     "mega": "heracross-mega",
+     "name": "Heracross-Mega",
+     "teams": 2,
+     "share": 0.0018,
+     "win_rate": 0.5,
+     "games": 16
+    },
+    {
+     "mega": "scrafty-mega",
+     "name": "Scrafty-Mega",
+     "teams": 2,
+     "share": 0.0018,
+     "win_rate": 0.4375,
+     "games": 16
+    },
+    {
+     "mega": "audino-mega",
+     "name": "Audino-Mega",
+     "teams": 1,
+     "share": 0.0009,
+     "win_rate": 0.625,
+     "games": 8
+    },
+    {
+     "mega": "barbaracle-mega",
+     "name": "Barbaracle-Mega",
+     "teams": 1,
+     "share": 0.0009,
+     "win_rate": 0.125,
+     "games": 8
+    },
+    {
+     "mega": "chandelure-mega",
+     "name": "Chandelure-Mega",
+     "teams": 1,
+     "share": 0.0009,
+     "win_rate": 0.625,
+     "games": 8
+    },
+    {
+     "mega": "charizard-mega-x",
+     "name": "Charizard-Mega-X",
+     "teams": 1,
+     "share": 0.0009,
+     "win_rate": 0.375,
+     "games": 8
+    },
+    {
+     "mega": "chimecho-mega",
+     "name": "Chimecho-Mega",
+     "teams": 1,
+     "share": 0.0009,
+     "win_rate": 0.25,
+     "games": 8
+    },
+    {
+     "mega": "crabominable-mega",
+     "name": "Crabominable-Mega",
+     "teams": 1,
+     "share": 0.0009,
+     "win_rate": 0.375,
+     "games": 8
+    },
+    {
+     "mega": "gallade-mega",
+     "name": "Gallade-Mega",
+     "teams": 1,
+     "share": 0.0009,
+     "win_rate": 0.5,
+     "games": 8
+    },
+    {
+     "mega": "golurk-mega",
+     "name": "Golurk-Mega",
+     "teams": 1,
+     "share": 0.0009,
+     "win_rate": 0.5,
+     "games": 8
+    },
+    {
+     "mega": "kangaskhan-mega",
+     "name": "Kangaskhan-Mega",
+     "teams": 1,
+     "share": 0.0009,
+     "win_rate": 0.6923,
+     "games": 13
+    },
+    {
+     "mega": "pidgeot-mega",
+     "name": "Pidgeot-Mega",
+     "teams": 1,
+     "share": 0.0009,
+     "win_rate": 0.375,
+     "games": 8
+    },
+    {
+     "mega": "sceptile-mega",
+     "name": "Sceptile-Mega",
+     "teams": 1,
+     "share": 0.0009,
+     "win_rate": 0.5385,
+     "games": 13
+    },
+    {
+     "mega": "skarmory-mega",
+     "name": "Skarmory-Mega",
+     "teams": 1,
+     "share": 0.0009,
+     "win_rate": 0.2,
+     "games": 5
+    },
+    {
+     "mega": "steelix-mega",
+     "name": "Steelix-Mega",
+     "teams": 1,
+     "share": 0.0009,
+     "win_rate": 0.25,
+     "games": 8
+    }
+   ]
+  },
+  {
+   "key": "vgchistory:regional-brisbane-2027",
+   "name": "Brisbane Regional Championships 2027",
+   "date": "2026-09-26",
+   "players": 327,
+   "basis": "full_field",
+   "teams": 327,
+   "day2_teams": 47,
+   "usage": [
+    {
+     "species": "rillaboom",
+     "name": "Rillaboom",
+     "teams": 170,
+     "share": 0.5199,
+     "win_rate": 0.505,
+     "games": 1390,
+     "day2_conversion": 0.1294,
+     "top_cut_teams": 4
+    },
+    {
+     "species": "sneasler",
+     "name": "Sneasler",
+     "teams": 134,
+     "share": 0.4098,
+     "win_rate": 0.5138,
+     "games": 1125,
+     "day2_conversion": 0.1642,
+     "top_cut_teams": 6
+    },
+    {
+     "species": "incineroar",
+     "name": "Incineroar",
+     "teams": 95,
+     "share": 0.2905,
+     "win_rate": 0.5115,
+     "games": 784,
+     "day2_conversion": 0.1684,
+     "top_cut_teams": 3
+    },
+    {
+     "species": "gholdengo",
+     "name": "Gholdengo",
+     "teams": 94,
+     "share": 0.2875,
+     "win_rate": 0.4926,
+     "games": 739,
+     "day2_conversion": 0.0851,
+     "top_cut_teams": 0
+    },
+    {
+     "species": "salamence",
+     "name": "Salamence",
+     "teams": 90,
+     "share": 0.2752,
+     "win_rate": 0.491,
+     "games": 721,
+     "day2_conversion": 0.1,
+     "top_cut_teams": 2
+    },
+    {
+     "species": "raichu",
+     "name": "Raichu",
+     "teams": 87,
+     "share": 0.2661,
+     "win_rate": 0.4875,
+     "games": 681,
+     "day2_conversion": 0.092,
+     "top_cut_teams": 0
+    },
+    {
+     "species": "kingambit",
+     "name": "Kingambit",
+     "teams": 73,
+     "share": 0.2232,
+     "win_rate": 0.5554,
+     "games": 632,
+     "day2_conversion": 0.274,
+     "top_cut_teams": 4
+    },
+    {
+     "species": "arcanine-hisui",
+     "name": "Arcanine-Hisui",
+     "teams": 64,
+     "share": 0.1957,
+     "win_rate": 0.4851,
+     "games": 505,
+     "day2_conversion": 0.1094,
+     "top_cut_teams": 0
+    },
+    {
+     "species": "milotic",
+     "name": "Milotic",
+     "teams": 64,
+     "share": 0.1957,
+     "win_rate": 0.4857,
+     "games": 523,
+     "day2_conversion": 0.1562,
+     "top_cut_teams": 0
+    },
+    {
+     "species": "archaludon",
+     "name": "Archaludon",
+     "teams": 55,
+     "share": 0.1682,
+     "win_rate": 0.5449,
+     "games": 479,
+     "day2_conversion": 0.2,
+     "top_cut_teams": 4
+    },
+    {
+     "species": "staraptor",
+     "name": "Staraptor",
+     "teams": 49,
+     "share": 0.1498,
+     "win_rate": 0.4938,
+     "games": 405,
+     "day2_conversion": 0.1429,
+     "top_cut_teams": 0
+    },
+    {
+     "species": "indeedee-f",
+     "name": "Indeedee-F",
+     "teams": 42,
+     "share": 0.1284,
+     "win_rate": 0.4627,
+     "games": 335,
+     "day2_conversion": 0.0952,
+     "top_cut_teams": 1
+    },
+    {
+     "species": "farigiraf",
+     "name": "Farigiraf",
+     "teams": 41,
+     "share": 0.1254,
+     "win_rate": 0.4862,
+     "games": 327,
+     "day2_conversion": 0.0488,
+     "top_cut_teams": 0
+    },
+    {
+     "species": "golisopod",
+     "name": "Golisopod",
+     "teams": 41,
+     "share": 0.1254,
+     "win_rate": 0.433,
+     "games": 321,
+     "day2_conversion": 0.0,
+     "top_cut_teams": 0
+    },
+    {
+     "species": "tyranitar",
+     "name": "Tyranitar",
+     "teams": 41,
+     "share": 0.1254,
+     "win_rate": 0.4579,
+     "games": 321,
+     "day2_conversion": 0.0244,
+     "top_cut_teams": 0
+    },
+    {
+     "species": "basculegion",
+     "name": "Basculegion",
+     "teams": 40,
+     "share": 0.1223,
+     "win_rate": 0.5202,
+     "games": 321,
+     "day2_conversion": 0.125,
+     "top_cut_teams": 2
+    },
+    {
+     "species": "charizard",
+     "name": "Charizard",
+     "teams": 40,
+     "share": 0.1223,
+     "win_rate": 0.518,
+     "games": 334,
+     "day2_conversion": 0.175,
+     "top_cut_teams": 2
+    },
+    {
+     "species": "floette-eternal",
+     "name": "Floette-Eternal",
+     "teams": 39,
+     "share": 0.1193,
+     "win_rate": 0.5829,
+     "games": 350,
+     "day2_conversion": 0.3077,
+     "top_cut_teams": 5
+    },
+    {
+     "species": "pelipper",
+     "name": "Pelipper",
+     "teams": 39,
+     "share": 0.1193,
+     "win_rate": 0.5339,
+     "games": 339,
+     "day2_conversion": 0.2051,
+     "top_cut_teams": 3
+    },
+    {
+     "species": "garchomp",
+     "name": "Garchomp",
+     "teams": 37,
+     "share": 0.1131,
+     "win_rate": 0.5446,
+     "games": 325,
+     "day2_conversion": 0.2432,
+     "top_cut_teams": 3
+    },
+    {
+     "species": "excadrill",
+     "name": "Excadrill",
+     "teams": 33,
+     "share": 0.1009,
+     "win_rate": 0.4598,
+     "games": 261,
+     "day2_conversion": 0.0606,
+     "top_cut_teams": 0
+    },
+    {
+     "species": "indeedee",
+     "name": "Indeedee",
+     "teams": 33,
+     "share": 0.1009,
+     "win_rate": 0.5094,
+     "games": 267,
+     "day2_conversion": 0.1212,
+     "top_cut_teams": 0
+    },
+    {
+     "species": "sylveon",
+     "name": "Sylveon",
+     "teams": 30,
+     "share": 0.0917,
+     "win_rate": 0.5,
+     "games": 230,
+     "day2_conversion": 0.1,
+     "top_cut_teams": 0
+    },
+    {
+     "species": "politoed",
+     "name": "Politoed",
+     "teams": 29,
+     "share": 0.0887,
+     "win_rate": 0.5,
+     "games": 242,
+     "day2_conversion": 0.1379,
+     "top_cut_teams": 1
+    },
+    {
+     "species": "gengar",
+     "name": "Gengar",
+     "teams": 25,
+     "share": 0.0765,
+     "win_rate": 0.5493,
+     "games": 213,
+     "day2_conversion": 0.2,
+     "top_cut_teams": 1
+    },
+    {
+     "species": "delphox",
+     "name": "Delphox",
+     "teams": 24,
+     "share": 0.0734,
+     "win_rate": 0.5741,
+     "games": 216,
+     "day2_conversion": 0.375,
+     "top_cut_teams": 0
+    },
+    {
+     "species": "metagross",
+     "name": "Metagross",
+     "teams": 21,
+     "share": 0.0642,
+     "win_rate": 0.5087,
+     "games": 173,
+     "day2_conversion": 0.1905,
+     "top_cut_teams": 0
+    },
+    {
+     "species": "whimsicott",
+     "name": "Whimsicott",
+     "teams": 21,
+     "share": 0.0642,
+     "win_rate": 0.4405,
+     "games": 168,
+     "day2_conversion": 0.1429,
+     "top_cut_teams": 0
+    },
+    {
+     "species": "grimmsnarl",
+     "name": "Grimmsnarl",
+     "teams": 20,
+     "share": 0.0612,
+     "win_rate": 0.5145,
+     "games": 173,
+     "day2_conversion": 0.15,
+     "top_cut_teams": 2
+    },
+    {
+     "species": "sinistcha",
+     "name": "Sinistcha",
+     "teams": 20,
+     "share": 0.0612,
+     "win_rate": 0.5838,
+     "games": 185,
+     "day2_conversion": 0.45,
+     "top_cut_teams": 0
+    },
+    {
+     "species": "froslass",
+     "name": "Froslass",
+     "teams": 19,
+     "share": 0.0581,
+     "win_rate": 0.4444,
+     "games": 153,
+     "day2_conversion": 0.1579,
+     "top_cut_teams": 0
+    },
+    {
+     "species": "volcarona",
+     "name": "Volcarona",
+     "teams": 19,
+     "share": 0.0581,
+     "win_rate": 0.4873,
+     "games": 158,
+     "day2_conversion": 0.1053,
+     "top_cut_teams": 1
+    },
+    {
+     "species": "corviknight",
+     "name": "Corviknight",
+     "teams": 17,
+     "share": 0.052,
+     "win_rate": 0.5071,
+     "games": 140,
+     "day2_conversion": 0.0588,
+     "top_cut_teams": 0
+    },
+    {
+     "species": "gardevoir",
+     "name": "Gardevoir",
+     "teams": 17,
+     "share": 0.052,
+     "win_rate": 0.4074,
+     "games": 135,
+     "day2_conversion": 0.0,
+     "top_cut_teams": 0
+    },
+    {
+     "species": "swampert",
+     "name": "Swampert",
+     "teams": 16,
+     "share": 0.0489,
+     "win_rate": 0.5308,
+     "games": 130,
+     "day2_conversion": 0.125,
+     "top_cut_teams": 1
+    },
+    {
+     "species": "ceruledge",
+     "name": "Ceruledge",
+     "teams": 15,
+     "share": 0.0459,
+     "win_rate": 0.587,
+     "games": 138,
+     "day2_conversion": 0.4,
+     "top_cut_teams": 0
+    },
+    {
+     "species": "armarouge",
+     "name": "Armarouge",
+     "teams": 14,
+     "share": 0.0428,
+     "win_rate": 0.5225,
+     "games": 111,
+     "day2_conversion": 0.1429,
+     "top_cut_teams": 1
+    },
+    {
+     "species": "kommo-o",
+     "name": "Kommo-o",
+     "teams": 12,
+     "share": 0.0367,
+     "win_rate": 0.549,
+     "games": 102,
+     "day2_conversion": 0.1667,
+     "top_cut_teams": 0
+    },
+    {
+     "species": "torkoal",
+     "name": "Torkoal",
+     "teams": 10,
+     "share": 0.0306,
+     "win_rate": 0.4937,
+     "games": 79,
+     "day2_conversion": 0.1,
+     "top_cut_teams": 0
+    },
+    {
+     "species": "dragapult",
+     "name": "Dragapult",
+     "teams": 9,
+     "share": 0.0275,
+     "win_rate": 0.56,
+     "games": 75,
+     "day2_conversion": 0.1111,
+     "top_cut_teams": 0
+    },
+    {
+     "species": "ninetales-alola",
+     "name": "Ninetales-Alola",
+     "teams": 9,
+     "share": 0.0275,
+     "win_rate": 0.4167,
+     "games": 72,
+     "day2_conversion": 0.0,
+     "top_cut_teams": 0
+    },
+    {
+     "species": "vivillon",
+     "name": "Vivillon",
+     "teams": 9,
+     "share": 0.0275,
+     "win_rate": 0.4412,
+     "games": 68,
+     "day2_conversion": 0.0,
+     "top_cut_teams": 0
+    },
+    {
+     "species": "hatterene",
+     "name": "Hatterene",
+     "teams": 8,
+     "share": 0.0245,
+     "win_rate": 0.4828,
+     "games": 58,
+     "day2_conversion": 0.0,
+     "top_cut_teams": 0
+    },
+    {
+     "species": "venusaur",
+     "name": "Venusaur",
+     "teams": 8,
+     "share": 0.0245,
+     "win_rate": 0.6282,
+     "games": 78,
+     "day2_conversion": 0.375,
+     "top_cut_teams": 2
+    },
+    {
+     "species": "baxcalibur",
+     "name": "Baxcalibur",
+     "teams": 7,
+     "share": 0.0214,
+     "win_rate": 0.5692,
+     "games": 65,
+     "day2_conversion": 0.4286,
+     "top_cut_teams": 0
+    },
+    {
+     "species": "dragonite",
+     "name": "Dragonite",
+     "teams": 7,
+     "share": 0.0214,
+     "win_rate": 0.4182,
+     "games": 55,
+     "day2_conversion": 0.0,
+     "top_cut_teams": 0
+    },
+    {
+     "species": "lucario",
+     "name": "Lucario",
+     "teams": 7,
+     "share": 0.0214,
+     "win_rate": 0.4769,
+     "games": 65,
+     "day2_conversion": 0.4286,
+     "top_cut_teams": 0
+    },
+    {
+     "species": "primarina",
+     "name": "Primarina",
+     "teams": 7,
+     "share": 0.0214,
+     "win_rate": 0.4259,
+     "games": 54,
+     "day2_conversion": 0.0,
+     "top_cut_teams": 0
+    },
+    {
+     "species": "camerupt",
+     "name": "Camerupt",
+     "teams": 6,
+     "share": 0.0183,
+     "win_rate": 0.5217,
+     "games": 46,
+     "day2_conversion": 0.0,
+     "top_cut_teams": 0
+    },
+    {
+     "species": "glimmora",
+     "name": "Glimmora",
+     "teams": 6,
+     "share": 0.0183,
+     "win_rate": 0.5556,
+     "games": 54,
+     "day2_conversion": 0.3333,
+     "top_cut_teams": 0
+    },
+    {
+     "species": "hydreigon",
+     "name": "Hydreigon",
+     "teams": 6,
+     "share": 0.0183,
+     "win_rate": 0.5417,
+     "games": 48,
+     "day2_conversion": 0.0,
+     "top_cut_teams": 0
+    },
+    {
+     "species": "maushold",
+     "name": "Maushold",
+     "teams": 6,
+     "share": 0.0183,
+     "win_rate": 0.4706,
+     "games": 51,
+     "day2_conversion": 0.1667,
+     "top_cut_teams": 0
+    },
+    {
+     "species": "mawile",
+     "name": "Mawile",
+     "teams": 6,
+     "share": 0.0183,
+     "win_rate": 0.5208,
+     "games": 48,
+     "day2_conversion": 0.1667,
+     "top_cut_teams": 0
+    },
+    {
+     "species": "pawmot",
+     "name": "Pawmot",
+     "teams": 6,
+     "share": 0.0183,
+     "win_rate": 0.4545,
+     "games": 44,
+     "day2_conversion": 0.0,
+     "top_cut_teams": 0
+    },
+    {
+     "species": "sableye",
+     "name": "Sableye",
+     "teams": 6,
+     "share": 0.0183,
+     "win_rate": 0.4038,
+     "games": 52,
+     "day2_conversion": 0.1667,
+     "top_cut_teams": 0
+    },
+    {
+     "species": "aerodactyl",
+     "name": "Aerodactyl",
+     "teams": 5,
+     "share": 0.0153,
+     "win_rate": 0.4884,
+     "games": 43,
+     "day2_conversion": 0.2,
+     "top_cut_teams": 0
+    },
+    {
+     "species": "blaziken",
+     "name": "Blaziken",
+     "teams": 5,
+     "share": 0.0153,
+     "win_rate": 0.5349,
+     "games": 43,
+     "day2_conversion": 0.2,
+     "top_cut_teams": 0
+    },
+    {
+     "species": "kleavor",
+     "name": "Kleavor",
+     "teams": 5,
+     "share": 0.0153,
+     "win_rate": 0.4737,
+     "games": 38,
+     "day2_conversion": 0.0,
+     "top_cut_teams": 0
+    },
+    {
+     "species": "absol",
+     "name": "Absol",
+     "teams": 4,
+     "share": 0.0122,
+     "win_rate": 0.4,
+     "games": 30,
+     "day2_conversion": 0.0,
+     "top_cut_teams": 0
+    },
+    {
+     "species": "blastoise",
+     "name": "Blastoise",
+     "teams": 4,
+     "share": 0.0122,
+     "win_rate": 0.5588,
+     "games": 34,
+     "day2_conversion": 0.5,
+     "top_cut_teams": 0
+    }
+   ],
+   "megas": [
+    {
+     "mega": "salamence-mega",
+     "name": "Salamence-Mega",
+     "teams": 89,
+     "share": 0.2722,
+     "win_rate": 0.4937,
+     "games": 713
+    },
+    {
+     "mega": "raichu-mega-y",
+     "name": "Raichu-Mega-Y",
+     "teams": 86,
+     "share": 0.263,
+     "win_rate": 0.4889,
+     "games": 673
+    },
+    {
+     "mega": "staraptor-mega",
+     "name": "Staraptor-Mega",
+     "teams": 49,
+     "share": 0.1498,
+     "win_rate": 0.4938,
+     "games": 405
+    },
+    {
+     "mega": "charizard-mega-y",
+     "name": "Charizard-Mega-Y",
+     "teams": 40,
+     "share": 0.1223,
+     "win_rate": 0.518,
+     "games": 334
+    },
+    {
+     "mega": "golisopod-mega",
+     "name": "Golisopod-Mega",
+     "teams": 40,
+     "share": 0.1223,
+     "win_rate": 0.4313,
+     "games": 313
+    },
+    {
+     "mega": "floette-mega",
+     "name": "Floette-Mega",
+     "teams": 38,
+     "share": 0.1162,
+     "win_rate": 0.5906,
+     "games": 342
+    },
+    {
+     "mega": "tyranitar-mega",
+     "name": "Tyranitar-Mega",
+     "teams": 34,
+     "share": 0.104,
+     "win_rate": 0.4737,
+     "games": 266
+    },
+    {
+     "mega": "gengar-mega",
+     "name": "Gengar-Mega",
+     "teams": 25,
+     "share": 0.0765,
+     "win_rate": 0.5493,
+     "games": 213
+    },
+    {
+     "mega": "delphox-mega",
+     "name": "Delphox-Mega",
+     "teams": 24,
+     "share": 0.0734,
+     "win_rate": 0.5741,
+     "games": 216
+    },
+    {
+     "mega": "metagross-mega",
+     "name": "Metagross-Mega",
+     "teams": 20,
+     "share": 0.0612,
+     "win_rate": 0.503,
+     "games": 165
+    },
+    {
+     "mega": "froslass-mega",
+     "name": "Froslass-Mega",
+     "teams": 19,
+     "share": 0.0581,
+     "win_rate": 0.4444,
+     "games": 153
+    },
+    {
+     "mega": "gardevoir-mega",
+     "name": "Gardevoir-Mega",
+     "teams": 17,
+     "share": 0.052,
+     "win_rate": 0.4074,
+     "games": 135
+    },
+    {
+     "mega": "swampert-mega",
+     "name": "Swampert-Mega",
+     "teams": 14,
+     "share": 0.0428,
+     "win_rate": 0.5526,
+     "games": 114
+    },
+    {
+     "mega": "garchomp-mega-z",
+     "name": "Garchomp-Mega-Z",
+     "teams": 12,
+     "share": 0.0367,
+     "win_rate": 0.6216,
+     "games": 111
+    },
+    {
+     "mega": "lucario-mega-z",
+     "name": "Lucario-Mega-Z",
+     "teams": 7,
+     "share": 0.0214,
+     "win_rate": 0.4769,
+     "games": 65
+    },
+    {
+     "mega": "camerupt-mega",
+     "name": "Camerupt-Mega",
+     "teams": 6,
+     "share": 0.0183,
+     "win_rate": 0.5217,
+     "games": 46
+    },
+    {
+     "mega": "dragonite-mega",
+     "name": "Dragonite-Mega",
+     "teams": 6,
+     "share": 0.0183,
+     "win_rate": 0.4255,
+     "games": 47
+    },
+    {
+     "mega": "mawile-mega",
+     "name": "Mawile-Mega",
+     "teams": 6,
+     "share": 0.0183,
+     "win_rate": 0.5208,
+     "games": 48
+    },
+    {
+     "mega": "baxcalibur-mega",
+     "name": "Baxcalibur-Mega",
+     "teams": 5,
+     "share": 0.0153,
+     "win_rate": 0.587,
+     "games": 46
+    },
+    {
+     "mega": "absol-mega-z",
+     "name": "Absol-Mega-Z",
+     "teams": 4,
+     "share": 0.0122,
+     "win_rate": 0.4,
+     "games": 30
+    },
+    {
+     "mega": "glimmora-mega",
+     "name": "Glimmora-Mega",
+     "teams": 4,
+     "share": 0.0122,
+     "win_rate": 0.6579,
+     "games": 38
+    },
+    {
+     "mega": "lopunny-mega",
+     "name": "Lopunny-Mega",
+     "teams": 4,
+     "share": 0.0122,
+     "win_rate": 0.4444,
+     "games": 27
+    },
+    {
+     "mega": "meganium-mega",
+     "name": "Meganium-Mega",
+     "teams": 4,
+     "share": 0.0122,
+     "win_rate": 0.44,
+     "games": 25
+    },
+    {
+     "mega": "aerodactyl-mega",
+     "name": "Aerodactyl-Mega",
+     "teams": 3,
+     "share": 0.0092,
+     "win_rate": 0.5,
+     "games": 24
+    },
+    {
+     "mega": "blastoise-mega",
+     "name": "Blastoise-Mega",
+     "teams": 3,
+     "share": 0.0092,
+     "win_rate": 0.5652,
+     "games": 23
+    },
+    {
+     "mega": "scovillain-mega",
+     "name": "Scovillain-Mega",
+     "teams": 3,
+     "share": 0.0092,
+     "win_rate": 0.5185,
+     "games": 27
+    },
+    {
+     "mega": "blaziken-mega",
+     "name": "Blaziken-Mega",
+     "teams": 2,
+     "share": 0.0061,
+     "win_rate": 0.6316,
+     "games": 19
+    },
+    {
+     "mega": "garchomp-mega",
+     "name": "Garchomp-Mega",
+     "teams": 2,
+     "share": 0.0061,
+     "win_rate": 0.7273,
+     "games": 22
+    },
+    {
+     "mega": "houndoom-mega",
+     "name": "Houndoom-Mega",
+     "teams": 2,
+     "share": 0.0061,
+     "win_rate": 0.4375,
+     "games": 16
+    },
+    {
+     "mega": "pyroar-mega",
+     "name": "Pyroar-Mega",
+     "teams": 2,
+     "share": 0.0061,
+     "win_rate": 0.375,
+     "games": 16
+    },
+    {
+     "mega": "sceptile-mega",
+     "name": "Sceptile-Mega",
+     "teams": 2,
+     "share": 0.0061,
+     "win_rate": 0.375,
+     "games": 16
+    },
+    {
+     "mega": "starmie-mega",
+     "name": "Starmie-Mega",
+     "teams": 2,
+     "share": 0.0061,
+     "win_rate": 0.5789,
+     "games": 19
+    },
+    {
+     "mega": "beedrill-mega",
+     "name": "Beedrill-Mega",
+     "teams": 1,
+     "share": 0.0031,
+     "win_rate": 0.125,
+     "games": 8
+    },
+    {
+     "mega": "crabominable-mega",
+     "name": "Crabominable-Mega",
+     "teams": 1,
+     "share": 0.0031,
+     "win_rate": 0.5,
+     "games": 8
+    },
+    {
+     "mega": "gyarados-mega",
+     "name": "Gyarados-Mega",
+     "teams": 1,
+     "share": 0.0031,
+     "win_rate": 0.25,
+     "games": 8
+    },
+    {
+     "mega": "meowstic-mega",
+     "name": "Meowstic-Mega",
+     "teams": 1,
+     "share": 0.0031,
+     "win_rate": 0.625,
+     "games": 8
+    },
+    {
+     "mega": "raichu-mega-x",
+     "name": "Raichu-Mega-X",
+     "teams": 1,
+     "share": 0.0031,
+     "win_rate": 0.375,
+     "games": 8
+    },
+    {
+     "mega": "sableye-mega",
+     "name": "Sableye-Mega",
+     "teams": 1,
+     "share": 0.0031,
+     "win_rate": 0.125,
+     "games": 8
+    },
+    {
+     "mega": "steelix-mega",
+     "name": "Steelix-Mega",
+     "teams": 1,
+     "share": 0.0031,
+     "win_rate": 0.625,
+     "games": 8
+    },
+    {
+     "mega": "venusaur-mega",
+     "name": "Venusaur-Mega",
+     "teams": 1,
+     "share": 0.0031,
+     "win_rate": 0.625,
+     "games": 8
+    }
+   ]
+  },
+  {
+   "key": "vgchistory:regional-baltimore-2027",
+   "name": "Baltimore Regional Championships 2027",
+   "date": "2026-09-18",
+   "players": 1081,
+   "basis": "full_field",
+   "teams": 1079,
+   "day2_teams": 155,
+   "usage": [
+    {
+     "species": "rillaboom",
+     "name": "Rillaboom",
+     "teams": 591,
+     "share": 0.5477,
+     "win_rate": 0.4961,
+     "games": 4757,
+     "day2_conversion": 0.1421,
+     "top_cut_teams": 5
+    },
+    {
+     "species": "sneasler",
+     "name": "Sneasler",
+     "teams": 505,
+     "share": 0.468,
+     "win_rate": 0.4899,
+     "games": 3995,
+     "day2_conversion": 0.1188,
+     "top_cut_teams": 4
+    },
+    {
+     "species": "salamence",
+     "name": "Salamence",
+     "teams": 402,
+     "share": 0.3726,
+     "win_rate": 0.4881,
+     "games": 3198,
+     "day2_conversion": 0.1219,
+     "top_cut_teams": 2
+    },
+    {
+     "species": "gholdengo",
+     "name": "Gholdengo",
+     "teams": 335,
+     "share": 0.3105,
+     "win_rate": 0.5162,
+     "games": 2772,
+     "day2_conversion": 0.1761,
+     "top_cut_teams": 2
+    },
+    {
+     "species": "incineroar",
+     "name": "Incineroar",
+     "teams": 317,
+     "share": 0.2938,
+     "win_rate": 0.5014,
+     "games": 2577,
+     "day2_conversion": 0.1577,
+     "top_cut_teams": 2
+    },
+    {
+     "species": "kingambit",
+     "name": "Kingambit",
+     "teams": 279,
+     "share": 0.2586,
+     "win_rate": 0.5229,
+     "games": 2312,
+     "day2_conversion": 0.19,
+     "top_cut_teams": 2
+    },
+    {
+     "species": "arcanine-hisui",
+     "name": "Arcanine-Hisui",
+     "teams": 263,
+     "share": 0.2437,
+     "win_rate": 0.5151,
+     "games": 2122,
+     "day2_conversion": 0.1673,
+     "top_cut_teams": 3
+    },
+    {
+     "species": "raichu",
+     "name": "Raichu",
+     "teams": 238,
+     "share": 0.2206,
+     "win_rate": 0.5195,
+     "games": 1971,
+     "day2_conversion": 0.1807,
+     "top_cut_teams": 3
+    },
+    {
+     "species": "indeedee-f",
+     "name": "Indeedee-F",
+     "teams": 216,
+     "share": 0.2002,
+     "win_rate": 0.4923,
+     "games": 1696,
+     "day2_conversion": 0.125,
+     "top_cut_teams": 0
+    },
+    {
+     "species": "basculegion",
+     "name": "Basculegion",
+     "teams": 189,
+     "share": 0.1752,
+     "win_rate": 0.4713,
+     "games": 1462,
+     "day2_conversion": 0.0794,
+     "top_cut_teams": 0
+    },
+    {
+     "species": "milotic",
+     "name": "Milotic",
+     "teams": 168,
+     "share": 0.1557,
+     "win_rate": 0.4879,
+     "games": 1320,
+     "day2_conversion": 0.1012,
+     "top_cut_teams": 2
+    },
+    {
+     "species": "garchomp",
+     "name": "Garchomp",
+     "teams": 159,
+     "share": 0.1474,
+     "win_rate": 0.5289,
+     "games": 1333,
+     "day2_conversion": 0.1824,
+     "top_cut_teams": 0
+    },
+    {
+     "species": "golisopod",
+     "name": "Golisopod",
+     "teams": 152,
+     "share": 0.1409,
+     "win_rate": 0.4596,
+     "games": 1164,
+     "day2_conversion": 0.1053,
+     "top_cut_teams": 1
+    },
+    {
+     "species": "charizard",
+     "name": "Charizard",
+     "teams": 143,
+     "share": 0.1325,
+     "win_rate": 0.5453,
+     "games": 1214,
+     "day2_conversion": 0.1678,
+     "top_cut_teams": 1
+    },
+    {
+     "species": "farigiraf",
+     "name": "Farigiraf",
+     "teams": 141,
+     "share": 0.1307,
+     "win_rate": 0.4874,
+     "games": 1151,
+     "day2_conversion": 0.1702,
+     "top_cut_teams": 1
+    },
+    {
+     "species": "pelipper",
+     "name": "Pelipper",
+     "teams": 134,
+     "share": 0.1242,
+     "win_rate": 0.4737,
+     "games": 1047,
+     "day2_conversion": 0.0896,
+     "top_cut_teams": 0
+    },
+    {
+     "species": "archaludon",
+     "name": "Archaludon",
+     "teams": 133,
+     "share": 0.1233,
+     "win_rate": 0.5248,
+     "games": 1088,
+     "day2_conversion": 0.1429,
+     "top_cut_teams": 2
+    },
+    {
+     "species": "floette-eternal",
+     "name": "Floette-Eternal",
+     "teams": 128,
+     "share": 0.1186,
+     "win_rate": 0.5024,
+     "games": 1039,
+     "day2_conversion": 0.1875,
+     "top_cut_teams": 1
+    },
+    {
+     "species": "sylveon",
+     "name": "Sylveon",
+     "teams": 127,
+     "share": 0.1177,
+     "win_rate": 0.5308,
+     "games": 1072,
+     "day2_conversion": 0.1969,
+     "top_cut_teams": 1
+    },
+    {
+     "species": "gardevoir",
+     "name": "Gardevoir",
+     "teams": 113,
+     "share": 0.1047,
+     "win_rate": 0.4792,
+     "games": 866,
+     "day2_conversion": 0.0973,
+     "top_cut_teams": 0
+    },
+    {
+     "species": "staraptor",
+     "name": "Staraptor",
+     "teams": 107,
+     "share": 0.0992,
+     "win_rate": 0.525,
+     "games": 901,
+     "day2_conversion": 0.2056,
+     "top_cut_teams": 2
+    },
+    {
+     "species": "tyranitar",
+     "name": "Tyranitar",
+     "teams": 96,
+     "share": 0.089,
+     "win_rate": 0.4941,
+     "games": 765,
+     "day2_conversion": 0.0938,
+     "top_cut_teams": 1
+    },
+    {
+     "species": "froslass",
+     "name": "Froslass",
+     "teams": 72,
+     "share": 0.0667,
+     "win_rate": 0.4868,
+     "games": 567,
+     "day2_conversion": 0.1528,
+     "top_cut_teams": 1
+    },
+    {
+     "species": "armarouge",
+     "name": "Armarouge",
+     "teams": 71,
+     "share": 0.0658,
+     "win_rate": 0.4973,
+     "games": 561,
+     "day2_conversion": 0.1127,
+     "top_cut_teams": 0
+    },
+    {
+     "species": "metagross",
+     "name": "Metagross",
+     "teams": 71,
+     "share": 0.0658,
+     "win_rate": 0.5019,
+     "games": 532,
+     "day2_conversion": 0.0563,
+     "top_cut_teams": 1
+    },
+    {
+     "species": "excadrill",
+     "name": "Excadrill",
+     "teams": 70,
+     "share": 0.0649,
+     "win_rate": 0.5009,
+     "games": 561,
+     "day2_conversion": 0.1,
+     "top_cut_teams": 1
+    },
+    {
+     "species": "whimsicott",
+     "name": "Whimsicott",
+     "teams": 65,
+     "share": 0.0602,
+     "win_rate": 0.479,
+     "games": 524,
+     "day2_conversion": 0.1538,
+     "top_cut_teams": 0
+    },
+    {
+     "species": "indeedee",
+     "name": "Indeedee",
+     "teams": 59,
+     "share": 0.0547,
+     "win_rate": 0.538,
+     "games": 487,
+     "day2_conversion": 0.1186,
+     "top_cut_teams": 2
+    },
+    {
+     "species": "volcarona",
+     "name": "Volcarona",
+     "teams": 57,
+     "share": 0.0528,
+     "win_rate": 0.4978,
+     "games": 462,
+     "day2_conversion": 0.1228,
+     "top_cut_teams": 0
+    },
+    {
+     "species": "grimmsnarl",
+     "name": "Grimmsnarl",
+     "teams": 55,
+     "share": 0.051,
+     "win_rate": 0.5093,
+     "games": 432,
+     "day2_conversion": 0.0909,
+     "top_cut_teams": 1
+    },
+    {
+     "species": "venusaur",
+     "name": "Venusaur",
+     "teams": 52,
+     "share": 0.0482,
+     "win_rate": 0.5097,
+     "games": 412,
+     "day2_conversion": 0.0962,
+     "top_cut_teams": 0
+    },
+    {
+     "species": "gengar",
+     "name": "Gengar",
+     "teams": 48,
+     "share": 0.0445,
+     "win_rate": 0.551,
+     "games": 412,
+     "day2_conversion": 0.1875,
+     "top_cut_teams": 1
+    },
+    {
+     "species": "swampert",
+     "name": "Swampert",
+     "teams": 48,
+     "share": 0.0445,
+     "win_rate": 0.5076,
+     "games": 396,
+     "day2_conversion": 0.2083,
+     "top_cut_teams": 0
+    },
+    {
+     "species": "politoed",
+     "name": "Politoed",
+     "teams": 46,
+     "share": 0.0426,
+     "win_rate": 0.53,
+     "games": 400,
+     "day2_conversion": 0.1739,
+     "top_cut_teams": 2
+    },
+    {
+     "species": "kommo-o",
+     "name": "Kommo-o",
+     "teams": 44,
+     "share": 0.0408,
+     "win_rate": 0.542,
+     "games": 369,
+     "day2_conversion": 0.25,
+     "top_cut_teams": 0
+    },
+    {
+     "species": "aerodactyl",
+     "name": "Aerodactyl",
+     "teams": 43,
+     "share": 0.0399,
+     "win_rate": 0.5263,
+     "games": 361,
+     "day2_conversion": 0.2093,
+     "top_cut_teams": 0
+    },
+    {
+     "species": "glimmora",
+     "name": "Glimmora",
+     "teams": 40,
+     "share": 0.0371,
+     "win_rate": 0.5496,
+     "games": 353,
+     "day2_conversion": 0.225,
+     "top_cut_teams": 0
+    },
+    {
+     "species": "sinistcha",
+     "name": "Sinistcha",
+     "teams": 39,
+     "share": 0.0361,
+     "win_rate": 0.5269,
+     "games": 334,
+     "day2_conversion": 0.2564,
+     "top_cut_teams": 0
+    },
+    {
+     "species": "dragapult",
+     "name": "Dragapult",
+     "teams": 32,
+     "share": 0.0297,
+     "win_rate": 0.5683,
+     "games": 271,
+     "day2_conversion": 0.1875,
+     "top_cut_teams": 0
+    },
+    {
+     "species": "torkoal",
+     "name": "Torkoal",
+     "teams": 30,
+     "share": 0.0278,
+     "win_rate": 0.479,
+     "games": 238,
+     "day2_conversion": 0.1,
+     "top_cut_teams": 0
+    },
+    {
+     "species": "delphox",
+     "name": "Delphox",
+     "teams": 29,
+     "share": 0.0269,
+     "win_rate": 0.5534,
+     "games": 262,
+     "day2_conversion": 0.2759,
+     "top_cut_teams": 1
+    },
+    {
+     "species": "lucario",
+     "name": "Lucario",
+     "teams": 28,
+     "share": 0.0259,
+     "win_rate": 0.4211,
+     "games": 228,
+     "day2_conversion": 0.1071,
+     "top_cut_teams": 0
+    },
+    {
+     "species": "dragonite",
+     "name": "Dragonite",
+     "teams": 27,
+     "share": 0.025,
+     "win_rate": 0.4932,
+     "games": 221,
+     "day2_conversion": 0.1481,
+     "top_cut_teams": 0
+    },
+    {
+     "species": "camerupt",
+     "name": "Camerupt",
+     "teams": 23,
+     "share": 0.0213,
+     "win_rate": 0.4655,
+     "games": 174,
+     "day2_conversion": 0.087,
+     "top_cut_teams": 0
+    },
+    {
+     "species": "primarina",
+     "name": "Primarina",
+     "teams": 23,
+     "share": 0.0213,
+     "win_rate": 0.4851,
+     "games": 202,
+     "day2_conversion": 0.3043,
+     "top_cut_teams": 0
+    },
+    {
+     "species": "ninetales-alola",
+     "name": "Ninetales-Alola",
+     "teams": 19,
+     "share": 0.0176,
+     "win_rate": 0.4361,
+     "games": 133,
+     "day2_conversion": 0.0526,
+     "top_cut_teams": 0
+    },
+    {
+     "species": "pawmot",
+     "name": "Pawmot",
+     "teams": 19,
+     "share": 0.0176,
+     "win_rate": 0.471,
+     "games": 155,
+     "day2_conversion": 0.2105,
+     "top_cut_teams": 0
+    },
+    {
+     "species": "blaziken",
+     "name": "Blaziken",
+     "teams": 18,
+     "share": 0.0167,
+     "win_rate": 0.4676,
+     "games": 139,
+     "day2_conversion": 0.1667,
+     "top_cut_teams": 0
+    },
+    {
+     "species": "hatterene",
+     "name": "Hatterene",
+     "teams": 18,
+     "share": 0.0167,
+     "win_rate": 0.4565,
+     "games": 138,
+     "day2_conversion": 0.1667,
+     "top_cut_teams": 0
+    },
+    {
+     "species": "baxcalibur",
+     "name": "Baxcalibur",
+     "teams": 17,
+     "share": 0.0158,
+     "win_rate": 0.456,
+     "games": 125,
+     "day2_conversion": 0.1176,
+     "top_cut_teams": 0
+    },
+    {
+     "species": "maushold",
+     "name": "Maushold",
+     "teams": 16,
+     "share": 0.0148,
+     "win_rate": 0.3509,
+     "games": 114,
+     "day2_conversion": 0.0,
+     "top_cut_teams": 0
+    },
+    {
+     "species": "blastoise",
+     "name": "Blastoise",
+     "teams": 15,
+     "share": 0.0139,
+     "win_rate": 0.5044,
+     "games": 113,
+     "day2_conversion": 0.1333,
+     "top_cut_teams": 0
+    },
+    {
+     "species": "hydreigon",
+     "name": "Hydreigon",
+     "teams": 15,
+     "share": 0.0139,
+     "win_rate": 0.4553,
+     "games": 123,
+     "day2_conversion": 0.0667,
+     "top_cut_teams": 0
+    },
+    {
+     "species": "absol",
+     "name": "Absol",
+     "teams": 14,
+     "share": 0.013,
+     "win_rate": 0.3478,
+     "games": 92,
+     "day2_conversion": 0.0,
+     "top_cut_teams": 0
+    },
+    {
+     "species": "talonflame",
+     "name": "Talonflame",
+     "teams": 14,
+     "share": 0.013,
+     "win_rate": 0.4762,
+     "games": 105,
+     "day2_conversion": 0.1429,
+     "top_cut_teams": 0
+    },
+    {
+     "species": "ceruledge",
+     "name": "Ceruledge",
+     "teams": 13,
+     "share": 0.012,
+     "win_rate": 0.521,
+     "games": 119,
+     "day2_conversion": 0.2308,
+     "top_cut_teams": 1
+    },
+    {
+     "species": "annihilape",
+     "name": "Annihilape",
+     "teams": 12,
+     "share": 0.0111,
+     "win_rate": 0.5051,
+     "games": 99,
+     "day2_conversion": 0.25,
+     "top_cut_teams": 0
+    },
+    {
+     "species": "kleavor",
+     "name": "Kleavor",
+     "teams": 12,
+     "share": 0.0111,
+     "win_rate": 0.4362,
+     "games": 94,
+     "day2_conversion": 0.0833,
+     "top_cut_teams": 0
+    },
+    {
+     "species": "scovillain",
+     "name": "Scovillain",
+     "teams": 11,
+     "share": 0.0102,
+     "win_rate": 0.4419,
+     "games": 86,
+     "day2_conversion": 0.0909,
+     "top_cut_teams": 0
+    },
+    {
+     "species": "sirfetchd",
+     "name": "Sirfetch’d",
+     "teams": 11,
+     "share": 0.0102,
+     "win_rate": 0.3824,
+     "games": 68,
+     "day2_conversion": 0.0,
+     "top_cut_teams": 0
+    }
+   ],
+   "megas": [
+    {
+     "mega": "salamence-mega",
+     "name": "Salamence-Mega",
+     "teams": 402,
+     "share": 0.3726,
+     "win_rate": 0.4881,
+     "games": 3198
+    },
+    {
+     "mega": "raichu-mega-y",
+     "name": "Raichu-Mega-Y",
+     "teams": 232,
+     "share": 0.215,
+     "win_rate": 0.524,
+     "games": 1935
+    },
+    {
+     "mega": "golisopod-mega",
+     "name": "Golisopod-Mega",
+     "teams": 152,
+     "share": 0.1409,
+     "win_rate": 0.4596,
+     "games": 1164
+    },
+    {
+     "mega": "charizard-mega-y",
+     "name": "Charizard-Mega-Y",
+     "teams": 140,
+     "share": 0.1297,
+     "win_rate": 0.5465,
+     "games": 1193
+    },
+    {
+     "mega": "floette-mega",
+     "name": "Floette-Mega",
+     "teams": 128,
+     "share": 0.1186,
+     "win_rate": 0.5024,
+     "games": 1039
+    },
+    {
+     "mega": "gardevoir-mega",
+     "name": "Gardevoir-Mega",
+     "teams": 113,
+     "share": 0.1047,
+     "win_rate": 0.4792,
+     "games": 866
+    },
+    {
+     "mega": "staraptor-mega",
+     "name": "Staraptor-Mega",
+     "teams": 103,
+     "share": 0.0955,
+     "win_rate": 0.5324,
+     "games": 864
+    },
+    {
+     "mega": "tyranitar-mega",
+     "name": "Tyranitar-Mega",
+     "teams": 82,
+     "share": 0.076,
+     "win_rate": 0.49,
+     "games": 647
+    },
+    {
+     "mega": "froslass-mega",
+     "name": "Froslass-Mega",
+     "teams": 72,
+     "share": 0.0667,
+     "win_rate": 0.4868,
+     "games": 567
+    },
+    {
+     "mega": "metagross-mega",
+     "name": "Metagross-Mega",
+     "teams": 69,
+     "share": 0.0639,
+     "win_rate": 0.5087,
+     "games": 519
+    },
+    {
+     "mega": "garchomp-mega-z",
+     "name": "Garchomp-Mega-Z",
+     "teams": 64,
+     "share": 0.0593,
+     "win_rate": 0.4961,
+     "games": 508
+    },
+    {
+     "mega": "gengar-mega",
+     "name": "Gengar-Mega",
+     "teams": 48,
+     "share": 0.0445,
+     "win_rate": 0.551,
+     "games": 412
+    },
+    {
+     "mega": "swampert-mega",
+     "name": "Swampert-Mega",
+     "teams": 45,
+     "share": 0.0417,
+     "win_rate": 0.4917,
+     "games": 362
+    },
+    {
+     "mega": "aerodactyl-mega",
+     "name": "Aerodactyl-Mega",
+     "teams": 33,
+     "share": 0.0306,
+     "win_rate": 0.5507,
+     "games": 296
+    },
+    {
+     "mega": "glimmora-mega",
+     "name": "Glimmora-Mega",
+     "teams": 30,
+     "share": 0.0278,
+     "win_rate": 0.5465,
+     "games": 258
+    },
+    {
+     "mega": "delphox-mega",
+     "name": "Delphox-Mega",
+     "teams": 28,
+     "share": 0.0259,
+     "win_rate": 0.5462,
+     "games": 249
+    },
+    {
+     "mega": "lucario-mega-z",
+     "name": "Lucario-Mega-Z",
+     "teams": 27,
+     "share": 0.025,
+     "win_rate": 0.4305,
+     "games": 223
+    },
+    {
+     "mega": "camerupt-mega",
+     "name": "Camerupt-Mega",
+     "teams": 23,
+     "share": 0.0213,
+     "win_rate": 0.4655,
+     "games": 174
+    },
+    {
+     "mega": "dragonite-mega",
+     "name": "Dragonite-Mega",
+     "teams": 20,
+     "share": 0.0185,
+     "win_rate": 0.4821,
+     "games": 168
+    },
+    {
+     "mega": "blastoise-mega",
+     "name": "Blastoise-Mega",
+     "teams": 15,
+     "share": 0.0139,
+     "win_rate": 0.5044,
+     "games": 113
+    },
+    {
+     "mega": "absol-mega-z",
+     "name": "Absol-Mega-Z",
+     "teams": 14,
+     "share": 0.013,
+     "win_rate": 0.3478,
+     "games": 92
+    },
+    {
+     "mega": "baxcalibur-mega",
+     "name": "Baxcalibur-Mega",
+     "teams": 14,
+     "share": 0.013,
+     "win_rate": 0.4907,
+     "games": 108
+    },
+    {
+     "mega": "blaziken-mega",
+     "name": "Blaziken-Mega",
+     "teams": 12,
+     "share": 0.0111,
+     "win_rate": 0.4845,
+     "games": 97
+    },
+    {
+     "mega": "scovillain-mega",
+     "name": "Scovillain-Mega",
+     "teams": 10,
+     "share": 0.0093,
+     "win_rate": 0.45,
+     "games": 80
+    },
+    {
+     "mega": "mawile-mega",
+     "name": "Mawile-Mega",
+     "teams": 6,
+     "share": 0.0056,
+     "win_rate": 0.4783,
+     "games": 46
+    },
+    {
+     "mega": "manectric-mega",
+     "name": "Manectric-Mega",
+     "teams": 5,
+     "share": 0.0046,
+     "win_rate": 0.5,
+     "games": 40
+    },
+    {
+     "mega": "raichu-mega-x",
+     "name": "Raichu-Mega-X",
+     "teams": 5,
+     "share": 0.0046,
+     "win_rate": 0.2581,
+     "games": 31
+    },
+    {
+     "mega": "ampharos-mega",
+     "name": "Ampharos-Mega",
+     "teams": 4,
+     "share": 0.0037,
+     "win_rate": 0.4375,
+     "games": 32
+    },
+    {
+     "mega": "pyroar-mega",
+     "name": "Pyroar-Mega",
+     "teams": 4,
+     "share": 0.0037,
+     "win_rate": 0.5946,
+     "games": 37
+    },
+    {
+     "mega": "venusaur-mega",
+     "name": "Venusaur-Mega",
+     "teams": 4,
+     "share": 0.0037,
+     "win_rate": 0.3929,
+     "games": 28
+    },
+    {
+     "mega": "chandelure-mega",
+     "name": "Chandelure-Mega",
+     "teams": 3,
+     "share": 0.0028,
+     "win_rate": 0.3529,
+     "games": 17
+    },
+    {
+     "mega": "charizard-mega-x",
+     "name": "Charizard-Mega-X",
+     "teams": 3,
+     "share": 0.0028,
+     "win_rate": 0.4762,
+     "games": 21
+    },
+    {
+     "mega": "drampa-mega",
+     "name": "Drampa-Mega",
+     "teams": 3,
+     "share": 0.0028,
+     "win_rate": 0.3333,
+     "games": 24
+    },
+    {
+     "mega": "meganium-mega",
+     "name": "Meganium-Mega",
+     "teams": 3,
+     "share": 0.0028,
+     "win_rate": 0.375,
+     "games": 24
+    },
+    {
+     "mega": "starmie-mega",
+     "name": "Starmie-Mega",
+     "teams": 3,
+     "share": 0.0028,
+     "win_rate": 0.5172,
+     "games": 29
+    },
+    {
+     "mega": "abomasnow-mega",
+     "name": "Abomasnow-Mega",
+     "teams": 2,
+     "share": 0.0019,
+     "win_rate": 0.375,
+     "games": 16
+    },
+    {
+     "mega": "feraligatr-mega",
+     "name": "Feraligatr-Mega",
+     "teams": 2,
+     "share": 0.0019,
+     "win_rate": 0.3333,
+     "games": 12
+    },
+    {
+     "mega": "heracross-mega",
+     "name": "Heracross-Mega",
+     "teams": 2,
+     "share": 0.0019,
+     "win_rate": 0.1875,
+     "games": 16
+    },
+    {
+     "mega": "houndoom-mega",
+     "name": "Houndoom-Mega",
+     "teams": 2,
+     "share": 0.0019,
+     "win_rate": 0.3333,
+     "games": 12
+    },
+    {
+     "mega": "malamar-mega",
+     "name": "Malamar-Mega",
+     "teams": 2,
+     "share": 0.0019,
+     "win_rate": 0.4375,
+     "games": 16
+    },
+    {
+     "mega": "pidgeot-mega",
+     "name": "Pidgeot-Mega",
+     "teams": 2,
+     "share": 0.0019,
+     "win_rate": 0.6538,
+     "games": 26
+    },
+    {
+     "mega": "sableye-mega",
+     "name": "Sableye-Mega",
+     "teams": 2,
+     "share": 0.0019,
+     "win_rate": 0.4375,
+     "games": 16
+    },
+    {
+     "mega": "steelix-mega",
+     "name": "Steelix-Mega",
+     "teams": 2,
+     "share": 0.0019,
+     "win_rate": 0.5625,
+     "games": 16
+    },
+    {
+     "mega": "alakazam-mega",
+     "name": "Alakazam-Mega",
+     "teams": 1,
+     "share": 0.0009,
+     "win_rate": 0.375,
+     "games": 8
+    },
+    {
+     "mega": "crabominable-mega",
+     "name": "Crabominable-Mega",
+     "teams": 1,
+     "share": 0.0009,
+     "win_rate": 0.375,
+     "games": 8
+    },
+    {
+     "mega": "dragalge-mega",
+     "name": "Dragalge-Mega",
+     "teams": 1,
+     "share": 0.0009,
+     "win_rate": 0.25,
+     "games": 4
+    },
+    {
+     "mega": "eelektross-mega",
+     "name": "Eelektross-Mega",
+     "teams": 1,
+     "share": 0.0009,
+     "win_rate": 0.25,
+     "games": 8
+    },
+    {
+     "mega": "emboar-mega",
+     "name": "Emboar-Mega",
+     "teams": 1,
+     "share": 0.0009,
+     "win_rate": 0.5,
+     "games": 8
+    },
+    {
+     "mega": "excadrill-mega",
+     "name": "Excadrill-Mega",
+     "teams": 1,
+     "share": 0.0009,
+     "win_rate": 0.5,
+     "games": 8
+    },
+    {
+     "mega": "gallade-mega",
+     "name": "Gallade-Mega",
+     "teams": 1,
+     "share": 0.0009,
+     "win_rate": 0.25,
+     "games": 8
+    },
+    {
+     "mega": "garchomp-mega",
+     "name": "Garchomp-Mega",
+     "teams": 1,
+     "share": 0.0009,
+     "win_rate": 0.5,
+     "games": 8
+    },
+    {
+     "mega": "golurk-mega",
+     "name": "Golurk-Mega",
+     "teams": 1,
+     "share": 0.0009,
+     "win_rate": 0.1667,
+     "games": 6
+    },
+    {
+     "mega": "greninja-mega",
+     "name": "Greninja-Mega",
+     "teams": 1,
+     "share": 0.0009,
+     "win_rate": 0.125,
+     "games": 8
+    },
+    {
+     "mega": "gyarados-mega",
+     "name": "Gyarados-Mega",
+     "teams": 1,
+     "share": 0.0009,
+     "win_rate": 0.4,
+     "games": 5
+    },
+    {
+     "mega": "lopunny-mega",
+     "name": "Lopunny-Mega",
+     "teams": 1,
+     "share": 0.0009,
+     "win_rate": 0.7857,
+     "games": 14
+    },
+    {
+     "mega": "skarmory-mega",
+     "name": "Skarmory-Mega",
+     "teams": 1,
+     "share": 0.0009,
+     "win_rate": 0.25,
+     "games": 8
+    },
+    {
+     "mega": "slowbro-mega",
+     "name": "Slowbro-Mega",
+     "teams": 1,
+     "share": 0.0009,
+     "win_rate": 0.5,
+     "games": 8
+    }
+   ]
   }
  ],
+ "trend": {
+  "available": true,
+  "basis": "whole-field in-person events",
+  "recent_events": [
+   {
+    "key": "vgchistory:regional-louisville-2027",
+    "name": "Louisville Regional Championships 2027",
+    "date": "2026-10-10"
+   },
+   {
+    "key": "vgchistory:regional-nice-2027",
+    "name": "Nice Regional Championships 2027",
+    "date": "2026-10-17"
+   }
+  ],
+  "earlier_events": [
+   {
+    "key": "vgchistory:regional-baltimore-2027",
+    "name": "Baltimore Regional Championships 2027",
+    "date": "2026-09-18"
+   },
+   {
+    "key": "vgchistory:regional-brisbane-2027",
+    "name": "Brisbane Regional Championships 2027",
+    "date": "2026-09-26"
+   },
+   {
+    "key": "vgchistory:regional-frankfurt-2027",
+    "name": "Frankfurt Regional Championships 2027",
+    "date": "2026-09-26"
+   },
+   {
+    "key": "vgchistory:regional-recife-2027",
+    "name": "Recife Regional Championships 2027",
+    "date": "2026-10-03"
+   }
+  ],
+  "recent_teams": 1875,
+  "earlier_teams": 2757,
+  "species": [
+   {
+    "id": "garchomp",
+    "name": "Garchomp",
+    "recent": {
+     "teams": 768,
+     "share": 0.4096,
+     "win_rate": 0.507,
+     "games": 6166
+    },
+    "earlier": {
+     "teams": 468,
+     "share": 0.1697,
+     "win_rate": 0.5299,
+     "games": 3965
+    },
+    "share_delta": 0.2399
+   },
+   {
+    "id": "incineroar",
+    "name": "Incineroar",
+    "recent": {
+     "teams": 758,
+     "share": 0.4043,
+     "win_rate": 0.5136,
+     "games": 6137
+    },
+    "earlier": {
+     "teams": 812,
+     "share": 0.2945,
+     "win_rate": 0.5097,
+     "games": 6708
+    },
+    "share_delta": 0.1098
+   },
+   {
+    "id": "volcarona",
+    "name": "Volcarona",
+    "recent": {
+     "teams": 329,
+     "share": 0.1755,
+     "win_rate": 0.4911,
+     "games": 2598
+    },
+    "earlier": {
+     "teams": 203,
+     "share": 0.0736,
+     "win_rate": 0.5229,
+     "games": 1748
+    },
+    "share_delta": 0.1019
+   },
+   {
+    "id": "venusaur",
+    "name": "Venusaur",
+    "recent": {
+     "teams": 232,
+     "share": 0.1237,
+     "win_rate": 0.5325,
+     "games": 1910
+    },
+    "earlier": {
+     "teams": 118,
+     "share": 0.0428,
+     "win_rate": 0.5475,
+     "games": 1001
+    },
+    "share_delta": 0.0809
+   },
+   {
+    "id": "charizard",
+    "name": "Charizard",
+    "recent": {
+     "teams": 395,
+     "share": 0.2107,
+     "win_rate": 0.5278,
+     "games": 3255
+    },
+    "earlier": {
+     "teams": 365,
+     "share": 0.1324,
+     "win_rate": 0.5269,
+     "games": 3069
+    },
+    "share_delta": 0.0783
+   },
+   {
+    "id": "pelipper",
+    "name": "Pelipper",
+    "recent": {
+     "teams": 319,
+     "share": 0.1701,
+     "win_rate": 0.5006,
+     "games": 2559
+    },
+    "earlier": {
+     "teams": 311,
+     "share": 0.1128,
+     "win_rate": 0.4919,
+     "games": 2531
+    },
+    "share_delta": 0.0573
+   },
+   {
+    "id": "delphox",
+    "name": "Delphox",
+    "recent": {
+     "teams": 171,
+     "share": 0.0912,
+     "win_rate": 0.5353,
+     "games": 1446
+    },
+    "earlier": {
+     "teams": 122,
+     "share": 0.0443,
+     "win_rate": 0.5433,
+     "games": 1075
+    },
+    "share_delta": 0.0469
+   },
+   {
+    "id": "archaludon",
+    "name": "Archaludon",
+    "recent": {
+     "teams": 365,
+     "share": 0.1947,
+     "win_rate": 0.5132,
+     "games": 2954
+    },
+    "earlier": {
+     "teams": 408,
+     "share": 0.148,
+     "win_rate": 0.5165,
+     "games": 3417
+    },
+    "share_delta": 0.0467
+   },
+   {
+    "id": "primarina",
+    "name": "Primarina",
+    "recent": {
+     "teams": 134,
+     "share": 0.0715,
+     "win_rate": 0.5259,
+     "games": 1101
+    },
+    "earlier": {
+     "teams": 82,
+     "share": 0.0297,
+     "win_rate": 0.503,
+     "games": 674
+    },
+    "share_delta": 0.0418
+   },
+   {
+    "id": "sinistcha",
+    "name": "Sinistcha",
+    "recent": {
+     "teams": 163,
+     "share": 0.0869,
+     "win_rate": 0.513,
+     "games": 1347
+    },
+    "earlier": {
+     "teams": 129,
+     "share": 0.0468,
+     "win_rate": 0.537,
+     "games": 1123
+    },
+    "share_delta": 0.0401
+   },
+   {
+    "id": "floette-eternal",
+    "name": "Floette-Eternal",
+    "recent": {
+     "teams": 292,
+     "share": 0.1557,
+     "win_rate": 0.5157,
+     "games": 2381
+    },
+    "earlier": {
+     "teams": 319,
+     "share": 0.1157,
+     "win_rate": 0.5258,
+     "games": 2691
+    },
+    "share_delta": 0.04
+   },
+   {
+    "id": "grimmsnarl",
+    "name": "Grimmsnarl",
+    "recent": {
+     "teams": 186,
+     "share": 0.0992,
+     "win_rate": 0.5027,
+     "games": 1466
+    },
+    "earlier": {
+     "teams": 164,
+     "share": 0.0595,
+     "win_rate": 0.5157,
+     "games": 1367
+    },
+    "share_delta": 0.0397
+   },
+   {
+    "id": "basculegion-f",
+    "name": "Basculegion-F",
+    "recent": {
+     "teams": 62,
+     "share": 0.0331,
+     "win_rate": 0.5581,
+     "games": 534
+    },
+    "earlier": {
+     "teams": 2,
+     "share": 0.0007,
+     "win_rate": 0.4,
+     "games": 15
+    },
+    "share_delta": 0.0324
+   },
+   {
+    "id": "kommo-o",
+    "name": "Kommo-o",
+    "recent": {
+     "teams": 134,
+     "share": 0.0715,
+     "win_rate": 0.5463,
+     "games": 1113
+    },
+    "earlier": {
+     "teams": 122,
+     "share": 0.0443,
+     "win_rate": 0.5377,
+     "games": 1034
+    },
+    "share_delta": 0.0272
+   },
+   {
+    "id": "dragonite",
+    "name": "Dragonite",
+    "recent": {
+     "teams": 101,
+     "share": 0.0539,
+     "win_rate": 0.5006,
+     "games": 819
+    },
+    "earlier": {
+     "teams": 82,
+     "share": 0.0297,
+     "win_rate": 0.531,
+     "games": 710
+    },
+    "share_delta": 0.0242
+   },
+   {
+    "id": "raichu",
+    "name": "Raichu",
+    "recent": {
+     "teams": 545,
+     "share": 0.2907,
+     "win_rate": 0.4907,
+     "games": 4318
+    },
+    "earlier": {
+     "teams": 736,
+     "share": 0.267,
+     "win_rate": 0.5156,
+     "games": 6061
+    },
+    "share_delta": 0.0237
+   },
+   {
+    "id": "whimsicott",
+    "name": "Whimsicott",
+    "recent": {
+     "teams": 129,
+     "share": 0.0688,
+     "win_rate": 0.5206,
+     "games": 1066
+    },
+    "earlier": {
+     "teams": 151,
+     "share": 0.0548,
+     "win_rate": 0.4658,
+     "games": 1198
+    },
+    "share_delta": 0.014
+   },
+   {
+    "id": "basculegion",
+    "name": "Basculegion",
+    "recent": {
+     "teams": 303,
+     "share": 0.1616,
+     "win_rate": 0.5248,
+     "games": 2504
+    },
+    "earlier": {
+     "teams": 418,
+     "share": 0.1516,
+     "win_rate": 0.4849,
+     "games": 3343
+    },
+    "share_delta": 0.01
+   },
+   {
+    "id": "annihilape",
+    "name": "Annihilape",
+    "recent": {
+     "teams": 40,
+     "share": 0.0213,
+     "win_rate": 0.4896,
+     "games": 335
+    },
+    "earlier": {
+     "teams": 52,
+     "share": 0.0189,
+     "win_rate": 0.4897,
+     "games": 439
+    },
+    "share_delta": 0.0024
+   },
+   {
+    "id": "farigiraf",
+    "name": "Farigiraf",
+    "recent": {
+     "teams": 275,
+     "share": 0.1467,
+     "win_rate": 0.5095,
+     "games": 2218
+    },
+    "earlier": {
+     "teams": 399,
+     "share": 0.1447,
+     "win_rate": 0.4909,
+     "games": 3237
+    },
+    "share_delta": 0.002
+   },
+   {
+    "id": "kingambit",
+    "name": "Kingambit",
+    "recent": {
+     "teams": 444,
+     "share": 0.2368,
+     "win_rate": 0.5292,
+     "games": 3683
+    },
+    "earlier": {
+     "teams": 655,
+     "share": 0.2376,
+     "win_rate": 0.5215,
+     "games": 5500
+    },
+    "share_delta": -0.0008
+   },
+   {
+    "id": "torkoal",
+    "name": "Torkoal",
+    "recent": {
+     "teams": 56,
+     "share": 0.0299,
+     "win_rate": 0.4763,
+     "games": 443
+    },
+    "earlier": {
+     "teams": 86,
+     "share": 0.0312,
+     "win_rate": 0.4535,
+     "games": 677
+    },
+    "share_delta": -0.0013
+   },
+   {
+    "id": "glimmora",
+    "name": "Glimmora",
+    "recent": {
+     "teams": 69,
+     "share": 0.0368,
+     "win_rate": 0.5208,
+     "games": 578
+    },
+    "earlier": {
+     "teams": 109,
+     "share": 0.0395,
+     "win_rate": 0.5379,
+     "games": 963
+    },
+    "share_delta": -0.0027
+   },
+   {
+    "id": "aerodactyl",
+    "name": "Aerodactyl",
+    "recent": {
+     "teams": 55,
+     "share": 0.0293,
+     "win_rate": 0.5226,
+     "games": 442
+    },
+    "earlier": {
+     "teams": 89,
+     "share": 0.0323,
+     "win_rate": 0.4926,
+     "games": 745
+    },
+    "share_delta": -0.003
+   },
+   {
+    "id": "corviknight",
+    "name": "Corviknight",
+    "recent": {
+     "teams": 44,
+     "share": 0.0235,
+     "win_rate": 0.4431,
+     "games": 334
+    },
+    "earlier": {
+     "teams": 73,
+     "share": 0.0265,
+     "win_rate": 0.5033,
+     "games": 600
+    },
+    "share_delta": -0.003
+   },
+   {
+    "id": "gengar",
+    "name": "Gengar",
+    "recent": {
+     "teams": 96,
+     "share": 0.0512,
+     "win_rate": 0.5584,
+     "games": 813
+    },
+    "earlier": {
+     "teams": 151,
+     "share": 0.0548,
+     "win_rate": 0.532,
+     "games": 1280
+    },
+    "share_delta": -0.0036
+   },
+   {
+    "id": "camerupt",
+    "name": "Camerupt",
+    "recent": {
+     "teams": 36,
+     "share": 0.0192,
+     "win_rate": 0.5436,
+     "games": 298
+    },
+    "earlier": {
+     "teams": 66,
+     "share": 0.0239,
+     "win_rate": 0.4653,
+     "games": 518
+    },
+    "share_delta": -0.0047
+   },
+   {
+    "id": "swampert",
+    "name": "Swampert",
+    "recent": {
+     "teams": 72,
+     "share": 0.0384,
+     "win_rate": 0.4844,
+     "games": 576
+    },
+    "earlier": {
+     "teams": 120,
+     "share": 0.0435,
+     "win_rate": 0.5116,
+     "games": 991
+    },
+    "share_delta": -0.0051
+   },
+   {
+    "id": "sylveon",
+    "name": "Sylveon",
+    "recent": {
+     "teams": 211,
+     "share": 0.1125,
+     "win_rate": 0.5276,
+     "games": 1704
+    },
+    "earlier": {
+     "teams": 329,
+     "share": 0.1193,
+     "win_rate": 0.5146,
+     "games": 2697
+    },
+    "share_delta": -0.0068
+   },
+   {
+    "id": "lucario",
+    "name": "Lucario",
+    "recent": {
+     "teams": 23,
+     "share": 0.0123,
+     "win_rate": 0.407,
+     "games": 172
+    },
+    "earlier": {
+     "teams": 62,
+     "share": 0.0225,
+     "win_rate": 0.4389,
+     "games": 499
+    },
+    "share_delta": -0.0102
+   },
+   {
+    "id": "dragapult",
+    "name": "Dragapult",
+    "recent": {
+     "teams": 42,
+     "share": 0.0224,
+     "win_rate": 0.5091,
+     "games": 328
+    },
+    "earlier": {
+     "teams": 93,
+     "share": 0.0337,
+     "win_rate": 0.539,
+     "games": 783
+    },
+    "share_delta": -0.0113
+   },
+   {
+    "id": "ceruledge",
+    "name": "Ceruledge",
+    "recent": {
+     "teams": 30,
+     "share": 0.016,
+     "win_rate": 0.4018,
+     "games": 219
+    },
+    "earlier": {
+     "teams": 82,
+     "share": 0.0297,
+     "win_rate": 0.5,
+     "games": 692
+    },
+    "share_delta": -0.0137
+   },
+   {
+    "id": "metagross",
+    "name": "Metagross",
+    "recent": {
+     "teams": 74,
+     "share": 0.0395,
+     "win_rate": 0.4661,
+     "games": 575
+    },
+    "earlier": {
+     "teams": 147,
+     "share": 0.0533,
+     "win_rate": 0.49,
+     "games": 1151
+    },
+    "share_delta": -0.0138
+   },
+   {
+    "id": "froslass",
+    "name": "Froslass",
+    "recent": {
+     "teams": 85,
+     "share": 0.0453,
+     "win_rate": 0.5014,
+     "games": 690
+    },
+    "earlier": {
+     "teams": 166,
+     "share": 0.0602,
+     "win_rate": 0.4941,
+     "games": 1350
+    },
+    "share_delta": -0.0149
+   },
+   {
+    "id": "politoed",
+    "name": "Politoed",
+    "recent": {
+     "teams": 95,
+     "share": 0.0507,
+     "win_rate": 0.5086,
+     "games": 755
+    },
+    "earlier": {
+     "teams": 181,
+     "share": 0.0657,
+     "win_rate": 0.5052,
+     "games": 1532
+    },
+    "share_delta": -0.015
+   },
+   {
+    "id": "indeedee",
+    "name": "Indeedee",
+    "recent": {
+     "teams": 90,
+     "share": 0.048,
+     "win_rate": 0.4622,
+     "games": 701
+    },
+    "earlier": {
+     "teams": 182,
+     "share": 0.066,
+     "win_rate": 0.5132,
+     "games": 1512
+    },
+    "share_delta": -0.018
+   },
+   {
+    "id": "excadrill",
+    "name": "Excadrill",
+    "recent": {
+     "teams": 101,
+     "share": 0.0539,
+     "win_rate": 0.4583,
+     "games": 792
+    },
+    "earlier": {
+     "teams": 208,
+     "share": 0.0754,
+     "win_rate": 0.4976,
+     "games": 1690
+    },
+    "share_delta": -0.0215
+   },
+   {
+    "id": "gardevoir",
+    "name": "Gardevoir",
+    "recent": {
+     "teams": 97,
+     "share": 0.0517,
+     "win_rate": 0.5052,
+     "games": 776
+    },
+    "earlier": {
+     "teams": 212,
+     "share": 0.0769,
+     "win_rate": 0.4514,
+     "games": 1668
+    },
+    "share_delta": -0.0252
+   },
+   {
+    "id": "tyranitar",
+    "name": "Tyranitar",
+    "recent": {
+     "teams": 123,
+     "share": 0.0656,
+     "win_rate": 0.4478,
+     "games": 949
+    },
+    "earlier": {
+     "teams": 254,
+     "share": 0.0921,
+     "win_rate": 0.4868,
+     "games": 2046
+    },
+    "share_delta": -0.0265
+   },
+   {
+    "id": "armarouge",
+    "name": "Armarouge",
+    "recent": {
+     "teams": 52,
+     "share": 0.0277,
+     "win_rate": 0.4779,
+     "games": 408
+    },
+    "earlier": {
+     "teams": 169,
+     "share": 0.0613,
+     "win_rate": 0.4778,
+     "games": 1375
+    },
+    "share_delta": -0.0336
+   },
+   {
+    "id": "golisopod",
+    "name": "Golisopod",
+    "recent": {
+     "teams": 177,
+     "share": 0.0944,
+     "win_rate": 0.5042,
+     "games": 1414
+    },
+    "earlier": {
+     "teams": 358,
+     "share": 0.1299,
+     "win_rate": 0.4671,
+     "games": 2858
+    },
+    "share_delta": -0.0355
+   },
+   {
+    "id": "staraptor",
+    "name": "Staraptor",
+    "recent": {
+     "teams": 178,
+     "share": 0.0949,
+     "win_rate": 0.4926,
+     "games": 1425
+    },
+    "earlier": {
+     "teams": 376,
+     "share": 0.1364,
+     "win_rate": 0.5042,
+     "games": 3116
+    },
+    "share_delta": -0.0415
+   },
+   {
+    "id": "indeedee-f",
+    "name": "Indeedee-F",
+    "recent": {
+     "teams": 218,
+     "share": 0.1163,
+     "win_rate": 0.4804,
+     "games": 1713
+    },
+    "earlier": {
+     "teams": 489,
+     "share": 0.1774,
+     "win_rate": 0.4678,
+     "games": 3923
+    },
+    "share_delta": -0.0611
+   },
+   {
+    "id": "sneasler",
+    "name": "Sneasler",
+    "recent": {
+     "teams": 651,
+     "share": 0.3472,
+     "win_rate": 0.5009,
+     "games": 5265
+    },
+    "earlier": {
+     "teams": 1138,
+     "share": 0.4128,
+     "win_rate": 0.4978,
+     "games": 9287
+    },
+    "share_delta": -0.0656
+   },
+   {
+    "id": "rillaboom",
+    "name": "Rillaboom",
+    "recent": {
+     "teams": 865,
+     "share": 0.4613,
+     "win_rate": 0.4893,
+     "games": 6877
+    },
+    "earlier": {
+     "teams": 1495,
+     "share": 0.5423,
+     "win_rate": 0.5043,
+     "games": 12248
+    },
+    "share_delta": -0.081
+   },
+   {
+    "id": "milotic",
+    "name": "Milotic",
+    "recent": {
+     "teams": 141,
+     "share": 0.0752,
+     "win_rate": 0.4758,
+     "games": 1097
+    },
+    "earlier": {
+     "teams": 434,
+     "share": 0.1574,
+     "win_rate": 0.4827,
+     "games": 3476
+    },
+    "share_delta": -0.0822
+   },
+   {
+    "id": "gholdengo",
+    "name": "Gholdengo",
+    "recent": {
+     "teams": 375,
+     "share": 0.2,
+     "win_rate": 0.4705,
+     "games": 2914
+    },
+    "earlier": {
+     "teams": 817,
+     "share": 0.2963,
+     "win_rate": 0.5096,
+     "games": 6745
+    },
+    "share_delta": -0.0963
+   },
+   {
+    "id": "arcanine-hisui",
+    "name": "Arcanine-Hisui",
+    "recent": {
+     "teams": 190,
+     "share": 0.1013,
+     "win_rate": 0.4751,
+     "games": 1486
+    },
+    "earlier": {
+     "teams": 598,
+     "share": 0.2169,
+     "win_rate": 0.5131,
+     "games": 4847
+    },
+    "share_delta": -0.1156
+   },
+   {
+    "id": "salamence",
+    "name": "Salamence",
+    "recent": {
+     "teams": 205,
+     "share": 0.1093,
+     "win_rate": 0.4839,
+     "games": 1649
+    },
+    "earlier": {
+     "teams": 816,
+     "share": 0.296,
+     "win_rate": 0.4902,
+     "games": 6600
+    },
+    "share_delta": -0.1867
+   }
+  ],
+  "megas": [
+   {
+    "id": "garchomp-mega-z",
+    "name": "Garchomp-Mega-Z",
+    "recent": {
+     "teams": 459,
+     "share": 0.2448,
+     "win_rate": 0.4771,
+     "games": 3532
+    },
+    "earlier": {
+     "teams": 232,
+     "share": 0.0841,
+     "win_rate": 0.53,
+     "games": 1932
+    },
+    "share_delta": 0.1607
+   },
+   {
+    "id": "charizard-mega-y",
+    "name": "Charizard-Mega-Y",
+    "recent": {
+     "teams": 391,
+     "share": 0.2085,
+     "win_rate": 0.5293,
+     "games": 3223
+    },
+    "earlier": {
+     "teams": 360,
+     "share": 0.1306,
+     "win_rate": 0.5283,
+     "games": 3036
+    },
+    "share_delta": 0.0779
+   },
+   {
+    "id": "delphox-mega",
+    "name": "Delphox-Mega",
+    "recent": {
+     "teams": 171,
+     "share": 0.0912,
+     "win_rate": 0.5353,
+     "games": 1446
+    },
+    "earlier": {
+     "teams": 119,
+     "share": 0.0432,
+     "win_rate": 0.5421,
+     "games": 1046
+    },
+    "share_delta": 0.048
+   },
+   {
+    "id": "floette-mega",
+    "name": "Floette-Mega",
+    "recent": {
+     "teams": 291,
+     "share": 0.1552,
+     "win_rate": 0.5164,
+     "games": 2376
+    },
+    "earlier": {
+     "teams": 318,
+     "share": 0.1153,
+     "win_rate": 0.5266,
+     "games": 2683
+    },
+    "share_delta": 0.0399
+   },
+   {
+    "id": "dragonite-mega",
+    "name": "Dragonite-Mega",
+    "recent": {
+     "teams": 93,
+     "share": 0.0496,
+     "win_rate": 0.5052,
+     "games": 772
+    },
+    "earlier": {
+     "teams": 72,
+     "share": 0.0261,
+     "win_rate": 0.5308,
+     "games": 633
+    },
+    "share_delta": 0.0235
+   },
+   {
+    "id": "raichu-mega-x",
+    "name": "Raichu-Mega-X",
+    "recent": {
+     "teams": 49,
+     "share": 0.0261,
+     "win_rate": 0.5635,
+     "games": 417
+    },
+    "earlier": {
+     "teams": 14,
+     "share": 0.0051,
+     "win_rate": 0.4057,
+     "games": 106
+    },
+    "share_delta": 0.021
+   },
+   {
+    "id": "raichu-mega-y",
+    "name": "Raichu-Mega-Y",
+    "recent": {
+     "teams": 492,
+     "share": 0.2624,
+     "win_rate": 0.4844,
+     "games": 3869
+    },
+    "earlier": {
+     "teams": 721,
+     "share": 0.2615,
+     "win_rate": 0.5176,
+     "games": 5950
+    },
+    "share_delta": 0.0009
+   },
+   {
+    "id": "aerodactyl-mega",
+    "name": "Aerodactyl-Mega",
+    "recent": {
+     "teams": 43,
+     "share": 0.0229,
+     "win_rate": 0.5286,
+     "games": 350
+    },
+    "earlier": {
+     "teams": 67,
+     "share": 0.0243,
+     "win_rate": 0.5179,
+     "games": 585
+    },
+    "share_delta": -0.0014
+   },
+   {
+    "id": "glimmora-mega",
+    "name": "Glimmora-Mega",
+    "recent": {
+     "teams": 48,
+     "share": 0.0256,
+     "win_rate": 0.5307,
+     "games": 407
+    },
+    "earlier": {
+     "teams": 79,
+     "share": 0.0287,
+     "win_rate": 0.546,
+     "games": 696
+    },
+    "share_delta": -0.0031
+   },
+   {
+    "id": "gengar-mega",
+    "name": "Gengar-Mega",
+    "recent": {
+     "teams": 95,
+     "share": 0.0507,
+     "win_rate": 0.5602,
+     "games": 805
+    },
+    "earlier": {
+     "teams": 150,
+     "share": 0.0544,
+     "win_rate": 0.5329,
+     "games": 1278
+    },
+    "share_delta": -0.0037
+   },
+   {
+    "id": "camerupt-mega",
+    "name": "Camerupt-Mega",
+    "recent": {
+     "teams": 36,
+     "share": 0.0192,
+     "win_rate": 0.5436,
+     "games": 298
+    },
+    "earlier": {
+     "teams": 66,
+     "share": 0.0239,
+     "win_rate": 0.4653,
+     "games": 518
+    },
+    "share_delta": -0.0047
+   },
+   {
+    "id": "swampert-mega",
+    "name": "Swampert-Mega",
+    "recent": {
+     "teams": 65,
+     "share": 0.0347,
+     "win_rate": 0.4865,
+     "games": 518
+    },
+    "earlier": {
+     "teams": 111,
+     "share": 0.0403,
+     "win_rate": 0.5083,
+     "games": 905
+    },
+    "share_delta": -0.0056
+   },
+   {
+    "id": "lucario-mega-z",
+    "name": "Lucario-Mega-Z",
+    "recent": {
+     "teams": 23,
+     "share": 0.0123,
+     "win_rate": 0.407,
+     "games": 172
+    },
+    "earlier": {
+     "teams": 61,
+     "share": 0.0221,
+     "win_rate": 0.4433,
+     "games": 494
+    },
+    "share_delta": -0.0098
+   },
+   {
+    "id": "metagross-mega",
+    "name": "Metagross-Mega",
+    "recent": {
+     "teams": 73,
+     "share": 0.0389,
+     "win_rate": 0.4709,
+     "games": 567
+    },
+    "earlier": {
+     "teams": 143,
+     "share": 0.0519,
+     "win_rate": 0.4929,
+     "games": 1122
+    },
+    "share_delta": -0.013
+   },
+   {
+    "id": "froslass-mega",
+    "name": "Froslass-Mega",
+    "recent": {
+     "teams": 85,
+     "share": 0.0453,
+     "win_rate": 0.5014,
+     "games": 690
+    },
+    "earlier": {
+     "teams": 166,
+     "share": 0.0602,
+     "win_rate": 0.4941,
+     "games": 1350
+    },
+    "share_delta": -0.0149
+   },
+   {
+    "id": "tyranitar-mega",
+    "name": "Tyranitar-Mega",
+    "recent": {
+     "teams": 108,
+     "share": 0.0576,
+     "win_rate": 0.446,
+     "games": 834
+    },
+    "earlier": {
+     "teams": 225,
+     "share": 0.0816,
+     "win_rate": 0.4903,
+     "games": 1809
+    },
+    "share_delta": -0.024
+   },
+   {
+    "id": "gardevoir-mega",
+    "name": "Gardevoir-Mega",
+    "recent": {
+     "teams": 96,
+     "share": 0.0512,
+     "win_rate": 0.5058,
+     "games": 775
+    },
+    "earlier": {
+     "teams": 212,
+     "share": 0.0769,
+     "win_rate": 0.4514,
+     "games": 1668
+    },
+    "share_delta": -0.0257
+   },
+   {
+    "id": "golisopod-mega",
+    "name": "Golisopod-Mega",
+    "recent": {
+     "teams": 176,
+     "share": 0.0939,
+     "win_rate": 0.5043,
+     "games": 1406
+    },
+    "earlier": {
+     "teams": 357,
+     "share": 0.1295,
+     "win_rate": 0.467,
+     "games": 2850
+    },
+    "share_delta": -0.0356
+   },
+   {
+    "id": "staraptor-mega",
+    "name": "Staraptor-Mega",
+    "recent": {
+     "teams": 176,
+     "share": 0.0939,
+     "win_rate": 0.494,
+     "games": 1409
+    },
+    "earlier": {
+     "teams": 369,
+     "share": 0.1338,
+     "win_rate": 0.5067,
+     "games": 3055
+    },
+    "share_delta": -0.0399
+   },
+   {
+    "id": "salamence-mega",
+    "name": "Salamence-Mega",
+    "recent": {
+     "teams": 202,
+     "share": 0.1077,
+     "win_rate": 0.485,
+     "games": 1629
+    },
+    "earlier": {
+     "teams": 815,
+     "share": 0.2956,
+     "win_rate": 0.4904,
+     "games": 6592
+    },
+    "share_delta": -0.1879
+   }
+  ]
+ },
+ "sources": [],
  "warnings": []
 }

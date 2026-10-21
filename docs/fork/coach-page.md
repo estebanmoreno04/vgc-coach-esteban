@@ -6,8 +6,8 @@ Fase 7 del fork. Una página de chat publicada como artefacto de claude.ai. Cada
 
 ## Qué hace
 
-- **Chat:** Claude responde con los datos del snapshot de la regulación vigente, presencial primero y online como complemento. Tiene 8 funciones de consulta dentro de la página: estado, uso, ficha de un Pokémon, emparejamientos, top cut, auditoría de equipo (pegado en formato Showdown), cálculo de daño y comparación de velocidad (`@smogon/calc` 0.12.0 con mecánicas de Champions).
-- **Meta:** tabla de uso por segmento (presencial/online/total), Megas, equipos del top cut presencial y lista de torneos incluidos, con créditos de las fuentes.
+- **Chat:** Claude responde con los datos del snapshot de la regulación vigente, presencial primero y online como complemento. Tiene 10 funciones de consulta dentro de la página: estado, uso, tendencia (últimos regionales frente a los anteriores), un regional concreto, ficha de un Pokémon (con su uso en cada regional), emparejamientos, top cut, auditoría de equipo (pegado en formato Showdown), cálculo de daño y comparación de velocidad (`@smogon/calc` 0.12.0 con mecánicas de Champions).
+- **Meta:** una sola página con un índice arriba que lleva a cada sección: presencial (todos los regionales juntos), tendencia (qué sube y qué baja en los últimos regionales), cada regional por separado (uso, Megas y top cut) y online (uso, Megas, top cut y lista de torneos).
 - Cada respuesta indica en qué datos se basa. Si los datos tienen más de 7 días o la regulación es muy nueva, la página lo avisa.
 - Selector de modo: Rápido / Equilibrado / A fondo (A fondo gasta más límite).
 - La conversación se guarda solo en el navegador de cada persona.

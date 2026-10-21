@@ -32,7 +32,9 @@ class CoachPageTests(unittest.TestCase):
         root = Path(cls._tmp.name)
         config = copy.deepcopy(CONFIG)
         config["paths"]["snapshot_schema"] = str(REPO_ROOT / "data/schemas/meta-snapshot-v2.schema.json")
-        config["pipeline"]["aggregation"].update(min_teams_to_rank_in_person=1, min_combo_teams=1, matchup_min_games=1)
+        config["pipeline"]["aggregation"].update(
+            min_teams_to_rank_in_person=1, min_combo_teams=1, matchup_min_games=1, trend_recent_events=1
+        )
         current = root / "data/current"
         current.mkdir(parents=True)
         shutil.copy(FIXTURES / "regulation.json", current / "regulation.json")
@@ -53,6 +55,8 @@ class CoachPageTests(unittest.TestCase):
         self.assertEqual(data["regulation"]["id"], "M-C")
         self.assertEqual(data["usage"][0][0], "incineroar")
         self.assertIn("charizard-mega-y", data["dex"]["mega_base"])
+        self.assertEqual(len(data["by_event"]), 3)
+        self.assertTrue(data["trend"]["available"])
         self.assertLess(len(self.html.encode("utf-8")), build_coach_page.MAX_PAGE_BYTES)
 
     def test_scripts_only_from_allowed_cdns_with_pinned_versions(self) -> None:
@@ -60,6 +64,10 @@ class CoachPageTests(unittest.TestCase):
         self.assertTrue(sources)
         for src in sources:
             self.assertRegex(src, r"^https://cdn\.jsdelivr\.net/npm/@smogon/calc@\d+\.\d+\.\d+/")
+
+    def test_meta_sheet_has_no_fixed_prompts(self) -> None:
+        self.assertNotIn("data-q=", self.html)
+        self.assertIn('id="jump"', self.html)
 
     def test_template_and_core_name_no_regulation(self) -> None:
         for path in (build_coach_page.TEMPLATE, build_coach_page.CORE):
@@ -79,6 +87,12 @@ class CoachPageTests(unittest.TestCase):
         self.assertEqual(members["Charizard"]["mega"], "Charizard-Mega-Y")
         self.assertTrue(any("Trick Room" in note for note in members["Incineroar"]["notes"]))
         self.assertIn("calc_damage", out["tools"])
+        self.assertIn("get_trend", out["tools"])
+        self.assertIn("get_event", out["tools"])
+        self.assertTrue(out["trend"]["available"])
+        self.assertTrue(out["event"]["usage"])
+        self.assertIn("error", out["missing_event"])
+        self.assertEqual(out["latest"], out["pokemon_by_event"][0]["event"])
         if isinstance(out["calc"], dict) and "damage" in out["calc"]:
             self.assertEqual(out["calc"]["damage"], [266, 314])
             self.assertEqual(out["speed"]["a"]["speed"], 368)

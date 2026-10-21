@@ -8,6 +8,10 @@ Segments
 * ``online``: Limitless tournaments inside the online window.
 * ``total``: whole-field in-person teams plus online teams.
 
+``by_event`` repeats usage and Megas for each in-person event (day-2-only
+fallback events are labeled ``basis: day2_only``), and ``trend`` compares the
+most recent whole-field in-person events with the earlier ones.
+
 Win rates are wins / (wins + losses) over the teams' full records (ties are
 ignored). Matchups are team-sheet level: they count which species were on
 each team in a match, not which ones were brought.
@@ -167,6 +171,8 @@ def build_snapshot(
         "matchups": _matchups(full_field, usage, pokedex, settings),
         "top_cut_teams": _top_cut_teams(in_person, online, pokedex, settings),
         "events": [_event_summary(event) for event in events],
+        "by_event": _by_event(in_person, pokedex, settings),
+        "trend": _trend(full_field, pokedex, settings),
         "sources": sources,
         "warnings": warnings,
     }
@@ -400,6 +406,111 @@ def _top_cut_teams(
     in_person_rows = [row for row in rows if row["segment"] == IN_PERSON]
     online_rows = [row for row in rows if row["segment"] == ONLINE]
     return in_person_rows + online_rows[: max(0, limit - len(in_person_rows))]
+
+
+def _by_event(in_person: list[Event], dex: Pokedex, settings: dict[str, Any]) -> list[dict[str, Any]]:
+    top_cut_size = int(settings["in_person_top_cut"])
+    limit = int(settings["event_usage_top"])
+    rows = []
+    for event in sorted(in_person, key=lambda item: (item.date, item.key), reverse=True):
+        full_field = bool(event.coverage.get("full_field"))
+        species: dict[str, _Tally] = defaultdict(_Tally)
+        megas: dict[str, _Tally] = defaultdict(_Tally)
+        entered: Counter[str] = Counter()
+        converted: Counter[str] = Counter()
+        top_cut: Counter[str] = Counter()
+        day2_teams = 0
+        for team in event.teams:
+            names = {mon.species for mon in team.mons}
+            for name in names:
+                species[name].add(team)
+            for mega in {mon.mega for mon in team.mons if mon.mega}:
+                megas[mega].add(team)
+            day2_teams += int(bool(team.day2))
+            if full_field and event.coverage.get("day2") and team.day2 is not None:
+                for name in names:
+                    entered[name] += 1
+                    converted[name] += int(team.day2)
+            if team.placement is not None and team.placement <= top_cut_size:
+                for name in names:
+                    top_cut[name] += 1
+        teams = len(event.teams)
+        ranked = sorted(species.items(), key=lambda item: (-item[1].teams, item[0]))[:limit]
+        rows.append(
+            {
+                "key": event.key,
+                "name": event.name,
+                "date": event.date,
+                "players": event.players,
+                "basis": "full_field" if full_field else "day2_only",
+                "teams": teams,
+                "day2_teams": day2_teams,
+                "usage": [
+                    {
+                        "species": name,
+                        "name": dex.display(name),
+                        **tally.summary(teams),
+                        "day2_conversion": _ratio(converted.get(name, 0), entered.get(name, 0)),
+                        "top_cut_teams": top_cut.get(name, 0),
+                    }
+                    for name, tally in ranked
+                ],
+                "megas": [
+                    {"mega": mega, "name": dex.display(mega), **tally.summary(teams)}
+                    for mega, tally in sorted(megas.items(), key=lambda item: (-item[1].teams, item[0]))
+                ],
+            }
+        )
+    return rows
+
+
+def _trend(full_field: list[Event], dex: Pokedex, settings: dict[str, Any]) -> dict[str, Any]:
+    recent_count = int(settings["trend_recent_events"])
+    ordered = sorted(full_field, key=lambda item: (item.date, item.key))
+    recent, earlier = ordered[-recent_count:], ordered[:-recent_count]
+    result: dict[str, Any] = {
+        "available": bool(earlier),
+        "basis": "whole-field in-person events",
+        "recent_events": [{"key": event.key, "name": event.name, "date": event.date} for event in recent],
+        "earlier_events": [{"key": event.key, "name": event.name, "date": event.date} for event in earlier],
+        "recent_teams": sum(len(event.teams) for event in recent),
+        "earlier_teams": sum(len(event.teams) for event in earlier),
+        "species": [],
+        "megas": [],
+    }
+    if not earlier:
+        return result
+    minimum = float(settings["trend_min_share"])
+    pickers = {
+        "species": lambda team: {mon.species for mon in team.mons},
+        "megas": lambda team: {mon.mega for mon in team.mons if mon.mega},
+    }
+    for label, pick in pickers.items():
+        groups = []
+        for events in (recent, earlier):
+            tallies: dict[str, _Tally] = defaultdict(_Tally)
+            for event in events:
+                for team in event.teams:
+                    for name in pick(team):
+                        tallies[name].add(team)
+            groups.append(tallies)
+        rows = []
+        for name in set(groups[0]) | set(groups[1]):
+            latest = groups[0].get(name, _Tally()).summary(result["recent_teams"])
+            before = groups[1].get(name, _Tally()).summary(result["earlier_teams"])
+            if max(latest["share"] or 0, before["share"] or 0) < minimum:
+                continue
+            rows.append(
+                {
+                    "id": name,
+                    "name": dex.display(name),
+                    "recent": latest,
+                    "earlier": before,
+                    "share_delta": round((latest["share"] or 0) - (before["share"] or 0), 4),
+                }
+            )
+        result[label] = sorted(rows, key=lambda row: (-row["share_delta"], row["id"]))
+    return result
 
 
 def _event_summary(event: Event) -> dict[str, Any]:

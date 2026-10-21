@@ -183,6 +183,12 @@ def pokemon(data: MetaData, name: str) -> dict[str, Any]:
         "worst_matchups": list(reversed(as_attacker[-5:])),
         "top_cut_appearances": len(top_cut),
         "recent_top_cut": top_cut[:5],
+        "by_event": [
+            {"event": event["name"], "date": event["date"], "basis": event["basis"], **found}
+            for event in snapshot.get("by_event", [])
+            for found in [next((item for item in event["usage"] if item["species"] == species), None)]
+            if found is not None
+        ],
     }
 
 
@@ -208,6 +214,43 @@ def top_cut(data: MetaData, *, segment: str | None = None, species: str | None =
 
 def events(data: MetaData) -> list[dict[str, Any]]:
     return _require_snapshot(data)["events"]
+
+
+def trend(data: MetaData, *, top: int = 10) -> dict[str, Any]:
+    """Risers and fallers: the latest whole-field in-person events against the earlier ones."""
+    found = _require_snapshot(data).get("trend")
+    if not found:
+        raise QueryError("This snapshot has no trend section; rebuild it with tools/build_snapshot.py")
+    result = {key: value for key, value in found.items() if key not in ("species", "megas")}
+    for label in ("species", "megas"):
+        rows = found[label]
+        result[label] = {
+            "risers": [row for row in rows if row["share_delta"] > 0][:top],
+            "fallers": [row for row in reversed(rows) if row["share_delta"] < 0][:top],
+        }
+    return result
+
+
+def event(data: MetaData, name: str, *, top: int = 20) -> dict[str, Any]:
+    """Usage, Megas and top cut of one in-person event, matched by name or city."""
+    snapshot = _require_snapshot(data)
+    rows = snapshot.get("by_event", [])
+    key = _normalize(name)
+    found = [row for row in rows if key and (key in _normalize(row["name"]) or key == _normalize(row["key"]))]
+    if not found:
+        names = ", ".join(f"{row['name']} ({row['date']})" for row in rows) or "none"
+        raise QueryError(f"No in-person event matches '{name}'. Events in the snapshot: {names}")
+    row = found[0]
+    return {
+        **{field: row[field] for field in ("key", "name", "date", "players", "basis", "teams", "day2_teams")},
+        "usage": row["usage"][:top],
+        "megas": row["megas"][:top],
+        "top_cut": [team for team in snapshot["top_cut_teams"] if team["event_key"] == row["key"]],
+    }
+
+
+def _normalize(value: str) -> str:
+    return re.sub(r"[^a-z0-9]", "", value.lower())
 
 
 # -- team analysis ----------------------------------------------------------------

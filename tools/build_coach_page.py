@@ -103,7 +103,30 @@ def compact(data: query.MetaData) -> dict[str, Any]:
         for team in snapshot["top_cut_teams"]
         if team["segment"] == "online"
     ][:40]
-    known = {row[0] for row in usage} | {row[0] for row in megas}
+    urls = {event["key"]: event["url"] for event in snapshot["events"]}
+    by_event = [
+        [
+            event["key"], event["name"], event["date"], event["players"], event["basis"], event["teams"],
+            event["day2_teams"], urls.get(event["key"]),
+            [[row["species"], row["teams"], _r(row["share"]), _r(row["win_rate"]), _r(row["day2_conversion"]),
+              row["top_cut_teams"]] for row in event["usage"]],
+            [[row["mega"], row["teams"], _r(row["share"]), _r(row["win_rate"])] for row in event["megas"]],
+        ]
+        for event in snapshot.get("by_event", [])
+    ]
+    trend = snapshot.get("trend") or {"available": False}
+
+    def trend_rows(label: str) -> list[list[Any]]:
+        return [
+            [row["id"], _r(row["earlier"]["share"]), _r(row["recent"]["share"]), _r(row["recent"]["win_rate"]),
+             row["share_delta"]]
+            for row in trend.get(label, [])
+        ]
+
+    known = (
+        {row[0] for row in usage} | {row[0] for row in megas}
+        | {row[0] for event in by_event for row in event[8]} | {row[0] for event in by_event for row in event[9]}
+    )
     dex = data.pokedex
     return {
         "regulation": {
@@ -133,6 +156,16 @@ def compact(data: query.MetaData) -> dict[str, Any]:
         "matchups": [[row["species"], row["opponent"], row["wins"], row["games"]] for row in snapshot["matchups"]["pairs"]],
         "top_cut": top_cut,
         "events": [[event["date"], event["name"], event["segment"], event["players"], event["url"]] for event in snapshot["events"]],
+        "by_event": by_event,
+        "trend": {
+            "available": bool(trend.get("available")),
+            "recent": [[item["name"], item["date"]] for item in trend.get("recent_events", [])],
+            "earlier": [[item["name"], item["date"]] for item in trend.get("earlier_events", [])],
+            "recent_teams": trend.get("recent_teams", 0),
+            "earlier_teams": trend.get("earlier_teams", 0),
+            "species": trend_rows("species"),
+            "megas": trend_rows("megas"),
+        },
         "dex": {
             "names": {key: value for key, value in dex.names.items() if key in known},
             "mega_base": {key: value for key, value in dex.mega_base.items()},

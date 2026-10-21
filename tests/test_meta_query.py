@@ -91,6 +91,19 @@ class QueryTests(QueryTestCase):
         rows = query.top_cut(self.data, segment="online", species="Raichu")
         self.assertEqual([row["player"] for row in rows], ["OnlineOne"])
 
+    def test_trend_and_single_event(self) -> None:
+        self.assertFalse(query.trend(self.data)["available"])  # two whole-field events only
+        info = query.event(self.data, "alpha")
+        self.assertEqual(info["key"], "vgchistory:regional-alpha-2027")
+        self.assertEqual(info["basis"], "full_field")
+        self.assertTrue(info["usage"])
+        self.assertTrue(all(team["event_key"] == info["key"] for team in info["top_cut"]))
+        with self.assertRaisesRegex(query.QueryError, "Events in the snapshot"):
+            query.event(self.data, "Atlantis")
+        by_event = query.pokemon(self.data, "Incineroar")["by_event"]
+        self.assertTrue(by_event)
+        self.assertTrue(all("share" in row and "event" in row for row in by_event))
+
     def test_team_parsing_formats(self) -> None:
         lines = query.parse_team(TEAM_LINES)
         self.assertEqual(

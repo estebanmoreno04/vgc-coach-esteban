@@ -5,7 +5,7 @@
 The active regulation and the current meta are not written anywhere in the skills. They are detected and downloaded by the data pipeline and stored in `data/current/`:
 
 - `data/current/regulation.json`: the active regulation (id, label, active window, mechanics, held-item rule, timers, official announcement URL, confidence, next announced regulation). Written by `tools/resolve_regulation.py`.
-- `data/current/snapshot.json`: the meta of that regulation (usage by in-person / online / total, win rates, day 2 share and conversion, Megas, pairs and trios, common sets, team-sheet matchups, top cut teams, event list, `early_meta`). Written by `tools/build_snapshot.py`.
+- `data/current/snapshot.json`: the meta of that regulation (usage by in-person / online / total, win rates, day 2 share and conversion, Megas, pairs and trios, common sets, team-sheet matchups, top cut teams, event list, usage and Megas per in-person event (`by_event`), the trend of the latest regionals against the earlier ones (`trend`), `early_meta`). Written by `tools/build_snapshot.py`.
 
 ## Step 1: read the current data first
 
@@ -51,6 +51,7 @@ In that case put the warning near the top of the answer and offer to run the `vg
 - **In-person first.** Official in-person events (regionals, internationals, worlds) are the primary evidence for tournament preparation; online tournaments are a complement. Say which segment a number comes from.
 - `in_person.share` is the share of whole-field teams; `day2_share` is the share among day 2 teams; `day2_conversion` is the fraction of that species' teams that made day 2 (compare it with the overall day 2 rate in `segments`).
 - `win_rate` is wins / (wins + losses) over full tournament records; small samples (low `teams` or `games`) are weak evidence.
+- **Recent events weigh more.** The aggregate numbers mix every event of the regulation. For questions about how the meta is moving, or when preparing an upcoming event, use `trend` (latest whole-field regionals against the earlier ones) and `event` (one regional), and say which events each number covers. `pokemon` also lists the species' share at each in-person event.
 - Matchups are team-sheet level: they count which species were on each team in a match, not which ones were brought to the game. Treat them as directional.
 - Sets come from open team sheets: items, abilities, natures and moves are observed, stat points are not published.
 - Mechanics come from `regulation.json` `mechanics`. If `terastallization` is not listed, give no Tera advice. If `rules.held_items.duplicates_allowed` is false, never repeat an item.
@@ -65,6 +66,8 @@ python3 tools/meta_query.py pokemon "Kingambit"                    # usage, Mega
 python3 tools/meta_query.py matchup "Charizard" "Rillaboom"
 python3 tools/meta_query.py top-cut --segment in_person --species "Sneasler"
 python3 tools/meta_query.py events
+python3 tools/meta_query.py trend                                   # latest regionals vs earlier: risers and fallers
+python3 tools/meta_query.py event "Nice"                           # one in-person event: usage, Megas, top cut
 python3 tools/meta_query.py team --file team.txt                   # or pipe the team on stdin
 ```
 

@@ -7,6 +7,8 @@ Examples:
   python3 tools/meta_query.py pokemon "Kingambit"
   python3 tools/meta_query.py matchup Charizard Rillaboom
   python3 tools/meta_query.py top-cut --segment in_person --species Sneasler
+  python3 tools/meta_query.py trend                  (latest regionals vs earlier ones)
+  python3 tools/meta_query.py event Nice             (one in-person event: usage, Megas, top cut)
   python3 tools/meta_query.py team --file my_team.txt     (or pipe the team on stdin)
 
 Shares and win rates come from the snapshot built by tools/build_snapshot.py.
@@ -122,6 +124,42 @@ def render_top_cut(rows: list[dict[str, Any]]) -> str:
     return "\n".join(lines) or "No matching top cut teams."
 
 
+def render_trend(info: dict[str, Any]) -> str:
+    if not info["available"]:
+        return "Not enough whole-field in-person events yet to compare recent and earlier ones."
+    recent = ", ".join(f"{item['name']} ({item['date']})" for item in info["recent_events"])
+    earlier = ", ".join(f"{item['name']} ({item['date']})" for item in info["earlier_events"])
+    lines = [
+        "## In-person trend",
+        f"- Recent: {recent} — {info['recent_teams']} teams",
+        f"- Earlier: {earlier} — {info['earlier_teams']} teams",
+    ]
+    for label, title in (("species", "Pokemon"), ("megas", "Megas")):
+        for direction in ("risers", "fallers"):
+            lines.append(f"\n### {title}: {direction}")
+            for row in info[label][direction]:
+                lines.append(
+                    f"- {row['name']}: {pct(row['earlier']['share'])} -> {pct(row['recent']['share'])} "
+                    f"({100 * row['share_delta']:+.1f} pts), recent WR {pct(row['recent']['win_rate'])}"
+                )
+    return "\n".join(lines)
+
+
+def render_event(info: dict[str, Any]) -> str:
+    basis = "whole field" if info["basis"] == "full_field" else "day 2 teams only"
+    lines = [f"## {info['name']} ({info['date']}) — {info['players']} players, {info['teams']} teams ({basis})", "", "### Usage"]
+    for index, row in enumerate(info["usage"], 1):
+        lines.append(
+            f"{index:>3}. {row['name']:<22} {pct(row['share']):>6}  WR {pct(row['win_rate'])}  "
+            f"day 2 conv. {pct(row['day2_conversion'])}  top cut {row['top_cut_teams']}"
+        )
+    lines.append("\n### Megas")
+    for row in info["megas"]:
+        lines.append(f"- {row['name']}: {pct(row['share'])}, WR {pct(row['win_rate'])}")
+    lines.append("\n" + render_top_cut(info["top_cut"]))
+    return "\n".join(lines)
+
+
 def render_team(info: dict[str, Any]) -> str:
     lines = ["## Team vs current meta", f"_Matchups: {info['basis']}_", ""]
     for member in info["members"]:
@@ -169,6 +207,11 @@ def parse_args(argv: list[str] | None = None) -> argparse.Namespace:
     cut.add_argument("--species")
     cut.add_argument("--limit", type=int, default=16)
     commands.add_parser("events")
+    trend = commands.add_parser("trend")
+    trend.add_argument("--top", type=int, default=10)
+    one = commands.add_parser("event")
+    one.add_argument("name")
+    one.add_argument("--top", type=int, default=20)
     team = commands.add_parser("team")
     team.add_argument("--file", type=Path, help="Team text file; stdin is read when omitted.")
     return parser.parse_args(argv)
@@ -204,6 +247,12 @@ def main(argv: list[str] | None = None) -> int:
                 f"- {event['date']} {event['name']} [{event['segment']}, {event['players']} players] {event['url']}"
                 for event in result
             )
+        elif args.command == "trend":
+            result = query.trend(data, top=args.top)
+            text = render_trend(result)
+        elif args.command == "event":
+            result = query.event(data, args.name, top=args.top)
+            text = render_event(result)
         else:
             team_text = args.file.read_text(encoding="utf-8") if args.file else sys.stdin.read()
             result = query.team(data, team_text)

@@ -22,6 +22,8 @@
     "matchups",
     "top_cut_teams",
     "events",
+    "by_event",
+    "trend",
     "sources",
     "warnings"
   ],
@@ -194,6 +196,40 @@
         }
       }
     },
+    "by_event": {
+      "description": "Usage and Megas per in-person event, newest first.",
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["key", "name", "date", "players", "basis", "teams", "day2_teams", "usage", "megas"],
+        "properties": {
+          "basis": { "enum": ["full_field", "day2_only"] },
+          "teams": { "type": "integer", "minimum": 0 },
+          "usage": {
+            "type": "array",
+            "items": {
+              "allOf": [{ "$ref": "#/$defs/tally" }],
+              "required": ["species", "name", "day2_conversion", "top_cut_teams"],
+              "properties": { "species": { "$ref": "#/$defs/slug" }, "day2_conversion": { "$ref": "#/$defs/fraction" } }
+            }
+          },
+          "megas": {
+            "type": "array",
+            "items": { "allOf": [{ "$ref": "#/$defs/tally" }], "required": ["mega", "name"] }
+          }
+        }
+      }
+    },
+    "trend": {
+      "description": "Most recent whole-field in-person events compared with the earlier ones.",
+      "type": "object",
+      "required": ["available", "basis", "recent_events", "earlier_events", "recent_teams", "earlier_teams", "species", "megas"],
+      "properties": {
+        "available": { "type": "boolean" },
+        "species": { "type": "array", "items": { "$ref": "#/$defs/trendRow" } },
+        "megas": { "type": "array", "items": { "$ref": "#/$defs/trendRow" } }
+      }
+    },
     "sources": {
       "type": "array",
       "items": {
@@ -222,6 +258,15 @@
         "share": { "$ref": "#/$defs/fraction" },
         "win_rate": { "$ref": "#/$defs/fraction" },
         "games": { "type": "integer", "minimum": 0 }
+      }
+    },
+    "trendRow": {
+      "type": "object",
+      "required": ["id", "name", "recent", "earlier", "share_delta"],
+      "properties": {
+        "recent": { "$ref": "#/$defs/tally" },
+        "earlier": { "$ref": "#/$defs/tally" },
+        "share_delta": { "type": "number", "minimum": -1, "maximum": 1 }
       }
     },
     "countList": {

@@ -189,6 +189,33 @@ class PipelineTests(unittest.TestCase):
         self.assertTrue((self.current / "snapshot.json").exists())
         self.assertTrue((self.current / "pokedex.json").exists())
 
+    def test_usage_per_event_and_trend(self) -> None:
+        payload = self.build(FixtureClient()).payload
+        by_event = payload["by_event"]
+        self.assertEqual([event["date"] for event in by_event], sorted((event["date"] for event in by_event), reverse=True))
+        self.assertEqual(len(by_event), payload["segments"]["in_person"]["events"])
+        bases = {event["key"]: event["basis"] for event in by_event}
+        self.assertEqual(bases["limitlessvgc:500"], "day2_only")
+        self.assertEqual(bases["vgchistory:regional-alpha-2027"], "full_field")
+        alpha = next(event for event in by_event if event["key"] == "vgchistory:regional-alpha-2027")
+        self.assertGreater(alpha["teams"], 0)
+        self.assertTrue(all(row["share"] == round(row["teams"] / alpha["teams"], 4) for row in alpha["usage"]))
+        # Two whole-field events and two "recent" ones: nothing earlier to compare with.
+        self.assertFalse(payload["trend"]["available"])
+
+        self.config["pipeline"]["aggregation"]["trend_recent_events"] = 1
+        trend = self.build(FixtureClient()).payload["trend"]
+        self.assertTrue(trend["available"])
+        self.assertEqual([event["key"] for event in trend["recent_events"]], ["vgchistory:regional-beta-2027"])
+        self.assertEqual([event["key"] for event in trend["earlier_events"]], ["vgchistory:regional-alpha-2027"])
+        beta = {row["species"]: row for row in next(e for e in by_event if e["key"] == "vgchistory:regional-beta-2027")["usage"]}
+        alpha_rows = {row["species"]: row for row in alpha["usage"]}
+        for row in trend["species"]:
+            self.assertEqual(row["recent"]["share"], beta[row["id"]]["share"] if row["id"] in beta else 0.0)
+            self.assertEqual(row["earlier"]["share"], alpha_rows[row["id"]]["share"] if row["id"] in alpha_rows else 0.0)
+        deltas = [row["share_delta"] for row in trend["species"]]
+        self.assertEqual(deltas, sorted(deltas, reverse=True))
+
     def test_second_run_is_incremental(self) -> None:
         first = self.build(FixtureClient()).payload
         client = FixtureClient()

@@ -93,6 +93,9 @@ pipeline:
     matchup_min_games: 30
     early_meta_min_in_person_events: 3
     early_meta_min_total_teams: 1000
+    event_usage_top: 60
+    trend_recent_events: 2
+    trend_min_share: 0.02
   sources:
     vgchistory:
       enabled: true

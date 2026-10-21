@@ -48,6 +48,12 @@
     const usageBy = new Map(usageRows.map((row) => [row.species, row]));
     const megas = DATA.megas.map((r) => ({ mega: r[0], name: r[1], in_person: r[2], in_person_wr: r[3], online: r[4], total: r[5] }));
     const megaBy = new Map(megas.map((row) => [row.mega, row]));
+    const byEvent = (DATA.by_event || []).map((e) => ({
+      key: e[0], name: e[1], date: e[2], players: e[3], basis: e[4], teams: e[5], day2_teams: e[6], url: e[7],
+      usage: e[8].map((r) => ({ species: r[0], teams: r[1], share: r[2], win_rate: r[3], day2_conversion: r[4], top_cut_teams: r[5] })),
+      megas: e[9].map((r) => ({ mega: r[0], teams: r[1], share: r[2], win_rate: r[3] })),
+    }));
+    const trendData = DATA.trend || { available: false, species: [], megas: [] };
     const dex = DATA.dex || { names: {}, mega_base: {}, stones: {} };
     const display = (id) => (id ? dex.names[id] || (usageBy.get(id) || {}).name || id.split("-").map((p) => p[0].toUpperCase() + p.slice(1)).join("-") : null);
     const baseOf = (mega) => dex.mega_base[mega] || mega.split("-mega")[0];
@@ -148,6 +154,54 @@
         matchup_basis: "team sheets (especies del equipo, no las que salieron a jugar)",
         top_cut_teams: teams.length,
         recent_top_cut: teams.slice(0, 3).map(formatTeam),
+        by_event: byEvent.map((e) => {
+          const r = e.usage.find((u) => u.species === species);
+          return { event: e.name, date: e.date, share_pct: r ? pct(r.share) : 0, win_rate_pct: r ? pct(r.win_rate) : null, top_cut_teams: r ? r.top_cut_teams : 0 };
+        }),
+      };
+    }
+
+    function shortEvent(name) {
+      return String(name).replace(/\s+Regional Championships.*$/i, "").replace(/\s+Championships.*$/i, "").trim() || name;
+    }
+
+    function trend(top) {
+      if (!trendData.available) return { available: false, reason: "Aún no hay suficientes regionales para comparar recientes y anteriores." };
+      const n = Math.min(Math.max(Number(top) || 8, 1), 20);
+      const rows = (list) => list.map((r) => ({
+        name: display(r[0]), before_pct: pct(r[1]), recent_pct: pct(r[2]), recent_win_rate_pct: pct(r[3]), change_pts: Math.round(r[4] * 1000) / 10,
+      }));
+      const species = rows(trendData.species);
+      const megaRows = rows(trendData.megas);
+      return {
+        available: true,
+        recent_events: trendData.recent.map(([name, date]) => `${name} (${date})`),
+        earlier_events: trendData.earlier.map(([name, date]) => `${name} (${date})`),
+        recent_teams: trendData.recent_teams, earlier_teams: trendData.earlier_teams,
+        basis: "regionales presenciales con el field completo; cambio en puntos de % de uso",
+        risers: species.filter((r) => r.change_pts > 0).slice(0, n),
+        fallers: species.filter((r) => r.change_pts < 0).reverse().slice(0, n),
+        mega_risers: megaRows.filter((r) => r.change_pts > 0).slice(0, n),
+        mega_fallers: megaRows.filter((r) => r.change_pts < 0).reverse().slice(0, n),
+      };
+    }
+
+    function listEvents() {
+      return byEvent.map((e) => ({ name: e.name, date: e.date, players: e.players, teams: e.teams, basis: e.basis }));
+    }
+
+    function eventUsage(name, top) {
+      const key = slug(name);
+      const latest = /^(ultimo|el-ultimo|last|latest|reciente|mas-reciente)$/.test(key);
+      const found = latest ? byEvent[0] : byEvent.find((e) => key && (slug(e.name).includes(key) || slug(e.key).includes(key)));
+      if (!found) throw new Error(`No hay ningún regional que coincida con "${name}". Regionales en los datos: ${byEvent.map((e) => `${e.name} (${e.date})`).join(", ")}.`);
+      const n = Math.min(Math.max(Number(top) || 15, 1), 40);
+      return {
+        name: found.name, date: found.date, players: found.players, teams: found.teams, day2_teams: found.day2_teams,
+        basis: found.basis === "full_field" ? "field completo" : "solo equipos de día 2",
+        usage: found.usage.slice(0, n).map((r) => ({ name: display(r.species), share_pct: pct(r.share), win_rate_pct: pct(r.win_rate), day2_conversion_pct: pct(r.day2_conversion), top_cut_teams: r.top_cut_teams })),
+        megas: found.megas.slice(0, 10).map((r) => ({ name: display(r.mega), share_pct: pct(r.share), win_rate_pct: pct(r.win_rate) })),
+        top_cut: DATA.top_cut.filter((t) => t[0] === "in_person" && t[1] === found.name).map(formatTeam),
       };
     }
 
@@ -335,14 +389,20 @@
       const s = status();
       const top = usage("in_person", 15).map((r, i) => `${i + 1}. ${r.name} ${r.share_pct}% (WR ${r.win_rate_pct}%, día 2 ${r.in_person_day2_conversion_pct}%)`).join("\n");
       const megaTop = megas.slice(0, 8).map((m) => `${m.name} ${pct(m.in_person)}%`).join(", ");
+      const t = trend(5);
+      const moves = (list) => list.map((r) => `${r.name} ${r.before_pct}% → ${r.recent_pct}%`).join(", ");
       return [
         `Regulación activa: ${s.label || s.regulation} (${s.regulation}), ventana ${s.window ? s.window.start : "?"} → ${s.window && s.window.end ? s.window.end : "?"}.`,
         `Mecánicas: ${(s.mechanics || []).join(", ") || "ninguna especial"}. Objetos duplicados permitidos: ${s.rules && s.rules.held_items ? s.rules.held_items.duplicates_allowed : "?"}.`,
         `Datos generados ${s.snapshot_generated_at} (hace ${s.snapshot_age_days} días), con torneos hasta ${s.data_through}. Meta temprano: ${s.early_meta ? "sí" : "no"}.`,
         `Presencial: ${s.segments.in_person.events} eventos, ${s.segments.in_person.teams} equipos (field completo), ${s.segments.in_person.day2_teams} de día 2. Online: ${s.segments.online.events} torneos, ${s.segments.online.teams} equipos.`,
         s.alerts.length ? "Avisos: " + s.alerts.join(" ") : "",
-        "Top uso presencial:\n" + top,
-        "Megas más usadas (presencial): " + megaTop,
+        "Regionales incluidos (del más reciente al más antiguo): " + byEvent.map((e) => `${shortEvent(e.name)} ${e.date} (${e.players} jugadores)`).join(", ") + ".",
+        "Top uso presencial (todos los regionales juntos):\n" + top,
+        "Megas más usadas (presencial, todos los regionales): " + megaTop,
+        t.available
+          ? `Tendencia (${t.recent_events.join(", ")} frente a los anteriores): suben ${moves(t.risers)}; bajan ${moves(t.fallers)}.`
+          : "",
       ].filter(Boolean).join("\n");
     }
 
@@ -354,13 +414,14 @@
         "- Usa SOLO estos datos y lo que digan las herramientas para cifras de uso, win rate, sets, emparejamientos, top cut y cálculos. Nunca inventes números ni torneos.",
         "- Empieza las respuestas sobre meta o equipos con una línea de base de datos: regulación y fecha de los datos.",
         "- Prioriza los datos presenciales; usa online como complemento y di de qué segmento sale cada cifra.",
+        "- Las cifras agregadas mezclan todos los regionales de la regulación. Para preguntas sobre cómo ha cambiado el meta, o para preparar un torneo próximo, da más peso a los regionales recientes: usa la tendencia y los datos por regional, y di qué regionales cubre cada cifra.",
         "- Los emparejamientos son a nivel de team sheet (orientativos). Los stat points de los rivales no se publican: en cálculos, decláralos como supuesto.",
         "- Respeta las mecánicas de la regulación: si Terastal no está en la lista, no hables de Tera.",
         "- Si algo no está en los datos (otra regulación, un torneo posterior a la fecha de los datos), dilo claramente.",
         "- Para auditar un equipo: identidad, 2-4 hallazgos ordenados por impacto con su consecuencia en partida, cambios mínimos primero, riesgo residual.",
         "- Si te preguntan algo que no es de Pokémon VGC, responde en una frase que solo ayudas con VGC.",
         withTools
-          ? "Tienes herramientas para consultar los datos (uso, Pokémon, emparejamientos, top cut, análisis de equipo, daño y velocidad). Úsalas en lugar de suponer."
+          ? "Tienes herramientas para consultar los datos (uso, tendencia, cada regional, Pokémon, emparejamientos, top cut, análisis de equipo, daño y velocidad). Úsalas en lugar de suponer."
           : "No tienes herramientas en esta vista: trabaja solo con el resumen de datos de abajo y avisa de que el detalle completo no está disponible.",
         "",
         "Resumen de datos:",
@@ -375,7 +436,13 @@
         { name: "get_usage", description: "Ranking de uso. segment: in_person (por defecto), online o total; top: 1-40. Devuelve nombre, % de uso, win rate y conversión a día 2.",
           inputSchema: { type: "object", properties: { segment: { type: "string", enum: SEGMENTS }, top: { type: "integer" } } },
           execute: wrap((i) => usage(String(i.segment || "in_person"), i.top)) },
-        { name: "get_pokemon", description: "Ficha de una especie (acepta 'Mega Charizard Y', 'Basculegion-F'...): uso por segmento, Megas, sets habituales, compañeros, mejores/peores emparejamientos y equipos de top cut.",
+        { name: "get_trend", description: "Cómo se mueve el meta presencial: los últimos regionales frente a los anteriores. Devuelve qué Pokémon y Megas suben y bajan (uso antes, uso reciente, cambio en puntos, win rate reciente). top: 1-20.",
+          inputSchema: { type: "object", properties: { top: { type: "integer" } } },
+          execute: wrap((i) => trend(i.top)) },
+        { name: "get_event", description: "Uso, Megas y top cut de UN regional presencial concreto. name: ciudad o nombre del torneo (p. ej. 'Nice'), o 'ultimo' para el más reciente; top: 1-40. Si no existe, devuelve la lista de regionales disponibles.",
+          inputSchema: { type: "object", properties: { name: { type: "string" }, top: { type: "integer" } }, required: ["name"] },
+          execute: wrap((i) => eventUsage(String(i.name || ""), i.top)) },
+        { name: "get_pokemon", description: "Ficha de una especie (acepta 'Mega Charizard Y', 'Basculegion-F'...): uso por segmento, uso en cada regional (by_event), Megas, sets habituales, compañeros, mejores/peores emparejamientos y equipos de top cut.",
           inputSchema: { type: "object", properties: { name: { type: "string" } }, required: ["name"] },
           execute: wrap((i) => pokemon(String(i.name || ""))) },
         { name: "get_matchup", description: "Win rate de team sheet entre dos especies en torneos presenciales.",
@@ -402,7 +469,7 @@
       ];
     }
 
-    return { status, usage, pokemon, matchup, topCut, parseTeam, analyzeTeam, resolveSpecies, megaFor, calcDamage, calcSpeed, digest, instructions, tools, usageRows, megas, display };
+    return { status, usage, pokemon, matchup, topCut, trend, listEvents, eventUsage, shortEvent, parseTeam, analyzeTeam, resolveSpecies, megaFor, calcDamage, calcSpeed, digest, instructions, tools, usageRows, megas, byEvent, display };
   }
 
   return { create, slug, pct };
