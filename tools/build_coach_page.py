@@ -192,6 +192,17 @@ def compact(data: query.MetaData, sprite_dir: Path | None = None, sprite_credit:
         "sets": sets,
         "matchups": [[row["species"], row["opponent"], row["wins"], row["games"]] for row in snapshot["matchups"]["pairs"]],
         "top_cut": top_cut,
+        "common_teams": [
+            [
+                row["species"], row["teams"], _r(row["share"]), _r(row["win_rate"]), row["day2_teams"], row["events"],
+                [
+                    row["best"]["event"], row["best"]["date"], row["best"]["placement"], row["best"]["player"],
+                    row["best"].get("country"), row["best"].get("record"),
+                    [[mon["mega"] or mon["name"], mon["item"], mon["ability"], mon["nature"], mon["moves"]] for mon in row["best"]["team"]],
+                ],
+            ]
+            for row in snapshot.get("common_teams", [])
+        ],
         "events": [[event["date"], event["name"], event["segment"], event["players"], event["url"]] for event in snapshot["events"]],
         "by_event": by_event,
         "trend": {

@@ -105,6 +105,19 @@ class CoachPageTests(unittest.TestCase):
         self.assertIn("calc_damage", out["tools"])
         self.assertIn("get_trend", out["tools"])
         self.assertIn("get_type_matchup", out["tools"])
+        self.assertEqual(out["parsed_gender"]["name"], "Basculegion")
+        self.assertEqual(out["parsed_gender"]["stat_points"], {"atk": 18, "def": 28, "spe": 20})
+        self.assertEqual(
+            out["paste"].splitlines(),
+            ["Charizard @ Charizardite Y", "Ability: Drought", "Level: 50", "Modest Nature", "- Heat Wave", "- Protect"],
+        )
+        self.assertGreater(out["rivals"]["recent"] + out["rivals"]["common"], 0)
+        if isinstance(out["sheet"], dict) and "grid" in out["sheet"]:
+            sheet = out["sheet"]
+            self.assertEqual(len(sheet["grid"]), 2)
+            self.assertEqual(len(sheet["grid"][0]), len(sheet["theirs"]))
+            self.assertEqual([s["speed"] for s in sheet["speeds"]], sorted((s["speed"] for s in sheet["speeds"]), reverse=True))
+            self.assertTrue(sheet["mine"][0]["assumed_set"])
         if isinstance(out["types"], dict) and "a" in out["types"]:
             self.assertEqual(out["types"]["a"]["form"], "Charizard-Mega-Y")
             self.assertEqual(sorted(out["types"]["b"]["types"]), ["Dark", "Steel"])

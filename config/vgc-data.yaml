@@ -98,6 +98,8 @@ pipeline:
     event_usage_top_online: 25
     trend_recent_events: 2
     trend_min_share: 0.02
+    common_teams_top: 30
+    common_team_min: 3
   sources:
     vgchistory:
       enabled: true

@@ -277,6 +277,21 @@
         .map(formatTeam);
     }
 
+    // "Basculegion (M) @ ..." is a gender, "Nick (Basculegion) @ ..." a nickname.
+    function speciesFromHeader(h) {
+      const inner = (h[2] || "").trim();
+      return (inner && !/^[MF]$/i.test(inner) ? inner : h[1]).trim();
+    }
+    const STAT_KEYS = { hp: "hp", atk: "atk", def: "def", spa: "spa", spd: "spd", spe: "spe" };
+    function parseStatLine(text) {
+      const out = {};
+      for (const part of String(text).split("/")) {
+        const m = part.trim().match(/^(\d+)\s+(hp|atk|def|spa|spd|spe)$/i);
+        if (m) out[STAT_KEYS[m[2].toLowerCase()]] = Number(m[1]);
+      }
+      return Object.keys(out).length ? out : null;
+    }
+
     function parseTeam(text) {
       const header = /^([^@(]+?)(?:\s*\(([^)]+)\))?(?:\s*\([MF]\))?\s*(?:@\s*(.+))?$/;
       const lines = String(text || "").replace(/\r/g, "").split("\n").map((l) => l.trim());
@@ -287,7 +302,7 @@
           const parts = line.split("|").map((p) => p.trim());
           const h = parts[0].match(header);
           mons.push({
-            name: h ? (h[2] || h[1]).trim() : parts[0],
+            name: h ? speciesFromHeader(h) : parts[0],
             item: h && h[3] ? h[3].trim() : null,
             ability: parts[1] || null,
             nature: parts[2] || null,
@@ -301,8 +316,9 @@
         if (!line) { if (cur) mons.push(cur); cur = null; continue; }
         if (!cur) {
           const h = line.match(header);
-          cur = { name: h ? (h[2] || h[1]).trim() : line, item: h && h[3] ? h[3].trim() : null, ability: null, nature: null, moves: [] };
+          cur = { name: h ? speciesFromHeader(h) : line, item: h && h[3] ? h[3].trim() : null, ability: null, nature: null, moves: [], stat_points: null };
         } else if (/^ability:/i.test(line)) cur.ability = line.split(":").slice(1).join(":").trim();
+        else if (/^evs:/i.test(line)) cur.stat_points = parseStatLine(line.split(":").slice(1).join(":"));
         else if (/ nature$/i.test(line)) cur.nature = line.replace(/ nature$/i, "").trim();
         else if (line.startsWith("-")) cur.moves.push(line.replace(/^-\s*/, ""));
       }
@@ -387,6 +403,96 @@
         a_hits_b: hits(x, y), b_hits_a: hits(y, x),
         basis: "tipos de los movimientos de sus sets de día 2 más comunes (y habilidades que dan inmunidad); no incluye daño exacto: usa calc_damage para eso",
       };
+    }
+
+    // -- matchup planner --------------------------------------------------------------
+    const SPEED_NATURES = new Set(["timid", "jolly", "hasty", "naive"]);
+    const ROLE_MOVES = {
+      fakeout: "Fake Out", tailwind: "Tailwind", trickroom: "Trick Room", followme: "Follow Me", ragepowder: "Rage Powder",
+      icywind: "Icy Wind", electroweb: "Electroweb", thunderwave: "Thunder Wave", rocktomb: "Rock Tomb", scaryface: "Scary Face",
+      wideguard: "Wide Guard", spore: "Spore", sleeppowder: "Sleep Powder", yawn: "Yawn", encore: "Encore", helpinghand: "Helping Hand",
+      partingshot: "Parting Shot", allyswitch: "Ally Switch", haze: "Haze", taunt: "Taunt", quash: "Quash",
+      suckerpunch: "Prioridad", aquajet: "Prioridad", extremespeed: "Prioridad", grassyglide: "Prioridad", bulletpunch: "Prioridad",
+      iceshard: "Prioridad", shadowsneak: "Prioridad", machpunch: "Prioridad", vacuumwave: "Prioridad", quickattack: "Prioridad", jetpunch: "Prioridad",
+    };
+    const ROLE_ABILITIES = {
+      intimidate: "Intimidate", drought: "Sol", drizzle: "Lluvia", sandstream: "Arena", snowwarning: "Nieve",
+      grassysurge: "Campo de hierba", psychicsurge: "Campo psíquico", electricsurge: "Campo eléctrico", mistysurge: "Campo de niebla",
+      prankster: "Prankster", unburden: "Unburden", armortail: "Armor Tail",
+    };
+    // A team member from any source: a parsed paste, a team sheet row or just a name (then its proven day 2 set).
+    function planMember(input) {
+      const raw = typeof input === "string" ? { name: input } : input;
+      const r = resolveSpecies(raw.name);
+      const proven = provenSide(r.species);
+      const day2 = (DATA.sets[r.species] || {}).day2;
+      const commonSet = day2 && day2.top_sets[0];
+      const hasSet = raw.moves && raw.moves.length;
+      const item = raw.item || (hasSet ? null : commonSet ? commonSet[0] : null);
+      const mega = r.mega || megaFor(r.species, item);
+      return {
+        species: r.species, id: mega || r.species, name: display(mega || r.species), base: display(r.species), item,
+        ability: raw.ability || (hasSet ? null : proven.ability),
+        nature: raw.nature || (hasSet ? null : commonSet ? commonSet[2] : null),
+        moves: hasSet ? raw.moves : proven.moves,
+        stat_points: raw.stat_points || null,
+        assumed_set: !hasSet,
+      };
+    }
+    function rolesOf(m) {
+      const roles = [...new Set(m.moves.map((n) => ROLE_MOVES[calcId(n)]).filter(Boolean))];
+      const ability = ROLE_ABILITIES[calcId(m.ability || "")];
+      return ability ? [ability, ...roles] : roles;
+    }
+    function speedOf(m) {
+      if (!calcLib) return null;
+      const gen = calcLib.Generations.get(0);
+      const nature = m.nature || "Hardy";
+      const assumed = !m.stat_points;
+      const sp = m.stat_points || (SPEED_NATURES.has(calcId(nature)) ? { spe: 32 } : {});
+      try {
+        const mon = buildMon(gen, { species: m.name, nature, stat_points: sp }, []);
+        return { speed: mon.stats.spe, assumed };
+      } catch (e) { return null; }
+    }
+    function matchupSheet(mineInput, theirsInput) {
+      const mine = mineInput.map(planMember), theirs = theirsInput.map(planMember);
+      const cell = (a, b) => { const hit = calcLib ? bestHit(a, b) : null; return hit ? { move: hit.move, type: hit.type, x: hit.x } : null; };
+      const speeds = [
+        ...mine.map((m) => ({ side: "mine", id: m.id, name: m.name, ...(speedOf(m) || {}) })),
+        ...theirs.map((m) => ({ side: "theirs", id: m.id, name: m.name, ...(speedOf(m) || {}) })),
+      ].filter((s) => s.speed).sort((a, b) => b.speed - a.speed);
+      return {
+        mine: mine.map((m) => ({ id: m.id, name: m.name, roles: rolesOf(m), assumed_set: m.assumed_set })),
+        theirs: theirs.map((m) => ({ id: m.id, name: m.name, item: m.item, ability: m.ability, nature: m.nature, moves: m.moves, roles: rolesOf(m) })),
+        // grid[i][j]: my member i against their member j; out = my best hit on it, in = its best hit on me.
+        grid: mine.map((a) => theirs.map((b) => ({ out: cell(a, b), in: cell(b, a) }))),
+        speeds,
+        basis: "Tipos de los movimientos reales (sus team sheets; tu equipo pegado o, si solo das el nombre, su set de día 2). Velocidad: los stat points de los rivales no se publican; se supone 32 en velocidad si su naturaleza la sube y 0 si no.",
+      };
+    }
+    // Rival teams for the planner: the latest regionals' top cut and the most repeated teams.
+    function plannerRivals(recentEvents) {
+      const recent = regionals.filter((e) => e.basis === "full_field").slice(0, recentEvents || 2);
+      const fromTop = recent.flatMap((e) => e.top.map(([placement, player, country, record, team]) => ({
+        key: `${e.key}#${placement}`, source: "recent", event: shortEvent(e.name), date: e.date, placement, player, country, record,
+        team: team.map(([name, item, ability, nature, moves]) => ({ name, item, ability, nature, moves })),
+      })));
+      const common = (DATA.common_teams || []).map((row, i) => ({
+        key: `common#${i}`, source: "common", teams: row[1], share: row[2], win_rate: row[3], day2_teams: row[4], events: row[5],
+        event: shortEvent(row[6][0]), date: row[6][1], placement: row[6][2], player: row[6][3], country: row[6][4], record: row[6][5],
+        team: row[6][6].map(([name, item, ability, nature, moves]) => ({ name, item, ability, nature, moves })),
+      }));
+      return { recent: fromTop, common };
+    }
+    // Showdown / Pokepaste text. Open team sheets publish no stat points, so there is no EVs line.
+    function showdownText(team) {
+      return team.map((m) => {
+        let base = m.name;
+        try { base = display(resolveSpecies(m.name).species); } catch (e) { /* keep the name */ }
+        return [`${base}${m.item ? ` @ ${m.item}` : ""}`, m.ability ? `Ability: ${m.ability}` : null, "Level: 50",
+          m.nature ? `${m.nature} Nature` : null, ...(m.moves || []).map((mv) => `- ${mv}`)].filter(Boolean).join("\n");
+      }).join("\n\n");
     }
 
     function analyzeTeam(text) {
@@ -621,7 +727,7 @@
       ];
     }
 
-    return { status, usage, pokemon, matchup, topCut, trend, regionalSeries, listEvents, eventUsage, shortEvent, parseTeam, analyzeTeam, resolveSpecies, megaFor, calcDamage, calcSpeed, typeMatchup, digest, instructions, tools, usageRows, megas, byEvent, regionals, display };
+    return { status, usage, pokemon, matchup, topCut, trend, regionalSeries, listEvents, eventUsage, shortEvent, parseTeam, analyzeTeam, resolveSpecies, megaFor, calcDamage, calcSpeed, typeMatchup, matchupSheet, plannerRivals, showdownText, planMember, digest, instructions, tools, usageRows, megas, byEvent, regionals, display };
   }
 
   return { create, slug, pct };

@@ -1,6 +1,6 @@
 {
  "schema_version": "meta-snapshot-v2",
- "generated_at": "2026-10-22T10:20:22Z",
+ "generated_at": "2026-10-22T11:11:05Z",
  "regulation": {
   "regulation_id": "M-C",
   "label": "Regulation Set M-C",
@@ -110193,6 +110193,3578 @@
      ]
     }
    ]
+  }
+ ],
+ "common_teams": [
+  {
+   "species": [
+    "arcanine-hisui",
+    "gholdengo",
+    "raichu",
+    "rillaboom",
+    "staraptor",
+    "sylveon"
+   ],
+   "names": [
+    "Arcanine-Hisui",
+    "Gholdengo",
+    "Raichu",
+    "Rillaboom",
+    "Staraptor",
+    "Sylveon"
+   ],
+   "teams": 139,
+   "share": 0.03,
+   "win_rate": 0.5128,
+   "games": 1129,
+   "day2_teams": 17,
+   "events": 6,
+   "best": {
+    "event_key": "vgchistory:regional-baltimore-2027",
+    "event": "Baltimore Regional Championships 2027",
+    "date": "2026-09-18",
+    "placement": 7,
+    "player": "Conner Pietrusinski",
+    "country": "US",
+    "record": "12-3",
+    "team": [
+     {
+      "species": "arcanine-hisui",
+      "name": "Arcanine-Hisui",
+      "mega": null,
+      "item": "Focus Sash",
+      "ability": "Rock Head",
+      "nature": "Jolly",
+      "moves": [
+       "Flare Blitz",
+       "Head Smash",
+       "Extreme Speed",
+       "Protect"
+      ]
+     },
+     {
+      "species": "rillaboom",
+      "name": "Rillaboom",
+      "mega": null,
+      "item": "Miracle Seed",
+      "ability": "Grassy Surge",
+      "nature": "Adamant",
+      "moves": [
+       "Wood Hammer",
+       "Grassy Glide",
+       "High Horsepower",
+       "Fake Out"
+      ]
+     },
+     {
+      "species": "gholdengo",
+      "name": "Gholdengo",
+      "mega": null,
+      "item": "Life Orb",
+      "ability": "Good as Gold",
+      "nature": "Timid",
+      "moves": [
+       "Make It Rain",
+       "Shadow Ball",
+       "Nasty Plot",
+       "Protect"
+      ]
+     },
+     {
+      "species": "staraptor",
+      "name": "Staraptor",
+      "mega": "Staraptor-Mega",
+      "item": "Staraptite",
+      "ability": "Intimidate",
+      "nature": "Jolly",
+      "moves": [
+       "Close Combat",
+       "Protect",
+       "Brave Bird",
+       "Tailwind"
+      ]
+     },
+     {
+      "species": "raichu",
+      "name": "Raichu",
+      "mega": "Raichu-Mega-Y",
+      "item": "Raichunite Y",
+      "ability": "Lightning Rod",
+      "nature": "Timid",
+      "moves": [
+       "Zap Cannon",
+       "Focus Blast",
+       "Fake Out",
+       "Protect"
+      ]
+     },
+     {
+      "species": "sylveon",
+      "name": "Sylveon",
+      "mega": null,
+      "item": "Fairy Feather",
+      "ability": "Pixilate",
+      "nature": "Modest",
+      "moves": [
+       "Hyper Beam",
+       "Hyper Voice",
+       "Quick Attack",
+       "Protect"
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "species": [
+    "archaludon",
+    "charizard",
+    "garchomp",
+    "grimmsnarl",
+    "pelipper",
+    "venusaur"
+   ],
+   "names": [
+    "Archaludon",
+    "Charizard",
+    "Garchomp",
+    "Grimmsnarl",
+    "Pelipper",
+    "Venusaur"
+   ],
+   "teams": 128,
+   "share": 0.0276,
+   "win_rate": 0.5345,
+   "games": 1044,
+   "day2_teams": 20,
+   "events": 5,
+   "best": {
+    "event_key": "vgchistory:regional-brisbane-2027",
+    "event": "Brisbane Regional Championships 2027",
+    "date": "2026-09-26",
+    "placement": 1,
+    "player": "Kiran Singh",
+    "country": "AU",
+    "record": "14-1",
+    "team": [
+     {
+      "species": "archaludon",
+      "name": "Archaludon",
+      "mega": null,
+      "item": "Leftovers",
+      "ability": "Stamina",
+      "nature": "Calm",
+      "moves": [
+       "Electro Shot",
+       "Flash Cannon",
+       "Dragon Pulse",
+       "Protect"
+      ]
+     },
+     {
+      "species": "pelipper",
+      "name": "Pelipper",
+      "mega": null,
+      "item": "Sitrus Berry",
+      "ability": "Drizzle",
+      "nature": "Bold",
+      "moves": [
+       "Hurricane",
+       "Weather Ball",
+       "Tailwind",
+       "Wide Guard"
+      ]
+     },
+     {
+      "species": "grimmsnarl",
+      "name": "Grimmsnarl",
+      "mega": null,
+      "item": "Light Clay",
+      "ability": "Prankster",
+      "nature": "Sassy",
+      "moves": [
+       "Spirit Break",
+       "Light Screen",
+       "Reflect",
+       "Parting Shot"
+      ]
+     },
+     {
+      "species": "charizard",
+      "name": "Charizard",
+      "mega": "Charizard-Mega-Y",
+      "item": "Charizardite Y",
+      "ability": "Blaze",
+      "nature": "Timid",
+      "moves": [
+       "Heat Wave",
+       "Weather Ball",
+       "Hurricane",
+       "Protect"
+      ]
+     },
+     {
+      "species": "garchomp",
+      "name": "Garchomp",
+      "mega": "Garchomp-Mega-Z",
+      "item": "Garchompite Z",
+      "ability": "Rough Skin",
+      "nature": "Modest",
+      "moves": [
+       "Draco Meteor",
+       "Earth Power",
+       "Power Gem",
+       "Protect"
+      ]
+     },
+     {
+      "species": "venusaur",
+      "name": "Venusaur",
+      "mega": null,
+      "item": "Focus Sash",
+      "ability": "Chlorophyll",
+      "nature": "Modest",
+      "moves": [
+       "Leaf Storm",
+       "Sludge Bomb",
+       "Sleep Powder",
+       "Protect"
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "species": [
+    "corviknight",
+    "excadrill",
+    "indeedee",
+    "salamence",
+    "sneasler",
+    "tyranitar"
+   ],
+   "names": [
+    "Corviknight",
+    "Excadrill",
+    "Indeedee",
+    "Salamence",
+    "Sneasler",
+    "Tyranitar"
+   ],
+   "teams": 82,
+   "share": 0.0177,
+   "win_rate": 0.5015,
+   "games": 670,
+   "day2_teams": 9,
+   "events": 6,
+   "best": {
+    "event_key": "vgchistory:regional-baltimore-2027",
+    "event": "Baltimore Regional Championships 2027",
+    "date": "2026-09-18",
+    "placement": 1,
+    "player": "Joseph Ugarte",
+    "country": "US",
+    "record": "15-2",
+    "team": [
+     {
+      "species": "excadrill",
+      "name": "Excadrill",
+      "mega": null,
+      "item": "Focus Sash",
+      "ability": "Sand Rush",
+      "nature": "Jolly",
+      "moves": [
+       "Iron Head",
+       "High Horsepower",
+       "Rock Slide",
+       "Protect"
+      ]
+     },
+     {
+      "species": "salamence",
+      "name": "Salamence",
+      "mega": "Salamence-Mega",
+      "item": "Salamencite",
+      "ability": "Intimidate",
+      "nature": "Timid",
+      "moves": [
+       "Hyper Voice",
+       "Draco Meteor",
+       "Flamethrower",
+       "Protect"
+      ]
+     },
+     {
+      "species": "tyranitar",
+      "name": "Tyranitar",
+      "mega": "Tyranitar-Mega",
+      "item": "Tyranitarite",
+      "ability": "Sand Stream",
+      "nature": "Jolly",
+      "moves": [
+       "Rock Slide",
+       "Knock Off",
+       "Low Kick",
+       "Protect"
+      ]
+     },
+     {
+      "species": "indeedee",
+      "name": "Indeedee",
+      "mega": null,
+      "item": "Choice Scarf",
+      "ability": "Psychic Surge",
+      "nature": "Modest",
+      "moves": [
+       "Expanding Force",
+       "Mystical Fire",
+       "Trick",
+       "Protect"
+      ]
+     },
+     {
+      "species": "corviknight",
+      "name": "Corviknight",
+      "mega": null,
+      "item": "Psychic Seed",
+      "ability": "Mirror Armor",
+      "nature": "Careful",
+      "moves": [
+       "Brave Bird",
+       "Power Trip",
+       "Bulk Up",
+       "Roost"
+      ]
+     },
+     {
+      "species": "sneasler",
+      "name": "Sneasler",
+      "mega": null,
+      "item": "White Herb",
+      "ability": "Unburden",
+      "nature": "Adamant",
+      "moves": [
+       "Dire Claw",
+       "Close Combat",
+       "Coaching",
+       "Protect"
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "species": [
+    "arcanine-hisui",
+    "gholdengo",
+    "primarina",
+    "raichu",
+    "rillaboom",
+    "staraptor"
+   ],
+   "names": [
+    "Arcanine-Hisui",
+    "Gholdengo",
+    "Primarina",
+    "Raichu",
+    "Rillaboom",
+    "Staraptor"
+   ],
+   "teams": 76,
+   "share": 0.0164,
+   "win_rate": 0.5383,
+   "games": 626,
+   "day2_teams": 13,
+   "events": 5,
+   "best": {
+    "event_key": "vgchistory:regional-frankfurt-2027",
+    "event": "Frankfurt Regional Championships 2027",
+    "date": "2026-09-26",
+    "placement": 13,
+    "player": "Francesco Pio Pero",
+    "country": "IT",
+    "record": "10-3",
+    "team": [
+     {
+      "species": "staraptor",
+      "name": "Staraptor",
+      "mega": "Staraptor-Mega",
+      "item": "Staraptite",
+      "ability": "Intimidate",
+      "nature": "Jolly",
+      "moves": [
+       "Close Combat",
+       "Brave Bird",
+       "Tailwind",
+       "Protect"
+      ]
+     },
+     {
+      "species": "rillaboom",
+      "name": "Rillaboom",
+      "mega": null,
+      "item": "Miracle Seed",
+      "ability": "Grassy Surge",
+      "nature": "Adamant",
+      "moves": [
+       "Wood Hammer",
+       "Grassy Glide",
+       "High Horsepower",
+       "Fake Out"
+      ]
+     },
+     {
+      "species": "primarina",
+      "name": "Primarina",
+      "mega": null,
+      "item": "Leftovers",
+      "ability": "Liquid Voice",
+      "nature": "Modest",
+      "moves": [
+       "Hyper Voice",
+       "Moonblast",
+       "Calm Mind",
+       "Protect"
+      ]
+     },
+     {
+      "species": "gholdengo",
+      "name": "Gholdengo",
+      "mega": null,
+      "item": "Life Orb",
+      "ability": "Good as Gold",
+      "nature": "Modest",
+      "moves": [
+       "Make It Rain",
+       "Shadow Ball",
+       "Nasty Plot",
+       "Protect"
+      ]
+     },
+     {
+      "species": "raichu",
+      "name": "Raichu",
+      "mega": "Raichu-Mega-Y",
+      "item": "Raichunite Y",
+      "ability": "Lightning Rod",
+      "nature": "Timid",
+      "moves": [
+       "Zap Cannon",
+       "Focus Blast",
+       "Fake Out",
+       "Protect"
+      ]
+     },
+     {
+      "species": "arcanine-hisui",
+      "name": "Arcanine-Hisui",
+      "mega": null,
+      "item": "Focus Sash",
+      "ability": "Rock Head",
+      "nature": "Jolly",
+      "moves": [
+       "Flare Blitz",
+       "Head Smash",
+       "Extreme Speed",
+       "Protect"
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "species": [
+    "delphox",
+    "floette-eternal",
+    "incineroar",
+    "kingambit",
+    "sinistcha",
+    "sneasler"
+   ],
+   "names": [
+    "Delphox",
+    "Floette-Eternal",
+    "Incineroar",
+    "Kingambit",
+    "Sinistcha",
+    "Sneasler"
+   ],
+   "teams": 72,
+   "share": 0.0155,
+   "win_rate": 0.5623,
+   "games": 626,
+   "day2_teams": 20,
+   "events": 6,
+   "best": {
+    "event_key": "vgchistory:regional-recife-2027",
+    "event": "Recife Regional Championships 2027",
+    "date": "2026-10-03",
+    "placement": 10,
+    "player": "Thiago Barbosa",
+    "country": "BR",
+    "record": "8-3",
+    "team": [
+     {
+      "species": "sneasler",
+      "name": "Sneasler",
+      "mega": null,
+      "item": "Focus Sash",
+      "ability": "Poison Touch",
+      "nature": "Jolly",
+      "moves": [
+       "Close Combat",
+       "Poison Jab",
+       "Fake Out",
+       "Quick Guard"
+      ]
+     },
+     {
+      "species": "delphox",
+      "name": "Delphox",
+      "mega": "Delphox-Mega",
+      "item": "Delphoxite",
+      "ability": "Blaze",
+      "nature": "Timid",
+      "moves": [
+       "Heat Wave",
+       "Psychic",
+       "Nasty Plot",
+       "Protect"
+      ]
+     },
+     {
+      "species": "kingambit",
+      "name": "Kingambit",
+      "mega": null,
+      "item": "Life Orb",
+      "ability": "Defiant",
+      "nature": "Adamant",
+      "moves": [
+       "Kowtow Cleave",
+       "Sucker Punch",
+       "Swords Dance",
+       "Protect"
+      ]
+     },
+     {
+      "species": "incineroar",
+      "name": "Incineroar",
+      "mega": null,
+      "item": "Sitrus Berry",
+      "ability": "Intimidate",
+      "nature": "Impish",
+      "moves": [
+       "Flare Blitz",
+       "Throat Chop",
+       "Fake Out",
+       "Parting Shot"
+      ]
+     },
+     {
+      "species": "floette-eternal",
+      "name": "Floette-Eternal",
+      "mega": "Floette-Mega",
+      "item": "Floettite",
+      "ability": "Flower Veil",
+      "nature": "Modest",
+      "moves": [
+       "Moonblast",
+       "Dazzling Gleam",
+       "Calm Mind",
+       "Protect"
+      ]
+     },
+     {
+      "species": "sinistcha",
+      "name": "Sinistcha",
+      "mega": null,
+      "item": "Colbur Berry",
+      "ability": "Hospitality",
+      "nature": "Relaxed",
+      "moves": [
+       "Matcha Gotcha",
+       "Rage Powder",
+       "Trick Room",
+       "Protect"
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "species": [
+    "aerodactyl",
+    "charizard",
+    "farigiraf",
+    "garchomp",
+    "kingambit",
+    "sylveon"
+   ],
+   "names": [
+    "Aerodactyl",
+    "Charizard",
+    "Farigiraf",
+    "Garchomp",
+    "Kingambit",
+    "Sylveon"
+   ],
+   "teams": 64,
+   "share": 0.0138,
+   "win_rate": 0.5871,
+   "games": 574,
+   "day2_teams": 18,
+   "events": 6,
+   "best": {
+    "event_key": "vgchistory:regional-recife-2027",
+    "event": "Recife Regional Championships 2027",
+    "date": "2026-10-03",
+    "placement": 11,
+    "player": "Sergio Igarashi",
+    "country": "BR",
+    "record": "8-3",
+    "team": [
+     {
+      "species": "charizard",
+      "name": "Charizard",
+      "mega": "Charizard-Mega-Y",
+      "item": "Charizardite Y",
+      "ability": "Blaze",
+      "nature": "Modest",
+      "moves": [
+       "Protect",
+       "Heat Wave",
+       "Weather Ball",
+       "Solar Beam"
+      ]
+     },
+     {
+      "species": "farigiraf",
+      "name": "Farigiraf",
+      "mega": null,
+      "item": "Sitrus Berry",
+      "ability": "Armor Tail",
+      "nature": "Bold",
+      "moves": [
+       "Expanding Force",
+       "Thunderbolt",
+       "Trick Room",
+       "Protect"
+      ]
+     },
+     {
+      "species": "sylveon",
+      "name": "Sylveon",
+      "mega": null,
+      "item": "Fairy Feather",
+      "ability": "Pixilate",
+      "nature": "Modest",
+      "moves": [
+       "Hyper Beam",
+       "Hyper Voice",
+       "Quick Attack",
+       "Protect"
+      ]
+     },
+     {
+      "species": "aerodactyl",
+      "name": "Aerodactyl",
+      "mega": "Aerodactyl-Mega",
+      "item": "Aerodactylite",
+      "ability": "Unnerve",
+      "nature": "Jolly",
+      "moves": [
+       "Rock Slide",
+       "Dual Wingbeat",
+       "Tailwind",
+       "Protect"
+      ]
+     },
+     {
+      "species": "garchomp",
+      "name": "Garchomp",
+      "mega": null,
+      "item": "Life Orb",
+      "ability": "Rough Skin",
+      "nature": "Jolly",
+      "moves": [
+       "Stomping Tantrum",
+       "Dragon Claw",
+       "Protect",
+       "Earthquake"
+      ]
+     },
+     {
+      "species": "kingambit",
+      "name": "Kingambit",
+      "mega": null,
+      "item": "Focus Sash",
+      "ability": "Defiant",
+      "nature": "Adamant",
+      "moves": [
+       "Kowtow Cleave",
+       "Low Kick",
+       "Sucker Punch",
+       "Iron Head"
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "species": [
+    "ceruledge",
+    "gholdengo",
+    "milotic",
+    "raichu",
+    "rillaboom",
+    "staraptor"
+   ],
+   "names": [
+    "Ceruledge",
+    "Gholdengo",
+    "Milotic",
+    "Raichu",
+    "Rillaboom",
+    "Staraptor"
+   ],
+   "teams": 63,
+   "share": 0.0136,
+   "win_rate": 0.5,
+   "games": 518,
+   "day2_teams": 9,
+   "events": 6,
+   "best": {
+    "event_key": "vgchistory:regional-baltimore-2027",
+    "event": "Baltimore Regional Championships 2027",
+    "date": "2026-09-18",
+    "placement": 5,
+    "player": "Lorenzo Arce",
+    "country": "US",
+    "record": "13-2",
+    "team": [
+     {
+      "species": "milotic",
+      "name": "Milotic",
+      "mega": null,
+      "item": "Sitrus Berry",
+      "ability": "Competitive",
+      "nature": "Calm",
+      "moves": [
+       "Coil",
+       "Hypnosis",
+       "Ice Beam",
+       "Muddy Water"
+      ]
+     },
+     {
+      "species": "raichu",
+      "name": "Raichu",
+      "mega": "Raichu-Mega-Y",
+      "item": "Raichunite Y",
+      "ability": "Lightning Rod",
+      "nature": "Timid",
+      "moves": [
+       "Zap Cannon",
+       "Protect",
+       "Fake Out",
+       "Focus Blast"
+      ]
+     },
+     {
+      "species": "ceruledge",
+      "name": "Ceruledge",
+      "mega": null,
+      "item": "Grassy Seed",
+      "ability": "Flash Fire",
+      "nature": "Adamant",
+      "moves": [
+       "Protect",
+       "Bitter Blade",
+       "Swords Dance",
+       "Shadow Sneak"
+      ]
+     },
+     {
+      "species": "staraptor",
+      "name": "Staraptor",
+      "mega": "Staraptor-Mega",
+      "item": "Staraptite",
+      "ability": "Intimidate",
+      "nature": "Jolly",
+      "moves": [
+       "Brave Bird",
+       "Tailwind",
+       "Protect",
+       "Close Combat"
+      ]
+     },
+     {
+      "species": "gholdengo",
+      "name": "Gholdengo",
+      "mega": null,
+      "item": "Life Orb",
+      "ability": "Good as Gold",
+      "nature": "Modest",
+      "moves": [
+       "Shadow Ball",
+       "Nasty Plot",
+       "Make It Rain",
+       "Protect"
+      ]
+     },
+     {
+      "species": "rillaboom",
+      "name": "Rillaboom",
+      "mega": null,
+      "item": "Miracle Seed",
+      "ability": "Grassy Surge",
+      "nature": "Adamant",
+      "moves": [
+       "Wood Hammer",
+       "Fake Out",
+       "High Horsepower",
+       "Grassy Glide"
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "species": [
+    "arcanine-hisui",
+    "gholdengo",
+    "raichu",
+    "rillaboom",
+    "salamence",
+    "sneasler"
+   ],
+   "names": [
+    "Arcanine-Hisui",
+    "Gholdengo",
+    "Raichu",
+    "Rillaboom",
+    "Salamence",
+    "Sneasler"
+   ],
+   "teams": 59,
+   "share": 0.0127,
+   "win_rate": 0.5209,
+   "games": 478,
+   "day2_teams": 6,
+   "events": 6,
+   "best": {
+    "event_key": "vgchistory:regional-frankfurt-2027",
+    "event": "Frankfurt Regional Championships 2027",
+    "date": "2026-09-26",
+    "placement": 35,
+    "player": "Freddie Meah",
+    "country": "GB",
+    "record": "10-3",
+    "team": [
+     {
+      "species": "salamence",
+      "name": "Salamence",
+      "mega": "Salamence-Mega",
+      "item": "Salamencite",
+      "ability": "Intimidate",
+      "nature": "Timid",
+      "moves": [
+       "Draco Meteor",
+       "Tailwind",
+       "Hyper Voice",
+       "Protect"
+      ]
+     },
+     {
+      "species": "rillaboom",
+      "name": "Rillaboom",
+      "mega": null,
+      "item": "Miracle Seed",
+      "ability": "Grassy Surge",
+      "nature": "Adamant",
+      "moves": [
+       "Wood Hammer",
+       "High Horsepower",
+       "Grassy Glide",
+       "Fake Out"
+      ]
+     },
+     {
+      "species": "arcanine-hisui",
+      "name": "Arcanine-Hisui",
+      "mega": null,
+      "item": "Focus Sash",
+      "ability": "Rock Head",
+      "nature": "Jolly",
+      "moves": [
+       "Flare Blitz",
+       "Head Smash",
+       "Extreme Speed",
+       "Protect"
+      ]
+     },
+     {
+      "species": "raichu",
+      "name": "Raichu",
+      "mega": "Raichu-Mega-Y",
+      "item": "Raichunite Y",
+      "ability": "Lightning Rod",
+      "nature": "Timid",
+      "moves": [
+       "Fake Out",
+       "Zap Cannon",
+       "Focus Blast",
+       "Protect"
+      ]
+     },
+     {
+      "species": "sneasler",
+      "name": "Sneasler",
+      "mega": null,
+      "item": "Grassy Seed",
+      "ability": "Unburden",
+      "nature": "Adamant",
+      "moves": [
+       "Close Combat",
+       "Protect",
+       "Rock Tomb",
+       "Dire Claw"
+      ]
+     },
+     {
+      "species": "gholdengo",
+      "name": "Gholdengo",
+      "mega": null,
+      "item": "Life Orb",
+      "ability": "Good as Gold",
+      "nature": "Timid",
+      "moves": [
+       "Make It Rain",
+       "Shadow Ball",
+       "Nasty Plot",
+       "Protect"
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "species": [
+    "garchomp",
+    "gholdengo",
+    "incineroar",
+    "raichu",
+    "rillaboom",
+    "volcarona"
+   ],
+   "names": [
+    "Garchomp",
+    "Gholdengo",
+    "Incineroar",
+    "Raichu",
+    "Rillaboom",
+    "Volcarona"
+   ],
+   "teams": 55,
+   "share": 0.0119,
+   "win_rate": 0.4709,
+   "games": 412,
+   "day2_teams": 6,
+   "events": 4,
+   "best": {
+    "event_key": "vgchistory:regional-frankfurt-2027",
+    "event": "Frankfurt Regional Championships 2027",
+    "date": "2026-09-26",
+    "placement": 1,
+    "player": "Eric Rios",
+    "country": "ES",
+    "record": "17-0",
+    "team": [
+     {
+      "species": "gholdengo",
+      "name": "Gholdengo",
+      "mega": null,
+      "item": "Life Orb",
+      "ability": "Good as Gold",
+      "nature": "Modest",
+      "moves": [
+       "Protect",
+       "Shadow Ball",
+       "Nasty Plot",
+       "Make It Rain"
+      ]
+     },
+     {
+      "species": "volcarona",
+      "name": "Volcarona",
+      "mega": null,
+      "item": "Rocky Helmet",
+      "ability": "Flame Body",
+      "nature": "Timid",
+      "moves": [
+       "Overheat",
+       "Struggle Bug",
+       "Rage Powder",
+       "Tailwind"
+      ]
+     },
+     {
+      "species": "garchomp",
+      "name": "Garchomp",
+      "mega": "Garchomp-Mega-Z",
+      "item": "Garchompite Z",
+      "ability": "Rough Skin",
+      "nature": "Modest",
+      "moves": [
+       "Dragon Pulse",
+       "Earth Power",
+       "Power Gem",
+       "Protect"
+      ]
+     },
+     {
+      "species": "incineroar",
+      "name": "Incineroar",
+      "mega": null,
+      "item": "Sitrus Berry",
+      "ability": "Intimidate",
+      "nature": "Impish",
+      "moves": [
+       "Parting Shot",
+       "Fake Out",
+       "Flare Blitz",
+       "Darkest Lariat"
+      ]
+     },
+     {
+      "species": "rillaboom",
+      "name": "Rillaboom",
+      "mega": null,
+      "item": "Miracle Seed",
+      "ability": "Grassy Surge",
+      "nature": "Adamant",
+      "moves": [
+       "Grassy Glide",
+       "Wood Hammer",
+       "Fake Out",
+       "U-turn"
+      ]
+     },
+     {
+      "species": "raichu",
+      "name": "Raichu",
+      "mega": "Raichu-Mega-Y",
+      "item": "Raichunite Y",
+      "ability": "Lightning Rod",
+      "nature": "Timid",
+      "moves": [
+       "Zap Cannon",
+       "Focus Blast",
+       "Fake Out",
+       "Protect"
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "species": [
+    "arcanine-hisui",
+    "froslass",
+    "kingambit",
+    "raichu",
+    "rillaboom",
+    "sneasler"
+   ],
+   "names": [
+    "Arcanine-Hisui",
+    "Froslass",
+    "Kingambit",
+    "Raichu",
+    "Rillaboom",
+    "Sneasler"
+   ],
+   "teams": 49,
+   "share": 0.0106,
+   "win_rate": 0.5123,
+   "games": 408,
+   "day2_teams": 9,
+   "events": 6,
+   "best": {
+    "event_key": "vgchistory:regional-baltimore-2027",
+    "event": "Baltimore Regional Championships 2027",
+    "date": "2026-09-18",
+    "placement": 6,
+    "player": "Esa Ishaque",
+    "country": "CA",
+    "record": "12-3",
+    "team": [
+     {
+      "species": "froslass",
+      "name": "Froslass",
+      "mega": "Froslass-Mega",
+      "item": "Froslassite",
+      "ability": "Cursed Body",
+      "nature": "Timid",
+      "moves": [
+       "Blizzard",
+       "Shadow Ball",
+       "Aurora Veil",
+       "Protect"
+      ]
+     },
+     {
+      "species": "raichu",
+      "name": "Raichu",
+      "mega": "Raichu-Mega-Y",
+      "item": "Raichunite Y",
+      "ability": "Lightning Rod",
+      "nature": "Timid",
+      "moves": [
+       "Zap Cannon",
+       "Focus Blast",
+       "Encore",
+       "Protect"
+      ]
+     },
+     {
+      "species": "rillaboom",
+      "name": "Rillaboom",
+      "mega": null,
+      "item": "Sitrus Berry",
+      "ability": "Grassy Surge",
+      "nature": "Adamant",
+      "moves": [
+       "Fake Out",
+       "Grassy Glide",
+       "Wood Hammer",
+       "High Horsepower"
+      ]
+     },
+     {
+      "species": "kingambit",
+      "name": "Kingambit",
+      "mega": null,
+      "item": "Life Orb",
+      "ability": "Defiant",
+      "nature": "Adamant",
+      "moves": [
+       "Kowtow Cleave",
+       "Sucker Punch",
+       "Swords Dance",
+       "Protect"
+      ]
+     },
+     {
+      "species": "sneasler",
+      "name": "Sneasler",
+      "mega": null,
+      "item": "White Herb",
+      "ability": "Unburden",
+      "nature": "Adamant",
+      "moves": [
+       "Close Combat",
+       "Dire Claw",
+       "Fake Out",
+       "Protect"
+      ]
+     },
+     {
+      "species": "arcanine-hisui",
+      "name": "Arcanine-Hisui",
+      "mega": null,
+      "item": "Focus Sash",
+      "ability": "Rock Head",
+      "nature": "Jolly",
+      "moves": [
+       "Flare Blitz",
+       "Head Smash",
+       "Extreme Speed",
+       "Protect"
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "species": [
+    "archaludon",
+    "charizard",
+    "farigiraf",
+    "golisopod",
+    "grimmsnarl",
+    "politoed"
+   ],
+   "names": [
+    "Archaludon",
+    "Charizard",
+    "Farigiraf",
+    "Golisopod",
+    "Grimmsnarl",
+    "Politoed"
+   ],
+   "teams": 45,
+   "share": 0.0097,
+   "win_rate": 0.5245,
+   "games": 387,
+   "day2_teams": 6,
+   "events": 5,
+   "best": {
+    "event_key": "vgchistory:regional-baltimore-2027",
+    "event": "Baltimore Regional Championships 2027",
+    "date": "2026-09-18",
+    "placement": 2,
+    "player": "Aditya Subramanian",
+    "country": "US",
+    "record": "15-2",
+    "team": [
+     {
+      "species": "golisopod",
+      "name": "Golisopod",
+      "mega": "Golisopod-Mega",
+      "item": "Golisopite",
+      "ability": "Emergency Exit",
+      "nature": "Adamant",
+      "moves": [
+       "Leech Life",
+       "Drill Run",
+       "Iron Head",
+       "Protect"
+      ]
+     },
+     {
+      "species": "charizard",
+      "name": "Charizard",
+      "mega": "Charizard-Mega-Y",
+      "item": "Charizardite Y",
+      "ability": "Blaze",
+      "nature": "Timid",
+      "moves": [
+       "Heat Wave",
+       "Hurricane",
+       "Weather Ball",
+       "Protect"
+      ]
+     },
+     {
+      "species": "politoed",
+      "name": "Politoed",
+      "mega": null,
+      "item": "Mystic Water",
+      "ability": "Drizzle",
+      "nature": "Modest",
+      "moves": [
+       "Muddy Water",
+       "Ice Beam",
+       "Weather Ball",
+       "Protect"
+      ]
+     },
+     {
+      "species": "archaludon",
+      "name": "Archaludon",
+      "mega": null,
+      "item": "Leftovers",
+      "ability": "Stamina",
+      "nature": "Bold",
+      "moves": [
+       "Dragon Pulse",
+       "Snarl",
+       "Electro Shot",
+       "Protect"
+      ]
+     },
+     {
+      "species": "grimmsnarl",
+      "name": "Grimmsnarl",
+      "mega": null,
+      "item": "Light Clay",
+      "ability": "Prankster",
+      "nature": "Sassy",
+      "moves": [
+       "Light Screen",
+       "Reflect",
+       "Parting Shot",
+       "Spirit Break"
+      ]
+     },
+     {
+      "species": "farigiraf",
+      "name": "Farigiraf",
+      "mega": null,
+      "item": "Sitrus Berry",
+      "ability": "Armor Tail",
+      "nature": "Bold",
+      "moves": [
+       "Psychic",
+       "Trick Room",
+       "Protect",
+       "Grass Knot"
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "species": [
+    "excadrill",
+    "gholdengo",
+    "milotic",
+    "rillaboom",
+    "salamence",
+    "tyranitar"
+   ],
+   "names": [
+    "Excadrill",
+    "Gholdengo",
+    "Milotic",
+    "Rillaboom",
+    "Salamence",
+    "Tyranitar"
+   ],
+   "teams": 45,
+   "share": 0.0097,
+   "win_rate": 0.493,
+   "games": 357,
+   "day2_teams": 4,
+   "events": 6,
+   "best": {
+    "event_key": "vgchistory:regional-recife-2027",
+    "event": "Recife Regional Championships 2027",
+    "date": "2026-10-03",
+    "placement": 53,
+    "player": "Guilherme Oliveira",
+    "country": "BR",
+    "record": "5-3",
+    "team": [
+     {
+      "species": "milotic",
+      "name": "Milotic",
+      "mega": null,
+      "item": "Sitrus Berry",
+      "ability": "Competitive",
+      "nature": "Modest",
+      "moves": [
+       "Scald",
+       "Icy Wind",
+       "Protect",
+       "Ice Beam"
+      ]
+     },
+     {
+      "species": "gholdengo",
+      "name": "Gholdengo",
+      "mega": null,
+      "item": "Life Orb",
+      "ability": "Good as Gold",
+      "nature": "Modest",
+      "moves": [
+       "Make It Rain",
+       "Shadow Ball",
+       "Protect",
+       "Nasty Plot"
+      ]
+     },
+     {
+      "species": "rillaboom",
+      "name": "Rillaboom",
+      "mega": null,
+      "item": "Grassy Seed",
+      "ability": "Grassy Surge",
+      "nature": "Adamant",
+      "moves": [
+       "Wood Hammer",
+       "Fake Out",
+       "Grassy Glide",
+       "High Horsepower"
+      ]
+     },
+     {
+      "species": "tyranitar",
+      "name": "Tyranitar",
+      "mega": "Tyranitar-Mega",
+      "item": "Tyranitarite",
+      "ability": "Sand Stream",
+      "nature": "Jolly",
+      "moves": [
+       "Rock Slide",
+       "Knock Off",
+       "Protect",
+       "Low Kick"
+      ]
+     },
+     {
+      "species": "excadrill",
+      "name": "Excadrill",
+      "mega": null,
+      "item": "Focus Sash",
+      "ability": "Sand Rush",
+      "nature": "Adamant",
+      "moves": [
+       "Rock Slide",
+       "High Horsepower",
+       "Iron Head",
+       "Protect"
+      ]
+     },
+     {
+      "species": "salamence",
+      "name": "Salamence",
+      "mega": "Salamence-Mega",
+      "item": "Salamencite",
+      "ability": "Intimidate",
+      "nature": "Timid",
+      "moves": [
+       "Draco Meteor",
+       "Hyper Voice",
+       "Tailwind",
+       "Protect"
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "species": [
+    "basculegion",
+    "garchomp",
+    "incineroar",
+    "raichu",
+    "rillaboom",
+    "volcarona"
+   ],
+   "names": [
+    "Basculegion",
+    "Garchomp",
+    "Incineroar",
+    "Raichu",
+    "Rillaboom",
+    "Volcarona"
+   ],
+   "teams": 41,
+   "share": 0.0089,
+   "win_rate": 0.5227,
+   "games": 331,
+   "day2_teams": 8,
+   "events": 3,
+   "best": {
+    "event_key": "vgchistory:regional-louisville-2027",
+    "event": "Louisville Regional Championships 2027",
+    "date": "2026-10-10",
+    "placement": 23,
+    "player": "Nick Navarre",
+    "country": "US",
+    "record": "9-3",
+    "team": [
+     {
+      "species": "basculegion",
+      "name": "Basculegion",
+      "mega": null,
+      "item": "Choice Scarf",
+      "ability": "Adaptability",
+      "nature": "Jolly",
+      "moves": [
+       "Last Respects",
+       "Wave Crash",
+       "Flip Turn",
+       "Soak"
+      ]
+     },
+     {
+      "species": "raichu",
+      "name": "Raichu",
+      "mega": "Raichu-Mega-Y",
+      "item": "Raichunite Y",
+      "ability": "Lightning Rod",
+      "nature": "Timid",
+      "moves": [
+       "Zap Cannon",
+       "Encore",
+       "Focus Blast",
+       "Protect"
+      ]
+     },
+     {
+      "species": "incineroar",
+      "name": "Incineroar",
+      "mega": null,
+      "item": "Sitrus Berry",
+      "ability": "Intimidate",
+      "nature": "Careful",
+      "moves": [
+       "Parting Shot",
+       "Flare Blitz",
+       "Fake Out",
+       "Darkest Lariat"
+      ]
+     },
+     {
+      "species": "volcarona",
+      "name": "Volcarona",
+      "mega": null,
+      "item": "Grassy Seed",
+      "ability": "Flame Body",
+      "nature": "Modest",
+      "moves": [
+       "Protect",
+       "Heat Wave",
+       "Quiver Dance",
+       "Giga Drain"
+      ]
+     },
+     {
+      "species": "garchomp",
+      "name": "Garchomp",
+      "mega": "Garchomp-Mega-Z",
+      "item": "Garchompite Z",
+      "ability": "Rough Skin",
+      "nature": "Timid",
+      "moves": [
+       "Protect",
+       "Earth Power",
+       "Draco Meteor",
+       "Power Gem"
+      ]
+     },
+     {
+      "species": "rillaboom",
+      "name": "Rillaboom",
+      "mega": null,
+      "item": "Miracle Seed",
+      "ability": "Grassy Surge",
+      "nature": "Adamant",
+      "moves": [
+       "Wood Hammer",
+       "Fake Out",
+       "U-turn",
+       "Grassy Glide"
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "species": [
+    "dragonite",
+    "floette-eternal",
+    "gholdengo",
+    "incineroar",
+    "rillaboom",
+    "sneasler"
+   ],
+   "names": [
+    "Dragonite",
+    "Floette-Eternal",
+    "Gholdengo",
+    "Incineroar",
+    "Rillaboom",
+    "Sneasler"
+   ],
+   "teams": 38,
+   "share": 0.0082,
+   "win_rate": 0.5484,
+   "games": 341,
+   "day2_teams": 9,
+   "events": 5,
+   "best": {
+    "event_key": "vgchistory:regional-frankfurt-2027",
+    "event": "Frankfurt Regional Championships 2027",
+    "date": "2026-09-26",
+    "placement": 4,
+    "player": "Eden Batchelor",
+    "country": "GB",
+    "record": "13-3",
+    "team": [
+     {
+      "species": "gholdengo",
+      "name": "Gholdengo",
+      "mega": null,
+      "item": "Life Orb",
+      "ability": "Good as Gold",
+      "nature": "Modest",
+      "moves": [
+       "Make It Rain",
+       "Shadow Ball",
+       "Nasty Plot",
+       "Protect"
+      ]
+     },
+     {
+      "species": "dragonite",
+      "name": "Dragonite",
+      "mega": "Dragonite-Mega",
+      "item": "Dragoninite",
+      "ability": "Inner Focus",
+      "nature": "Modest",
+      "moves": [
+       "Dragon Pulse",
+       "Heat Wave",
+       "Tailwind",
+       "Protect"
+      ]
+     },
+     {
+      "species": "incineroar",
+      "name": "Incineroar",
+      "mega": null,
+      "item": "Sitrus Berry",
+      "ability": "Intimidate",
+      "nature": "Impish",
+      "moves": [
+       "Flare Blitz",
+       "Throat Chop",
+       "Parting Shot",
+       "Fake Out"
+      ]
+     },
+     {
+      "species": "rillaboom",
+      "name": "Rillaboom",
+      "mega": null,
+      "item": "Miracle Seed",
+      "ability": "Grassy Surge",
+      "nature": "Adamant",
+      "moves": [
+       "Grassy Glide",
+       "Wood Hammer",
+       "High Horsepower",
+       "Fake Out"
+      ]
+     },
+     {
+      "species": "sneasler",
+      "name": "Sneasler",
+      "mega": null,
+      "item": "White Herb",
+      "ability": "Unburden",
+      "nature": "Adamant",
+      "moves": [
+       "Close Combat",
+       "Dire Claw",
+       "Rock Tomb",
+       "Protect"
+      ]
+     },
+     {
+      "species": "floette-eternal",
+      "name": "Floette-Eternal",
+      "mega": "Floette-Mega",
+      "item": "Floettite",
+      "ability": "Flower Veil",
+      "nature": "Bold",
+      "moves": [
+       "Draining Kiss",
+       "Dazzling Gleam",
+       "Calm Mind",
+       "Protect"
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "species": [
+    "charizard",
+    "garchomp",
+    "incineroar",
+    "sylveon",
+    "toxapex",
+    "venusaur"
+   ],
+   "names": [
+    "Charizard",
+    "Garchomp",
+    "Incineroar",
+    "Sylveon",
+    "Toxapex",
+    "Venusaur"
+   ],
+   "teams": 37,
+   "share": 0.008,
+   "win_rate": 0.6364,
+   "games": 352,
+   "day2_teams": 15,
+   "events": 5,
+   "best": {
+    "event_key": "vgchistory:regional-recife-2027",
+    "event": "Recife Regional Championships 2027",
+    "date": "2026-10-03",
+    "placement": 1,
+    "player": "Juan Francisco Salerno",
+    "country": "AR",
+    "record": "14-0",
+    "team": [
+     {
+      "species": "sylveon",
+      "name": "Sylveon",
+      "mega": null,
+      "item": "Fairy Feather",
+      "ability": "Pixilate",
+      "nature": "Modest",
+      "moves": [
+       "Hyper Voice",
+       "Yawn",
+       "Quick Attack",
+       "Protect"
+      ]
+     },
+     {
+      "species": "toxapex",
+      "name": "Toxapex",
+      "mega": null,
+      "item": "Leftovers",
+      "ability": "Regenerator",
+      "nature": "Relaxed",
+      "moves": [
+       "Infestation",
+       "Toxic",
+       "Wide Guard",
+       "Baneful Bunker"
+      ]
+     },
+     {
+      "species": "garchomp",
+      "name": "Garchomp",
+      "mega": null,
+      "item": "Choice Scarf",
+      "ability": "Rough Skin",
+      "nature": "Adamant",
+      "moves": [
+       "Earthquake",
+       "Dragon Claw",
+       "Rock Slide",
+       "Stomping Tantrum"
+      ]
+     },
+     {
+      "species": "venusaur",
+      "name": "Venusaur",
+      "mega": null,
+      "item": "Life Orb",
+      "ability": "Chlorophyll",
+      "nature": "Modest",
+      "moves": [
+       "Leaf Storm",
+       "Sludge Bomb",
+       "Earth Power",
+       "Protect"
+      ]
+     },
+     {
+      "species": "charizard",
+      "name": "Charizard",
+      "mega": "Charizard-Mega-Y",
+      "item": "Charizardite Y",
+      "ability": "Blaze",
+      "nature": "Timid",
+      "moves": [
+       "Heat Wave",
+       "Weather Ball",
+       "Ancient Power",
+       "Protect"
+      ]
+     },
+     {
+      "species": "incineroar",
+      "name": "Incineroar",
+      "mega": null,
+      "item": "Sitrus Berry",
+      "ability": "Intimidate",
+      "nature": "Impish",
+      "moves": [
+       "Fake Out",
+       "Flare Blitz",
+       "Parting Shot",
+       "Throat Chop"
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "species": [
+    "floette-eternal",
+    "gholdengo",
+    "incineroar",
+    "rillaboom",
+    "salamence",
+    "sneasler"
+   ],
+   "names": [
+    "Floette-Eternal",
+    "Gholdengo",
+    "Incineroar",
+    "Rillaboom",
+    "Salamence",
+    "Sneasler"
+   ],
+   "teams": 33,
+   "share": 0.0071,
+   "win_rate": 0.4511,
+   "games": 266,
+   "day2_teams": 5,
+   "events": 6,
+   "best": {
+    "event_key": "vgchistory:regional-frankfurt-2027",
+    "event": "Frankfurt Regional Championships 2027",
+    "date": "2026-09-26",
+    "placement": 19,
+    "player": "Louis Markl",
+    "country": "DE",
+    "record": "10-3",
+    "team": [
+     {
+      "species": "floette-eternal",
+      "name": "Floette-Eternal",
+      "mega": "Floette-Mega",
+      "item": "Floettite",
+      "ability": "Flower Veil",
+      "nature": "Modest",
+      "moves": [
+       "Protect",
+       "Dazzling Gleam",
+       "Calm Mind",
+       "Moonblast"
+      ]
+     },
+     {
+      "species": "gholdengo",
+      "name": "Gholdengo",
+      "mega": null,
+      "item": "Life Orb",
+      "ability": "Good as Gold",
+      "nature": "Timid",
+      "moves": [
+       "Protect",
+       "Shadow Ball",
+       "Nasty Plot",
+       "Make It Rain"
+      ]
+     },
+     {
+      "species": "salamence",
+      "name": "Salamence",
+      "mega": "Salamence-Mega",
+      "item": "Salamencite",
+      "ability": "Intimidate",
+      "nature": "Timid",
+      "moves": [
+       "Protect",
+       "Tailwind",
+       "Hyper Voice",
+       "Draco Meteor"
+      ]
+     },
+     {
+      "species": "rillaboom",
+      "name": "Rillaboom",
+      "mega": null,
+      "item": "Sitrus Berry",
+      "ability": "Grassy Surge",
+      "nature": "Adamant",
+      "moves": [
+       "Fake Out",
+       "Grassy Glide",
+       "Wood Hammer",
+       "U-turn"
+      ]
+     },
+     {
+      "species": "incineroar",
+      "name": "Incineroar",
+      "mega": null,
+      "item": "Rocky Helmet",
+      "ability": "Intimidate",
+      "nature": "Impish",
+      "moves": [
+       "Fake Out",
+       "Parting Shot",
+       "Flare Blitz",
+       "Throat Chop"
+      ]
+     },
+     {
+      "species": "sneasler",
+      "name": "Sneasler",
+      "mega": null,
+      "item": "Grassy Seed",
+      "ability": "Unburden",
+      "nature": "Adamant",
+      "moves": [
+       "Protect",
+       "Close Combat",
+       "Dire Claw",
+       "Rock Slide"
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "species": [
+    "floette-eternal",
+    "gholdengo",
+    "incineroar",
+    "raichu",
+    "rillaboom",
+    "sneasler"
+   ],
+   "names": [
+    "Floette-Eternal",
+    "Gholdengo",
+    "Incineroar",
+    "Raichu",
+    "Rillaboom",
+    "Sneasler"
+   ],
+   "teams": 32,
+   "share": 0.0069,
+   "win_rate": 0.513,
+   "games": 269,
+   "day2_teams": 6,
+   "events": 5,
+   "best": {
+    "event_key": "vgchistory:regional-baltimore-2027",
+    "event": "Baltimore Regional Championships 2027",
+    "date": "2026-09-18",
+    "placement": 51,
+    "player": "Evan Hamod",
+    "country": "US",
+    "record": "9-4",
+    "team": [
+     {
+      "species": "floette-eternal",
+      "name": "Floette-Eternal",
+      "mega": "Floette-Mega",
+      "item": "Floettite",
+      "ability": "Flower Veil",
+      "nature": "Modest",
+      "moves": [
+       "Moonblast",
+       "Dazzling Gleam",
+       "Protect",
+       "Calm Mind"
+      ]
+     },
+     {
+      "species": "raichu",
+      "name": "Raichu",
+      "mega": "Raichu-Mega-Y",
+      "item": "Raichunite Y",
+      "ability": "Lightning Rod",
+      "nature": "Timid",
+      "moves": [
+       "Zap Cannon",
+       "Focus Blast",
+       "Protect",
+       "Encore"
+      ]
+     },
+     {
+      "species": "rillaboom",
+      "name": "Rillaboom",
+      "mega": null,
+      "item": "Miracle Seed",
+      "ability": "Grassy Surge",
+      "nature": "Adamant",
+      "moves": [
+       "Grassy Glide",
+       "Wood Hammer",
+       "High Horsepower",
+       "Fake Out"
+      ]
+     },
+     {
+      "species": "gholdengo",
+      "name": "Gholdengo",
+      "mega": null,
+      "item": "Life Orb",
+      "ability": "Good as Gold",
+      "nature": "Timid",
+      "moves": [
+       "Make It Rain",
+       "Shadow Ball",
+       "Protect",
+       "Nasty Plot"
+      ]
+     },
+     {
+      "species": "incineroar",
+      "name": "Incineroar",
+      "mega": null,
+      "item": "Sitrus Berry",
+      "ability": "Intimidate",
+      "nature": "Careful",
+      "moves": [
+       "Throat Chop",
+       "Parting Shot",
+       "Flare Blitz",
+       "Fake Out"
+      ]
+     },
+     {
+      "species": "sneasler",
+      "name": "Sneasler",
+      "mega": null,
+      "item": "Grassy Seed",
+      "ability": "Unburden",
+      "nature": "Adamant",
+      "moves": [
+       "Rock Slide",
+       "Dire Claw",
+       "Close Combat",
+       "Protect"
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "species": [
+    "archaludon",
+    "charizard",
+    "grimmsnarl",
+    "pelipper",
+    "swampert",
+    "venusaur"
+   ],
+   "names": [
+    "Archaludon",
+    "Charizard",
+    "Grimmsnarl",
+    "Pelipper",
+    "Swampert",
+    "Venusaur"
+   ],
+   "teams": 29,
+   "share": 0.0063,
+   "win_rate": 0.542,
+   "games": 238,
+   "day2_teams": 5,
+   "events": 6,
+   "best": {
+    "event_key": "vgchistory:regional-recife-2027",
+    "event": "Recife Regional Championships 2027",
+    "date": "2026-10-03",
+    "placement": 4,
+    "player": "Hugo Nascimento Vilela dos Santos",
+    "country": "BR",
+    "record": "10-3",
+    "team": [
+     {
+      "species": "swampert",
+      "name": "Swampert",
+      "mega": "Swampert-Mega",
+      "item": "Swampertite",
+      "ability": "Torrent",
+      "nature": "Adamant",
+      "moves": [
+       "Wave Crash",
+       "Earthquake",
+       "Ice Punch",
+       "Protect"
+      ]
+     },
+     {
+      "species": "pelipper",
+      "name": "Pelipper",
+      "mega": null,
+      "item": "Sitrus Berry",
+      "ability": "Drizzle",
+      "nature": "Bold",
+      "moves": [
+       "Hurricane",
+       "Weather Ball",
+       "Tailwind",
+       "Wide Guard"
+      ]
+     },
+     {
+      "species": "venusaur",
+      "name": "Venusaur",
+      "mega": null,
+      "item": "Focus Sash",
+      "ability": "Chlorophyll",
+      "nature": "Modest",
+      "moves": [
+       "Leaf Storm",
+       "Sludge Bomb",
+       "Sleep Powder",
+       "Protect"
+      ]
+     },
+     {
+      "species": "charizard",
+      "name": "Charizard",
+      "mega": "Charizard-Mega-Y",
+      "item": "Charizardite Y",
+      "ability": "Blaze",
+      "nature": "Timid",
+      "moves": [
+       "Heat Wave",
+       "Hurricane",
+       "Weather Ball",
+       "Protect"
+      ]
+     },
+     {
+      "species": "grimmsnarl",
+      "name": "Grimmsnarl",
+      "mega": null,
+      "item": "Light Clay",
+      "ability": "Prankster",
+      "nature": "Careful",
+      "moves": [
+       "Spirit Break",
+       "Reflect",
+       "Light Screen",
+       "Parting Shot"
+      ]
+     },
+     {
+      "species": "archaludon",
+      "name": "Archaludon",
+      "mega": null,
+      "item": "Leftovers",
+      "ability": "Stamina",
+      "nature": "Calm",
+      "moves": [
+       "Flash Cannon",
+       "Dragon Pulse",
+       "Electro Shot",
+       "Protect"
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "species": [
+    "archaludon",
+    "gengar",
+    "incineroar",
+    "politoed",
+    "rillaboom",
+    "vivillon"
+   ],
+   "names": [
+    "Archaludon",
+    "Gengar",
+    "Incineroar",
+    "Politoed",
+    "Rillaboom",
+    "Vivillon"
+   ],
+   "teams": 27,
+   "share": 0.0058,
+   "win_rate": 0.5024,
+   "games": 207,
+   "day2_teams": 2,
+   "events": 6,
+   "best": {
+    "event_key": "vgchistory:regional-baltimore-2027",
+    "event": "Baltimore Regional Championships 2027",
+    "date": "2026-09-18",
+    "placement": 3,
+    "player": "Brady Smith",
+    "country": "US",
+    "record": "13-3",
+    "team": [
+     {
+      "species": "archaludon",
+      "name": "Archaludon",
+      "mega": null,
+      "item": "Leftovers",
+      "ability": "Stamina",
+      "nature": "Bold",
+      "moves": [
+       "Dragon Pulse",
+       "Flash Cannon",
+       "Electro Shot",
+       "Protect"
+      ]
+     },
+     {
+      "species": "incineroar",
+      "name": "Incineroar",
+      "mega": null,
+      "item": "Passho Berry",
+      "ability": "Intimidate",
+      "nature": "Sassy",
+      "moves": [
+       "Fake Out",
+       "Parting Shot",
+       "Darkest Lariat",
+       "Protect"
+      ]
+     },
+     {
+      "species": "politoed",
+      "name": "Politoed",
+      "mega": null,
+      "item": "Sitrus Berry",
+      "ability": "Drizzle",
+      "nature": "Calm",
+      "moves": [
+       "Perish Song",
+       "Weather Ball",
+       "Encore",
+       "Protect"
+      ]
+     },
+     {
+      "species": "vivillon",
+      "name": "Vivillon",
+      "mega": null,
+      "item": "Focus Sash",
+      "ability": "Compound Eyes",
+      "nature": "Timid",
+      "moves": [
+       "Sleep Powder",
+       "Rage Powder",
+       "Hurricane",
+       "Protect"
+      ]
+     },
+     {
+      "species": "rillaboom",
+      "name": "Rillaboom",
+      "mega": null,
+      "item": "Eject Button",
+      "ability": "Grassy Surge",
+      "nature": "Careful",
+      "moves": [
+       "Fake Out",
+       "Grassy Glide",
+       "U-turn",
+       "Protect"
+      ]
+     },
+     {
+      "species": "gengar",
+      "name": "Gengar",
+      "mega": "Gengar-Mega",
+      "item": "Gengarite",
+      "ability": "Cursed Body",
+      "nature": "Modest",
+      "moves": [
+       "Shadow Ball",
+       "Sludge Bomb",
+       "Perish Song",
+       "Protect"
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "species": [
+    "archaludon",
+    "basculegion-f",
+    "golisopod",
+    "pelipper",
+    "raichu",
+    "sneasler"
+   ],
+   "names": [
+    "Archaludon",
+    "Basculegion-F",
+    "Golisopod",
+    "Pelipper",
+    "Raichu",
+    "Sneasler"
+   ],
+   "teams": 26,
+   "share": 0.0056,
+   "win_rate": 0.6096,
+   "games": 251,
+   "day2_teams": 9,
+   "events": 2,
+   "best": {
+    "event_key": "vgchistory:regional-nice-2027",
+    "event": "Nice Regional Championships 2027",
+    "date": "2026-10-17",
+    "placement": 1,
+    "player": "Louis Fontvieille",
+    "country": "FR",
+    "record": "15-2",
+    "team": [
+     {
+      "species": "raichu",
+      "name": "Raichu",
+      "mega": "Raichu-Mega-X",
+      "item": "Raichunite X",
+      "ability": "Lightning Rod",
+      "nature": "Jolly",
+      "moves": [
+       "Volt Tackle",
+       "Volt Switch",
+       "Feint",
+       "Fake Out"
+      ]
+     },
+     {
+      "species": "golisopod",
+      "name": "Golisopod",
+      "mega": "Golisopod-Mega",
+      "item": "Golisopite",
+      "ability": "Emergency Exit",
+      "nature": "Adamant",
+      "moves": [
+       "Leech Life",
+       "Iron Head",
+       "Sucker Punch",
+       "Protect"
+      ]
+     },
+     {
+      "species": "archaludon",
+      "name": "Archaludon",
+      "mega": null,
+      "item": "Leftovers",
+      "ability": "Stamina",
+      "nature": "Calm",
+      "moves": [
+       "Electro Shot",
+       "Dragon Pulse",
+       "Snarl",
+       "Protect"
+      ]
+     },
+     {
+      "species": "pelipper",
+      "name": "Pelipper",
+      "mega": null,
+      "item": "Damp Rock",
+      "ability": "Drizzle",
+      "nature": "Bold",
+      "moves": [
+       "Weather Ball",
+       "Hurricane",
+       "Wide Guard",
+       "Helping Hand"
+      ]
+     },
+     {
+      "species": "basculegion-f",
+      "name": "Basculegion-F",
+      "mega": null,
+      "item": "Focus Sash",
+      "ability": "Swift Swim",
+      "nature": "Modest",
+      "moves": [
+       "Muddy Water",
+       "Shadow Ball",
+       "Ice Beam",
+       "Protect"
+      ]
+     },
+     {
+      "species": "sneasler",
+      "name": "Sneasler",
+      "mega": null,
+      "item": "Electric Seed",
+      "ability": "Unburden",
+      "nature": "Adamant",
+      "moves": [
+       "Poison Jab",
+       "Close Combat",
+       "Swords Dance",
+       "Protect"
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "species": [
+    "arcanine-hisui",
+    "indeedee",
+    "metagross",
+    "milotic",
+    "salamence",
+    "sneasler"
+   ],
+   "names": [
+    "Arcanine-Hisui",
+    "Indeedee",
+    "Metagross",
+    "Milotic",
+    "Salamence",
+    "Sneasler"
+   ],
+   "teams": 25,
+   "share": 0.0054,
+   "win_rate": 0.5429,
+   "games": 210,
+   "day2_teams": 4,
+   "events": 4,
+   "best": {
+    "event_key": "vgchistory:regional-baltimore-2027",
+    "event": "Baltimore Regional Championships 2027",
+    "date": "2026-09-18",
+    "placement": 4,
+    "player": "Blaik Thompson",
+    "country": "US",
+    "record": "13-3",
+    "team": [
+     {
+      "species": "salamence",
+      "name": "Salamence",
+      "mega": "Salamence-Mega",
+      "item": "Salamencite",
+      "ability": "Intimidate",
+      "nature": "Timid",
+      "moves": [
+       "Heat Wave",
+       "Draco Meteor",
+       "Hyper Voice",
+       "Protect"
+      ]
+     },
+     {
+      "species": "arcanine-hisui",
+      "name": "Arcanine-Hisui",
+      "mega": null,
+      "item": "Focus Sash",
+      "ability": "Rock Head",
+      "nature": "Jolly",
+      "moves": [
+       "Flare Blitz",
+       "Head Smash",
+       "Extreme Speed",
+       "Protect"
+      ]
+     },
+     {
+      "species": "indeedee",
+      "name": "Indeedee",
+      "mega": null,
+      "item": "Choice Scarf",
+      "ability": "Psychic Surge",
+      "nature": "Modest",
+      "moves": [
+       "Expanding Force",
+       "Trick",
+       "Trick Room",
+       "Imprison"
+      ]
+     },
+     {
+      "species": "milotic",
+      "name": "Milotic",
+      "mega": null,
+      "item": "Leftovers",
+      "ability": "Competitive",
+      "nature": "Calm",
+      "moves": [
+       "Scald",
+       "Ice Beam",
+       "Icy Wind",
+       "Protect"
+      ]
+     },
+     {
+      "species": "metagross",
+      "name": "Metagross",
+      "mega": "Metagross-Mega",
+      "item": "Metagrossite",
+      "ability": "Clear Body",
+      "nature": "Adamant",
+      "moves": [
+       "Steel Roller",
+       "Psychic Fangs",
+       "Body Press",
+       "Protect"
+      ]
+     },
+     {
+      "species": "sneasler",
+      "name": "Sneasler",
+      "mega": null,
+      "item": "Psychic Seed",
+      "ability": "Unburden",
+      "nature": "Adamant",
+      "moves": [
+       "Throat Chop",
+       "Close Combat",
+       "Rock Slide",
+       "Protect"
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "species": [
+    "basculegion",
+    "gardevoir",
+    "indeedee-f",
+    "kommo-o",
+    "pyroar",
+    "whimsicott"
+   ],
+   "names": [
+    "Basculegion",
+    "Gardevoir",
+    "Indeedee-F",
+    "Kommo-o",
+    "Pyroar",
+    "Whimsicott"
+   ],
+   "teams": 25,
+   "share": 0.0054,
+   "win_rate": 0.5566,
+   "games": 212,
+   "day2_teams": 4,
+   "events": 5,
+   "best": {
+    "event_key": "vgchistory:regional-baltimore-2027",
+    "event": "Baltimore Regional Championships 2027",
+    "date": "2026-09-18",
+    "placement": 18,
+    "player": "Mason Cutler",
+    "country": "US",
+    "record": "10-3",
+    "team": [
+     {
+      "species": "indeedee-f",
+      "name": "Indeedee-F",
+      "mega": null,
+      "item": "Rocky Helmet",
+      "ability": "Psychic Surge",
+      "nature": "Bold",
+      "moves": [
+       "Psychic",
+       "Helping Hand",
+       "Follow Me",
+       "Protect"
+      ]
+     },
+     {
+      "species": "whimsicott",
+      "name": "Whimsicott",
+      "mega": null,
+      "item": "Focus Sash",
+      "ability": "Prankster",
+      "nature": "Timid",
+      "moves": [
+       "Moonblast",
+       "Encore",
+       "Tailwind",
+       "Protect"
+      ]
+     },
+     {
+      "species": "basculegion",
+      "name": "Basculegion",
+      "mega": null,
+      "item": "Mystic Water",
+      "ability": "Adaptability",
+      "nature": "Adamant",
+      "moves": [
+       "Wave Crash",
+       "Last Respects",
+       "Aqua Jet",
+       "Protect"
+      ]
+     },
+     {
+      "species": "kommo-o",
+      "name": "Kommo-o",
+      "mega": null,
+      "item": "Life Orb",
+      "ability": "Soundproof",
+      "nature": "Modest",
+      "moves": [
+       "Clanging Scales",
+       "Aura Sphere",
+       "Flamethrower",
+       "Protect"
+      ]
+     },
+     {
+      "species": "pyroar",
+      "name": "Pyroar",
+      "mega": "Pyroar-Mega",
+      "item": "Pyroarite",
+      "ability": "Unnerve",
+      "nature": "Timid",
+      "moves": [
+       "Heat Wave",
+       "Overheat",
+       "Scorching Sands",
+       "Protect"
+      ]
+     },
+     {
+      "species": "gardevoir",
+      "name": "Gardevoir",
+      "mega": "Gardevoir-Mega",
+      "item": "Gardevoirite",
+      "ability": "Synchronize",
+      "nature": "Timid",
+      "moves": [
+       "Hyper Voice",
+       "Expanding Force",
+       "Calm Mind",
+       "Protect"
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "species": [
+    "farigiraf",
+    "garchomp",
+    "incineroar",
+    "sneasler",
+    "sylveon",
+    "torkoal"
+   ],
+   "names": [
+    "Farigiraf",
+    "Garchomp",
+    "Incineroar",
+    "Sneasler",
+    "Sylveon",
+    "Torkoal"
+   ],
+   "teams": 24,
+   "share": 0.0052,
+   "win_rate": 0.5054,
+   "games": 184,
+   "day2_teams": 2,
+   "events": 4,
+   "best": {
+    "event_key": "vgchistory:regional-frankfurt-2027",
+    "event": "Frankfurt Regional Championships 2027",
+    "date": "2026-09-26",
+    "placement": 2,
+    "player": "Sebastian Liu Li",
+    "country": "NL",
+    "record": "14-3",
+    "team": [
+     {
+      "species": "farigiraf",
+      "name": "Farigiraf",
+      "mega": null,
+      "item": "Sitrus Berry",
+      "ability": "Armor Tail",
+      "nature": "Sassy",
+      "moves": [
+       "Psychic",
+       "Trick Room",
+       "Helping Hand",
+       "Protect"
+      ]
+     },
+     {
+      "species": "garchomp",
+      "name": "Garchomp",
+      "mega": "Garchomp-Mega-Z",
+      "item": "Garchompite Z",
+      "ability": "Rough Skin",
+      "nature": "Modest",
+      "moves": [
+       "Draco Meteor",
+       "Flamethrower",
+       "Power Gem",
+       "Protect"
+      ]
+     },
+     {
+      "species": "sneasler",
+      "name": "Sneasler",
+      "mega": null,
+      "item": "White Herb",
+      "ability": "Unburden",
+      "nature": "Adamant",
+      "moves": [
+       "Close Combat",
+       "Gunk Shot",
+       "Fake Out",
+       "Protect"
+      ]
+     },
+     {
+      "species": "torkoal",
+      "name": "Torkoal",
+      "mega": null,
+      "item": "Charcoal",
+      "ability": "Drought",
+      "nature": "Quiet",
+      "moves": [
+       "Eruption",
+       "Earth Power",
+       "Weather Ball",
+       "Protect"
+      ]
+     },
+     {
+      "species": "sylveon",
+      "name": "Sylveon",
+      "mega": null,
+      "item": "Fairy Feather",
+      "ability": "Pixilate",
+      "nature": "Modest",
+      "moves": [
+       "Hyper Voice",
+       "Hyper Beam",
+       "Yawn",
+       "Detect"
+      ]
+     },
+     {
+      "species": "incineroar",
+      "name": "Incineroar",
+      "mega": null,
+      "item": "Chople Berry",
+      "ability": "Intimidate",
+      "nature": "Adamant",
+      "moves": [
+       "Flare Blitz",
+       "Darkest Lariat",
+       "Parting Shot",
+       "Fake Out"
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "species": [
+    "arcanine-hisui",
+    "basculegion",
+    "kingambit",
+    "rillaboom",
+    "salamence",
+    "sneasler"
+   ],
+   "names": [
+    "Arcanine-Hisui",
+    "Basculegion",
+    "Kingambit",
+    "Rillaboom",
+    "Salamence",
+    "Sneasler"
+   ],
+   "teams": 24,
+   "share": 0.0052,
+   "win_rate": 0.4326,
+   "games": 178,
+   "day2_teams": 2,
+   "events": 4,
+   "best": {
+    "event_key": "vgchistory:regional-baltimore-2027",
+    "event": "Baltimore Regional Championships 2027",
+    "date": "2026-09-18",
+    "placement": 35,
+    "player": "Jules Gallo",
+    "country": "US",
+    "record": "10-3",
+    "team": [
+     {
+      "species": "arcanine-hisui",
+      "name": "Arcanine-Hisui",
+      "mega": null,
+      "item": "Focus Sash",
+      "ability": "Rock Head",
+      "nature": "Jolly",
+      "moves": [
+       "Flare Blitz",
+       "Head Smash",
+       "Extreme Speed",
+       "Protect"
+      ]
+     },
+     {
+      "species": "salamence",
+      "name": "Salamence",
+      "mega": "Salamence-Mega",
+      "item": "Salamencite",
+      "ability": "Intimidate",
+      "nature": "Timid",
+      "moves": [
+       "Hyper Voice",
+       "Draco Meteor",
+       "Tailwind",
+       "Protect"
+      ]
+     },
+     {
+      "species": "kingambit",
+      "name": "Kingambit",
+      "mega": null,
+      "item": "Chople Berry",
+      "ability": "Defiant",
+      "nature": "Adamant",
+      "moves": [
+       "Kowtow Cleave",
+       "Sucker Punch",
+       "Iron Head",
+       "Low Kick"
+      ]
+     },
+     {
+      "species": "basculegion",
+      "name": "Basculegion",
+      "mega": null,
+      "item": "Life Orb",
+      "ability": "Adaptability",
+      "nature": "Adamant",
+      "moves": [
+       "Aqua Jet",
+       "Wave Crash",
+       "Last Respects",
+       "Protect"
+      ]
+     },
+     {
+      "species": "rillaboom",
+      "name": "Rillaboom",
+      "mega": null,
+      "item": "Miracle Seed",
+      "ability": "Grassy Surge",
+      "nature": "Adamant",
+      "moves": [
+       "Fake Out",
+       "Grassy Glide",
+       "Wood Hammer",
+       "High Horsepower"
+      ]
+     },
+     {
+      "species": "sneasler",
+      "name": "Sneasler",
+      "mega": null,
+      "item": "White Herb",
+      "ability": "Unburden",
+      "nature": "Adamant",
+      "moves": [
+       "Fake Out",
+       "Close Combat",
+       "Dire Claw",
+       "Rock Slide"
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "species": [
+    "delphox",
+    "garchomp",
+    "incineroar",
+    "kingambit",
+    "sinistcha",
+    "sneasler"
+   ],
+   "names": [
+    "Delphox",
+    "Garchomp",
+    "Incineroar",
+    "Kingambit",
+    "Sinistcha",
+    "Sneasler"
+   ],
+   "teams": 22,
+   "share": 0.0047,
+   "win_rate": 0.4885,
+   "games": 174,
+   "day2_teams": 4,
+   "events": 2,
+   "best": {
+    "event_key": "vgchistory:regional-louisville-2027",
+    "event": "Louisville Regional Championships 2027",
+    "date": "2026-10-10",
+    "placement": 48,
+    "player": "Logan Mazur",
+    "country": "US",
+    "record": "9-3",
+    "team": [
+     {
+      "species": "delphox",
+      "name": "Delphox",
+      "mega": "Delphox-Mega",
+      "item": "Delphoxite",
+      "ability": "Blaze",
+      "nature": "Modest",
+      "moves": [
+       "Heat Wave",
+       "Psychic",
+       "Nasty Plot",
+       "Protect"
+      ]
+     },
+     {
+      "species": "kingambit",
+      "name": "Kingambit",
+      "mega": null,
+      "item": "Life Orb",
+      "ability": "Defiant",
+      "nature": "Adamant",
+      "moves": [
+       "Kowtow Cleave",
+       "Sucker Punch",
+       "Swords Dance",
+       "Protect"
+      ]
+     },
+     {
+      "species": "sneasler",
+      "name": "Sneasler",
+      "mega": null,
+      "item": "Focus Sash",
+      "ability": "Poison Touch",
+      "nature": "Jolly",
+      "moves": [
+       "Close Combat",
+       "Dire Claw",
+       "Fake Out",
+       "Quick Guard"
+      ]
+     },
+     {
+      "species": "sinistcha",
+      "name": "Sinistcha",
+      "mega": null,
+      "item": "Colbur Berry",
+      "ability": "Hospitality",
+      "nature": "Bold",
+      "moves": [
+       "Matcha Gotcha",
+       "Rage Powder",
+       "Trick Room",
+       "Protect"
+      ]
+     },
+     {
+      "species": "garchomp",
+      "name": "Garchomp",
+      "mega": null,
+      "item": "Choice Scarf",
+      "ability": "Rough Skin",
+      "nature": "Adamant",
+      "moves": [
+       "Earthquake",
+       "Dragon Claw",
+       "Stomping Tantrum",
+       "Rock Slide"
+      ]
+     },
+     {
+      "species": "incineroar",
+      "name": "Incineroar",
+      "mega": null,
+      "item": "Sitrus Berry",
+      "ability": "Intimidate",
+      "nature": "Careful",
+      "moves": [
+       "Flare Blitz",
+       "Fake Out",
+       "Helping Hand",
+       "Parting Shot"
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "species": [
+    "charizard",
+    "farigiraf",
+    "garchomp",
+    "incineroar",
+    "sylveon",
+    "venusaur"
+   ],
+   "names": [
+    "Charizard",
+    "Farigiraf",
+    "Garchomp",
+    "Incineroar",
+    "Sylveon",
+    "Venusaur"
+   ],
+   "teams": 21,
+   "share": 0.0045,
+   "win_rate": 0.5969,
+   "games": 191,
+   "day2_teams": 5,
+   "events": 3,
+   "best": {
+    "event_key": "vgchistory:regional-louisville-2027",
+    "event": "Louisville Regional Championships 2027",
+    "date": "2026-10-10",
+    "placement": 1,
+    "player": "Joseph Ugarte",
+    "country": "US",
+    "record": "15-2",
+    "team": [
+     {
+      "species": "farigiraf",
+      "name": "Farigiraf",
+      "mega": null,
+      "item": "Sitrus Berry",
+      "ability": "Armor Tail",
+      "nature": "Quiet",
+      "moves": [
+       "Psychic",
+       "Thunderbolt",
+       "Helping Hand",
+       "Trick Room"
+      ]
+     },
+     {
+      "species": "incineroar",
+      "name": "Incineroar",
+      "mega": null,
+      "item": "Chople Berry",
+      "ability": "Intimidate",
+      "nature": "Adamant",
+      "moves": [
+       "Flare Blitz",
+       "Darkest Lariat",
+       "Parting Shot",
+       "Fake Out"
+      ]
+     },
+     {
+      "species": "charizard",
+      "name": "Charizard",
+      "mega": "Charizard-Mega-Y",
+      "item": "Charizardite Y",
+      "ability": "Blaze",
+      "nature": "Modest",
+      "moves": [
+       "Heat Wave",
+       "Weather Ball",
+       "Ancient Power",
+       "Protect"
+      ]
+     },
+     {
+      "species": "sylveon",
+      "name": "Sylveon",
+      "mega": null,
+      "item": "Fairy Feather",
+      "ability": "Pixilate",
+      "nature": "Modest",
+      "moves": [
+       "Hyper Voice",
+       "Moonblast",
+       "Yawn",
+       "Protect"
+      ]
+     },
+     {
+      "species": "venusaur",
+      "name": "Venusaur",
+      "mega": null,
+      "item": "Focus Sash",
+      "ability": "Chlorophyll",
+      "nature": "Modest",
+      "moves": [
+       "Leaf Storm",
+       "Sludge Bomb",
+       "Sleep Powder",
+       "Protect"
+      ]
+     },
+     {
+      "species": "garchomp",
+      "name": "Garchomp",
+      "mega": null,
+      "item": "Choice Scarf",
+      "ability": "Rough Skin",
+      "nature": "Adamant",
+      "moves": [
+       "Rock Slide",
+       "Stomping Tantrum",
+       "Dragon Claw",
+       "Earthquake"
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "species": [
+    "camerupt",
+    "farigiraf",
+    "hatterene",
+    "incineroar",
+    "indeedee-f",
+    "kingambit"
+   ],
+   "names": [
+    "Camerupt",
+    "Farigiraf",
+    "Hatterene",
+    "Incineroar",
+    "Indeedee-F",
+    "Kingambit"
+   ],
+   "teams": 21,
+   "share": 0.0045,
+   "win_rate": 0.5056,
+   "games": 178,
+   "day2_teams": 3,
+   "events": 4,
+   "best": {
+    "event_key": "vgchistory:regional-baltimore-2027",
+    "event": "Baltimore Regional Championships 2027",
+    "date": "2026-09-18",
+    "placement": 38,
+    "player": "Advait Budaraju",
+    "country": "US",
+    "record": "10-3",
+    "team": [
+     {
+      "species": "farigiraf",
+      "name": "Farigiraf",
+      "mega": null,
+      "item": "Sitrus Berry",
+      "ability": "Armor Tail",
+      "nature": "Sassy",
+      "moves": [
+       "Helping Hand",
+       "Protect",
+       "Expanding Force",
+       "Trick Room"
+      ]
+     },
+     {
+      "species": "hatterene",
+      "name": "Hatterene",
+      "mega": null,
+      "item": "Focus Sash",
+      "ability": "Magic Bounce",
+      "nature": "Quiet",
+      "moves": [
+       "Expanding Force",
+       "Protect",
+       "Dazzling Gleam",
+       "Trick Room"
+      ]
+     },
+     {
+      "species": "incineroar",
+      "name": "Incineroar",
+      "mega": null,
+      "item": "White Herb",
+      "ability": "Intimidate",
+      "nature": "Adamant",
+      "moves": [
+       "Throat Chop",
+       "Flare Blitz",
+       "Fake Out",
+       "Close Combat"
+      ]
+     },
+     {
+      "species": "camerupt",
+      "name": "Camerupt",
+      "mega": "Camerupt-Mega",
+      "item": "Cameruptite",
+      "ability": "Solid Rock",
+      "nature": "Quiet",
+      "moves": [
+       "Heat Wave",
+       "Ancient Power",
+       "Earth Power",
+       "Protect"
+      ]
+     },
+     {
+      "species": "kingambit",
+      "name": "Kingambit",
+      "mega": null,
+      "item": "Black Glasses",
+      "ability": "Defiant",
+      "nature": "Brave",
+      "moves": [
+       "Kowtow Cleave",
+       "Sucker Punch",
+       "Protect",
+       "Iron Head"
+      ]
+     },
+     {
+      "species": "indeedee-f",
+      "name": "Indeedee-F",
+      "mega": null,
+      "item": "Psychic Seed",
+      "ability": "Psychic Surge",
+      "nature": "Relaxed",
+      "moves": [
+       "Follow Me",
+       "Trick Room",
+       "Psychic",
+       "Helping Hand"
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "species": [
+    "basculegion",
+    "floette-eternal",
+    "kingambit",
+    "rillaboom",
+    "salamence",
+    "sneasler"
+   ],
+   "names": [
+    "Basculegion",
+    "Floette-Eternal",
+    "Kingambit",
+    "Rillaboom",
+    "Salamence",
+    "Sneasler"
+   ],
+   "teams": 20,
+   "share": 0.0043,
+   "win_rate": 0.64,
+   "games": 200,
+   "day2_teams": 9,
+   "events": 4,
+   "best": {
+    "event_key": "vgchistory:regional-brisbane-2027",
+    "event": "Brisbane Regional Championships 2027",
+    "date": "2026-09-26",
+    "placement": 2,
+    "player": "Haruki Sato",
+    "country": "JP",
+    "record": "12-3",
+    "team": [
+     {
+      "species": "floette-eternal",
+      "name": "Floette-Eternal",
+      "mega": "Floette-Mega",
+      "item": "Floettite",
+      "ability": "Flower Veil",
+      "nature": "Modest",
+      "moves": [
+       "Moonblast",
+       "Protect",
+       "Calm Mind",
+       "Dazzling Gleam"
+      ]
+     },
+     {
+      "species": "kingambit",
+      "name": "Kingambit",
+      "mega": null,
+      "item": "Chople Berry",
+      "ability": "Defiant",
+      "nature": "Adamant",
+      "moves": [
+       "Sucker Punch",
+       "Protect",
+       "Kowtow Cleave",
+       "Iron Head"
+      ]
+     },
+     {
+      "species": "basculegion",
+      "name": "Basculegion",
+      "mega": null,
+      "item": "Colbur Berry",
+      "ability": "Adaptability",
+      "nature": "Adamant",
+      "moves": [
+       "Last Respects",
+       "Aqua Jet",
+       "Protect",
+       "Wave Crash"
+      ]
+     },
+     {
+      "species": "rillaboom",
+      "name": "Rillaboom",
+      "mega": null,
+      "item": "Miracle Seed",
+      "ability": "Grassy Surge",
+      "nature": "Adamant",
+      "moves": [
+       "Grassy Glide",
+       "Fake Out",
+       "Wood Hammer",
+       "High Horsepower"
+      ]
+     },
+     {
+      "species": "salamence",
+      "name": "Salamence",
+      "mega": "Salamence-Mega",
+      "item": "Salamencite",
+      "ability": "Intimidate",
+      "nature": "Modest",
+      "moves": [
+       "Flamethrower",
+       "Protect",
+       "Tailwind",
+       "Hyper Voice"
+      ]
+     },
+     {
+      "species": "sneasler",
+      "name": "Sneasler",
+      "mega": null,
+      "item": "Focus Sash",
+      "ability": "Poison Touch",
+      "nature": "Jolly",
+      "moves": [
+       "Protect",
+       "Dire Claw",
+       "Fake Out",
+       "Close Combat"
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "species": [
+    "basculegion",
+    "floette-eternal",
+    "incineroar",
+    "raichu",
+    "rillaboom",
+    "volcarona"
+   ],
+   "names": [
+    "Basculegion",
+    "Floette-Eternal",
+    "Incineroar",
+    "Raichu",
+    "Rillaboom",
+    "Volcarona"
+   ],
+   "teams": 20,
+   "share": 0.0043,
+   "win_rate": 0.5568,
+   "games": 185,
+   "day2_teams": 7,
+   "events": 4,
+   "best": {
+    "event_key": "vgchistory:regional-nice-2027",
+    "event": "Nice Regional Championships 2027",
+    "date": "2026-10-17",
+    "placement": 18,
+    "player": "Louis Markl",
+    "country": "DE",
+    "record": "9-3",
+    "team": [
+     {
+      "species": "basculegion",
+      "name": "Basculegion",
+      "mega": null,
+      "item": "Choice Scarf",
+      "ability": "Adaptability",
+      "nature": "Jolly",
+      "moves": [
+       "Flip Turn",
+       "Wave Crash",
+       "Last Respects",
+       "Aqua Jet"
+      ]
+     },
+     {
+      "species": "floette-eternal",
+      "name": "Floette-Eternal",
+      "mega": "Floette-Mega",
+      "item": "Floettite",
+      "ability": "Flower Veil",
+      "nature": "Modest",
+      "moves": [
+       "Protect",
+       "Dazzling Gleam",
+       "Calm Mind",
+       "Moonblast"
+      ]
+     },
+     {
+      "species": "incineroar",
+      "name": "Incineroar",
+      "mega": null,
+      "item": "Sitrus Berry",
+      "ability": "Intimidate",
+      "nature": "Careful",
+      "moves": [
+       "Fake Out",
+       "Flare Blitz",
+       "Parting Shot",
+       "Throat Chop"
+      ]
+     },
+     {
+      "species": "raichu",
+      "name": "Raichu",
+      "mega": "Raichu-Mega-Y",
+      "item": "Raichunite Y",
+      "ability": "Lightning Rod",
+      "nature": "Timid",
+      "moves": [
+       "Protect",
+       "Focus Blast",
+       "Zap Cannon",
+       "Fake Out"
+      ]
+     },
+     {
+      "species": "rillaboom",
+      "name": "Rillaboom",
+      "mega": null,
+      "item": "Miracle Seed",
+      "ability": "Grassy Surge",
+      "nature": "Adamant",
+      "moves": [
+       "Fake Out",
+       "Grassy Glide",
+       "Wood Hammer",
+       "U-turn"
+      ]
+     },
+     {
+      "species": "volcarona",
+      "name": "Volcarona",
+      "mega": null,
+      "item": "Leftovers",
+      "ability": "Flame Body",
+      "nature": "Modest",
+      "moves": [
+       "Protect",
+       "Heat Wave",
+       "Quiver Dance",
+       "Struggle Bug"
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "species": [
+    "arcanine-hisui",
+    "gholdengo",
+    "milotic",
+    "raichu",
+    "rillaboom",
+    "staraptor"
+   ],
+   "names": [
+    "Arcanine-Hisui",
+    "Gholdengo",
+    "Milotic",
+    "Raichu",
+    "Rillaboom",
+    "Staraptor"
+   ],
+   "teams": 20,
+   "share": 0.0043,
+   "win_rate": 0.509,
+   "games": 167,
+   "day2_teams": 4,
+   "events": 6,
+   "best": {
+    "event_key": "vgchistory:regional-frankfurt-2027",
+    "event": "Frankfurt Regional Championships 2027",
+    "date": "2026-09-26",
+    "placement": 25,
+    "player": "Arthur Glandier",
+    "country": "FR",
+    "record": "10-3",
+    "team": [
+     {
+      "species": "arcanine-hisui",
+      "name": "Arcanine-Hisui",
+      "mega": null,
+      "item": "Focus Sash",
+      "ability": "Rock Head",
+      "nature": "Jolly",
+      "moves": [
+       "Flare Blitz",
+       "Head Smash",
+       "Extreme Speed",
+       "Protect"
+      ]
+     },
+     {
+      "species": "milotic",
+      "name": "Milotic",
+      "mega": null,
+      "item": "Sitrus Berry",
+      "ability": "Competitive",
+      "nature": "Calm",
+      "moves": [
+       "Muddy Water",
+       "Hypnosis",
+       "Coil",
+       "Ice Beam"
+      ]
+     },
+     {
+      "species": "staraptor",
+      "name": "Staraptor",
+      "mega": "Staraptor-Mega",
+      "item": "Staraptite",
+      "ability": "Intimidate",
+      "nature": "Jolly",
+      "moves": [
+       "Close Combat",
+       "Brave Bird",
+       "Tailwind",
+       "Protect"
+      ]
+     },
+     {
+      "species": "rillaboom",
+      "name": "Rillaboom",
+      "mega": null,
+      "item": "Life Orb",
+      "ability": "Grassy Surge",
+      "nature": "Adamant",
+      "moves": [
+       "Grassy Glide",
+       "Wood Hammer",
+       "High Horsepower",
+       "Fake Out"
+      ]
+     },
+     {
+      "species": "raichu",
+      "name": "Raichu",
+      "mega": "Raichu-Mega-Y",
+      "item": "Raichunite Y",
+      "ability": "Lightning Rod",
+      "nature": "Timid",
+      "moves": [
+       "Zap Cannon",
+       "Focus Blast",
+       "Fake Out",
+       "Protect"
+      ]
+     },
+     {
+      "species": "gholdengo",
+      "name": "Gholdengo",
+      "mega": null,
+      "item": "Grassy Seed",
+      "ability": "Good as Gold",
+      "nature": "Modest",
+      "moves": [
+       "Shadow Ball",
+       "Make It Rain",
+       "Nasty Plot",
+       "Protect"
+      ]
+     }
+    ]
+   }
   }
  ],
  "trend": {

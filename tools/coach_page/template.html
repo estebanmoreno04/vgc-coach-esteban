@@ -241,6 +241,102 @@ td button.linkrow:hover { color: var(--ink); }
 .tip-head strong { font-family: var(--serif); font-size: 15px; font-weight: 500; }
 .tip-row { display: flex; justify-content: space-between; gap: 14px; color: var(--ink-2); }
 .tip-row span:last-child { font-family: var(--mono); font-variant-numeric: tabular-nums; color: var(--ink); }
+/* buttons shared by planner and modal */
+.btn { border: 0; background: var(--lift-hover); color: var(--ink-2); border-radius: 10px; padding: 8px 12px; cursor: pointer; font-size: 13px; transition: background-color 200ms var(--ease), color 200ms var(--ease); }
+.btn:hover { background: var(--lift-focus); color: var(--ink); }
+.btn.primary { background: var(--accent); color: var(--accent-ink); }
+.btn.primary:hover { background: var(--accent-hover); }
+.paste-btn { border: 0; background: none; color: var(--muted); cursor: pointer; font-size: 12px; padding: 0; margin-top: 8px; transition: color 200ms var(--ease); }
+.paste-btn:hover { color: var(--ink); }
+
+/* planner */
+section.planner { display: grid; gap: 26px; }
+.pl-head { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: end; gap: 12px 24px; }
+.pl-title h2 { font-size: 32px; line-height: 1.15; margin: 2px 0 4px; }
+.pl-title .sub, .pl-block .sub { font-size: 13px; color: var(--muted); margin: 0; max-width: 62ch; }
+.pl-export { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; }
+.pl-msg { font-size: 12.5px; color: var(--muted); }
+.pl-block { display: grid; gap: 10px; min-width: 0; }
+.pl-block > * { min-width: 0; }
+.pl-block h3 { font-size: 11px; font-weight: 500; text-transform: uppercase; letter-spacing: 0.1em; color: var(--muted); margin: 0; }
+.slots { display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); gap: 8px; }
+.slot { display: grid; justify-items: center; gap: 4px; background: var(--lift); border-radius: 14px; padding: 10px 8px 8px; transition: background-color 200ms var(--ease), box-shadow 200ms var(--ease); min-width: 0; }
+.slot:hover { background: var(--lift-hover); }
+.slot:focus-within { background: var(--lift-focus); box-shadow: 0 0 0 1px var(--line); }
+.slot.bad { box-shadow: 0 0 0 1px var(--warn); }
+.slot .face { width: 56px; height: 56px; display: grid; place-items: center; }
+.slot .face img { width: 64px; height: 64px; image-rendering: pixelated; }
+.slot .face .ph { width: 30px; height: 30px; border-radius: 50%; border: 1px dashed var(--faint); color: var(--faint); display: grid; place-items: center; font-size: 12px; }
+.slot input { width: 100%; min-width: 0; border: 0; background: none; text-align: center; font-size: 13px; color: var(--ink); padding: 2px 0; outline: none; }
+.slot input::placeholder { color: var(--faint); }
+.slot .set { font-size: 11px; color: var(--faint); text-align: center; min-height: 14px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 100%; }
+.pl-paste summary { font-size: 13px; color: var(--muted); cursor: pointer; }
+.pl-paste textarea { display: block; width: 100%; margin: 8px 0; background: var(--lift); border-radius: 12px; padding: 10px 12px; font: 13px/1.5 var(--mono); color: var(--ink); resize: vertical; min-height: 140px; }
+.pl-paste textarea:focus { background: var(--lift-focus); outline: none; }
+.rival-list { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(300px, 100%), 1fr)); gap: 8px; }
+.rival { display: grid; gap: 4px; text-align: left; border: 0; background: var(--lift); border-radius: 14px; padding: 10px 12px; cursor: pointer; transition: background-color 200ms var(--ease); min-width: 0; }
+.rival:hover { background: var(--lift-hover); }
+.rival[aria-pressed="true"] { background: var(--lift-focus); box-shadow: 0 0 0 1px var(--line); }
+.rival .six { display: flex; gap: 0; }
+.rival .six img { width: 44px; height: 44px; margin: -6px -4px; image-rendering: pixelated; }
+.rival .lbl { font-size: 12.5px; color: var(--ink-2); display: flex; justify-content: space-between; gap: 8px; }
+.rival .lbl .done { color: var(--good); font-size: 12px; white-space: nowrap; }
+.rival .lbl span:first-child { min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.pl-detail-head { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: baseline; gap: 8px 16px; }
+.pl-detail-head h2 { font-size: 26px; margin: 0; }
+.pl-detail-head .actions2 { display: flex; gap: 8px; flex-wrap: wrap; }
+.opp { display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); gap: 8px; }
+.opp .mon { background: var(--lift); border-radius: 12px; padding: 8px; display: grid; justify-items: center; gap: 2px; text-align: center; min-width: 0; font-size: 12px; }
+.opp .mon img { width: 60px; height: 60px; image-rendering: pixelated; margin: -6px 0; }
+.opp .mon strong { font-weight: 500; font-size: 12.5px; }
+.opp .mon .it { color: var(--muted); font-size: 11.5px; }
+.roles { display: flex; flex-wrap: wrap; justify-content: center; gap: 3px; margin-top: 2px; }
+.role { font-size: 10.5px; padding: 1px 6px; border-radius: 999px; background: var(--lift-hover); color: var(--ink-2); }
+.plan { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
+.plan .pair { display: grid; gap: 6px; }
+.plan .pair .slots { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+.notes { width: 100%; background: var(--lift); border: 0; border-radius: 12px; padding: 10px 12px; color: var(--ink); resize: vertical; min-height: 70px; transition: background-color 200ms var(--ease); }
+.notes:hover { background: var(--lift-hover); }
+.notes:focus { background: var(--lift-focus); outline: none; }
+.matrix td, .matrix th { text-align: center; padding: 4px; }
+.matrix th img, .matrix td.me img { width: 40px; height: 40px; image-rendering: pixelated; margin: -6px; }
+.matrix td.me { text-align: left; }
+.hit2 { display: block; font-family: var(--mono); font-size: 12px; font-variant-numeric: tabular-nums; line-height: 1.3; }
+.hit2.o.good { color: var(--good); }
+.hit2.i.bad { color: var(--accent-hover); }
+.hit2.weak { color: var(--faint); }
+.legend { font-size: 12px; color: var(--muted); }
+.legend .g { color: var(--good); } .legend .b { color: var(--accent-hover); }
+.speeds { display: grid; gap: 2px; }
+.speed { display: grid; grid-template-columns: 40px 1fr auto; align-items: center; gap: 8px; padding: 2px 8px; border-radius: 8px; font-size: 13px; }
+.speed img { width: 40px; height: 40px; image-rendering: pixelated; margin: -8px -4px; }
+.speed.mine { background: var(--lift-hover); color: var(--ink); }
+.speed.theirs { color: var(--ink-2); }
+.speed .v { font-family: var(--mono); font-size: 12.5px; font-variant-numeric: tabular-nums; }
+.speed .who { font-size: 11px; color: var(--muted); margin-left: 6px; }
+
+/* modal (pokepaste) */
+.modal { position: fixed; inset: 0; z-index: 20; background: rgb(0 0 0 / 0.55); display: grid; place-items: center; padding: max(16px, env(safe-area-inset-top, 0px)) max(16px, env(safe-area-inset-right, 0px)) max(16px, env(safe-area-inset-bottom, 0px)) max(16px, env(safe-area-inset-left, 0px)); }
+.modal-box { background: #18181b; border-radius: 16px; width: min(760px, 100%); max-height: 100%; overflow: auto; padding: 18px 20px; display: grid; gap: 12px; }
+.modal-box header { display: flex; justify-content: space-between; align-items: baseline; gap: 12px; }
+.modal-box h2 { margin: 0; font-size: 22px; }
+.modal-box .x { border: 0; background: none; color: var(--muted); font-size: 22px; cursor: pointer; }
+.paste { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(220px, 100%), 1fr)); gap: 10px; }
+.paste .pm { background: var(--lift); border-radius: 12px; padding: 10px 12px; font: 12.5px/1.5 var(--mono); white-space: pre-wrap; color: var(--ink-2); min-width: 0; }
+.paste .pm img { float: right; width: 56px; height: 56px; image-rendering: pixelated; margin: -10px -10px 0 0; }
+.paste .pm b { color: var(--ink); font-weight: 500; }
+.paste-actions { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; }
+.paste-text { width: 100%; min-height: 120px; background: var(--lift); border: 0; border-radius: 12px; padding: 10px 12px; font: 12px/1.5 var(--mono); color: var(--ink); }
+
+/* Pokémon sprites inside chat answers */
+.msg .pk-inline { white-space: nowrap; }
+.msg .pk-inline img { width: 30px; height: 30px; margin: -10px -2px -9px -6px; vertical-align: middle; image-rendering: pixelated; }
+
+@media (max-width: 620px) {
+  .slots, .opp { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .plan { grid-template-columns: 1fr; }
+  .pl-title h2 { font-size: 27px; }
+}
 @media (prefers-reduced-motion: no-preference) { .msg, .detail, .cards { animation: in 220ms var(--ease); } @keyframes in { from { opacity: 0.55; transform: translateY(3px); } to { opacity: 1; transform: none; } } }
 @media (prefers-reduced-motion: reduce) { *, *::before, *::after { transition: none !important; } }
 @media (max-width: 620px) { .cards { grid-template-columns: 1fr; } .msg.user { max-width: 100%; } #welcome h2 { font-size: 32px; } .detail h2 { font-size: 27px; } }
@@ -253,6 +349,7 @@ td button.linkrow:hover { color: var(--ink); }
     <nav class="tabs" role="tablist">
       <button id="tab-chat" role="tab" aria-selected="true" aria-controls="view-chat">Chat</button>
       <button id="tab-meta" role="tab" aria-selected="false" aria-controls="view-meta">Meta</button>
+      <button id="tab-planner" role="tab" aria-selected="false" aria-controls="view-planner">Planner</button>
     </nav>
   </header>
   <p class="alerts" id="chips" hidden></p>
@@ -292,7 +389,50 @@ td button.linkrow:hover { color: var(--ink); }
     <div id="meta-detail" class="detail" hidden></div>
     <p class="small" id="credits"></p>
   </section>
+
+  <section id="view-planner" class="planner" role="tabpanel" aria-labelledby="tab-planner" hidden>
+    <div class="pl-head">
+      <div class="pl-title">
+        <span class="tag">Planner</span>
+        <h2>Plan de emparejamientos</h2>
+        <p class="sub">Rellena tu equipo, elige un rival y apunta tu lead y tu back. Se guarda solo en este navegador.</p>
+      </div>
+      <div class="pl-export">
+        <button type="button" class="btn" id="pl-export-png">Exportar imagen</button>
+        <button type="button" class="btn" id="pl-export-md">Exportar texto</button>
+        <button type="button" class="btn" id="pl-copy">Copiar</button>
+        <span class="pl-msg" id="pl-export-msg" role="status"></span>
+      </div>
+    </div>
+    <div class="pl-block">
+      <h3>Tu equipo</h3>
+      <div class="slots" id="pl-team"></div>
+      <details class="pl-paste">
+        <summary>Pegar equipo en formato Showdown (con sets y stat points)</summary>
+        <textarea id="pl-paste" rows="8" aria-label="Equipo en formato Showdown" placeholder="Whimsicott @ Focus Sash&#10;Ability: Prankster&#10;EVs: 2 HP / 32 SpA / 32 Spe&#10;Timid Nature&#10;- Tailwind&#10;…"></textarea>
+        <button type="button" class="btn" id="pl-paste-load">Cargar equipo</button>
+      </details>
+    </div>
+    <div class="pl-block">
+      <h3>Rivales</h3>
+      <div class="seg" id="pl-source">
+        <button type="button" data-source="recent" aria-pressed="true">Top cut recientes</button>
+        <button type="button" data-source="common" aria-pressed="false">Más repetidos</button>
+      </div>
+      <div class="rival-list" id="pl-list"></div>
+    </div>
+    <div class="pl-block" id="pl-detail" hidden></div>
+  </section>
 </div>
+
+<div class="modal" id="modal" hidden>
+  <div class="modal-box" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+    <header><h2 id="modal-title"></h2><button type="button" class="x" data-close="1" aria-label="Cerrar">×</button></header>
+    <div id="modal-body"></div>
+  </div>
+</div>
+<datalist id="all-species"></datalist>
+<datalist id="my-species"></datalist>
 <script src="https://cdn.jsdelivr.net/npm/@smogon/calc@0.12.0/dist/data/production.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/@smogon/calc@0.12.0/dist/production.min.js"></script>
 <script>
@@ -334,16 +474,16 @@ td button.linkrow:hover { color: var(--ink); }
   $("chips").hidden = !st.alerts.length;
 
   // ---- tabs ----
+  const VIEWS = ["chat", "meta", "planner"];
   function show(view) {
-    const chat = view === "chat";
-    $("view-chat").hidden = !chat;
-    $("view-meta").hidden = chat;
-    $("tab-chat").setAttribute("aria-selected", String(chat));
-    $("tab-meta").setAttribute("aria-selected", String(!chat));
+    for (const name of VIEWS) {
+      $("view-" + name).hidden = name !== view;
+      $("tab-" + name).setAttribute("aria-selected", String(name === view));
+    }
+    window.scrollTo({ top: 0 });
   }
-  $("tab-chat").onclick = () => show("chat");
-  $("tab-meta").onclick = () => show("meta");
-  if (location.hash === "#meta") show("meta");
+  for (const name of VIEWS) $("tab-" + name).onclick = () => show(name);
+  if (location.hash === "#meta" || location.hash === "#planner") show(location.hash.slice(1));
 
   // ---- meta: four cards; each opens its own view, and tournaments open one by one ----
   const day = (iso) => { const [, m, d] = String(iso).split("-"); return `${d}/${m}`; };
@@ -356,11 +496,12 @@ td button.linkrow:hover { color: var(--ink); }
   const T = (label) => [label, false];
   const share = (v) => `<span class="share">${pct(v)}<span class="bar"><i style="width:${Math.min(100, Math.round((v || 0) * 100))}%"></i></span></span>`;
   const meter = (v) => `<span class="meter"><i style="width:${Math.min(100, Math.round((v || 0) * 100))}%"></i></span>`;
-  function teamCards(list) {
+  function teamCards(list, label) {
     if (!list.length) return '<p class="sub">Sin equipos de top cut en los datos.</p>';
     return '<div class="teams">' + list.map(([placement, player, country, record, team]) =>
       `<div class="team"><strong>${placement}.º ${esc(player)}</strong><span class="where">${[record, country].filter(Boolean).map(esc).join(" · ")}</span>` +
-      `<ul>${team.map((m) => `<li>${spr(VGCCoachCore.slug(m[0]), "spr spr-s")}${esc(m[0])} <span>@ ${esc(m[1] || "?")}</span></li>`).join("")}</ul></div>`).join("") + "</div>";
+      `<ul>${team.map((m) => `<li>${spr(VGCCoachCore.slug(m[0]), "spr spr-s")}${esc(m[0])} <span>@ ${esc(m[1] || "?")}</span></li>`).join("")}</ul>` +
+      pasteButton(`${label}: ${placement}.º ${player}`, team.map(([name, item, ability, nature, moves]) => ({ name, item, ability, nature, moves }))) + "</div>").join("") + "</div>";
   }
   const regionals = core.regionals;
   const onlineEvents = core.byEvent.filter((e) => e.segment === "online");
@@ -436,7 +577,7 @@ td button.linkrow:hover { color: var(--ink); }
     return `<div class="${online ? "online" : ""}"><span class="tag">${online ? "Online" : "Regional"} · ${esc(longDay(e.date))}</span><h2>${esc(online ? e.name : core.shortEvent(e.name))}</h2>
       <p class="sub">${facts.join(" · ")}</p>${table(head, body)}
       <h3>Megas</h3>${table([T("Mega"), N("Uso"), N("WR")], e.megas.slice(0, 12).map((m) => [pk(m.mega, core.display(m.mega)), pct(m.share), pct(m.win_rate)]))}
-      <h3>${online ? "Mejores equipos" : "Top cut"}</h3>${teamCards(e.top)}</div>`;
+      <h3>${online ? "Mejores equipos" : "Top cut"}</h3>${teamCards(e.top, online ? e.name : core.shortEvent(e.name))}</div>`;
   }
 
   // ---- trend chart: usage at the latest regionals, one line per Pokémon ----
@@ -705,6 +846,310 @@ td button.linkrow:hover { color: var(--ink); }
   home();
   $("credits").textContent = "Fuentes: " + DATA.credits.join(" · ") + ". Regulación detectada de las noticias oficiales del juego.";
 
+  // ---- shared: species name lists, Pokepaste modal ----
+  const allNames = [...new Set([
+    ...core.usageRows.slice().sort((a, b) => (b.total.share || 0) - (a.total.share || 0)).map((r) => r.name),
+    ...core.megas.map((m) => m.name),
+  ])];
+  $("all-species").innerHTML = allNames.map((n) => `<option value="${esc(n)}"></option>`).join("");
+  const resolveId = (name) => { try { const r = core.resolveSpecies(name); return r.mega || r.species; } catch (e) { return null; } };
+
+  function openModal(title, html) {
+    $("modal-title").textContent = title;
+    $("modal-body").innerHTML = html;
+    $("modal").hidden = false;
+    const close = $("modal").querySelector("[data-close]");
+    if (close) close.focus();
+  }
+  function closeModal() { $("modal").hidden = true; }
+  $("modal").addEventListener("click", (ev) => { if (ev.target === $("modal") || ev.target.closest("[data-close]")) closeModal(); });
+  document.addEventListener("keydown", (ev) => { if (ev.key === "Escape" && !$("modal").hidden) closeModal(); });
+
+  async function copyText(text, statusEl, field) {
+    try {
+      await navigator.clipboard.writeText(text);
+      if (statusEl) statusEl.textContent = "Copiado.";
+    } catch (e) {
+      if (field) { field.focus(); field.select(); }
+      if (statusEl) statusEl.textContent = "No se ha podido copiar solo: el texto está seleccionado, pulsa Ctrl+C.";
+    }
+  }
+
+  // Team sheets in Meta and the planner register here; buttons carry an index, not the text.
+  const PASTES = [];
+  function pasteButton(title, team) {
+    PASTES.push({ title, team });
+    return `<button type="button" class="paste-btn" data-paste="${PASTES.length - 1}">Pokepaste</button>`;
+  }
+  function openPaste(entry) {
+    const text = core.showdownText(entry.team);
+    const blocks = text.split("\n\n").map((block, i) => {
+      const lines = block.split("\n");
+      return `<div class="pm">${spr(resolveId(entry.team[i].name), "")}<b>${esc(lines[0])}</b>\n${esc(lines.slice(1).join("\n"))}</div>`;
+    }).join("");
+    openModal(entry.title, `<div class="paste">${blocks}</div>
+      <p class="sub">Las team sheets abiertas no publican los stat points, así que el paste no lleva línea de EVs.</p>
+      <textarea class="paste-text" id="paste-text" readonly aria-label="Texto del equipo en formato Showdown">${esc(text)}</textarea>
+      <div class="paste-actions"><button type="button" class="btn primary" id="paste-copy">Copiar para Showdown</button>
+      <a href="https://pokepast.es/" target="_blank" rel="noopener">Abrir pokepast.es para pegarlo</a><span class="pl-msg" id="paste-msg" role="status"></span></div>`);
+    $("paste-copy").onclick = () => copyText(text, $("paste-msg"), $("paste-text"));
+  }
+  document.addEventListener("click", (ev) => {
+    const el = ev.target.closest("[data-paste]");
+    if (el) openPaste(PASTES[Number(el.dataset.paste)]);
+  });
+
+  // ---- planner ----
+  const PLAN_STORE = "vgc-coach-planner-v1";
+  const rivals = core.plannerRivals(2);
+  const rivalByKey = new Map([...rivals.recent, ...rivals.common].map((r) => [r.key, r]));
+  let plan = (() => {
+    try {
+      const saved = JSON.parse(localStorage.getItem(PLAN_STORE) || "null");
+      if (saved && Array.isArray(saved.team) && saved.plans) return saved;
+    } catch (e) { /* storage unavailable */ }
+    return { team: [null, null, null, null, null, null], source: "recent", open: null, plans: {} };
+  })();
+  const savePlan = () => { try { localStorage.setItem(PLAN_STORE, JSON.stringify(plan)); } catch (e) { /* storage unavailable */ } };
+  const myTeam = () => plan.team.filter(Boolean);
+  const rivalLabel = (r) => r.source === "recent"
+    ? `${r.event} · ${r.placement}.º ${r.player}${r.record ? ` (${r.record})` : ""}`
+    : `${r.teams} equipos · WR ${pct(r.win_rate)} · ${r.day2_teams} en día 2`;
+  const rivalTitle = (r) => r.source === "recent" ? `${r.event}: ${r.placement}.º ${r.player}` : `Equipo repetido (${r.teams} veces) · mejor: ${r.placement}.º en ${r.event}`;
+  const planFor = (key) => plan.plans[key] || (plan.plans[key] = { lead: ["", ""], back: ["", ""], notes: "" });
+  const hasPlan = (key) => { const p = plan.plans[key]; return !!p && (p.lead.some(Boolean) || p.back.some(Boolean) || !!p.notes.trim()); };
+
+  function slotHtml(kind, index, value) {
+    const id = value ? resolveId(value) : null;
+    const face = id ? spr(id, "") : `<span class="ph">${kind === "team" ? index + 1 : "?"}</span>`;
+    const entry = kind === "team" ? plan.team[index] : null;
+    const set = entry && entry.moves && entry.moves.length ? `${entry.item || ""}` : (entry ? "set de día 2" : "");
+    return `<label class="slot${value && !id ? " bad" : ""}"><span class="face">${face}</span>
+      <input data-slot="${kind}" data-index="${index}" value="${esc(value || "")}" list="${kind === "team" ? "all-species" : "my-species"}" placeholder="${kind === "team" ? "Pokémon" : "—"}" autocomplete="off" aria-label="${kind === "team" ? `Pokémon ${index + 1} de tu equipo` : kind}">
+      ${kind === "team" ? `<span class="set">${esc(set)}</span>` : ""}</label>`;
+  }
+  function renderTeam() {
+    $("pl-team").innerHTML = plan.team.map((m, i) => slotHtml("team", i, m ? m.name : "")).join("");
+    $("my-species").innerHTML = myTeam().map((m) => `<option value="${esc(m.name)}"></option>`).join("");
+  }
+  function renderRivals() {
+    const list = rivals[plan.source] || [];
+    document.querySelectorAll("#pl-source button").forEach((b) => b.setAttribute("aria-pressed", String(b.dataset.source === plan.source)));
+    $("pl-list").innerHTML = list.map((r) => `<button type="button" class="rival" data-rival="${esc(r.key)}" aria-pressed="${plan.open === r.key}">
+      <span class="six">${r.team.map((m) => spr(resolveId(m.name), "")).join("")}</span>
+      <span class="lbl"><span>${esc(rivalLabel(r))}</span>${hasPlan(r.key) ? '<span class="done">plan ✓</span>' : ""}</span></button>`).join("");
+  }
+
+  let speedMode = "normal";
+  function renderDetail() {
+    const box = $("pl-detail");
+    const r = plan.open && rivalByKey.get(plan.open);
+    if (!r) { box.hidden = true; return; }
+    box.hidden = false;
+    const p = planFor(r.key);
+    const mine = myTeam();
+    let sheet = null;
+    if (mine.length) { try { sheet = core.matchupSheet(mine, r.team); } catch (e) { sheet = null; } }
+    const theirs = sheet ? sheet.theirs : r.team.map((m) => ({ id: resolveId(m.name), name: m.name, item: m.item, roles: [] }));
+    let html = `<div class="pl-detail-head"><div><span class="tag">${r.source === "recent" ? "Top cut reciente" : "Equipo repetido"}</span><h2>${esc(rivalTitle(r))}</h2></div>
+      <div class="actions2">${pasteButton(rivalTitle(r), r.team).replace('class="paste-btn"', 'class="btn"')}<button type="button" class="btn" data-ask="1">Pedir plan al coach</button></div></div>`;
+    html += `<div class="opp">${theirs.map((m) => `<div class="mon">${spr(m.id, "")}<strong>${esc(m.name)}</strong><span class="it">${esc(m.item || "")}</span>
+      <span class="roles">${(m.roles || []).map((x) => `<span class="role">${esc(x)}</span>`).join("")}</span></div>`).join("")}</div>`;
+    html += `<div class="plan"><div class="pair"><h3>Lead</h3><div class="slots">${p.lead.map((v, i) => slotHtml("lead", i, v)).join("")}</div></div>
+      <div class="pair"><h3>Back</h3><div class="slots">${p.back.map((v, i) => slotHtml("back", i, v)).join("")}</div></div></div>
+      <textarea class="notes" id="pl-notes" placeholder="Notas: plan de los primeros turnos, a quién proteger, qué evitar…" aria-label="Notas del emparejamiento">${esc(p.notes)}</textarea>`;
+    if (!sheet) {
+      html += '<p class="sub">Rellena tu equipo arriba para ver el emparejamiento por tipos y velocidades.</p>';
+    } else {
+      const mark = (hit, dir) => {
+        if (!hit) return `<span class="hit2 weak">·</span>`;
+        const x = hit.x === 0 ? "0" : hit.x === 0.25 ? "¼" : hit.x === 0.5 ? "½" : hit.x === 1 ? "1" : String(hit.x);
+        const cls = dir === "o" ? (hit.x >= 2 ? "good" : hit.x <= 0.5 ? "weak" : "") : (hit.x >= 2 ? "bad" : hit.x <= 0.5 ? "weak" : "");
+        return `<span class="hit2 ${dir} ${cls}" title="${esc(hit.move)} (${esc(hit.type)})">${dir === "o" ? "↗" : "↙"}×${x}</span>`;
+      };
+      html += `<h3>Por tipos</h3><p class="legend">En cada casilla: <span class="g">↗ tu mejor golpe</span> a ese rival y <span class="b">↙ su mejor golpe</span> a ti. Pasa el ratón para ver el movimiento.</p>
+        <div class="tablewrap"><table class="matrix"><thead><tr><th></th>${sheet.theirs.map((m) => `<th>${spr(m.id, "")}</th>`).join("")}</tr></thead><tbody>` +
+        sheet.mine.map((m, i) => `<tr><td class="me">${spr(m.id, "")}</td>${sheet.grid[i].map((c) => `<td>${mark(c.out, "o")}${mark(c.in, "i")}</td>`).join("")}</tr>`).join("") +
+        "</tbody></table></div>";
+      const modes = { normal: "Normal", tw_mine: "Tu Tailwind", tw_theirs: "Su Tailwind", tr: "Trick Room" };
+      const eff = sheet.speeds.map((s) => ({ ...s, v: s.speed * ((speedMode === "tw_mine" && s.side === "mine") || (speedMode === "tw_theirs" && s.side === "theirs") ? 2 : 1) }))
+        .sort((a, b) => (speedMode === "tr" ? a.v - b.v : b.v - a.v));
+      html += `<h3>Orden de velocidad</h3><div class="seg" id="pl-speed">${Object.entries(modes).map(([k, v]) => `<button type="button" data-speed="${k}" aria-pressed="${k === speedMode}">${v}</button>`).join("")}</div>
+        <div class="speeds">${eff.map((s) => `<div class="speed ${s.side}">${spr(s.id, "")}<span>${esc(s.name)}<span class="who">${s.side === "mine" ? "tuyo" : "rival"}</span></span><span class="v">${s.v}${s.assumed ? "*" : ""}</span></div>`).join("")}</div>
+        <p class="legend">${esc(sheet.basis)} * = supuesto.${sheet.mine.some((m) => m.assumed_set) ? " Los tuyos sin set pegado usan su set de día 2 más común." : ""}</p>`;
+    }
+    box.innerHTML = html;
+  }
+  function renderPlanner() { renderTeam(); renderRivals(); renderDetail(); }
+
+  function setTeamSlot(index, value) {
+    const text = value.trim();
+    if (!text) plan.team[index] = null;
+    else {
+      const id = resolveId(text);
+      const prev = plan.team[index];
+      const keep = prev && id && resolveId(prev.name) === id && prev.moves;
+      plan.team[index] = keep ? prev : { name: id ? core.display(id) : text };
+    }
+    savePlan(); renderTeam(); renderDetail();
+  }
+  $("view-planner").addEventListener("change", (ev) => {
+    const el = ev.target;
+    if (el.dataset.slot === "team") setTeamSlot(Number(el.dataset.index), el.value);
+    else if (el.dataset.slot === "lead" || el.dataset.slot === "back") {
+      const p = planFor(plan.open);
+      const id = el.value.trim() ? resolveId(el.value.trim()) : null;
+      p[el.dataset.slot][Number(el.dataset.index)] = id ? core.display(id) : el.value.trim();
+      savePlan(); renderRivals(); renderDetail();
+    }
+  });
+  $("view-planner").addEventListener("input", (ev) => {
+    if (ev.target.id === "pl-notes" && plan.open) { planFor(plan.open).notes = ev.target.value; savePlan(); }
+  });
+  $("view-planner").addEventListener("focusout", (ev) => { if (ev.target.id === "pl-notes") renderRivals(); });
+  $("view-planner").addEventListener("click", (ev) => {
+    const el = ev.target.closest("[data-source], [data-rival], [data-speed], [data-ask]");
+    if (!el) return;
+    if (el.dataset.source) { plan.source = el.dataset.source; savePlan(); renderRivals(); }
+    else if (el.dataset.rival) {
+      plan.open = plan.open === el.dataset.rival ? null : el.dataset.rival;
+      savePlan(); renderRivals(); renderDetail();
+      if (plan.open) $("pl-detail").scrollIntoView({ behavior: "smooth", block: "start" });
+    } else if (el.dataset.speed) { speedMode = el.dataset.speed; renderDetail(); }
+    else if (el.dataset.ask) askCoachAbout(rivalByKey.get(plan.open));
+  });
+  $("pl-paste-load").onclick = () => {
+    const parsed = core.parseTeam($("pl-paste").value).slice(0, 6);
+    if (!parsed.length) { $("pl-export-msg").textContent = "No he podido leer ningún Pokémon del texto pegado."; return; }
+    plan.team = [0, 1, 2, 3, 4, 5].map((i) => parsed[i] ? { ...parsed[i], name: (() => { const id = resolveId(parsed[i].name); return id ? core.display(id) : parsed[i].name; })() } : null);
+    savePlan(); renderPlanner();
+    $("pl-paste").value = ""; $("pl-paste").closest("details").open = false;
+    $("pl-export-msg").textContent = `Equipo cargado: ${myTeam().length} Pokémon con sus sets.`;
+  };
+
+  function askCoachAbout(r) {
+    if (!r) return;
+    const p = planFor(r.key);
+    const mine = myTeam();
+    const mineText = mine.some((m) => m.moves && m.moves.length) ? core.showdownText(mine) : mine.map((m) => m.name).join(", ");
+    const idea = [p.lead.some(Boolean) ? `lead ${p.lead.filter(Boolean).join(" + ")}` : "", p.back.some(Boolean) ? `back ${p.back.filter(Boolean).join(" + ")}` : ""].filter(Boolean).join(", ");
+    $("prompt").value = `Prepárame este emparejamiento (${rivalTitle(r)}).\n\nRival:\n${core.showdownText(r.team)}\n\nMi equipo:\n${mineText || "(aún sin rellenar)"}\n\n` +
+      (idea ? `Mi idea: ${idea}.${p.notes ? ` Notas: ${p.notes}` : ""}\n\n` : "") +
+      "Revísalo con la mecánica (tipos, velocidades y cálculos con sets contrastados) y dime qué traer, con qué abrir y cómo jugar los primeros turnos.";
+    show("chat");
+    $("prompt").dispatchEvent(new Event("input"));
+    $("prompt").focus();
+  }
+
+  // ---- export ----
+  function plannedRivals() { return [...rivals.recent, ...rivals.common].filter((r) => hasPlan(r.key)); }
+  function planMarkdown() {
+    const lines = [`# Plan de emparejamientos · Coach VGC`, ``, `${st.label || st.regulation} · datos hasta ${st.data_through}`, ``,
+      `**Mi equipo:** ${myTeam().map((m) => m.name).join(", ") || "(sin rellenar)"}`, ``];
+    for (const r of plannedRivals()) {
+      const p = planFor(r.key);
+      lines.push(`## ${rivalTitle(r)}`, `Rival: ${r.team.map((m) => m.name).join(", ")}`,
+        `Lead: ${p.lead.filter(Boolean).join(" + ") || "—"}`, `Back: ${p.back.filter(Boolean).join(" + ") || "—"}`);
+      if (p.notes.trim()) lines.push(`Notas: ${p.notes.trim()}`);
+      lines.push("");
+    }
+    return lines.join("\n");
+  }
+  let downloads = null;
+  (async () => { try { downloads = await claude.use("downloads"); } catch (e) { downloads = null; } })();
+  async function saveFile(filename, data) {
+    if (!downloads) { $("pl-export-msg").textContent = "Esta vista no permite descargar archivos: usa Copiar."; return; }
+    try { await downloads.save({ filename, data }); $("pl-export-msg").textContent = "Archivo guardado."; }
+    catch (e) {
+      $("pl-export-msg").textContent = e && e.code === "declined" ? "Descarga cancelada." : "No se ha podido guardar el archivo aquí: usa Copiar.";
+    }
+  }
+  const loadImg = (src) => new Promise((ok) => { const im = new Image(); im.onload = () => ok(im); im.onerror = () => ok(null); im.src = src; });
+  async function planImage() {
+    const list = plannedRivals();
+    const W = 1200, rowH = 150, headH = 190;
+    const canvas = document.createElement("canvas");
+    canvas.width = W; canvas.height = headH + Math.max(1, list.length) * rowH + 40;
+    const g = canvas.getContext("2d");
+    try { await document.fonts.ready; } catch (e) { /* fonts optional */ }
+    g.imageSmoothingEnabled = false;
+    g.fillStyle = "#111113"; g.fillRect(0, 0, W, canvas.height);
+    const sprite = async (id, x, y, size) => { const key = sprId(id); if (!key) return; const im = await loadImg(`data:image/png;base64,${SPR[key]}`); if (im) g.drawImage(im, x, y, size, size); };
+    g.fillStyle = "#ebebed"; g.font = "500 34px Newsreader, Georgia, serif"; g.fillText("Plan de emparejamientos", 40, 58);
+    g.fillStyle = "#85858d"; g.font = "15px Figtree, system-ui, sans-serif"; g.fillText(`Coach VGC · ${st.label || st.regulation} · datos hasta ${st.data_through}`, 40, 86);
+    g.fillStyle = "#85858d"; g.font = "600 12px Figtree, system-ui, sans-serif"; g.fillText("MI EQUIPO", 40, 122);
+    for (const [i, m] of myTeam().entries()) await sprite(resolveId(m.name), 40 + i * 74, 126, 72);
+    for (const [row, r] of list.entries()) {
+      const y = headH + row * rowH;
+      g.fillStyle = "rgba(255,255,255,0.04)"; g.fillRect(24, y, W - 48, rowH - 12);
+      const p = planFor(r.key);
+      g.fillStyle = "#ebebed"; g.font = "500 19px Newsreader, Georgia, serif"; g.fillText(rivalTitle(r).slice(0, 70), 40, y + 28);
+      for (const [i, m] of r.team.entries()) await sprite(resolveId(m.name), 36 + i * 62, y + 34, 64);
+      g.fillStyle = "#85858d"; g.font = "600 12px Figtree, system-ui, sans-serif";
+      g.fillText("LEAD", 450, y + 50); g.fillText("BACK", 620, y + 50);
+      const empty = (x) => { g.save(); g.strokeStyle = "#5b5b63"; g.setLineDash([4, 4]); g.beginPath(); g.arc(x + 36, y + 90, 18, 0, Math.PI * 2); g.stroke(); g.restore(); };
+      for (const [i, v] of p.lead.entries()) { if (v) await sprite(resolveId(v), 444 + i * 72, y + 54, 72); else empty(444 + i * 72); }
+      for (const [i, v] of p.back.entries()) { if (v) await sprite(resolveId(v), 614 + i * 72, y + 54, 72); else empty(614 + i * 72); }
+      g.fillStyle = "#b4b4bb"; g.font = "15px Figtree, system-ui, sans-serif";
+      const words = p.notes.trim().split(/\s+/).filter(Boolean);
+      let line = "", ly = y + 58;
+      for (const w of words) {
+        if (g.measureText(line + w).width > 360) { g.fillText(line.trim(), 800, ly); line = ""; ly += 21; if (ly > y + rowH - 22) break; }
+        line += w + " ";
+      }
+      if (line && ly <= y + rowH - 22) g.fillText(line.trim(), 800, ly);
+    }
+    if (!list.length) { g.fillStyle = "#85858d"; g.font = "16px Figtree, system-ui, sans-serif"; g.fillText("Aún no hay emparejamientos con plan.", 40, headH + 40); }
+    return new Promise((ok) => canvas.toBlob(ok, "image/png"));
+  }
+  $("pl-copy").onclick = () => copyText(planMarkdown(), $("pl-export-msg"));
+  $("pl-export-md").onclick = () => saveFile("plan-emparejamientos.md", planMarkdown());
+  $("pl-export-png").onclick = async () => {
+    if (!plannedRivals().length) { $("pl-export-msg").textContent = "Apunta al menos un lead, back o nota en algún rival."; return; }
+    $("pl-export-msg").textContent = "Preparando la imagen…";
+    const blob = await planImage();
+    if (blob) saveFile("plan-emparejamientos.png", blob); else $("pl-export-msg").textContent = "No se ha podido crear la imagen.";
+  };
+  renderPlanner();
+
+  // ---- sprites next to Pokémon names in chat answers ----
+  const nameIds = new Map();
+  for (const r of core.usageRows) nameIds.set(r.name.toLowerCase(), r.species);
+  for (const m of core.megas) nameIds.set(m.name.toLowerCase(), m.mega);
+  for (const [id, name] of Object.entries((DATA.dex && DATA.dex.names) || {})) if (!nameIds.has(String(name).toLowerCase())) nameIds.set(String(name).toLowerCase(), id);
+  const nameRe = new RegExp(`(?<![\\p{L}\\d-])(${[...nameIds.keys()].sort((a, b) => b.length - a.length)
+    .map((n) => n.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")).join("|")})(?![\\p{L}\\d])`, "giu");
+  function decorate(el) {
+    const walker = document.createTreeWalker(el, NodeFilter.SHOW_TEXT, {
+      acceptNode: (n) => (n.parentElement.closest("code, pre, a, .pk-inline") ? NodeFilter.FILTER_REJECT : NodeFilter.FILTER_ACCEPT),
+    });
+    const nodes = [];
+    while (walker.nextNode()) nodes.push(walker.currentNode);
+    for (const node of nodes) {
+      const text = node.nodeValue;
+      nameRe.lastIndex = 0;
+      if (!nameRe.test(text)) continue;
+      nameRe.lastIndex = 0;
+      const frag = document.createDocumentFragment();
+      let last = 0, m;
+      while ((m = nameRe.exec(text))) {
+        const id = nameIds.get(m[1].toLowerCase());
+        const img = spr(id, "");
+        if (!img) continue;
+        frag.append(text.slice(last, m.index));
+        const span = document.createElement("span");
+        span.className = "pk-inline";
+        span.innerHTML = img;
+        span.append(m[1]);
+        frag.append(span);
+        last = m.index + m[1].length;
+      }
+      frag.append(text.slice(last));
+      node.replaceWith(frag);
+    }
+  }
+  const renderBot = (el, text) => { el.innerHTML = md(text); decorate(el); };
+
   // ---- markdown (escaped first) ----
   function md(text) {
     const blocks = esc(text).split(/```/);
@@ -756,7 +1201,7 @@ td button.linkrow:hover { color: var(--ink); }
   function addMessage(role, content, extra) {
     const div = document.createElement("div");
     div.className = "msg " + (role === "user" ? "user" : "bot") + (extra ? " " + extra : "");
-    if (role === "user") div.textContent = content; else div.innerHTML = md(content);
+    if (role === "user") div.textContent = content; else renderBot(div, content);
     $("messages").append(div);
     div.scrollIntoView({ block: "end", behavior: "smooth" });
     return div;
@@ -844,7 +1289,7 @@ td button.linkrow:hover { color: var(--ink); }
     ctl = new AbortController();
     const options = {
       signal: ctl.signal, cache: undefined, modelTier: $("tier").value,
-      onText: ({ text }) => { bubble.classList.remove("pending"); bubble.innerHTML = md(text); },
+      onText: ({ text }) => { bubble.classList.remove("pending"); renderBot(bubble, text); },
     };
     if (canTools) {
       options.tools = core.tools().map((t) => ({ ...t, execute: (input) => { $("status-line").textContent = "Consultando datos: " + t.name.replace(/_/g, " ") + "…"; return t.execute(input); } }));
@@ -855,7 +1300,8 @@ td button.linkrow:hover { color: var(--ink); }
     try {
       const { text, truncated } = await sample([{ role: "user", content: core.instructions(canTools) }, ...turns], options);
       bubble.classList.remove("pending");
-      bubble.innerHTML = md(text) + (truncated ? '<p class="small">Respuesta cortada: pide menos cosas a la vez.</p>' : "");
+      renderBot(bubble, text);
+      if (truncated) bubble.insertAdjacentHTML("beforeend", '<p class="small">Respuesta cortada: pide menos cosas a la vez.</p>');
       turns.push({ role: "assistant", content: text });
       save();
     } catch (e) {

@@ -33,6 +33,10 @@ const out = {
   series_day2: safe(() => coach.regionalSeries([coach.usageRows[0].species], 5, "day2_share")),
   unproven: calc ? safe(() => coach.calcDamage({ attacker: { species: "Incineroar" }, defender: { species: "Charizard" }, move: "Thunder Punch" }).notes) : "calc not installed",
   types: calc ? safe(() => coach.typeMatchup("Mega Charizard Y", "Kingambit")) : "calc not installed",
+  parsed_gender: safe(() => coach.parseTeam(["Basculegion (M) @ Mystic Water", "Ability: Adaptability", "EVs: 18 Atk / 28 Def / 20 Spe", "Adamant Nature", "- Wave Crash", ""].join(String.fromCharCode(10)))[0]),
+  rivals: safe(() => { const r = coach.plannerRivals(2); return { recent: r.recent.length, common: r.common.length, first: r.recent[0] || r.common[0] }; }),
+  sheet: calc ? safe(() => { const r = coach.plannerRivals(2); const rival = (r.recent[0] || r.common[0]).team; return coach.matchupSheet(["Charizard-Mega-Y", "Incineroar"], rival); }) : "calc not installed",
+  paste: safe(() => coach.showdownText([{ name: "Charizard-Mega-Y", item: "Charizardite Y", ability: "Drought", nature: "Modest", moves: ["Heat Wave", "Protect"] }])),
   tools: coach.tools().map((t) => t.name),
   instructions_bytes: Buffer.byteLength(coach.instructions(true)),
 };

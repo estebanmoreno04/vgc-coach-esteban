@@ -173,6 +173,7 @@ def build_snapshot(
         "top_cut_teams": _top_cut_teams(in_person, online, pokedex, settings),
         "events": [_event_summary(event) for event in events],
         "by_event": _by_event(in_person + online, pokedex, settings),
+        "common_teams": _common_teams(in_person, pokedex, settings),
         "trend": _trend(full_field, pokedex, settings),
         "sources": sources,
         "warnings": warnings,
@@ -536,6 +537,43 @@ def _trend(full_field: list[Event], dex: Pokedex, settings: dict[str, Any]) -> d
             )
         result[label] = sorted(rows, key=lambda row: (-row["share_delta"], row["id"]))
     return result
+
+
+def _common_teams(in_person: list[Event], dex: Pokedex, settings: dict[str, Any]) -> list[dict[str, Any]]:
+    """The same six species seen on several in-person teams, with the best-placed copy's sets."""
+    groups: dict[tuple[str, ...], dict[str, Any]] = {}
+    for event in in_person:
+        for team in event.teams:
+            species = tuple(sorted({mon.species for mon in team.mons}))
+            if len(species) != 6:
+                continue
+            group = groups.setdefault(species, {"tally": _Tally(), "day2": 0, "events": set(), "best": None})
+            group["tally"].add(team)
+            group["day2"] += int(bool(team.day2))
+            group["events"].add(event.key)
+            rank = (team.placement or 10**6, -int(event.date.replace("-", "")))
+            if group["best"] is None or rank < group["best"][0]:
+                group["best"] = (rank, event, team)
+    minimum = int(settings["common_team_min"])
+    ranked = sorted(
+        ((species, group) for species, group in groups.items() if group["tally"].teams >= minimum),
+        key=lambda item: (-item[1]["tally"].teams, item[1]["best"][0], item[0]),
+    )[: int(settings["common_teams_top"])]
+    total = sum(len(event.teams) for event in in_person)
+    rows = []
+    for species, group in ranked:
+        _, event, team = group["best"]
+        rows.append(
+            {
+                "species": list(species),
+                "names": [dex.display(name) for name in species],
+                **group["tally"].summary(total),
+                "day2_teams": group["day2"],
+                "events": len(group["events"]),
+                "best": {"event_key": event.key, "event": event.name, "date": event.date, **_team_row(team, dex)},
+            }
+        )
+    return rows
 
 
 def _event_summary(event: Event) -> dict[str, Any]:

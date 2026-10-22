@@ -285,6 +285,19 @@ class PipelineTests(unittest.TestCase):
                 self.assertTrue(seen)
         self.assertTrue(any(row["day2"]["sample"] for row in payload["sets"]))
 
+    def test_common_teams_group_identical_rosters(self) -> None:
+        self.config["pipeline"]["aggregation"]["common_team_min"] = 1
+        payload = self.build(FixtureClient()).payload
+        rows = payload["common_teams"]
+        self.assertTrue(rows)
+        for row in rows:
+            self.assertEqual(len(set(row["species"])), 6)
+            self.assertGreaterEqual(row["teams"], 1)
+            self.assertLessEqual(row["day2_teams"], row["teams"])
+            self.assertEqual(sorted({mon["species"] for mon in row["best"]["team"]}), row["species"])
+        counts = [row["teams"] for row in rows]
+        self.assertEqual(counts, sorted(counts, reverse=True))
+
     def test_offline_rebuild_keeps_the_last_source_report(self) -> None:
         downloaded = self.build(FixtureClient()).payload["sources"]
         self.assertTrue(downloaded)

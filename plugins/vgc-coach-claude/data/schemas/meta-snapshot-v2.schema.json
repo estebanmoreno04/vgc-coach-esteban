@@ -23,6 +23,7 @@
     "top_cut_teams",
     "events",
     "by_event",
+    "common_teams",
     "trend",
     "sources",
     "warnings"
@@ -219,6 +220,18 @@
             "type": "array",
             "items": { "allOf": [{ "$ref": "#/$defs/tally" }], "required": ["mega", "name"] }
           }
+        }
+      }
+    },
+    "common_teams": {
+      "description": "The same six species on several in-person teams, most repeated first, with the best-placed copy.",
+      "type": "array",
+      "items": {
+        "allOf": [{ "$ref": "#/$defs/tally" }],
+        "required": ["species", "names", "day2_teams", "events", "best"],
+        "properties": {
+          "species": { "type": "array", "items": { "$ref": "#/$defs/slug" }, "minItems": 6, "maxItems": 6 },
+          "best": { "type": "object", "required": ["event", "date", "placement", "player", "team"] }
         }
       }
     },
