@@ -306,10 +306,91 @@
       return mons;
     }
 
+    // -- type mechanics ------------------------------------------------------------
+    // Team-sheet win rates are correlations between whole teams; these checks say what
+    // actually hits what, using the moves each side really runs (proven day 2 sets for opponents).
+    const IMMUNE_BY_ABILITY = {
+      levitate: "Ground", eartheater: "Ground", flashfire: "Fire", wellbakedbody: "Fire",
+      waterabsorb: "Water", stormdrain: "Water", dryskin: "Water", voltabsorb: "Electric",
+      lightningrod: "Electric", motordrive: "Electric", sapsipper: "Grass",
+    };
+    const WEATHER_BALL = { drought: "Fire", drizzle: "Water", sandstream: "Rock", snowwarning: "Ice" };
+    const calcId = (name) => slug(name).replace(/-/g, "");
+    function formTypes(id) {
+      if (!calcLib) return null;
+      const gen = calcLib.Generations.get(0);
+      const found = gen.species.get(calcId(display(id))) || gen.species.get(calcId(id));
+      return found ? found.types.slice() : null;
+    }
+    function moveData(name, ability) {
+      const gen = calcLib.Generations.get(0);
+      const move = gen.moves.get(calcId(name));
+      // Some status moves (Coil, Tailwind...) have no category in the calc data: only Physical/Special hit.
+      if (!move || (move.category !== "Physical" && move.category !== "Special")) return null;
+      const type = calcId(name) === "weatherball" && WEATHER_BALL[calcId(ability || "")] ? WEATHER_BALL[calcId(ability)] : move.type;
+      return { name: move.name, type };
+    }
+    function effectiveness(type, defTypes, defAbility) {
+      if (IMMUNE_BY_ABILITY[calcId(defAbility || "")] === type) return 0;
+      const chart = calcLib.Generations.get(0).types.get(calcId(type));
+      return defTypes.reduce((x, t) => x * (chart && chart.effectiveness[t] !== undefined ? chart.effectiveness[t] : 1), 1);
+    }
+    // Opponent as it is really played: its most common day 2 set (Mega form included).
+    function provenSide(species) {
+      const day2 = (DATA.sets[species] || {}).day2;
+      const set = day2 && day2.top_sets[0];
+      const mega = set ? megaFor(species, set[0]) : null;
+      const moves = day2 && day2.sample ? day2.moves.filter(([, share]) => share >= 0.15).map(([n]) => n) : [];
+      return { id: mega || species, name: display(mega || species), ability: set ? set[1] : null, moves };
+    }
+    function bestHit(attacker, defender) {
+      const defTypes = formTypes(defender.id);
+      if (!defTypes) return null;
+      let best = null;
+      for (const name of attacker.moves) {
+        const move = moveData(name, attacker.ability);
+        if (!move) continue;
+        const x = effectiveness(move.type, defTypes, defender.ability);
+        if (!best || x > best.x) best = { move: move.name, type: move.type, x };
+      }
+      return best;
+    }
+    const times = (x) => (x === 0 ? "inmune" : `×${x}`);
+    function mechanics(opponentSpecies, roster) {
+      if (!calcLib) return null;
+      const opp = provenSide(opponentSpecies);
+      if (!opp.moves.length) return { note: "Sin set de día 2 suficiente para comprobar tipos." };
+      const threatens = [], answered_by = [], walled = [], bad_for = [];
+      for (const mon of roster) {
+        const theirs = bestHit(opp, mon);
+        const ours = bestHit(mon, opp);
+        if (theirs && theirs.x >= 2) threatens.push(`${theirs.move} (${theirs.type}) ${times(theirs.x)} → ${mon.name}`);
+        if (ours && ours.x >= 2) answered_by.push(`${mon.name}: ${ours.move} (${ours.type}) ${times(ours.x)}`);
+        if (ours && ours.x <= 0.5) walled.push(`${mon.name}: su mejor golpe es ${ours.move} ${times(ours.x)}`);
+        if (theirs && ours && theirs.x >= 2 && ours.x <= 0.5) bad_for.push(`${mon.name}: recibe ${theirs.move} ${times(theirs.x)} y su mejor golpe es ${ours.move} ${times(ours.x)}`);
+      }
+      return { opponent_form: opp.name, opponent_moves_checked: opp.moves, threatens, answered_by, walled, bad_for };
+    }
+    function typeMatchup(a, b) {
+      if (!calcLib) throw new Error("La calculadora no ha cargado en esta página.");
+      const side = (name) => { const r = resolveSpecies(name); return r.mega ? { ...provenSide(r.species), id: r.mega, name: display(r.mega) } : provenSide(r.species); };
+      const x = side(a), y = side(b);
+      const hits = (att, def) => att.moves.map((n) => moveData(n, att.ability)).filter(Boolean)
+        .map((m) => ({ move: m.name, type: m.type, effectiveness: effectiveness(m.type, formTypes(def.id) || [], def.ability) }))
+        .sort((p, q) => q.effectiveness - p.effectiveness);
+      return {
+        a: { form: x.name, types: formTypes(x.id), ability: x.ability, moves: x.moves },
+        b: { form: y.name, types: formTypes(y.id), ability: y.ability, moves: y.moves },
+        a_hits_b: hits(x, y), b_hits_a: hits(y, x),
+        basis: "tipos de los movimientos de sus sets de día 2 más comunes (y habilidades que dan inmunidad); no incluye daño exacto: usa calc_damage para eso",
+      };
+    }
+
     function analyzeTeam(text) {
       const parsed = parseTeam(text);
       if (!parsed.length) throw new Error("No he podido leer ningún Pokémon del equipo.");
       const members = [];
+      const fighters = [];
       for (const mon of parsed) {
         let species;
         try { species = resolveSpecies(mon.name).species; } catch (e) { members.push({ input: mon.name, error: e.message }); continue; }
@@ -322,8 +403,10 @@
           if (rare.length) notes.push("movimientos poco comunes en esta especie: " + rare.join(", "));
           if (mon.item && !sets.items.some(([n]) => slug(n) === slug(mon.item))) notes.push(`objeto poco común (${mon.item})`);
         }
+        const mega = megaFor(species, mon.item);
+        fighters.push({ id: mega || species, name: display(mega || species), ability: mon.ability || (provenSide(species).ability), moves: mon.moves });
         members.push({
-          name: display(species), mega: display(megaFor(species, mon.item)),
+          name: display(species), mega: display(mega),
           in_person_share_pct: row ? pct(row.in_person.share) : null, in_person_win_rate_pct: row ? pct(row.in_person.win_rate) : null,
           day2_conversion_pct: row ? pct(row.in_person.day2_conversion) : null, online_share_pct: row ? pct(row.online.share) : null,
           common_set: sets && sets.top_sets[0] ? `${sets.top_sets[0][0]} | ${sets.top_sets[0][1]} | ${sets.top_sets[0][2]} | ${sets.top_sets[0][3].join(", ")}` : null,
@@ -343,13 +426,20 @@
       }
       const threats = [...tally.entries()].map(([s, [w, g]]) => ({ name: display(s), species: s, win_rate_vs_team_pct: pct(w / g), games: g }))
         .sort((x, y) => y.win_rate_vs_team_pct - x.win_rate_vs_team_pct);
-      const withSet = (list) => list.map(({ species, ...rest }) => {
+      const withSet = (list, favourable) => list.map(({ species, ...rest }) => {
         const proven = provenSet(species);
-        return { ...rest, proven_day2_set: proven ? proven.common_set : null, proven_day2_moves: proven ? proven.moves.slice(0, 6) : [] };
+        const mech = mechanics(species, fighters);
+        const row = { ...rest, proven_day2_set: proven ? proven.common_set : null, proven_day2_moves: proven ? proven.moves.slice(0, 6) : [], type_check: mech };
+        if (favourable && mech && mech.threatens && mech.threatens.length > mech.answered_by.length) {
+          row.warning = "El win rate de team sheet sale favorable, pero por tipos te amenaza más de lo que tú le amenazas: no lo presentes como favorable.";
+        } else if (favourable && mech && mech.bad_for && mech.bad_for.length) {
+          row.warning = `Favorable para el equipo en conjunto, pero muy malo para ${mech.bad_for.map((b) => b.split(":")[0]).join(" y ")} (ver bad_for): no lo uses como motivo para llevar ese Pokémon.`;
+        }
+        return row;
       });
       members.forEach((m) => delete m.species);
       return {
-        members, cores_in_person: cores, biggest_threats: withSet(threats.slice(0, 6)), most_favourable: withSet(threats.slice(-4).reverse()),
+        members, cores_in_person: cores, biggest_threats: withSet(threats.slice(0, 6), false), most_favourable: withSet(threats.slice(-4).reverse(), true),
         matchup_basis: "team sheets (especies del equipo, no las que salieron a jugar)",
       };
     }
@@ -471,6 +561,8 @@
         "- Los emparejamientos son a nivel de team sheet (orientativos). Los stat points de los rivales no se publican: en cálculos, decláralos como supuesto.",
         "- Respeta las mecánicas de la regulación: si Terastal no está en la lista, no hables de Tera.",
         "- Si algo no está en los datos (otra regulación, un torneo posterior a la fecha de los datos), dilo claramente.",
+        "- Los win rates de emparejamiento (team sheet) son correlaciones entre equipos enteros, no causas. Nunca digas que un rival es favorable, o una amenaza, solo por ese número: contrástalo con la mecánica (type_check de analyze_team, get_type_matchup, velocidades y calc_damage). Si el número y la mecánica se contradicen, dilo así y da prioridad a la mecánica; por ejemplo, un Pokémon que te golpea súper eficaz y resiste tus golpes no es favorable aunque su win rate contra tu team sheet sea bajo.",
+        "- Al comparar dos versiones de un equipo, explica qué cambia en partida por el Pokémon que entra y el que sale: contra qué rivales del meta gana o pierde ese miembro por tipos, velocidad y cálculos (bad_for y walled de type_check, get_type_matchup). Un rival que mejora la estadística del equipo pero que es malo para el miembro nuevo no es un motivo para elegirlo.",
         "- Usa solo sets contrastados: movimientos, objetos, habilidades y naturalezas que aparecen en equipos presenciales de día 2 (proven_day2_set en get_pokemon y en las amenazas de analyze_team). Para amenazas, enfrentamientos y cálculos contra rivales, usa su set de día 2 más común. No menciones movimientos que nunca han llegado a día 2 salvo que el usuario pregunte por ellos; si calc_damage avisa de que un movimiento no es contrastado, cámbialo por uno que sí lo sea. Si la muestra de día 2 es pequeña (small_sample), dilo.",
         "- Para auditar un equipo: identidad, 2-4 hallazgos ordenados por impacto con su consecuencia en partida, cambios mínimos primero, riesgo residual.",
         "- Si te preguntan algo que no es de Pokémon VGC, responde en una frase que solo ayudas con VGC.",
@@ -502,6 +594,9 @@
         { name: "get_matchup", description: "Win rate de team sheet entre dos especies en torneos presenciales.",
           inputSchema: { type: "object", properties: { a: { type: "string" }, b: { type: "string" } }, required: ["a", "b"] },
           execute: wrap((i) => matchup(String(i.a || ""), String(i.b || ""))) },
+        { name: "get_type_matchup", description: "Comprueba por tipos qué se hacen dos Pokémon con sus sets de día 2 más comunes (forma Mega incluida; acepta 'Mega Floette'): efectividad de cada movimiento en ambas direcciones e inmunidades por habilidad. Úsalo antes de llamar favorable o amenaza a un rival.",
+          inputSchema: { type: "object", properties: { a: { type: "string" }, b: { type: "string" } }, required: ["a", "b"] },
+          execute: wrap((i) => typeMatchup(String(i.a || ""), String(i.b || ""))) },
         { name: "get_top_cut", description: "Equipos de top cut con sets. segment: in_person u online; species opcional para filtrar; limit 1-12.",
           inputSchema: { type: "object", properties: { segment: { type: "string", enum: ["in_person", "online"] }, species: { type: "string" }, limit: { type: "integer" } } },
           execute: wrap((i) => topCut(i.segment ? String(i.segment) : null, i.species ? String(i.species) : null, i.limit)) },
@@ -523,7 +618,7 @@
       ];
     }
 
-    return { status, usage, pokemon, matchup, topCut, trend, regionalSeries, listEvents, eventUsage, shortEvent, parseTeam, analyzeTeam, resolveSpecies, megaFor, calcDamage, calcSpeed, digest, instructions, tools, usageRows, megas, byEvent, regionals, display };
+    return { status, usage, pokemon, matchup, topCut, trend, regionalSeries, listEvents, eventUsage, shortEvent, parseTeam, analyzeTeam, resolveSpecies, megaFor, calcDamage, calcSpeed, typeMatchup, digest, instructions, tools, usageRows, megas, byEvent, regionals, display };
   }
 
   return { create, slug, pct };

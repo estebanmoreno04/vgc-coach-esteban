@@ -104,6 +104,11 @@ class CoachPageTests(unittest.TestCase):
         self.assertTrue(any("Trick Room" in note for note in members["Incineroar"]["notes"]))
         self.assertIn("calc_damage", out["tools"])
         self.assertIn("get_trend", out["tools"])
+        self.assertIn("get_type_matchup", out["tools"])
+        if isinstance(out["types"], dict) and "a" in out["types"]:
+            self.assertEqual(out["types"]["a"]["form"], "Charizard-Mega-Y")
+            self.assertEqual(sorted(out["types"]["b"]["types"]), ["Dark", "Steel"])
+            self.assertTrue(all(hit["move"] not in ("Protect", "Tailwind") for hit in out["types"]["a_hits_b"] + out["types"]["b_hits_a"]))
         series = out["series"]
         self.assertEqual([event["date"] for event in series["events"]], sorted(event["date"] for event in series["events"]))
         self.assertEqual(len(series["series"][0]["values"]), len(series["events"]))
