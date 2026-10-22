@@ -257,6 +257,22 @@ section.planner { display: grid; gap: 26px; }
 .pl-export { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; }
 .pl-msg { font-size: 12.5px; color: var(--muted); }
 .pl-block { display: grid; gap: 10px; min-width: 0; }
+.pl-plans { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; margin-top: -10px; }
+#pl-name { flex: 1 1 220px; min-width: 0; max-width: 360px; background: var(--lift); border: 0; border-radius: 10px; padding: 8px 12px; color: var(--ink); font-family: var(--serif); font-size: 17px; transition: background-color 200ms var(--ease); }
+#pl-name:hover { background: var(--lift-hover); }
+#pl-name:focus { background: var(--lift-focus); outline: none; box-shadow: 0 0 0 1px var(--line); }
+#pl-name::placeholder { color: var(--faint); }
+.pl-saved { background: var(--lift); border-radius: 14px; padding: 6px; display: grid; gap: 2px; margin-top: -10px; }
+.pl-saved .empty { color: var(--muted); font-size: 13px; padding: 8px 10px; margin: 0; }
+.prow { display: grid; grid-template-columns: 1fr auto; align-items: center; gap: 8px; border-radius: 10px; transition: background-color 200ms var(--ease); }
+.prow:hover, .prow.current { background: var(--lift-hover); }
+.prow button.open { border: 0; background: none; text-align: left; padding: 8px 10px; cursor: pointer; min-width: 0; display: grid; gap: 2px; }
+.prow .t { font-family: var(--serif); font-size: 16px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.prow .d { font-size: 12px; color: var(--muted); }
+.prow .six img { width: 34px; height: 34px; margin: -6px -4px -8px; image-rendering: pixelated; }
+.prow button.del { border: 0; background: none; color: var(--faint); cursor: pointer; padding: 6px 10px; font-size: 13px; transition: color 200ms var(--ease); }
+.prow button.del:hover, .prow button.del[data-armed="1"], .linkish[data-armed="1"], .btn[data-armed="1"] { color: var(--accent-hover); }
+.row-h { display: flex; justify-content: space-between; align-items: baseline; gap: 12px; }
 .pl-block > * { min-width: 0; }
 .pl-block h3 { font-size: 11px; font-weight: 500; text-transform: uppercase; letter-spacing: 0.1em; color: var(--muted); margin: 0; }
 .slots { display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); gap: 8px; }
@@ -404,8 +420,14 @@ section.planner { display: grid; gap: 26px; }
         <span class="pl-msg" id="pl-export-msg" role="status"></span>
       </div>
     </div>
+    <div class="pl-plans">
+      <input id="pl-name" placeholder="Plan sin nombre" aria-label="Nombre de este plan" autocomplete="off">
+      <button type="button" class="btn" id="pl-new">Nuevo plan</button>
+      <button type="button" class="btn" id="pl-list-toggle" aria-expanded="false" aria-controls="pl-saved">Mis planes</button>
+    </div>
+    <div class="pl-saved" id="pl-saved" hidden></div>
     <div class="pl-block">
-      <h3>Tu equipo</h3>
+      <div class="row-h"><h3>Tu equipo</h3><button type="button" class="linkish" data-confirm="clear-team">Vaciar equipo</button></div>
       <div class="slots" id="pl-team"></div>
       <details class="pl-paste">
         <summary>Pegar equipo en formato Showdown (con sets y stat points)</summary>
@@ -903,14 +925,49 @@ section.planner { display: grid; gap: 26px; }
   const PLAN_STORE = "vgc-coach-planner-v1";
   const rivals = core.plannerRivals(2);
   const rivalByKey = new Map([...rivals.recent, ...rivals.common].map((r) => [r.key, r]));
+  // The open plan lives in PLAN_STORE; every plan with content is also kept in PLANS_STORE ("Mis planes").
+  const PLANS_STORE = "vgc-coach-planners-v1";
+  const MAX_PLANS = 30;
+  const newId = () => "p" + Date.now() + Math.random().toString(36).slice(2, 6);
+  const freshPlan = (source) => ({ id: newId(), name: "", team: [null, null, null, null, null, null], source: source || "recent", open: null, plans: {} });
   let plan = (() => {
     try {
       const saved = JSON.parse(localStorage.getItem(PLAN_STORE) || "null");
-      if (saved && Array.isArray(saved.team) && saved.plans) return saved;
+      if (saved && Array.isArray(saved.team) && saved.plans) return { name: "", ...saved, id: saved.id || newId() };
     } catch (e) { /* storage unavailable */ }
-    return { team: [null, null, null, null, null, null], source: "recent", open: null, plans: {} };
+    return freshPlan();
   })();
-  const savePlan = () => { try { localStorage.setItem(PLAN_STORE, JSON.stringify(plan)); } catch (e) { /* storage unavailable */ } };
+  let savedPlans = (() => {
+    try { const list = JSON.parse(localStorage.getItem(PLANS_STORE) || "[]"); return Array.isArray(list) ? list.filter((x) => x && x.id) : []; } catch (e) { return []; }
+  })();
+  const matchupCount = (p) => Object.values(p.plans || {}).filter((x) => x && (x.lead.some(Boolean) || x.back.some(Boolean) || (x.notes || "").trim())).length;
+  const hasContent = (p) => p.team.some(Boolean) || matchupCount(p) > 0 || !!(p.name || "").trim();
+  function savePlan() {
+    savedPlans = savedPlans.filter((x) => x.id !== plan.id);
+    if (hasContent(plan)) savedPlans.unshift({ id: plan.id, name: plan.name || "", updated: Date.now(), team: plan.team, plans: plan.plans });
+    savedPlans = savedPlans.slice(0, MAX_PLANS);
+    try {
+      localStorage.setItem(PLAN_STORE, JSON.stringify(plan));
+      localStorage.setItem(PLANS_STORE, JSON.stringify(savedPlans));
+    } catch (e) { /* storage unavailable */ }
+    if (!$("pl-saved").hidden) renderSaved();
+  }
+  function switchTo(next) {
+    plan = next;
+    savePlan();
+    $("pl-name").value = plan.name || "";
+    renderPlanner();
+  }
+  function renderSaved() {
+    const when = (ms) => new Date(ms).toLocaleDateString("es-ES", { day: "numeric", month: "short" });
+    $("pl-saved").innerHTML = savedPlans.length
+      ? savedPlans.map((x) => `<div class="prow${x.id === plan.id ? " current" : ""}"><button type="button" class="open" data-load-plan="${esc(x.id)}">
+          <span class="t">${esc(x.name || "Plan sin nombre")}${x.id === plan.id ? " · abierto" : ""}</span>
+          <span class="six">${x.team.filter(Boolean).map((m) => spr(resolveId(m.name), "")).join("")}</span>
+          <span class="d">${esc(when(x.updated))} · ${matchupCount(x)} emparejamiento${matchupCount(x) === 1 ? "" : "s"}</span></button>
+          <button type="button" class="del" data-confirm="del:${esc(x.id)}" aria-label="Borrar este plan">Borrar</button></div>`).join("")
+      : '<p class="empty">Aún no hay planes guardados. Se guardan solos en este navegador en cuanto rellenas algo.</p>';
+  }
   const myTeam = () => plan.team.filter(Boolean);
   const rivalLabel = (r) => r.source === "recent"
     ? `${r.event} · ${r.placement}.º ${r.player}${r.record ? ` (${r.record})` : ""}`
@@ -952,7 +1009,7 @@ section.planner { display: grid; gap: 26px; }
     if (mine.length) { try { sheet = core.matchupSheet(mine, r.team); } catch (e) { sheet = null; } }
     const theirs = sheet ? sheet.theirs : r.team.map((m) => ({ id: resolveId(m.name), name: m.name, item: m.item, roles: [] }));
     let html = `<div class="pl-detail-head"><div><span class="tag">${r.source === "recent" ? "Top cut reciente" : "Equipo repetido"}</span><h2>${esc(rivalTitle(r))}</h2></div>
-      <div class="actions2">${pasteButton(rivalTitle(r), r.team).replace('class="paste-btn"', 'class="btn"')}<button type="button" class="btn" data-ask="1">Pedir plan al coach</button></div></div>`;
+      <div class="actions2">${pasteButton(rivalTitle(r), r.team).replace('class="paste-btn"', 'class="btn"')}<button type="button" class="btn" data-ask="1">Pedir plan al coach</button>${hasPlan(r.key) ? '<button type="button" class="btn" data-confirm="clear-rival">Borrar este emparejamiento</button>' : ""}</div></div>`;
     html += `<div class="opp">${theirs.map((m) => `<div class="mon">${spr(m.id, "")}<strong>${esc(m.name)}</strong><span class="it">${esc(m.item || "")}</span>
       <span class="roles">${(m.roles || []).map((x) => `<span class="role">${esc(x)}</span>`).join("")}</span></div>`).join("")}</div>`;
     html += `<div class="plan"><div class="pair"><h3>Lead</h3><div class="slots">${p.lead.map((v, i) => slotHtml("lead", i, v)).join("")}</div></div>
@@ -1006,7 +1063,50 @@ section.planner { display: grid; gap: 26px; }
   $("view-planner").addEventListener("input", (ev) => {
     if (ev.target.id === "pl-notes" && plan.open) { planFor(plan.open).notes = ev.target.value; savePlan(); }
   });
-  $("view-planner").addEventListener("focusout", (ev) => { if (ev.target.id === "pl-notes") renderRivals(); });
+  $("view-planner").addEventListener("focusout", (ev) => { if (ev.target.id === "pl-notes") { renderRivals(); renderDetail(); } });
+  $("pl-name").value = plan.name || "";
+  $("pl-name").addEventListener("input", () => { plan.name = $("pl-name").value; savePlan(); });
+  $("pl-new").onclick = () => {
+    if (!hasContent(plan)) { $("pl-export-msg").textContent = "Este plan ya está vacío."; return; }
+    switchTo(freshPlan(plan.source));
+    $("pl-export-msg").textContent = "Plan nuevo. El anterior está en «Mis planes».";
+    $("pl-name").focus();
+  };
+  $("pl-list-toggle").onclick = () => {
+    const open = $("pl-saved").hidden;
+    if (open) renderSaved();
+    $("pl-saved").hidden = !open;
+    $("pl-list-toggle").setAttribute("aria-expanded", String(open));
+  };
+  // Destructive buttons ask twice: the first click arms them for a few seconds.
+  function confirmed(el) {
+    if (el.dataset.armed === "1") { delete el.dataset.armed; return true; }
+    const label = el.textContent;
+    el.dataset.armed = "1";
+    el.textContent = "¿Seguro? Pulsa otra vez";
+    setTimeout(() => { if (el.isConnected && el.dataset.armed === "1") { delete el.dataset.armed; el.textContent = label; } }, 3000);
+    return false;
+  }
+  $("view-planner").addEventListener("click", (ev) => {
+    const el = ev.target.closest("[data-confirm], [data-load-plan]");
+    if (!el) return;
+    if (el.dataset.loadPlan) {
+      const found = savedPlans.find((x) => x.id === el.dataset.loadPlan);
+      if (found && found.id !== plan.id) switchTo({ ...JSON.parse(JSON.stringify(found)), source: plan.source, open: null });
+      $("pl-saved").hidden = true; $("pl-list-toggle").setAttribute("aria-expanded", "false");
+      return;
+    }
+    if (!confirmed(el)) return;
+    const action = el.dataset.confirm;
+    if (action === "clear-team") { plan.team = [null, null, null, null, null, null]; savePlan(); renderPlanner(); }
+    else if (action === "clear-rival" && plan.open) { delete plan.plans[plan.open]; savePlan(); renderRivals(); renderDetail(); }
+    else if (action.startsWith("del:")) {
+      const id = action.slice(4);
+      savedPlans = savedPlans.filter((x) => x.id !== id);
+      if (id === plan.id) switchTo(freshPlan(plan.source)); else savePlan();
+      renderSaved();
+    }
+  });
   $("view-planner").addEventListener("click", (ev) => {
     const el = ev.target.closest("[data-source], [data-rival], [data-speed], [data-ask]");
     if (!el) return;
@@ -1044,7 +1144,7 @@ section.planner { display: grid; gap: 26px; }
   // ---- export ----
   function plannedRivals() { return [...rivals.recent, ...rivals.common].filter((r) => hasPlan(r.key)); }
   function planMarkdown() {
-    const lines = [`# Plan de emparejamientos · Coach VGC`, ``, `${st.label || st.regulation} · datos hasta ${st.data_through}`, ``,
+    const lines = [`# ${plan.name || "Plan de emparejamientos"} · Coach VGC`, ``, `${st.label || st.regulation} · datos hasta ${st.data_through}`, ``,
       `**Mi equipo:** ${myTeam().map((m) => m.name).join(", ") || "(sin rellenar)"}`, ``];
     for (const r of plannedRivals()) {
       const p = planFor(r.key);
@@ -1075,7 +1175,7 @@ section.planner { display: grid; gap: 26px; }
     g.imageSmoothingEnabled = false;
     g.fillStyle = "#111113"; g.fillRect(0, 0, W, canvas.height);
     const sprite = async (id, x, y, size) => { const key = sprId(id); if (!key) return; const im = await loadImg(`data:image/png;base64,${SPR[key]}`); if (im) g.drawImage(im, x, y, size, size); };
-    g.fillStyle = "#ebebed"; g.font = "500 34px Newsreader, Georgia, serif"; g.fillText("Plan de emparejamientos", 40, 58);
+    g.fillStyle = "#ebebed"; g.font = "500 34px Newsreader, Georgia, serif"; g.fillText((plan.name || "Plan de emparejamientos").slice(0, 60), 40, 58);
     g.fillStyle = "#85858d"; g.font = "15px Figtree, system-ui, sans-serif"; g.fillText(`Coach VGC · ${st.label || st.regulation} · datos hasta ${st.data_through}`, 40, 86);
     g.fillStyle = "#85858d"; g.font = "600 12px Figtree, system-ui, sans-serif"; g.fillText("MI EQUIPO", 40, 122);
     for (const [i, m] of myTeam().entries()) await sprite(resolveId(m.name), 40 + i * 74, 126, 72);
@@ -1103,12 +1203,13 @@ section.planner { display: grid; gap: 26px; }
     return new Promise((ok) => canvas.toBlob(ok, "image/png"));
   }
   $("pl-copy").onclick = () => copyText(planMarkdown(), $("pl-export-msg"));
-  $("pl-export-md").onclick = () => saveFile("plan-emparejamientos.md", planMarkdown());
+  const fileBase = () => (VGCCoachCore.slug(plan.name || "") || "plan-emparejamientos");
+  $("pl-export-md").onclick = () => saveFile(`${fileBase()}.md`, planMarkdown());
   $("pl-export-png").onclick = async () => {
     if (!plannedRivals().length) { $("pl-export-msg").textContent = "Apunta al menos un lead, back o nota en algún rival."; return; }
     $("pl-export-msg").textContent = "Preparando la imagen…";
     const blob = await planImage();
-    if (blob) saveFile("plan-emparejamientos.png", blob); else $("pl-export-msg").textContent = "No se ha podido crear la imagen.";
+    if (blob) saveFile(`${fileBase()}.png`, blob); else $("pl-export-msg").textContent = "No se ha podido crear la imagen.";
   };
   renderPlanner();
 
