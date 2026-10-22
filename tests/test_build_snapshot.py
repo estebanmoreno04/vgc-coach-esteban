@@ -204,6 +204,9 @@ class PipelineTests(unittest.TestCase):
         alpha = next(event for event in by_event if event["key"] == "vgchistory:regional-alpha-2027")
         self.assertGreater(alpha["teams"], 0)
         self.assertTrue(all(row["share"] == round(row["teams"] / alpha["teams"], 4) for row in alpha["usage"]))
+        self.assertTrue(all(row["day2_share"] is None or 0 <= row["day2_share"] <= 1 for row in alpha["usage"]))
+        if alpha["day2_teams"]:
+            self.assertEqual(max(row["day2_share"] for row in alpha["usage"]) <= 1, True)
         # Two whole-field events and two "recent" ones: nothing earlier to compare with.
         self.assertFalse(payload["trend"]["available"])
 

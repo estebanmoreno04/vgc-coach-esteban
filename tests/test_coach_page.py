@@ -113,6 +113,8 @@ class CoachPageTests(unittest.TestCase):
         self.assertEqual([event["date"] for event in series["events"]], sorted(event["date"] for event in series["events"]))
         self.assertEqual(len(series["series"][0]["values"]), len(series["events"]))
         self.assertEqual(series["series"][1]["values"], [0] * len(series["events"]))
+        self.assertEqual(out["series_day2"]["metric"], "day2_share")
+        self.assertTrue(all(0 <= value <= 1 for value in out["series_day2"]["series"][0]["values"]))
         self.assertIn("get_event", out["tools"])
         self.assertTrue(out["trend"]["available"])
         self.assertTrue(out["event"]["usage"])

@@ -136,7 +136,7 @@ def compact(data: query.MetaData, sprite_dir: Path | None = None, sprite_credit:
             event["key"], event["name"], event["date"], event["players"], event["basis"], event["teams"],
             event["day2_teams"], event["url"],
             [[row["species"], row["teams"], _r(row["share"]), _r(row["win_rate"]), _r(row["day2_conversion"]),
-              row["top_cut_teams"]] for row in event["usage"]],
+              row["top_cut_teams"], _r(row.get("day2_share"))] for row in event["usage"]],
             [[row["mega"], row["teams"], _r(row["share"]), _r(row["win_rate"])] for row in event["megas"]],
             event["segment"],
             [

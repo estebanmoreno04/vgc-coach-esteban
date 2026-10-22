@@ -30,6 +30,7 @@ const out = {
   missing_event: safe(() => coach.eventUsage("Atlantis", 1)),
   pokemon_by_event: safe(() => coach.pokemon("Incineroar").by_event),
   series: safe(() => coach.regionalSeries([coach.usageRows[0].species, "not-a-species"], 5)),
+  series_day2: safe(() => coach.regionalSeries([coach.usageRows[0].species], 5, "day2_share")),
   unproven: calc ? safe(() => coach.calcDamage({ attacker: { species: "Incineroar" }, defender: { species: "Charizard" }, move: "Thunder Punch" }).notes) : "calc not installed",
   types: calc ? safe(() => coach.typeMatchup("Mega Charizard Y", "Kingambit")) : "calc not installed",
   tools: coach.tools().map((t) => t.name),

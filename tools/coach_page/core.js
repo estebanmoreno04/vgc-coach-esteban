@@ -50,7 +50,7 @@
     const megaBy = new Map(megas.map((row) => [row.mega, row]));
     const byEvent = (DATA.by_event || []).map((e) => ({
       key: e[0], name: e[1], date: e[2], players: e[3], basis: e[4], teams: e[5], day2_teams: e[6], url: e[7],
-      usage: e[8].map((r) => ({ species: r[0], teams: r[1], share: r[2], win_rate: r[3], day2_conversion: r[4], top_cut_teams: r[5] })),
+      usage: e[8].map((r) => ({ species: r[0], teams: r[1], share: r[2], win_rate: r[3], day2_conversion: r[4], top_cut_teams: r[5], day2_share: r[6] })),
       megas: e[9].map((r) => ({ mega: r[0], teams: r[1], share: r[2], win_rate: r[3] })),
       segment: e[10], top: e[11] || [],
     }));
@@ -190,12 +190,15 @@
     }
 
     // Usage of each species at the latest whole-field regionals, oldest first (for the trend chart).
-    const usageAt = new Map(regionals.map((e) => [e.key, new Map(e.usage.map((u) => [u.species, u.share]))]));
-    function regionalSeries(ids, count) {
-      const events = regionals.filter((e) => e.basis === "full_field").slice(0, count || 5).reverse();
+    // metric: "share" (all teams) or "day2_share" (share among the teams that made day 2).
+    const usageAt = new Map(regionals.map((e) => [e.key, new Map(e.usage.map((u) => [u.species, u]))]));
+    function regionalSeries(ids, count, metric) {
+      const key = metric === "day2_share" ? "day2_share" : "share";
+      const events = regionals.filter((e) => e.basis === "full_field" && (key === "share" || e.day2_teams)).slice(0, count || 5).reverse();
       return {
-        events: events.map((e) => ({ key: e.key, name: shortEvent(e.name), date: e.date, teams: e.teams })),
-        series: ids.map((id) => ({ id, name: display(id), values: events.map((e) => usageAt.get(e.key).get(id) || 0) })),
+        metric: key,
+        events: events.map((e) => ({ key: e.key, name: shortEvent(e.name), date: e.date, teams: key === "share" ? e.teams : e.day2_teams })),
+        series: ids.map((id) => ({ id, name: display(id), values: events.map((e) => (usageAt.get(e.key).get(id) || {})[key] || 0) })),
       };
     }
 

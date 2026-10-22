@@ -227,6 +227,16 @@ td button.linkrow:hover { color: var(--ink); }
 .chart .series.active .line { stroke-width: 3; }
 .chart .series.active:not(.pinned) .line { stroke: var(--ink); }
 .chart .tip { position: absolute; z-index: 3; pointer-events: none; background: #1c1c20; border-radius: 10px; padding: 8px 10px; min-width: 150px; font-size: 12.5px; box-shadow: 0 8px 24px -8px rgb(0 0 0 / 0.6); }
+.quad svg { min-width: 560px; }
+.quad .quad.q-good { fill: rgb(130 179 148 / 0.06); }
+.quad .quad.q-top { fill: rgb(255 255 255 / 0.03); }
+.quad .split { stroke: var(--faint); stroke-width: 1; stroke-dasharray: 4 4; }
+.quad .qlabel { fill: var(--muted); font: 500 11px var(--sans); letter-spacing: 0.08em; text-transform: uppercase; }
+.quad .qpoint { cursor: default; outline: none; transition: opacity 150ms var(--ease); }
+.quad .qpoint image { image-rendering: pixelated; }
+.quad .qdot { fill: var(--ink-2); }
+.quad svg.focus .qpoint:not(.active) { opacity: 0.25; }
+.quad .qpoint .hit { fill: transparent; stroke: none; }
 .tip-head { display: flex; align-items: center; gap: 4px; margin-bottom: 4px; }
 .tip-head strong { font-family: var(--serif); font-size: 15px; font-weight: 500; }
 .tip-row { display: flex; justify-content: space-between; gap: 14px; color: var(--ink-2); }
@@ -460,19 +470,31 @@ td button.linkrow:hover { color: var(--ink); }
         <span class="chart-msg" id="chart-msg" role="status"></span>
       </div>
       <div class="chips" id="chart-chips"></div>
-      <div class="chart" id="trend-chart"></div>`;
+      <div class="chart" id="trend-chart"></div>
+      <h3>Uso entre los equipos de día 2</h3>
+      <p class="sub">Los mismos Pokémon y colores, pero contando solo los equipos que pasaron a día 2 en cada regional. Si una línea va por encima de la de arriba, ese Pokémon llega a día 2 más de lo que se usa.</p>
+      <div class="chart" id="trend-chart-d2"></div>
+      <h3>Popularidad frente a resultados</h3>
+      <p class="sub">Cada Pokémon con al menos ${QUAD_MIN_TEAMS} equipos en presencial, en todos los regionales. A la derecha, más usados que la mediana; arriba, convierten a día 2 por encima de la media (${pct(inPerson.teams ? inPerson.day2_teams / inPerson.teams : null)}). Pasa el ratón por un sprite para ver sus números.</p>
+      <div class="chart quad" id="quad-chart"></div>`;
   }
 
   function drawChart() {
-    const box = $("trend-chart");
-    if (!box) return;
-    const { events, series } = core.regionalSeries(chartState.ids, 5);
-    // chips (the legend)
+    if (!$("chart-chips")) return;
+    const { series } = core.regionalSeries(chartState.ids, 5);
+    // chips (the legend, shared by both charts)
     $("chart-chips").innerHTML = series.map((s) => {
       const slot = chartState.pins[s.id];
       const swatch = slot === undefined ? '<span class="sw sw-off"></span>' : `<span class="sw" style="background:${CHART_COLORS[slot]}"></span>`;
       return `<span class="chip${slot === undefined ? "" : " on"}"><button type="button" data-pin="${esc(s.id)}" aria-pressed="${slot !== undefined}">${swatch}${spr(s.id, "spr spr-s")}${esc(s.name)}</button><button type="button" class="x" data-remove="${esc(s.id)}" aria-label="Quitar ${esc(s.name)}">×</button></span>`;
     }).join("");
+    plotChart($("trend-chart"), "share");
+    plotChart($("trend-chart-d2"), "day2_share");
+  }
+
+  function plotChart(box, metric) {
+    if (!box) return;
+    const { events, series } = core.regionalSeries(chartState.ids, 5, metric);
     if (events.length < 2 || !series.length) { box.innerHTML = '<p class="sub">Añade algún Pokémon para ver su evolución.</p>'; return; }
 
     const W = 720, H = 480, M = { top: 18, right: 96, bottom: 46, left: 46 };
@@ -482,18 +504,19 @@ td button.linkrow:hover { color: var(--ink); }
     const yMax = Math.ceil(top / step) * step;
     const x = (i) => M.left + (events.length === 1 ? pw / 2 : (i * pw) / (events.length - 1));
     const y = (v) => M.top + ph - (v / yMax) * ph;
-    let svg = `<svg viewBox="0 0 ${W} ${H}" role="img" aria-label="Uso en presencial de los Pokémon elegidos en los últimos ${events.length} regionales">`;
+    let svg = `<svg viewBox="0 0 ${W} ${H}" role="img" aria-label="${metric === "share" ? "Uso en presencial" : "Uso entre los equipos de día 2"} de los Pokémon elegidos en los últimos ${events.length} regionales">`;
     for (let v = 0; v <= yMax + 1e-9; v += step) {
       svg += `<line class="grid" x1="${M.left}" x2="${W - M.right}" y1="${y(v)}" y2="${y(v)}"/><text class="axis" x="${M.left - 8}" y="${y(v) + 4}" text-anchor="end">${Math.round(v * 100)}%</text>`;
     }
     events.forEach((e, i) => {
-      svg += `<text class="axis strong" x="${x(i)}" y="${H - M.bottom + 20}" text-anchor="middle">${esc(e.name)}</text><text class="axis" x="${x(i)}" y="${H - M.bottom + 36}" text-anchor="middle">${esc(day(e.date))}</text>`;
+      svg += `<text class="axis strong" x="${x(i)}" y="${H - M.bottom + 20}" text-anchor="middle">${esc(e.name)}</text><text class="axis" x="${x(i)}" y="${H - M.bottom + 36}" text-anchor="middle">${esc(day(e.date))}${metric === "share" ? "" : ` · ${e.teams} eq.`}</text>`;
     });
     const ordered = [...series].sort((a, b) => (chartState.pins[a.id] !== undefined) - (chartState.pins[b.id] !== undefined));
     // End sprites: nudged apart so they never stack on top of each other.
     const ends = series.map((s) => ({ id: s.id, y0: y(s.values[s.values.length - 1]), y: y(s.values[s.values.length - 1]) })).sort((a, b) => a.y - b.y);
     // Two staggered columns of sprites, so neighbours can sit closer without covering each other.
     const gap = Math.min(22, ph / Math.max(1, ends.length - 1));
+    if (ends.length) ends[0].y = Math.max(ends[0].y, 20); // keep the top sprite inside the drawing
     for (let i = 1; i < ends.length; i++) ends[i].y = Math.max(ends[i].y, ends[i - 1].y + gap);
     const overflow = ends.length ? ends[ends.length - 1].y - (M.top + ph) : 0;
     if (overflow > 0) ends.forEach((e) => (e.y -= overflow));
@@ -518,10 +541,10 @@ td button.linkrow:hover { color: var(--ink); }
       svg += "</g>";
     }
     svg += "</svg>";
-    box.innerHTML = svg + '<div class="tip" id="chart-tip" hidden></div>';
+    box.innerHTML = svg + '<div class="tip" hidden></div>';
 
     const svgEl = box.querySelector("svg");
-    const tip = $("chart-tip");
+    const tip = box.querySelector(".tip");
     const byId = new Map(series.map((s) => [s.id, s]));
     function show(id, ev) {
       const s = byId.get(id);
@@ -543,6 +566,80 @@ td button.linkrow:hover { color: var(--ink); }
       g.addEventListener("focusin", () => show(g.dataset.id));
       g.addEventListener("focusout", hide);
       g.addEventListener("click", () => togglePin(g.dataset.id));
+    });
+  }
+
+  // ---- quadrant: popularity (in-person usage, log scale) against results (day 2 conversion) ----
+  const QUAD_MIN_TEAMS = 60;
+  function drawQuadrant() {
+    const box = $("quad-chart");
+    if (!box) return;
+    const rate = inPerson.teams ? inPerson.day2_teams / inPerson.teams : 0;
+    const rows = core.usageRows.filter((r) => r.in_person.teams >= QUAD_MIN_TEAMS && r.in_person.day2_conversion !== null && r.in_person.day2_conversion !== undefined);
+    if (rows.length < 4 || !rate) { box.innerHTML = '<p class="sub">Aún no hay suficientes datos de día 2.</p>'; return; }
+    const shares = rows.map((r) => r.in_person.share).sort((a, b) => a - b);
+    const medianShare = shares[Math.floor(shares.length / 2)];
+    const W = 720, H = 520, M = { top: 30, right: 24, bottom: 44, left: 52 };
+    const pw = W - M.left - M.right, ph = H - M.top - M.bottom;
+    const xMin = Math.log(Math.min(...shares) * 0.85), xMax = Math.log(Math.max(...shares) * 1.12);
+    const convs = rows.map((r) => r.in_person.day2_conversion);
+    const yMin = Math.max(0, Math.floor((Math.min(...convs) - 0.01) * 50) / 50), yMax = Math.ceil((Math.max(...convs) + 0.01) * 50) / 50;
+    const x = (v) => M.left + ((Math.log(v) - xMin) / (xMax - xMin)) * pw;
+    const y = (v) => M.top + ph - ((v - yMin) / (yMax - yMin)) * ph;
+    const cx = x(medianShare), cy = y(rate);
+    let svg = `<svg viewBox="0 0 ${W} ${H}" role="img" aria-label="Uso en presencial frente a conversión a día 2 de ${rows.length} Pokémon">`;
+    svg += `<rect class="quad q-good" x="${M.left}" y="${M.top}" width="${cx - M.left}" height="${cy - M.top}"/>`;
+    svg += `<rect class="quad q-top" x="${cx}" y="${M.top}" width="${W - M.right - cx}" height="${cy - M.top}"/>`;
+    for (const t of [0.02, 0.05, 0.1, 0.2, 0.5].filter((t) => Math.log(t) >= xMin && Math.log(t) <= xMax)) {
+      svg += `<line class="grid" x1="${x(t)}" x2="${x(t)}" y1="${M.top}" y2="${M.top + ph}"/><text class="axis" x="${x(t)}" y="${H - M.bottom + 18}" text-anchor="middle">${Math.round(t * 100)}%</text>`;
+    }
+    for (let v = Math.ceil(yMin * 20) / 20; v <= yMax + 1e-9; v += 0.05) {
+      svg += `<line class="grid" x1="${M.left}" x2="${W - M.right}" y1="${y(v)}" y2="${y(v)}"/><text class="axis" x="${M.left - 8}" y="${y(v) + 4}" text-anchor="end">${Math.round(v * 100)}%</text>`;
+    }
+    svg += `<line class="split" x1="${cx}" x2="${cx}" y1="${M.top}" y2="${M.top + ph}"/><line class="split" x1="${M.left}" x2="${W - M.right}" y1="${cy}" y2="${cy}"/>`;
+    svg += `<text class="qlabel" x="${M.left + 8}" y="${M.top + 16}">Infravalorados</text><text class="qlabel" x="${W - M.right - 8}" y="${M.top + 16}" text-anchor="end">Pilares del meta</text>`;
+    svg += `<text class="qlabel" x="${M.left + 8}" y="${M.top + ph - 8}">Poco rentables</text><text class="qlabel" x="${W - M.right - 8}" y="${M.top + ph - 8}" text-anchor="end">Sobreexpuestos</text>`;
+    svg += `<text class="axis strong" x="${M.left + pw / 2}" y="${H - 6}" text-anchor="middle">Uso en presencial (escala logarítmica)</text>`;
+    svg += `<text class="axis strong" transform="translate(14 ${M.top + ph / 2}) rotate(-90)" text-anchor="middle">Conversión a día 2</text>`;
+    // Most used last, so the meta's big names sit on top where sprites overlap.
+    for (const r of [...rows].sort((a, b) => a.in_person.share - b.in_person.share)) {
+      const px = x(r.in_person.share), py = y(r.in_person.day2_conversion);
+      const sprite = sprId(r.species);
+      svg += `<g class="qpoint" data-id="${esc(r.species)}" tabindex="0" aria-label="${esc(r.name)}">`;
+      svg += sprite
+        ? `<image href="data:image/png;base64,${SPR[sprite]}" x="${px - 18}" y="${py - 18}" width="36" height="36"/>`
+        : `<circle cx="${px}" cy="${py}" r="5" class="qdot"/>`;
+      svg += `<circle cx="${px}" cy="${py}" r="11" class="hit"/></g>`;
+    }
+    svg += "</svg>";
+    box.innerHTML = svg + '<div class="tip" hidden></div>';
+    const svgEl = box.querySelector("svg"), tip = box.querySelector(".tip");
+    const byId = new Map(rows.map((r) => [r.species, r]));
+    const place = (ev) => {
+      const rect = box.getBoundingClientRect();
+      const px = ev && ev.clientX ? ev.clientX - rect.left : rect.width / 2;
+      const py = ev && ev.clientY ? ev.clientY - rect.top : 40;
+      tip.style.left = Math.min(Math.max(8, px + 14), rect.width - tip.offsetWidth - 8) + "px";
+      tip.style.top = Math.max(8, py - tip.offsetHeight - 12) + "px";
+    };
+    svgEl.querySelectorAll(".qpoint").forEach((g) => {
+      const r = byId.get(g.dataset.id);
+      const showTip = (ev) => {
+        svgEl.classList.add("focus");
+        g.classList.add("active");
+        tip.innerHTML = `<div class="tip-head">${spr(r.species, "spr")}<strong>${esc(r.name)}</strong></div>` +
+          `<div class="tip-row"><span>Uso presencial</span><span>${pct(r.in_person.share)}</span></div>` +
+          `<div class="tip-row"><span>Conversión a día 2</span><span>${pct(r.in_person.day2_conversion)}</span></div>` +
+          `<div class="tip-row"><span>Win rate</span><span>${pct(r.in_person.win_rate)}</span></div>` +
+          `<div class="tip-row"><span>Equipos</span><span>${r.in_person.teams}</span></div>`;
+        tip.hidden = false;
+        place(ev);
+      };
+      const hideTip = () => { svgEl.classList.remove("focus"); g.classList.remove("active"); tip.hidden = true; };
+      g.addEventListener("pointermove", showTip);
+      g.addEventListener("pointerleave", hideTip);
+      g.addEventListener("focus", () => showTip());
+      g.addEventListener("blur", hideTip);
     });
   }
 
@@ -592,7 +689,7 @@ td button.linkrow:hover { color: var(--ink); }
     else if (view.type === "event") html = eventView(eventByKey.get(view.key));
     const backLabel = stack.length > 1 ? "← Volver" : "← Meta";
     detail.innerHTML = `<button type="button" class="back" data-back="1">${backLabel}</button>${html}`;
-    if (view.type === "trend") drawChart();
+    if (view.type === "trend") { drawChart(); drawQuadrant(); }
     $("meta-home").hidden = true; detail.hidden = false;
     window.scrollTo({ top: 0 });
   }

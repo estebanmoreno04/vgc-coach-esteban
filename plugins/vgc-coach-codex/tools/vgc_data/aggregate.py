@@ -434,11 +434,13 @@ def _by_event(events: list[Event], dex: Pokedex, settings: dict[str, Any]) -> li
         entered: Counter[str] = Counter()
         converted: Counter[str] = Counter()
         top_cut: Counter[str] = Counter()
+        in_day2: Counter[str] = Counter()
         day2_teams = 0
         for team in event.teams:
             names = {mon.species for mon in team.mons}
             for name in names:
                 species[name].add(team)
+                in_day2[name] += int(bool(team.day2))
             for mega in {mon.mega for mon in team.mons if mon.mega}:
                 megas[mega].add(team)
             day2_teams += int(bool(team.day2))
@@ -468,6 +470,7 @@ def _by_event(events: list[Event], dex: Pokedex, settings: dict[str, Any]) -> li
                         "name": dex.display(name),
                         **tally.summary(teams),
                         "day2_conversion": _ratio(converted.get(name, 0), entered.get(name, 0)),
+                        "day2_share": _ratio(in_day2.get(name, 0), day2_teams),
                         "top_cut_teams": top_cut.get(name, 0),
                     }
                     for name, tally in ranked
