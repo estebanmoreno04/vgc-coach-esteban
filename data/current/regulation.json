@@ -25,11 +25,10 @@
   },
   "official_url": "https://champions-news.pokemon-home.com/en/page/816.html",
   "detected_at": "2026-10-21T15:46:26Z",
-  "checked_at": "2026-10-30T18:11:42Z",
+  "checked_at": "2026-11-02T15:24:19Z",
   "confidence": "high",
   "stale": false,
   "agreeing_sources": [
-    "limitless_api",
     "official_news",
     "pikalytics",
     "vgchistory",
@@ -45,7 +44,7 @@
       "url": "https://champions-news.pokemon-home.com/en/json/list.json",
       "status": "ok",
       "error": null,
-      "fetched_at": "2026-10-30T18:11:42Z",
+      "fetched_at": "2026-11-02T15:24:19Z",
       "current_vote": "M-C",
       "upcoming": [],
       "notes": []
@@ -57,7 +56,7 @@
       "url": "https://vgchistory.com/data.js",
       "status": "ok",
       "error": null,
-      "fetched_at": "2026-10-30T18:11:42Z",
+      "fetched_at": "2026-11-02T15:24:19Z",
       "current_vote": "M-C",
       "upcoming": [],
       "notes": []
@@ -67,14 +66,12 @@
       "display_name": "Limitless API",
       "kind": "community",
       "url": "https://play.limitlesstcg.com/api/",
-      "status": "ok",
-      "error": null,
-      "fetched_at": "2026-10-30T18:11:42Z",
-      "current_vote": "M-C",
+      "status": "blocked",
+      "error": "robots.txt disallows https://play.limitlesstcg.com/api/games",
+      "fetched_at": null,
+      "current_vote": null,
       "upcoming": [],
-      "notes": [
-        "Large recent tournaments by format: M-C x24"
-      ]
+      "notes": []
     },
     {
       "source_id": "victory_road",
@@ -83,7 +80,7 @@
       "url": "https://victoryroad.pro/champions-regulations/",
       "status": "ok",
       "error": null,
-      "fetched_at": "2026-10-30T18:11:42Z",
+      "fetched_at": "2026-11-02T15:24:19Z",
       "current_vote": "M-C",
       "upcoming": [],
       "notes": []
@@ -95,7 +92,7 @@
       "url": "https://www.pikalytics.com/ai/pokedex",
       "status": "ok",
       "error": null,
-      "fetched_at": "2026-10-30T18:11:42Z",
+      "fetched_at": "2026-11-02T15:24:19Z",
       "current_vote": "M-C",
       "upcoming": [],
       "notes": [

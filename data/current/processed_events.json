@@ -9,14 +9,6 @@
    "name": "Champions League VGC October (Prize: Shiny Gengar)",
    "complete": true
   },
-  "limitless_api:6a995629a4272c53be64592c": {
-   "status": "ok",
-   "fetched_at": "2026-10-21T16:14:38Z",
-   "segment": "online",
-   "date": "2026-10-02",
-   "name": "CHAMPIONS REG. M-C |👑CROWN FIGHT Bo3 TOUR #88👑",
-   "complete": true
-  },
   "limitless_api:6a99564fa4272c53be64592f": {
    "status": "ok",
    "fetched_at": "2026-10-21T16:05:50Z",
@@ -39,14 +31,6 @@
    "segment": "online",
    "date": "2026-10-08",
    "name": "London Corviknights VGC Weekly Tour 16!",
-   "complete": true
-  },
-  "limitless_api:6aa80111f1243e65f9801062": {
-   "status": "ok",
-   "fetched_at": "2026-10-21T16:05:50Z",
-   "segment": "online",
-   "date": "2026-10-04",
-   "name": "VGC Trainer School; champions M/C #4",
    "complete": true
   },
   "limitless_api:6aa95de5f1243e65f98020c6": {
@@ -121,22 +105,6 @@
    "name": "🍋Sitrus-Series🍋|Champions-MC|#79",
    "complete": true
   },
-  "limitless_api:6ab81fa4783097f8dcb71862": {
-   "status": "ok",
-   "fetched_at": "2026-10-21T16:14:38Z",
-   "segment": "online",
-   "date": "2026-10-02",
-   "name": "Metal's Meteor Mash-Up #2 - TOP 4 TEAM GRAPHIC",
-   "complete": true
-  },
-  "limitless_api:6ab88d4b783097f8dcb71c43": {
-   "status": "ok",
-   "fetched_at": "2026-10-21T16:14:38Z",
-   "segment": "online",
-   "date": "2026-10-03",
-   "name": "[100€ prize] The Grim Cup #1 Reg M-C",
-   "complete": true
-  },
   "limitless_api:6abaa272880ed327106dea22": {
    "status": "ok",
    "fetched_at": "2026-10-21T16:05:50Z",
@@ -183,14 +151,6 @@
    "segment": "online",
    "date": "2026-10-06",
    "name": "TARTAN TAKEDOWN #41! - [CHAMPIONS REG M-C!]",
-   "complete": true
-  },
-  "limitless_api:6abd0663880ed327106e015a": {
-   "status": "ok",
-   "fetched_at": "2026-10-21T16:05:50Z",
-   "segment": "online",
-   "date": "2026-10-04",
-   "name": "Trinity Championship 15 (Double Format)",
    "complete": true
   },
   "limitless_api:6abfddc4245696afb351438b": {
@@ -436,6 +396,15 @@
    "complete": true,
    "city": "frankfurt"
   },
+  "vgchistory:regional-gdansk-2027": {
+   "status": "ok",
+   "fetched_at": "2026-11-02T15:24:19Z",
+   "segment": "in_person",
+   "date": "2026-10-31",
+   "name": "Gdańsk Regional Championships 2027",
+   "complete": true,
+   "city": "gdansk"
+  },
   "vgchistory:regional-louisville-2027": {
    "status": "ok",
    "fetched_at": "2026-10-21T16:05:50Z",
@@ -456,7 +425,7 @@
   },
   "vgchistory:regional-puebla-2027": {
    "status": "ok",
-   "fetched_at": "2026-10-30T18:11:42Z",
+   "fetched_at": "2026-11-02T15:24:19Z",
    "segment": "in_person",
    "date": "2026-10-24",
    "name": "Puebla Regional Championships 2027",
